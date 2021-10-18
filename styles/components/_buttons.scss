@@ -1,0 +1,71 @@
+.btn {
+    border: none;
+    font-weight: $font-bold;
+
+    &-primary {
+        border: 1px solid $soft-purple;
+        background: $soft-purple;
+        transition: all .1s ease-in-out;
+        &:hover {
+            color: $white;
+            background: $dark-blue;
+            box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
+            transform: translateY(-2px);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            background: $soft-purple;
+        }
+
+        &:disabled {
+            background: $soft-purple !important;
+        }
+    }
+
+    &-secondary{
+        border: 1px solid $soft-purple;
+        background: $soft-purple;
+        transition: all .1s ease-in-out;
+        &:hover {
+            color: $soft-purple;
+            background: $white;
+            box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
+            transform: translateY(-2px);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            background: $soft-purple;
+        }
+
+        &:disabled {
+            background: $soft-purple !important;
+        }
+    }
+
+    &-complementary{
+        border: 1px solid $white;
+        background: transparent !important;
+        color: $white;
+        transition: all .1s ease-in-out;
+        &:hover {
+            color: $white;
+            background: $soft-purple !important;
+            box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
+            transform: translateY(-2px);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            background: $white;
+        }
+
+        &:disabled {
+            background: $white !important;
+        }
+    }
+}

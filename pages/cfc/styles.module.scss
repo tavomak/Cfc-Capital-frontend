@@ -1,0 +1,29 @@
+@import "/styles/utils/variables";
+@import "/styles/utils/media";
+
+.card {
+  border-radius: 25px;
+  margin-bottom: 50px;
+}
+
+.divider {
+  background: $dark-blue;
+  width: 60px;
+  height: 4px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.item {
+  &Image {
+    @include MQ(L) {
+      width: 60%;
+    }
+  }
+  &Text{
+    @include MQ(L) {
+      width: 40%;
+    }
+  }
+}

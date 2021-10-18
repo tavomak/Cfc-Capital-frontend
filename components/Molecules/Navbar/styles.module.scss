@@ -1,0 +1,11 @@
+@import "styles/utils/mixins";
+@import "styles/utils/variables";
+.primaryNav {
+  display: block;
+  width: 220px;
+}
+
+.navbarToggle {
+  background: $soft-purple;
+  color: $white !important;
+}

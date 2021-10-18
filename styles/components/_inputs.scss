@@ -1,0 +1,145 @@
+.form{
+  label span{
+    font-size: 10px;
+    font-weight: 400;
+    color: grey;
+  }
+  &-control {
+    border-radius: 16px;
+    padding: 6px 10px;
+    &:focus {
+      border:  1px solid $grey;
+      box-shadow: none;
+    }
+  }
+}
+.input-error {
+  color: $danger-color !important;
+  text-transform: initial !important;
+  font-size: 14px !important;
+  margin: 0 5px;
+  display: block;
+}
+
+.custom-control-input ~ .custom-control-label::before{
+  border-color: #cec2ce;
+  background-color: #cec2ce;
+}
+.custom-switch .custom-control-input ~ .custom-control-label::after {
+  background-color: $white;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before{
+  border-color: #8E768E;
+  background-color: #8E768E;
+}
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #462546;
+}
+
+.dropzoneCsv {
+  border: 1px dotted $grey;
+  padding: 10px 20px !important;
+}
+.csv-input {
+  display: none;
+}
+input[type=”file”]{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+label[for="react-csv-reader-input"] {
+  font-size: 14px;
+  background-color: $ligth-grey;
+  display: inline-block;
+  transition: all .5s;
+  cursor: pointer;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  width: fit-content;
+  text-align: center;
+  margin: 0;
+}
+
+.react-datepicker-wrapper {
+  display: block;
+}
+
+.react-datepicker__header {
+  background-color: #FF7E44 !important;
+}
+
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::after {
+  border-bottom-color: #FF7E44 !important;
+}
+
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+  font-size: 14px;
+  font-weight: 400;
+  color: white !important;
+}
+
+.react-datepicker__day-name {
+  color: white !important;
+  font-weight: 400 !important;
+}
+
+.react-datepicker__day--in-selecting-range, .react-datepicker__month-text--in-selecting-range, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__year-text--in-selecting-range {
+  background-color: #FFA57C !important;
+}
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
+  color: inherit !important;
+}
+
+.react-datepicker__navigation-icon::before, .react-datepicker__year-read-view--down-arrow, .react-datepicker__month-read-view--down-arrow, .react-datepicker__month-year-read-view--down-arrow {
+  border-color: white !important;
+}
+
+.react-datepicker__day.react-datepicker__day--in-range.react-datepicker__day--outside-month {
+  background-color: #FF7E44 !important;
+}
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
+  background-color: #FFA57C !important;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+.container > p {
+  font-size: 1rem;
+}
+
+.container > em {
+  font-size: .8rem;
+}
+
+$palette: (
+    abierto: #C2D0FF,
+    enproceso: #80D5FF,
+    resuelto: #7DD59D,
+    cerrado: #7DD59D,
+		exitoso:#7DD59D,
+		error: #FE6767,
+);
+
+@each $name, $color in $palette {
+  .badge--#{""+$name} {
+    background-color: $color;
+    color: darken($color, 40%);
+    border-radius: 4px;
+  }
+}
+
+.react-datepicker__header--time{
+  min-height: 55px;
+}

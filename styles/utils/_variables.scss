@@ -1,0 +1,32 @@
+$primary-font: 'Gothic A1', sans-serif;
+$display-font: 'Poppins', sans-serif;
+$font-ligth: 200;
+$font-regular: 400;
+$font-bold: 700;
+
+// Colores
+$palette: (
+    ligth-grey: #F6F6F6,
+    ligth-blue: #EAF8FF,
+
+    medium-grey: #777777,
+    grey: #DADADA,
+    dark-grey: #232323,
+
+    soft-blue: #00abc8,
+    dark-blue: #002169,
+    soft-purple: #623482,
+);
+$ligth-grey: map-get($palette,ligth-grey);
+$medium-grey: map-get($palette,medium-grey);
+$grey: map-get($palette,grey);
+$dark-grey: map-get($palette,dark-grey);
+$soft-blue: map-get($palette,soft-blue);
+$dark-blue: map-get($palette,dark-blue);
+$soft-purple: map-get($palette,soft-purple);
+
+$white:white;
+$black: black;
+//Gradientes
+$primary-gradient: linear-gradient(#FBC567, #F89173);
+$secondary-gradient: linear-gradient(#B6BFC1, #747575);
