@@ -1,66 +1,92 @@
 import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
-import Container from 'components/container'
-import PostBody from 'components/post-body'
-import MoreStories from 'components/more-stories'
-import Header from 'components/header'
-import PostHeader from 'components/post-header'
-import SectionSeparator from 'components/section-separator'
-import Layout from 'components/layout'
-import { getPostAndMorePosts } from 'lib/api'
-import PostTitle from 'components/post-title'
+import Image from 'next/image';
+
+import Layout from 'components/Templates/Layout';
+
+import MoreStories from 'components/Molecules/MorePosts'
+import { getAllPostsForHome, getPostAndMorePosts } from 'lib/api'
 import Head from 'next/head'
 import markdownToHtml from 'lib/markdownToHtml'
 
-export default function Post({ post, morePosts, preview }) {
+export default function Post({ post, morePosts }) {
   const router = useRouter()
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
-  }
   return (
-    <Layout preview={preview}>
-      <Container>
-        <Header />
+    <Layout 
+      title="Servicios"
+      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
+    >
+      <section className="container">
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
-        ) : (
-          <>
-            <article>
+            <p>Loading</p>
+          ): (
+            <>
               <Head>
                 <title>
-                  {post.title} | Next.js Blog Example
+                  {post.article.title} | CFC Capital
                 </title>
-                <meta property="og:image" content={post.ogImage.url} />
+                <meta property="og:image" content={post.article.image.url} />
               </Head>
-              <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
-              <PostBody content={post.content} />
-            </article>
-            <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-          </>
+              <article className="row">
+                <div className="col-12 pt-5">
+                <div className="position-relative">
+                    <div className="overlay"></div>
+                    <div className="d-none d-lg-block">
+                      <Image
+                        src={`${post.article.image.url}`}
+                        alt={post.article.title}
+                        layout="responsive"
+                        objectFit='cover'
+                        objectPosition="top"
+                        width={700}
+                        height={280}
+                      />
+                    </div>
+                    <div className="d-lg-none">
+                      <Image
+                        src={`${post.article.image.url}`}
+                        alt={post.article.title}
+                        layout="responsive"
+                        objectFit='cover'
+                        width={500}
+                        height={400}
+                      />
+                    </div>
+                  </div>
+                  <div className="pt-5 pb-3">
+                    <h1 className="display-font text-soft-purple pb-4 fs-2">{post.article.title}</h1>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: post.content }}
+                    />
+                  </div>
+                </div>
+              </article>
+              <aside className="row">
+                <div className="col-12">
+                  <hr />
+                  <h2 className="display-font text-soft-purple pb-2">Más noticias</h2>
+                </div>
+                {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+              </aside>
+            </>
         )}
-      </Container>
+      </section>
     </Layout>
   )
 }
 
 export async function getStaticProps({ params, preview = null }) {
   const data = await getPostAndMorePosts(params.slug, preview)
-  const content = await markdownToHtml(data?.posts[0]?.content || '')
+  const content = await markdownToHtml(data.articles[0].content || '')
+  console.log(content, 'content');
 
   return {
     props: {
       preview,
       post: {
-        ...data?.posts[0],
+        article: data.articles[0],
         content,
-      },
-      morePosts: data?.morePosts,
+    },
+      morePosts: data.morePosts,
     },
   }
 }
@@ -68,7 +94,7 @@ export async function getStaticProps({ params, preview = null }) {
 export async function getStaticPaths() {
   const allPosts = await getAllPostsForHome()
   return {
-    paths: allPosts?.map((post) => `/posts/${post.slug}`) || [],
+    paths: allPosts?.map((post) => `/prensa/${post.slug}`) || [],
     fallback: true,
   }
 }

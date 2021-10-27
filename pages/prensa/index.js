@@ -1,10 +1,11 @@
 import { getAllPostsForHome } from 'lib/api'
 import {shimmer, toBase64} from 'helpers'
 import Image from 'next/image';
-
+import Link from 'next/link'
 import Layout from 'components/Templates/Layout';
 
 export default function News({ allPosts, preview }) {
+  console.log(allPosts);
   return (
     <Layout
       title="Servicios"
@@ -40,25 +41,29 @@ export default function News({ allPosts, preview }) {
           <div className="col-md-4 pb-5" key={item.id}>
             <div className="card shadow" style={{ height: '100%'}}>
               <div className="card-header">
-                <a href="!#" className="noticeImg d-block mb-4">
-                  <Image
-                    src={item.image.url}
-                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                    alt="Cfc Capital Logo"
-                    width={16}
-                    height={9}
-                    layout="responsive"
-                    objectFit="contain"
-                  />
-                </a>
+                <Link href={`/prensa/${item.slug}`}>
+                  <a href="!#" className="noticeImg d-block mb-4">
+                    <Image
+                      src={item.image.url}
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+                      alt="Cfc Capital Logo"
+                      width={16}
+                      height={9}
+                      layout="responsive"
+                      objectFit="contain"
+                    />
+                  </a>
+                </Link>
               </div>
               <div className="card-body">
                   <p className="display-font">
                     {item.title}
                   </p>
-                <a href="!#" className="btn btn-primary display-font">
-                  Ver más
-                </a>
+                  <Link href={`/prensa/${item.slug}`}>
+                    <a href={`/prensa/${item.slug}`}className="btn btn-primary display-font">
+                      Ver más
+                    </a>
+                  </Link>
               </div>
             </div>
           </div>

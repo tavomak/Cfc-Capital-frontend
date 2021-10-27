@@ -151,7 +151,7 @@ export default function Home({ data }) {
                 <div className={`px-4 pt-4 m-xxl-3 ${styles.firstsCards} shadow`}>
                   <div className="text-center">
                     <Image 
-                      src={`/${item.icon}-bg.jpg`}
+                      src={`/${item.icon}-bg.svg`}
                       alt={item.title}
                       layout="responsive"
                       objectFit='contain'
