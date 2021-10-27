@@ -9,7 +9,8 @@ export default function Layout({
   children,
   title,
   subtitle,
-  bgImage
+  bgImage,
+  description
 }) {
   const hostname = typeof window !== 'undefined' ? window.location.href : '';
   return (
@@ -18,7 +19,7 @@ export default function Layout({
         <title>{`${title} | CFC Capital`}</title>
         <meta
           name="description"
-          content={`${subtitle ? subtitle : ''}`}
+          content={`${description ? description : ' CFC Capital'}`}
         />
         <link rel="canonical" href={hostname} />
         <meta property="og:locale" content="es_ES" />

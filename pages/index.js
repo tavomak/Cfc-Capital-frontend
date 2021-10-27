@@ -89,7 +89,7 @@ export default function Home({ data }) {
                     <div className="d-none d-lg-block">
                       <Image
                         src={`${item.item_image.url}`}
-                        alt={item.title}
+                        alt={`${item.title} | CFC Capital`}
                         layout="responsive"
                         objectFit='cover'
                         objectPosition="top"
@@ -102,7 +102,7 @@ export default function Home({ data }) {
                     <div className="d-lg-none">
                       <Image
                         src={`${item.item_image.url}`}
-                        alt={item.title}
+                        alt={`${item.title} | CFC Capital`}
                         layout="responsive"
                         objectFit='cover'
                         width={500}
@@ -117,7 +117,7 @@ export default function Home({ data }) {
                       <div className="d-none d-lg-block">
                         <Image 
                           src={`${item.icono.url}`}
-                          alt={item.title}
+                          alt={`${item.title} | CFC Capital`}
                           width={100}
                           height={100}
                         />

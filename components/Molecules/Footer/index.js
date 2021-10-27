@@ -18,7 +18,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="col-sm-6 col-md-5 col-lg-4 col-xl-3 text-white">
-            <h5 className="text-uppercase"><small>Contacto</small></h5>
+            <h3 className="text-uppercase fs-5"><small>Contacto</small></h3>
             <ul>
               <li>
                 <ul className="d-flex">
