@@ -54,7 +54,7 @@ export default function Home({ data }) {
     lazyLoad: 'progressive',
   };
   const [modal, setModal] = useState(false);
-  const [primaryModal, setPrimaryModal] = useState(true);
+  const [primaryModal, setPrimaryModal] = useState(false);
   const [modalText, setModalText] = useState(null);
 
   const handleClick = (e, text) => {

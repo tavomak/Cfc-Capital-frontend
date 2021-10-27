@@ -2,7 +2,10 @@
 @import "/styles/utils/media";
 
 .primaryTitle {
-  font-size: 72px;
+  font-size: 52px;
+  @include MQ(L) {
+    font-size: 72px;
+  }
   &Span {
     color: $soft-blue;
   }
