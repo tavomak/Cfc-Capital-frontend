@@ -11,7 +11,7 @@ const Footer = () => {
             <p>Somos una empresa de servicios financieros especializada en el segmento de empresas PYME del país, presentes en el mercado desde el año 2003.</p>
             <p>Todos los derechos reservados CFC Capital S.A.</p>
           </div>
-          <div className="col-md-3 text-white">
+          <div className="col-sm-6 col-md-5 col-lg-4 col-xl-3 text-white">
             <h5 className="text-uppercase">Contacto</h5>
             <ul>
               <li>

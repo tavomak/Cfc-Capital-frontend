@@ -21,7 +21,7 @@ const Modal = ({
             &times;
           </span>
         </a>
-        <div className="modal-body p-0 p-4">
+        <div className="modal-body">
           {children}
         </div>
       </div>
@@ -33,6 +33,7 @@ Modal.defaultProps = {
   children: null,
   size: '',
   onClick: undefined,
+  bgColor: '',
 };
 
 Modal.propTypes = {
@@ -40,6 +41,7 @@ Modal.propTypes = {
   onClick: PropTypes.func,
   showModal: PropTypes.bool.isRequired,
   size: PropTypes.string,
+  bgColor: PropTypes.string,
 };
 
 export default Modal;

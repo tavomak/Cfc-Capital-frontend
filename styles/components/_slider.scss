@@ -1,3 +1,5 @@
+@import "/styles/utils/variables";
+
 .slick-dots {
   position: initial;
 }
@@ -18,6 +20,11 @@
   left: 2%;
 }
 
-.next-arrow-test::before {
-  counter-reset: $soft-purple !important;
+.about-slider {
+  & .slick-next:before {
+    color: $soft-purple;
+  }
+  & .slick-prev:before {
+    color: $soft-purple;
+  }
 }

@@ -3,18 +3,19 @@ import { ToastContainer } from 'react-toastify';
 import Navbar from 'components/Molecules/Navbar'
 import Footer from 'components/Molecules/Footer'
 import PropTypes from 'prop-types';
+import styles from './styles.module.scss'
 
 export default function Layout({
   children,
   title,
   subtitle,
+  bgImage
 }) {
   const hostname = typeof window !== 'undefined' ? window.location.href : '';
-  console.log(hostname);
   return (
     <>
       <Head>
-        <title>{`CFC Capital | ${title}`}</title>
+        <title>{`${title} | CFC Capital`}</title>
         <meta
           name="description"
           content={`${subtitle ? subtitle : ''}`}
@@ -38,7 +39,7 @@ export default function Layout({
         />
       </Head>
       <Navbar />
-      <main className="content-wrapper">
+      <main className={`content-wrapper ${bgImage ? styles.isBgActive : ''}`} style={{ background: `url(/${bgImage}) no-repeat`}}>
         {children}
       </main>
       <ToastContainer />
@@ -49,9 +50,11 @@ export default function Layout({
 Layout.defaultProps = {
   title: 'Bienvenido a CFC Capital',
   subtitle: null,
+  bgImage: ''
 };
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  bgImage: PropTypes.string,
 };

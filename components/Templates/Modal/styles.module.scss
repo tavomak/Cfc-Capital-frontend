@@ -1,3 +1,4 @@
+@import "styles/utils/media";
 @import "styles/utils/mixins";
 @import "styles/utils/variables";
 .modal {
@@ -39,10 +40,13 @@
   border: none;
   position: absolute;
   top: -10px;
-  right: -10px;
   width: 35px;
   height: 35px;
   border-radius: 50rem;
+  right: 0;
+  @include MQ(M){
+    right: -10px;
+  }
   &Icon {
     position: absolute;
     @include centerer();

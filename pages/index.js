@@ -1,19 +1,19 @@
 import { useState } from 'react'
-import router, { useRouter } from 'next/router'
+import router from 'next/router'
 import Image from 'next/image'
-import { getAllPostsForHome } from 'lib/api'
+import { getAllServicesForHome } from 'lib/api'
 import {shimmer, toBase64} from 'helpers'
 
 import Layout from 'components/Templates/Layout'
 import Slider from "react-slick";
-import styles from 'styles/pages/Home.module.scss'
 import Modal from 'components/Templates/Modal'
+import styles from 'styles/pages/Home.module.scss'
 
 const services = [
   {
-    icon: 'web-factoring',
+    icon: 'factoring-web',
     text: 'Lanzamos nueva plataforma digital en donde podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente.',
-    title: 'Web Factoring',
+    title: 'Factoring Web',
     review: false,
   },
   {
@@ -54,6 +54,7 @@ export default function Home({ data }) {
     lazyLoad: 'progressive',
   };
   const [modal, setModal] = useState(false);
+  const [primaryModal, setPrimaryModal] = useState(true);
   const [modalText, setModalText] = useState(null);
 
   const handleClick = (e, text) => {
@@ -67,6 +68,10 @@ export default function Home({ data }) {
     setTimeout(() => {
       setModalText('');
     }, 500);
+  }
+  const handleClickClosePrimaryModal = (e) => {
+    e.preventDefault();
+    setPrimaryModal(false);
   }
   return (
     <Layout
@@ -103,7 +108,7 @@ export default function Home({ data }) {
                         width={500}
                         height={400}
                         placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8cOeRDwAH7gLcC9C+jgAAAABJRU5ErkJggg=="
+                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                       />
                     </div>
                   </div>
@@ -146,13 +151,16 @@ export default function Home({ data }) {
                 <div className={`px-4 pt-4 m-xxl-3 ${styles.firstsCards} shadow`}>
                   <div className="text-center">
                     <Image 
-                      src={`/${item.icon}-purple.png`}
+                      src={`/${item.icon}-bg.jpg`}
                       alt={item.title}
-                      width={100}
-                      height={100}
+                      layout="responsive"
+                      objectFit='contain'
+                      objectPosition="top"
+                      width={16}
+                      height={8}
                     />
-                    <p className="fs-4 text-soft-purple display-font">{item.title}</p>
-                    <hr />
+                    <p className="fs-4 text-soft-purple display-font d-none">{item.title}</p>
+                    <br />
                   </div>
                   <p className="text-center">{item.text}</p>
                 </div>
@@ -186,7 +194,7 @@ export default function Home({ data }) {
             </div>
             <div className="row align-items-stretch py-5 my-lg-5">
             {services.filter((item) => item.review).map((item) => (
-              <div className="col-lg-4 mb-5 mb-md-0" key={item.title}>
+              <div className="col-lg-4 mb-5 mb-lg-0" key={item.title}>
                 <div className={`card d-flex flex-column justify-content-between ${styles.reviewCard}`}>
                   <Image 
                     src={`/${item.icon}-2.jpg`}
@@ -196,8 +204,10 @@ export default function Home({ data }) {
                     objectPosition="top"
                     width={100}
                     height={70}
+                    placeholder="blur"
+                    blurDataURL={`/${item.icon}-2.jpg`}
                   />
-                  <div className={`px-5 py-4 text-white ${styles.reviewCardText}`}>
+                  <div className={`px-3 px-sm-4 px-md-5 py-4 text-white`}>
                     <p className="display-font fs-5">{item.title}</p>
                     <p>{item.review}</p>
                   </div>
@@ -217,12 +227,27 @@ export default function Home({ data }) {
           >
             {modalText}
           </Modal>
+          <Modal
+            onClick={handleClickClosePrimaryModal}
+            showModal={primaryModal}
+            bgColor="bg-dark-blue"
+          >
+            <Image 
+              src={`/primary-popup.jpg`}
+              alt="Financiamos en 4 horas"
+              layout="responsive"
+              objectFit='contain'
+              width={160}
+              height={82}
+            />
+
+          </Modal>
         </section>
     </Layout>
   )
 }
 export async function getStaticProps({ preview = null }) {
-  const data = (await getAllPostsForHome(preview)) || []
+  const data = (await getAllServicesForHome(preview)) || []
   return {
     props: { data, preview },
   }

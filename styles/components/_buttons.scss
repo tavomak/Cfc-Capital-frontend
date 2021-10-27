@@ -39,6 +39,7 @@
             outline: none;
             box-shadow: none;
             background: $soft-purple;
+            color: $white;
         }
 
         &:disabled {
@@ -66,6 +67,28 @@
 
         &:disabled {
             background: $white !important;
+        }
+    }
+    &-white{
+        border: 1px solid $white;
+        background: $white !important;
+        color: $soft-purple;
+        transition: all .1s ease-in-out;
+        &:hover {
+            color: $white;
+            background: $dark-blue !important;
+            border: 1px solid $white;
+            box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
+            transform: translateY(-2px);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &:disabled {
+            background: $dark-blue !important;
         }
     }
 }

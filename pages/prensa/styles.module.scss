@@ -1,0 +1,9 @@
+@import "/styles/utils/variables";
+@import "/styles/utils/media";
+
+.primaryTitle {
+  font-size: 72px;
+  &Span {
+    color: $soft-blue;
+  }
+}

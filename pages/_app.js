@@ -4,7 +4,7 @@ import 'styles/main.scss'
 import TagManager from 'react-gtm-module'
  
 const tagManagerArgs = {
-    gtmId: 'GTM-PTN38WD'
+    gtmId: process.env.NEXT_PUBLIC_GTM,
 }
 
 function MyApp({ Component, pageProps }) {

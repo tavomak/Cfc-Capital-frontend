@@ -1,12 +1,17 @@
+import { useState } from 'react'
 import { FaLinkedin } from "react-icons/fa";
 import Layout from 'components/Templates/Layout';
 import Image from 'next/image';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
 import Slider from "react-slick";
+import Modal from 'components/Templates/Modal'
+import VideoIframe from 'components/Molecules/VideoIframe'
 import styles from './styles.module.scss';
 
 const Cfc = () => {
+  const [modal, setModal] = useState(false);
+
   const highlights = [
     {
       name: 'Fundada',
@@ -106,9 +111,9 @@ const Cfc = () => {
 
   function SampleNextArrow({className, style, onClick}) {
     return (
-      <div
+      <span
         className={className}
-        style={{ ...style, background: "#623482", borderRadius: '55rem', width: 33, height: 30}}
+        style={{ ...style}}
         onClick={onClick}
       />
     );
@@ -116,15 +121,16 @@ const Cfc = () => {
 
   function SamplePrevArrow({className, style, onClick}) {
     return (
-      <div
+      <span
         className={className}
         onClick={onClick}
-        style={{ ...style, background: "#623482", borderRadius: '55rem', width: 33, height: 30}}
+        style={{ ...style }}
       />
     );
   };
 
   const settings = {
+    className: 'about-slider',
     dots: false,
     infinite: true,
     autoplay: false,
@@ -133,8 +139,8 @@ const Cfc = () => {
     autoplaySpeed: 5000,
     cssEase: "cubic-bezier(.8,0,0.5,1)",
     lazyLoad: 'progressive',
-    nextArrow: <SampleNextArrow className="next-arrow-test" />,
-    prevArrow: <SamplePrevArrow className="prev-arrow-test"/>,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     initialSlide: 0,
       responsive: [
         {
@@ -170,7 +176,16 @@ const Cfc = () => {
         <div className="container">
           <div className="row content-wrapper align-items-center position-relative">
             <div className="text-center pt-5">
-                <a href="#" className="btn btn-complementary fs-4" data-src="https://player.vimeo.com/video/389778033" data-toggle="modal" data-target="#homeVideo">Ver video</a>
+                <a 
+                  href="#"
+                  className="btn btn-complementary fs-4"
+                  data-src="https://player.vimeo.com/video/389778033"
+                  data-toggle="modal"
+                  data-target="#homeVideo"
+                  onClick={(e) => { e.preventDefault(); setModal(true); }}
+                >
+                  Ver video
+                </a>
             </div>
           </div>
           <video id="myVideo" loop muted autoPlay className="d-none d-md-block">
@@ -191,7 +206,7 @@ const Cfc = () => {
               <p className="text-white">
                 Estamos especializados en el segmento de <span className="text-soft-blue">empresas y pymes</span> entregando soluciones a las necesidades de financiamiento de capital de trabajo y de inversión, transformando los flujos por cobrar a plazo, en dinero efectivo de inmediato o bien haciendo posible adquirir activos productivos a las empresas
               </p>
-              <a href="#!" className="btn btn-secondary">Memorias</a>
+              <a href="#!" className="btn btn-white fs-5">Memorias</a>
             </div>
           </div>
         </div>
@@ -393,6 +408,13 @@ const Cfc = () => {
           </div>
         </div>
       </section>
+      <Modal
+        showModal={modal}
+        onClick={(e) => { e.preventDefault(); setModal(false); }}
+        size="xl"
+      >
+        <VideoIframe url="//player.vimeo.com/video/442189935?autoplay=1&amp;loop=1" />
+      </Modal>
     </Layout>
   );
 }
