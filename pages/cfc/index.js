@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { FaLinkedin } from "react-icons/fa";
-import Layout from 'components/Templates/Layout';
 import Image from 'next/image';
+import Link from 'next/link';
+
+import Layout from 'components/Templates/Layout';
 import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
 import Slider from "react-slick";
@@ -206,7 +208,9 @@ const Cfc = () => {
               <p className="text-white">
                 Estamos especializados en el segmento de <span className="text-soft-blue">empresas y pymes</span> entregando soluciones a las necesidades de financiamiento de capital de trabajo y de inversión, transformando los flujos por cobrar a plazo, en dinero efectivo de inmediato o bien haciendo posible adquirir activos productivos a las empresas
               </p>
-              <a href="#!" className="btn btn-white fs-5">Memorias</a>
+              <Link href="/memorias">
+                <a href="#!" className="btn btn-white fs-5">Memorias</a>
+              </Link>
             </div>
           </div>
         </div>
