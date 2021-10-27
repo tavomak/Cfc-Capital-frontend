@@ -53,17 +53,17 @@ export default function Post({ post, morePosts }) {
                     </div>
                   </div>
                   <div className="pt-5 pb-3">
-                    <h1 className="display-font text-soft-purple pb-4 fs-2">{post.article.title}</h1>
+                    <h1 className="display-font text-soft-purple pb-4 fs-4">{post.article.title}</h1>
                     <div
                       dangerouslySetInnerHTML={{ __html: post.content }}
                     />
                   </div>
                 </div>
               </article>
-              <aside className="row">
+              <aside className="row mb-5">
                 <div className="col-12">
                   <hr />
-                  <h2 className="display-font text-soft-purple pb-2">Más noticias</h2>
+                  <h2 className="display-font text-soft-purple py-4 fs-5">Más noticias</h2>
                 </div>
                 {morePosts.length > 0 && <MoreStories posts={morePosts} />}
               </aside>
@@ -77,7 +77,6 @@ export default function Post({ post, morePosts }) {
 export async function getStaticProps({ params, preview = null }) {
   const data = await getPostAndMorePosts(params.slug, preview)
   const content = await markdownToHtml(data.articles[0].content || '')
-  console.log(content, 'content');
 
   return {
     props: {

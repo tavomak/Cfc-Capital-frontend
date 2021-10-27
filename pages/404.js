@@ -1,7 +1,6 @@
 import Layout from 'components/Templates/Layout';
 
 const FourOhFour = () => {
-  console.log('pagina no encontrada');
   return (
     <Layout
       title="Contenido no encontrado"

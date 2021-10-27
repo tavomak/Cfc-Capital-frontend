@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Layout from 'components/Templates/Layout';
 
 export default function News({ allPosts, preview }) {
-  console.log(allPosts);
   return (
     <Layout
       title="Servicios"

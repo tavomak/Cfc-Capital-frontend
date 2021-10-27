@@ -8,11 +8,17 @@ const Footer = () => {
         <div className="row justify-content-between">
           <div className="col-md-6 text-white">
             <Image src="/footer-logo.png" alt="Cfc Capital Logo" width={220} height={66} />
-            <p>Somos una empresa de servicios financieros especializada en el segmento de empresas PYME del país, presentes en el mercado desde el año 2003.</p>
-            <p>Todos los derechos reservados CFC Capital S.A.</p>
+            <p>
+              <small>
+                Somos una empresa de servicios financieros especializada en el segmento de empresas PYME del país, presentes en el mercado desde el año 2003.
+              </small>
+            </p>
+            <p>
+              <small>Todos los derechos reservados CFC Capital S.A.</small>
+            </p>
           </div>
           <div className="col-sm-6 col-md-5 col-lg-4 col-xl-3 text-white">
-            <h5 className="text-uppercase">Contacto</h5>
+            <h5 className="text-uppercase"><small>Contacto</small></h5>
             <ul>
               <li>
                 <ul className="d-flex">
@@ -20,7 +26,11 @@ const Footer = () => {
                     <FaRegEnvelope />
                   </li>
                   <li>
-                    <a href="mailto:contacto@cfccapital.cl" className="text-white">contacto@cfccapital.cl</a>
+                    <a href="mailto:contacto@cfccapital.cl" className="text-white">
+                      <small>
+                        contacto@cfccapital.cl
+                      </small>
+                    </a>
                   </li>
                 </ul>
               </li>
@@ -30,7 +40,9 @@ const Footer = () => {
                     <FaWhatsapp />
                   </li>
                   <li>
-                    <a href="mailto:contacto@cfccapital.cl" className="text-white">+56228201100 | +56228201158</a>
+                    <a href="tel:+56228201100" className="text-white"><small>+56228201100</small></a>
+                    <span> | </span>
+                    <a href="tel:+56228201158" className="text-white"><small>+56228201158</small></a>
                   </li>
                 </ul>
               </li>
@@ -40,17 +52,19 @@ const Footer = () => {
                     <FaRegDotCircle />
                   </li>
                   <li>
-                    <a href="mailto:contacto@cfccapital.cl" className="text-white">contacto@cfccapital.cl</a>
+                    <a href="https://goo.gl/maps/Md4zzZmssuSnqG96A" className="text-white"><small>Enrique Mac Iver 225, Piso 11, Santiago, Región Metropolitana, Chile</small></a>
                   </li>
                 </ul>
               </li>
               <li>
-                <ul className="d-flex">
+                <ul className="d-flex py-2">
                   <li className="me-3">
-                    <FaLinkedin />
+                    <FaFacebookSquare />
+                    <a href="https://www.facebook.com/cfccapitalchile/" className="text-white"><small> Facebook</small></a>
                   </li>
                   <li>
-                    <a href="mailto:contacto@cfccapital.cl" className="text-white">contacto@cfccapital.cl</a>
+                    <FaLinkedin />
+                    <a href="mailto:contacto@cfccapital.cl" className="text-white"><small> Linkedin</small></a>
                   </li>
                 </ul>
               </li>
