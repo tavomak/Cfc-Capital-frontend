@@ -54,7 +54,7 @@ export default function Home({ data }) {
     lazyLoad: 'progressive',
   };
   const [modal, setModal] = useState(false);
-  const [primaryModal, setPrimaryModal] = useState(false);
+  const [primaryModal, setPrimaryModal] = useState(true);
   const [modalText, setModalText] = useState(null);
 
   const handleClick = (e, text) => {
@@ -231,6 +231,7 @@ export default function Home({ data }) {
             onClick={handleClickClosePrimaryModal}
             showModal={primaryModal}
             bgColor="bg-dark-blue"
+            noPadding
           >
             <Image 
               src={`/primary-popup.jpg`}

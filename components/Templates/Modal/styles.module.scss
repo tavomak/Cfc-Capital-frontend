@@ -44,6 +44,7 @@
   height: 35px;
   border-radius: 50rem;
   right: 0;
+  z-index: 1;
   @include MQ(M){
     right: -10px;
   }
