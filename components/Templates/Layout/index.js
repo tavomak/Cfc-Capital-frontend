@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script'
 import { ToastContainer } from 'react-toastify';
 import Navbar from 'components/Molecules/Navbar'
 import Footer from 'components/Molecules/Footer'
@@ -45,6 +46,7 @@ export default function Layout({
       </main>
       <ToastContainer />
       <Footer />
+      <Script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e2a24a24-64b6-4805-ad57-dbfadaa4ec69" />
     </>
   );
 }
