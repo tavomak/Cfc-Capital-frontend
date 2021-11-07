@@ -1,7 +1,11 @@
-# Allow all user agents.
+Sitemap: https://www.cfccapital.cl/api/pages-sitemap
+Sitemap: https://www.cfccapital.cl/api/blog-sitemap
+
 User-agent: *
-Allow: /
+Allow: /*
+
+Disallow: /api/*
 
 # User agent "Googlebot" should not crawl the `http://example.com/nogooglebot/` folder or any of its subdirectories.
-User-agent: Googlebot
-Disallow: /nogooglebot/
+# User-agent: Googlebot
+# Disallow: /nogooglebot/
