@@ -6,7 +6,6 @@ import { getAllPostsForHome } from 'lib/api'
 const sitemapBlog = async (req, res) => {
 
   const allPosts = await getAllPostsForHome();
-  console.log(allPosts)
 
   const baseUrl = 'https://www.cfccapital.cl';
 

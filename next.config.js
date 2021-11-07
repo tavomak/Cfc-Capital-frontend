@@ -7,4 +7,7 @@ module.exports = {
       'cfc-capital.s3.amazonaws.com',
     ],
   },
+  webpack: (config) => {
+    return config
+  },
 }
