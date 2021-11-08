@@ -144,9 +144,9 @@ const FormContact = () => {
           </span>
           <textarea
             className={`${styles.formTextArea} form-control mt-2`}
-            name="message"
+            name="mensaje"
             rows="4"
-            placeholder="Introduce tu teléfono"
+            placeholder="Introduce tu mensaje"
             {...register('mensaje')}
           />
         </label>
