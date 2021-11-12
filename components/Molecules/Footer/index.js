@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FaRegEnvelope, FaWhatsapp, FaRegDotCircle, FaFacebookSquare, FaLinkedin } from "react-icons/fa"
+import { FaRegEnvelope, FaWhatsapp, FaRegDotCircle, FaFacebookSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa"
 
 const Footer = () => {
   return (
@@ -62,9 +62,13 @@ const Footer = () => {
                     <FaFacebookSquare />
                     <a href="https://www.facebook.com/cfccapitalchile/" className="text-white"><small> Facebook</small></a>
                   </li>
-                  <li>
+                  <li className="me-3">
                     <FaLinkedin />
-                    <a href="mailto:contacto@cfccapital.cl" className="text-white"><small> Linkedin</small></a>
+                    <a href="https://www.linkedin.com/company/cfc-capital-s-a/" className="text-white"><small> Linkedin</small></a>
+                  </li>
+                  <li>
+                    <FaInstagramSquare />
+                    <a href="https://www.instagram.com/cfc_capital" className="text-white"><small> Instagram</small></a>
                   </li>
                 </ul>
               </li>
