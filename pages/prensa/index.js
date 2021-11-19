@@ -43,7 +43,7 @@ export default function News({ allPosts, preview }) {
                 <Link href={`/prensa/${item.slug}`}>
                   <a href="!#" className="noticeImg d-block mb-4">
                     <Image
-                      src={item.image.url}
+                      src={item.image?.url ? item.image.url : '/leasing-card.png'}
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                       alt="Cfc Capital Logo"
                       width={16}
@@ -77,5 +77,6 @@ export async function getStaticProps({ preview = null }) {
   const allPosts = (await getAllPostsForHome(preview)) || []
   return {
     props: { allPosts, preview },
+    revalidate: 10
   }
 }

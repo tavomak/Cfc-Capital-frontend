@@ -35,7 +35,7 @@ export default function Post({ post, morePosts }) {
                         src={`${post.article.image.url}`}
                         alt={post.article.title}
                         layout="responsive"
-                        objectFit='cover'
+                        objectFit='contain'
                         objectPosition="top"
                         width={700}
                         height={280}
@@ -87,6 +87,7 @@ export async function getStaticProps({ params, preview = null }) {
     },
       morePosts: data.morePosts,
     },
+    revalidate: 100
   }
 }
 
