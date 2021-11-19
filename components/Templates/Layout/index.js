@@ -28,7 +28,6 @@ export default function Layout({
         <meta property="og:url" content="hostname" />
         <meta property="og:site_name" content="CFC Capital" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="google-site-verification" content="lcpGOsDiU3Ptd_Zqz5rlJb_UWoiH0jJUhxitab0rYBk" />
         <link
           rel="stylesheet"
           type="text/css"
