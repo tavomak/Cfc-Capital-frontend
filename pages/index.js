@@ -119,7 +119,7 @@ export default function Home({ data }) {
         <section className={`container-fluid ${styles.bgCurvedGrey}`}>
           <div className="row align-tiems-stretch mt-lg-5 ">
             {services && services.map((item) => (
-              <div className="col-md-6 col-lg-3 mb-5 mb-lg-0" key={item.id}>
+              <div className="col-md-6 col-lg-3 mb-5 mb-lg-0" key={item.slug}>
                 <div className={`px-4 pt-4 m-xxl-3 ${styles.firstsCards} shadow`}>
                   <div className="text-center d-flex flex-column justify-content-between" style={{ height: "100%", }}>
                     <Image 
@@ -173,7 +173,7 @@ export default function Home({ data }) {
             </div>
             <div className="row align-items-stretch py-5 my-lg-5">
             {services && services.filter((item) => item.review).map((item) => (
-              <div className="col-lg-4 mb-5 mb-lg-0" key={item.title}>
+              <div className="col-lg-4 mb-5 mb-lg-0" key={item.slug}>
                 <div className={`card d-flex flex-column justify-content-between ${styles.reviewCard}`}>
                   <Image 
                     src={`/${item.slug}-2.jpg`}
