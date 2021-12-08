@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
+import router from 'next/router'
 
 import Layout from 'components/Templates/Layout';
 import Button from 'components/Atoms/Button';
@@ -69,11 +70,10 @@ const Services = () => {
   const [modalText, setModalText] = useState(null);
   const handleClick = (e, text) => {
     e.preventDefault();
-    if(!text) {
+    if(text === 'factoring-web') {
       window.open ('/CFC-PasoaPaso.pdf', '_ blank');
     } else {
-      setModalText(text);
-      setModal(true);
+      router.push(`/servicios/${text}`)
     }
   };
   const handleClickClose = (e) => {
@@ -134,7 +134,7 @@ const Services = () => {
                   <Button
                     className="btn btn-secondary mt-4 text-uppercase py-2 px-4 fs-5"
                     text="¿como funciona?"
-                    onClick={(e) => handleClick(e, item.detail)}
+                    onClick={(e) => handleClick(e, item.icon)}
                   />
                 </div>
               </div>

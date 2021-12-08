@@ -1,5 +1,6 @@
 @import "/styles/utils/variables";
 @import "/styles/utils/media";
+@import "/styles/utils/mixins";
 
 .primaryTitle {
   font-size: 52px;
@@ -13,4 +14,11 @@
 
 .serviceTitle {
   font-size: 3rem;
+}
+
+.roundedItem{
+  margin-right: 20px;
+  & p {
+    width: 20px;
+  }
 }
