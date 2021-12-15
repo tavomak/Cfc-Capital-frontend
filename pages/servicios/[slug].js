@@ -10,7 +10,7 @@ import styles from './styles.module.scss';
 
 export default function Post({ data }) {
   const router = useRouter()
-
+  const formatedTitle = data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', '');
   return (
     <>
       {router.isFallback ? (
@@ -20,7 +20,6 @@ export default function Post({ data }) {
           <Layout 
             title={data.Seo.metaTitle}
             description={data.Seo.metaDescription}
-            // bgImage="curved-top-gris.svg"
           >
             <Head>
               <title>
@@ -122,7 +121,12 @@ export default function Post({ data }) {
                 </div>
                 <div className="col-md-6">
                   <h3 className="text-center display-font pb-5">Solicitar Información</h3>
-                  <FormGetInfo />
+                  <FormGetInfo
+                    service={data.Seo.metaTitle}
+                    title={formatedTitle}
+                    image={`${data.Seo.metaTitle.toLowerCase()}.jpg`}
+                    content={data.Como.Contenido}
+                  />
                 </div>
               </div>
             </section>

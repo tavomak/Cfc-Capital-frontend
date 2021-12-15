@@ -6,7 +6,7 @@ import Button from 'components/Atoms/Button';
 import ReCAPTCHA from "react-google-recaptcha";
 import styles from './styles.module.scss'
 
-const FormGetInfo = () => {
+const FormGetInfo = ({service, title, image, content}) => {
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef(null);
   const form = useRef();
@@ -23,8 +23,6 @@ const FormGetInfo = () => {
   };
 
   const onReCAPTCHAChange = async (captchaCode) => {
-    // If the reCAPTCHA code is null or undefined indicating that
-    // the reCAPTCHA was expired then return early
     if (!captchaCode) {
       return;
     }
@@ -37,9 +35,7 @@ const FormGetInfo = () => {
         },
       });
       if (response.ok) {
-        // If the response is ok than show the success alert
-        // alert("Email registered successfully");
-        emailjs.sendForm('service_gejcgfb', 'template_1qns8vv', form.current, 'user_wfzYCDVa6rjF3mPxCIWiT')
+        emailjs.sendForm('service_gejcgfb', 'template_17mtb69', form.current, 'user_wfzYCDVa6rjF3mPxCIWiT')
         .then((result) => {
           setLoading(false);
           // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -51,8 +47,6 @@ const FormGetInfo = () => {
           useNotify('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
         });
       } else {
-        // Else throw an error with the message returned
-        // from the API
         const error = await response.json();
         console.log(error);
         throw new Error(error.message)
@@ -60,10 +54,7 @@ const FormGetInfo = () => {
     } catch (error) {
       alert('error', error?.message );
     } finally {
-      // Reset the reCAPTCHA when the request has failed or succeeeded
-      // so that it can be executed again if user submits another email.
       recaptchaRef.current.reset();
-      // setEmail("");
     }
   };
 
@@ -75,6 +66,12 @@ const FormGetInfo = () => {
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
         onChange={onReCAPTCHAChange}
       />
+      <div className="d-none">
+        <input type="hidden" name="service" value={service} />
+        <input type="hidden" name="title" value={title} />
+        <input type="hidden" name="image" value={image} />
+        <input type="hidden" name="content" value={content} />
+      </div>
       <div className="form-group">
         <label htmlFor="username" className="form-label w-100">
           <span className={`${styles.formLabel}`}>
