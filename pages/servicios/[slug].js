@@ -18,7 +18,7 @@ export default function Post({ data }) {
   }, [data])
   return (
     <>
-      {router.isFallback ? (
+      {router.isFallback && formatedTitle.length > 1? (
         <p>Loading</p>
       ): (
         <>
