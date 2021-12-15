@@ -1,3 +1,5 @@
+import {useState, useEffect} from 'react';
+
 import { useRouter } from 'next/router';
 import { getServiceBySlug, getAllServices } from 'lib/api';
 import Image from 'next/image';
@@ -10,7 +12,10 @@ import styles from './styles.module.scss';
 
 export default function Post({ data }) {
   const router = useRouter()
-  const formatedTitle = data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', '');
+  const [formatedTitle, setFormatedTitle] = useState('') ;
+  useEffect(() => {
+    setFormatedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''))
+  }, [data])
   return (
     <>
       {router.isFallback ? (
