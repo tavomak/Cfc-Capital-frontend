@@ -10,11 +10,6 @@ import styles from './styles.module.scss';
 const Services = () => {
   const services = [
     {
-      icon: 'factoring-web',
-      text: 'Lanzamos nueva plataforma digital en donde podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente. Solo debes cargar los DTE en nuestro portal, esperar la cotización y podrás ceder de manera automática todas tus facturas en un solo click.',
-      title: 'Factoring Web',
-    },
-    {
       icon: 'factoring',
       text: 'Herramienta que permite a las pymes obtener liquidez inmediata, así­ logran ordenar su flujo de caja sin las largas esperas o que se cumpla el plazo de pago de facturas dependiendo de cada empresa. Esta herramienta de financiamiento sirve para cualquier tipo de empresa. Entre las principales industrias que utilizan esta herramienta están: Construcción, Minería, Telecomunicaciones, Servicios a sector privado y público y recientes emprendimientos.',
       title: 'Factoring',
@@ -34,6 +29,11 @@ const Services = () => {
           </ol>
         </>
       ),
+    },
+    {
+      icon: 'factoring-web',
+      text: 'Lanzamos nueva plataforma digital en donde podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente. Solo debes cargar los DTE en nuestro portal, esperar la cotización y podrás ceder de manera automática todas tus facturas en un solo click.',
+      title: 'Factoring Web',
     },
     {
       icon: 'leasing',

@@ -1,3 +1,5 @@
+import {useState, useEffect} from 'react';
+
 import { useRouter } from 'next/router';
 import { getServiceBySlug, getAllServices } from 'lib/api';
 import Image from 'next/image';
@@ -10,7 +12,10 @@ import styles from './styles.module.scss';
 
 export default function Post({ data }) {
   const router = useRouter()
-
+  const [formatedTitle, setFormatedTitle] = useState('') ;
+  useEffect(() => {
+    setFormatedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''))
+  }, [data])
   return (
     <>
       {router.isFallback ? (
@@ -20,7 +25,6 @@ export default function Post({ data }) {
           <Layout 
             title={data.Seo.metaTitle}
             description={data.Seo.metaDescription}
-            // bgImage="curved-top-gris.svg"
           >
             <Head>
               <title>
@@ -122,7 +126,12 @@ export default function Post({ data }) {
                 </div>
                 <div className="col-md-6">
                   <h3 className="text-center display-font pb-5">Solicitar Información</h3>
-                  <FormGetInfo />
+                  <FormGetInfo
+                    service={data.Seo.metaTitle}
+                    title={formatedTitle}
+                    image={`${data.Seo.metaTitle.toLowerCase()}.jpg`}
+                    content={data.Como.Contenido}
+                  />
                 </div>
               </div>
             </section>
