@@ -10,38 +10,9 @@ import Slider from "react-slick";
 import Modal from 'components/Templates/Modal'
 import styles from 'styles/pages/Home.module.scss'
 
-const services = [
-  {
-    icon: 'factoring-web',
-    text: 'Lanzamos nueva plataforma digital en donde podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente.',
-    title: 'Factoring Web',
-    review: false,
-  },
-  {
-    icon: 'factoring',
-    text: 'Permite a las empresas obtener liquidez inmediata, así logran ordenar su flujo de caja.',
-    title: 'Factoring',
-    review: '“Conseguí colocar un producto en una importante empresa del retail, el producto fue un éxito y me hicieron un pedido más grande, para poder cumplir necesitaba capital de trabajo, como era mi factura N°1 no fue fácil hasta que llegue a las oficinas de CFC...”',
-    detail: () => (<><p>Haciendo un análisis de costos de producción en mi empresa me di cuenta que haciendo una inversión en maquinaria podía hacer más eficiente mi gestión, obtener un importante ahorro en costos e incluso aumentar mis ventas, eran máquinas muy específicas y de bajo mercado secundario así que no será fácil conseguir el financiamiento por la prensa me enteré del Leaseback, me acerqué a las oficinas de CFC Capital para averiguar en detalle en que consistía, el ejecutivo que atendía me explicó todo referente al Leaseback, yo tenía una propiedad comercial así que presenté mis antecedentes, me evaluaron y la operación se aprobó, hoy pago una cuota mensual que se paga casi en su totalidad con el ahorro en costos que tuve, mis ventas han aumentado un 20% así que además me queda un restito para otros gastos, fue realmente una muy buena inversión.</p><p><b>CASO REAL EMPRESA PRODUCTIVA DEL SECTOR INDUSTRIAL</b></p></>),
-  },
-  {
-    icon: 'leasing',
-    title: 'Leasing',
-    text: 'Resolver el financiamiento para la adquisición de activos fijos.',
-    review: '“Haciendo un análisis de costos de producción en mi empresa me di cuenta que haciendo una inversión en maquinaria podía hacer más eficiente mi gestión, obtener un importante ahorro en costos e incluso aumentar mis ventas, eran máquinas muy ...”',
-    detail: () => (<><p>Me adjudiqué un contrato por Mercado Público para trabajar en una importante obra en el sur del país transportando áridos, dentro de las bases se establecía que el contrato debí­a ejecutarlo con un camión nuevo, yo ya había estado cotizando camiones y tenía listo uno para comprar, por un amigo que me recomendó llegue a CFC Capital para ver la posibilidad de financiamiento v­ía leasing, me atendió un ejecutivo el cual inmediatamente me pidió mis antecedentes y me asesoró en cuanto al plazo en que debía tomar el leasing para no tener problemas con el pago de la cuota mensual dado los flujos del contrato, la cuota tiene incluido todos los gastos e incluso el seguro así­ que otra preocupación menos, en dos semanas tení­a mi camión nuevo y estaba listo para empezar con el trabajo.</p><p>Hoy pago sin problemas mi cuota, obtengo el beneficio tributario y el camión está trabajando perfecto, incluso estoy postulando a otro contrato para comprar otro camión, todo bien.</p><p><b>CASO REAL EMPRESA DEL SECTOR TRANSPORTE QUE OPERA A TRAVÉS DE LA PLATAFORMA MERCADO PÚBLICO</b></p></>),
-
-  },
-  {
-    icon: 'leaseback',
-    title: 'Leaseback',
-    text: 'Permite transformar en dinero un bien productivo de la empresa, normalmente bienes raí­ces.',
-    review: '“Me adjudique un contrato por Mercado Público para trabajar en una importante obra en el sur del país transportando áridos, dentro de las bases se establecía que el contrato debí­a ejecutarlo con un camión nuevo, yo ya había estado cotizando ...”',
-    detail: () => (<><p>Conseguí colocar un producto en una importante empresa del retail, el producto fue un éxito y me hicieron un pedido más grande, para poder cumplir necesitaba capital de trabajo, como era mi factura N°1 no fue fácil hasta que llegue a las oficinas de CFC Capital, increíblemente no les asustó que fuera mi primera factura, el ejecutivo fue muy amable y en 48 horas tení­a los fondos para poder cumplir con la segunda orden de compra.</p><p>Hoy después de dos años operando con CFC no tengo problemas y mis flujos están mucho más ordenados, CFC se transformó en un partner financiero y gracias a su apoyo hoy tengo una empresa sólida y con un gran futuro.</p><p><b>CASO REAL EMPRESA PRODUCTIVA DEL SECTOR RETAIL</b></p></>),
-  }
-]
 export default function Home({ data }) {
-  const { seo, banners } = data;
+  const { seo, banners } = data.homepage;
+  const services = data.servicios;
   const settings = {
     dots: true,
     infinite: true,
@@ -147,12 +118,12 @@ export default function Home({ data }) {
 
         <section className={`container-fluid ${styles.bgCurvedGrey}`}>
           <div className="row align-tiems-stretch mt-lg-5 ">
-            {services.map((item) => (
-              <div className="col-md-6 col-lg-3 mb-5 mb-lg-0" key={item.title}>
+            {services && services.map((item) => (
+              <div className="col-md-6 col-lg-3 mb-5 mb-lg-0" key={item.slug}>
                 <div className={`px-4 pt-4 m-xxl-3 ${styles.firstsCards} shadow`}>
-                  <div className="text-center">
+                  <div className="text-center d-flex flex-column justify-content-between" style={{ height: "100%", }}>
                     <Image 
-                      src={`/${item.icon}-bg.svg`}
+                      src={`/${item.slug}-bg.svg`}
                       alt={item.title}
                       layout="responsive"
                       objectFit='contain'
@@ -160,10 +131,17 @@ export default function Home({ data }) {
                       width={16}
                       height={8}
                     />
-                    <p className="fs-4 text-soft-purple display-font d-none">{item.title}</p>
                     <br />
+                    <p className="text-center">{item.Seo.metaDescription}</p>
+                    <a
+                      href={item.Url_externa ? item.Url_externa :`/servicios/${item.slug}`}
+                      target={item.Url_externa ? '_blank' : '_self'}
+                      className="btn btn-primary mt-auto display-font mb-5"
+                      rel='noreferrer'
+                    >
+                      ver más
+                    </a>
                   </div>
-                  <p className="text-center">{item.text}</p>
                 </div>
               </div>
             ))}
@@ -194,11 +172,11 @@ export default function Home({ data }) {
               </div>
             </div>
             <div className="row align-items-stretch py-5 my-lg-5">
-            {services.filter((item) => item.review).map((item) => (
-              <div className="col-lg-4 mb-5 mb-lg-0" key={item.title}>
+            {services && services.filter((item) => item.review).map((item) => (
+              <div className="col-lg-4 mb-5 mb-lg-0" key={item.slug}>
                 <div className={`card d-flex flex-column justify-content-between ${styles.reviewCard}`}>
                   <Image 
-                    src={`/${item.icon}-2.jpg`}
+                    src={`/${item.slug}-2.jpg`}
                     alt={item.title}
                     layout="responsive"
                     objectFit='cover'
@@ -213,7 +191,7 @@ export default function Home({ data }) {
                     <p>{item.review}</p>
                   </div>
                   <div className="text-center mb-4">
-                    <a href="#!" onClick={(e) => handleClick(e, item.detail)} className="btn btn-light btn-rounded display-font">Ver más</a>
+                    <a href="#!" onClick={(e) => handleClick(e, item.Detalle)} className="btn btn-light btn-rounded display-font">Ver más</a>
                   </div>
                 </div>
               </div>
@@ -226,7 +204,9 @@ export default function Home({ data }) {
             showModal={modal}
             size="lg"
           >
-            {modalText}
+            <div
+              dangerouslySetInnerHTML={{ __html: modalText }}
+            />
           </Modal>
           <Modal
             onClick={handleClickClosePrimaryModal}
@@ -255,6 +235,6 @@ export default function Home({ data }) {
 export async function getStaticProps({ preview = null }) {
   const data = (await getAllServicesForHome(preview)) || []
   return {
-    props: { data, preview },
+    props: { data, preview},
   }
 }

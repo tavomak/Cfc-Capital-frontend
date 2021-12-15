@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
+import router from 'next/router'
 
 import Layout from 'components/Templates/Layout';
 import Button from 'components/Atoms/Button';
@@ -8,11 +9,6 @@ import styles from './styles.module.scss';
 
 const Services = () => {
   const services = [
-    {
-      icon: 'factoring-web',
-      text: 'Lanzamos nueva plataforma digital en donde podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente. Solo debes cargar los DTE en nuestro portal, esperar la cotización y podrás ceder de manera automática todas tus facturas en un solo click.',
-      title: 'Factoring Web',
-    },
     {
       icon: 'factoring',
       text: 'Herramienta que permite a las pymes obtener liquidez inmediata, así­ logran ordenar su flujo de caja sin las largas esperas o que se cumpla el plazo de pago de facturas dependiendo de cada empresa. Esta herramienta de financiamiento sirve para cualquier tipo de empresa. Entre las principales industrias que utilizan esta herramienta están: Construcción, Minería, Telecomunicaciones, Servicios a sector privado y público y recientes emprendimientos.',
@@ -33,6 +29,11 @@ const Services = () => {
           </ol>
         </>
       ),
+    },
+    {
+      icon: 'factoring-web',
+      text: 'Lanzamos nueva plataforma digital en donde podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente. Solo debes cargar los DTE en nuestro portal, esperar la cotización y podrás ceder de manera automática todas tus facturas en un solo click.',
+      title: 'Factoring Web',
     },
     {
       icon: 'leasing',
@@ -69,11 +70,10 @@ const Services = () => {
   const [modalText, setModalText] = useState(null);
   const handleClick = (e, text) => {
     e.preventDefault();
-    if(!text) {
+    if(text === 'factoring-web') {
       window.open ('/CFC-PasoaPaso.pdf', '_ blank');
     } else {
-      setModalText(text);
-      setModal(true);
+      router.push(`/servicios/${text}`)
     }
   };
   const handleClickClose = (e) => {
@@ -134,7 +134,7 @@ const Services = () => {
                   <Button
                     className="btn btn-secondary mt-4 text-uppercase py-2 px-4 fs-5"
                     text="¿como funciona?"
-                    onClick={(e) => handleClick(e, item.detail)}
+                    onClick={(e) => handleClick(e, item.icon)}
                   />
                 </div>
               </div>
