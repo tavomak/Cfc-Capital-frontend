@@ -1,39 +1,67 @@
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import Modal from 'components/Templates/Modal'
-import FormAccess from 'components/Molecules/FromAccess'
-import styles from './styles.module.scss'
+import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import Link from 'next/link';
+import Image from 'next/image';
+import Modal from 'components/Templates/Modal';
+import FormAccess from 'components/Molecules/FromAccess';
+import styles from './styles.module.scss';
 
 const Navbar = () => {
   const links = [
     {
       name: 'Home',
       route: '/',
+      children: false,
     },
     {
       name: 'CFC',
       route: '/cfc',
+      children: false,
     },
     {
       name: 'Servicios',
       route: '/servicios',
+      children: [
+        {
+          name: 'Factoring',
+          route: '/servicios/factoring',
+        },
+        {
+          name: 'Factoring web',
+          route: '/servicios/factoring-web',
+        },
+        {
+          name: 'Leasing',
+          route: '/servicios/leasing',
+        }, {
+          name: 'Leaseback',
+          route: '/servicios/leaseback',
+        },
+      ],
     },
     {
       name: 'Prensa',
       route: '/prensa',
+      children: false,
     },
     {
       name: 'Contacto',
       route: '/contacto',
+      children: false,
     },
   ];
   const [modal, setModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showSubMenu, setShowSubMenu] = useState(false);
   const handleClick = (e) => {
     e.preventDefault();
     setModal(true);
   };
+  const handleMouseEnter = (e, selected) => {
+    if (selected === 'Servicios') {
+      setShowSubMenu(true);
+    }
+  }
   return (
     <>
       <header className="container">
@@ -59,7 +87,7 @@ const Navbar = () => {
             <div className={`collapse navbar-collapse text-center ${menuOpen ? 'show' : ''}`} id="navbarTogglerDemo02">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 {links.length && links.map((item) => (
-                  <li className="nav-item" key={item.name}>
+                  <li className="nav-item position-relative" key={item.name} onMouseEnter={(e) => handleMouseEnter(e, item.name)} onMouseLeave={() => setShowSubMenu(false)}>
                     <Link href={item.route}>
                       <a className="nav-link text-uppercase text-dark-blue" href={item.route}>
                         <p className="mb-0 display-font">
@@ -69,6 +97,24 @@ const Navbar = () => {
                         </p>
                       </a>
                     </Link>
+                    {item.children?.length > 1 && (
+                        <CSSTransition
+                          in={showSubMenu}
+                          timeout={300}
+                          classNames="alert"
+                          unmountOnExit
+                        >
+                        <ul className={`${styles.submenu}`}>
+                          {item.children.map((subItem) => (
+                            <li className="py-2" key={subItem.route}>
+                              <Link href={subItem.route}>
+                                {subItem.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </CSSTransition>
+                    )}
                   </li>
                 ))}
                 <li className="nav-item">
