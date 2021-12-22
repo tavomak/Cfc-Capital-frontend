@@ -1,5 +1,6 @@
 @import "styles/utils/mixins";
 @import "styles/utils/variables";
+@import "styles/utils/media";
 .primaryNav {
   display: block;
   width: 220px;
@@ -8,4 +9,18 @@
 .navbarToggle {
   background: $soft-purple;
   color: $white !important;
+}
+
+.submenu {
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+  @include MQ(L) {
+    border: none;
+    background: rgba($white, .9);
+    min-width: 170px;
+    z-index: 2;
+    position: absolute;
+    text-align: left;
+    padding: 10px 20px;
+  }
 }
