@@ -34,13 +34,7 @@ export default function Post({ data }) {
             </Head>
             <section className="container">
               <div className="row align-items-center pt-5">
-                <div className="col-5">
-                  <h1 
-                    className="display-font text-dark-blue pb-4"
-                    dangerouslySetInnerHTML={{ __html: data.Slide.titlulo }}
-                  />
-                </div>
-                <div className="col-7">
+                <div className="col-md-7 order-md-2">
                   <Image
                     src={`${data.Banner.url}`}
                     alt={data.Seo.metaTitle}
@@ -48,6 +42,12 @@ export default function Post({ data }) {
                     height={9}
                     layout="responsive"
                     objectFit="cover"
+                  />
+                </div>
+                <div className="col-md-5 order-md-1">
+                  <h1 
+                    className="display-font text-center text-md-start text-dark-blue pb-4"
+                    dangerouslySetInnerHTML={{ __html: data.Slide.titlulo }}
                   />
                 </div>
               </div>
@@ -71,6 +71,16 @@ export default function Post({ data }) {
                     <div className="col-md-6">
                       <h2 className={`display-font text-soft-purple mb-4`}>¿Cómo funciona?</h2>
                       <p className="fs-5">{data.Como.Contenido}</p>
+                      {data.Seo.metaTitle === 'Factoring Web' && (
+                        <a
+                          className="btn btn-primary mt-auto display-font mb-5"
+                          href="/CFC-PasoaPaso.pdf"
+                          rel='noreferrer'
+                          target="_blank"
+                        >
+                          Saber más
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -153,7 +163,7 @@ export default function Post({ data }) {
 }
 
 export async function getStaticProps({ params, preview = null }) {
-  const data = await getServiceBySlug(params.slug, preview)
+  const data = await getServiceBySlug(params.slug, preview);
   return {
     props: {
       preview,
@@ -167,7 +177,7 @@ export async function getStaticPaths() {
   const allPosts = await getAllServices();
   
   return {
-    paths: allPosts?.filter((item) => item.slug !== 'factoring-web').map((post) => `/servicios/${post.slug}`) || [],
+    paths: allPosts?.map((post) => `/servicios/${post.slug}`) || [],
     fallback: true,
   }
 }
