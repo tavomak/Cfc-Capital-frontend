@@ -11,7 +11,7 @@ const Services = () => {
   const services = [
     {
       icon: 'factoring',
-      text: 'Herramienta que permite a las pymes obtener liquidez inmediata, así­ logran ordenar su flujo de caja sin las largas esperas o que se cumpla el plazo de pago de facturas dependiendo de cada empresa. Esta herramienta de financiamiento sirve para cualquier tipo de empresa. Entre las principales industrias que utilizan esta herramienta están: Construcción, Minería, Telecomunicaciones, Servicios a sector privado y público y recientes emprendimientos.',
+      text: 'Si cuentas con facturas sin pagar, falta para que venza el plazo y necesitas liquidez inmediata, lo primero que debes hacer es cedernos tus facturas y nosotros te anticipamos ese dinero. Además, nos encargamos de cobrar las facturas pendientes a las empresas, para que solo te concentres en tu negocio.',
       title: 'Factoring',
       detail: () => (
         <>
@@ -32,13 +32,13 @@ const Services = () => {
     },
     {
       icon: 'factoring-web',
-      text: 'Lanzamos nueva plataforma digital en donde podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente. Solo debes cargar los DTE en nuestro portal, esperar la cotización y podrás ceder de manera automática todas tus facturas en un solo click.',
+      text: 'Desarrollamos una nueva plataforma digital donde facilitamos el proceso a nuestros clientes, ya que podrán cargar de manera masiva sus facturas, con cotización en línea, clara y transparente. Solo debes registrarte en nuestro sitio, cargar los DTE en el portal, esperar la cotización y podrás ceder de manera automática todas tus facturas en un solo click.',
       title: 'Factoring Web',
     },
     {
       icon: 'leasing',
       title: 'Leasing',
-      text: 'Sistema de financiamiento que está pensado para personas naturales con giro y empresas, que viene a resolver el financiamiento para la adquisición de activos fijos, entre los que se incluyen vehículos livianos de trabajo, vehículos de transporte, maquinaria pesada, equipos profesionales, etc. Entre las principales industrias que utilizan esta herramienta están: Construcción, Agrícola, Transportes, Minería.',
+      text: 'Esta herramienta de financiamiento te permite, mediante un contrato, establecer el arriendo de un bien de capital por un determinado período de tiempo y una vez finalizado el contrato, el bien es devuelto a su propietario.',
       detail: () => (
         <>
           <p className="fs-5 font-bold">¿Cómo funciona? </p>
@@ -49,7 +49,7 @@ const Services = () => {
     {
       icon: 'leaseback',
       title: 'Leaseback',
-      text: 'El Leaseback permite transformar en dinero un bien productivo de la empresa, normalmente bienes raíces, mediante la venta de éste a CFC. Junto con adquirir este bien se firmará un contrato de arrendamiento a un plazo determinado con rentas mensuales siendo la última de ellas una opción de compra del bien para el cliente, la cual una vez pagada implica que CFC le transfiere la propiedad del bien volviendo el bien a la propiedad de la empresa.',
+      text: 'El Leaseback es una operación en donde el propietario de un bien inmueble vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.',
       detail: () => (
         <>
           <p className="fs-5 font-bold">¿Cómo funciona?</p>
