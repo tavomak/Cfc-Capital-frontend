@@ -9,12 +9,13 @@ const ButtonSubmit = ({
   onClick,
   imgPrev,
   imgNext,
+  disabled
 }) => (
   <button
     className={className}
     type={submit ? 'submit' : 'button'}
     onClick={onClick}
-    disabled={loading}
+    disabled={loading || disabled}
   >
     {imgPrev && <span className="me-2">{imgPrev}</span>}
     <span className="font-weight-bold px-1">{`${text} `}</span>

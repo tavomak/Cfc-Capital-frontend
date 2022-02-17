@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
 import useNotify from 'hooks/useNotify';
@@ -8,6 +8,8 @@ import styles from './styles.module.scss'
 
 const FormGetInfo = ({service, title, image, content}) => {
   const [loading, setLoading] = useState(false);
+  const [isLeasing, setLeasing] = useState(false);
+  const [leasingHab, setLeasingHab] = useState({name: 'seleccionar', errorMsg: false});
   const recaptchaRef = useRef(null);
   const form = useRef();
   const {
@@ -19,6 +21,10 @@ const FormGetInfo = ({service, title, image, content}) => {
 
   const handleClick = () => {
     setLoading(true);
+    if (isLeasing && leasingHab.name !== 'no') {
+      setLoading(false);
+      return
+    }
     recaptchaRef.current.execute();
   };
 
@@ -58,6 +64,32 @@ const FormGetInfo = ({service, title, image, content}) => {
     }
   };
 
+  const handleSelect = (e) => {
+    if (e.target.value === 'si') {
+      setLeasingHab({
+        name: 'si',
+        errorMsg: '😢 No trabajamos con Leasing Habitacional'
+      })
+    }
+    if (e.target.value === 'seleccionar') {
+      setLeasingHab({
+        name: 'seleccionar',
+        errorMsg: 'Debe seleccionar una opción'
+      })
+    }
+    if (e.target.value === 'no') {
+      setLeasingHab({name: 'no', errorMsg: null});
+    }
+  }
+
+  useEffect(() => {
+    if (service === 'Leasing') {
+      setLeasing(true);
+    } else {
+      setLeasing(false);
+    }
+  }, [service])
+  
   return (
     <form ref={form} className="form" onSubmit={handleSubmit(handleClick)}>
       <ReCAPTCHA
@@ -72,6 +104,28 @@ const FormGetInfo = ({service, title, image, content}) => {
         <input type="hidden" name="image" value={image} />
         <input type="hidden" name="content" value={content} />
       </div>
+      {isLeasing && (
+        <label htmlFor="selectLeasing" className="form-label w-100">
+          <span className={`${styles.formLabel}`}>
+            ¿Deseas leasing habitacional?
+          </span>
+          <select
+            className={`form-select ${styles.formInput} my-2`}
+            aria-label="¿Deseas leasing habitacional?"
+            name="selectLeasing"
+            onChange={e => handleSelect(e)}
+          >
+            <option defaultValue value="seleccionar">Seleccionar una opción</option>
+            <option value="si">Si</option>
+            <option value="no">No</option>
+          </select>
+          {leasingHab.errorMsg && (
+            <span className={`${styles.formInputSpanError}`}>
+              {leasingHab.errorMsg}
+            </span>
+          )}
+        </label>
+      )}
       <div className="form-group">
         <label htmlFor="username" className="form-label w-100">
           <span className={`${styles.formLabel}`}>
@@ -126,11 +180,15 @@ const FormGetInfo = ({service, title, image, content}) => {
               placeholder="Introduce tu teléfono"
               {...register('telefono', {
                 required: true,
+                maxLength: 9,
+                minLength: 9,
               })}
             />
           </div>
             <span className={`${styles.formInputSpanError}`}>
-              {errors.telefono ? 'Teléfono Requerido' : ''}
+              {errors?.telefono?.type === 'required' && 'Teléfono Requerido'}
+              {errors?.telefono?.type === 'minLength' && 'Debe tener 9 digitos'}
+              {errors?.telefono?.type === 'maxLength' && 'Debe tener 9 digitos'}
             </span>
         </label>
       </div>
@@ -154,6 +212,7 @@ const FormGetInfo = ({service, title, image, content}) => {
           text="Enviar"
           loading={loading}
           submit
+          disabled={leasingHab.name === 'si'}
         />
       </div>
     </form>
