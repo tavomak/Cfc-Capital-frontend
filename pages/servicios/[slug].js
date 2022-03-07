@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { getServiceBySlug, getAllServices } from 'lib/api';
 import Image from 'next/image';
 import Head from 'next/head';
+import Link from 'next/link'
 
 import Layout from 'components/Templates/Layout';
 import FormGetInfo from 'components/Molecules/FormGetInformation'
@@ -13,6 +14,16 @@ import styles from './styles.module.scss';
 export default function Post({ data }) {
   const router = useRouter()
   const [formatedTitle, setFormatedTitle] = useState('') ;
+  const [isLeasing, setLeasing] = useState(false);
+
+  useEffect(() => {
+    const service = data.Seo.metaTitle;
+    if (service === 'Leasing') {
+      setLeasing(true);
+    } else {
+      setLeasing(false);
+    }
+  }, [data.Seo.metaTitle])
   useEffect(() => {
     setFormatedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''))
   }, [data])
@@ -145,6 +156,27 @@ export default function Post({ data }) {
                 </div>
               </div>
             </section>
+            {isLeasing && (
+              <section className="container">
+                <div className="row">
+                  <div className="col-12 my-5">
+                    <div className="shadow" style={{borderRadius: '35px', overflow: 'hidden'}}>
+                      <Link href="/servicios/factoring">
+                        <a href="!#">
+                          <Image 
+                            src="/banner-factoring.jpg"
+                            alt="factoring"
+                            width={1380}
+                            height={512}
+                            layout="responsive"
+                          />
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
             <div>
               <Image 
                 src="/curva-gris-12.svg"
