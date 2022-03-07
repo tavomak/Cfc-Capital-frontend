@@ -12,21 +12,20 @@ import styles from './styles.module.scss';
 
 
 export default function Post({ data }) {
-  const router = useRouter()
-  const [formatedTitle, setFormatedTitle] = useState('') ;
+  const router = useRouter();
+  const [formatedTitle, setFormatedTitle] = useState('');
+  const [service, setService] = useState(null);
   const [isLeasing, setLeasing] = useState(false);
 
   useEffect(() => {
-    const service = data.Seo.metaTitle;
+    setFormatedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''))
+    setService(data.Seo.metaTitle);
     if (service === 'Leasing') {
       setLeasing(true);
     } else {
       setLeasing(false);
     }
-  }, [data.Seo.metaTitle])
-  useEffect(() => {
-    setFormatedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''))
-  }, [data])
+  }, [data, service])
   return (
     <>
       {router.isFallback ? (
