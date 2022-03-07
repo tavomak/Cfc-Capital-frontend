@@ -20,12 +20,14 @@ export default function Post({ data }) {
   useEffect(() => {
     setFormatedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''))
     setService(data.Seo.metaTitle);
+  }, [data]);
+  useEffect(() => {
     if (service === 'Leasing') {
       setLeasing(true);
     } else {
       setLeasing(false);
     }
-  }, [data, service])
+  }, [service]);
   return (
     <>
       {router.isFallback ? (
