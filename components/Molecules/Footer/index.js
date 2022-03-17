@@ -56,6 +56,16 @@ const Footer = () => {
                   </li>
                 </ul>
               </li>
+              <li className="mt-4">
+                <ul className="d-flex">
+                  <li className="me-3">
+                  <FaRegEnvelope />
+                  </li>
+                  <li>
+                    <p><small>Formulario de denuncias Ley Nº 20.939</small></p>
+                  </li>
+                </ul>
+              </li>
               <li>
                 <ul className="d-flex py-2">
                   <li className="me-3">
