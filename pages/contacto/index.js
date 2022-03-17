@@ -18,7 +18,7 @@ const Contacto = () => {
             </div>
             <div className="col-lg-6">
               <div className="card p-5 mb-5" style={{ borderBottomLeftRadius: 25, borderBottomRightRadius: 25, borderTopLeftRadius: 0, borderTopRightRadius: 0 }}>
-                <FormContact />
+                <FormContact type="Contacto"/>
               </div>
             </div>
           </div>

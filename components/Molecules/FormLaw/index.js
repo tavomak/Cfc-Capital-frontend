@@ -78,7 +78,7 @@ const FormContact = ({type}) => {
       />
       <div className="form-group">
         <label htmlFor="username" className="form-label w-100">
-          <span className={`${styles.formLabel}`}>
+          <span className={`${styles.formLabel} text-white`}>
             Nombre
           </span>
           <input
@@ -86,18 +86,13 @@ const FormContact = ({type}) => {
             className={`${styles.formInput} ${errors.username ? styles.formInputError : ''} form-control mt-2`}
             name="username"
             placeholder="Introduce un nombre"
-            {...register('username', {
-              required: true,
-            })}
+            {...register('username')}
           />
-            <span className={`${styles.formInputSpanError}`}>
-              {errors.username ? 'Nombre requerido' : ''}
-            </span>
         </label>
       </div>
       <div className="form-group">
         <label htmlFor="email" className="form-label w-100 position-relative">
-          <span className={`${styles.formLabel}`}>
+          <span className={`${styles.formLabel} text-white`}>
             Email
           </span>
           <input
@@ -105,18 +100,13 @@ const FormContact = ({type}) => {
             className={`${styles.formInput} ${errors.email ? styles.formInputError : ''} form-control mt-2`}
             name="email"
             placeholder="Introduce tu email"
-            {...register('email', {
-              required: true,
-            })}
+            {...register('email')}
           />
-            <span className={`${styles.formInputSpanError}`}>
-              {errors.email ? 'Email Requerido' : '' }
-            </span>
         </label>
       </div>
       <div className="form-group">
         <label htmlFor="telefono" className="form-label w-100 position-relative">
-          <span className={`${styles.formLabel}`}>
+          <span className={`${styles.formLabel} text-white`}>
             Teléfono
           </span>
           <div className="input-group">
@@ -128,20 +118,15 @@ const FormContact = ({type}) => {
               className={`${styles.formInput} ${errors.telefono ? styles.formInputError : ''} form-control`}
               name="telefono"
               placeholder="Introduce tu teléfono"
-              {...register('telefono', {
-                required: true,
-              })}
+              {...register('telefono')}
             />
           </div>
-            <span className={`${styles.formInputSpanError}`}>
-              {errors.telefono ? 'Teléfono Requerido' : ''}
-            </span>
         </label>
       </div>
       <div className="form-group">
         <label htmlFor="mensaje" className="form-label w-100 position-relative">
-          <span className={`${styles.formLabel}`}>
-            Mensaje
+          <span className={`${styles.formLabel} text-white`}>
+            Detalle de Denuncia
           </span>
           <textarea
             className={`${styles.formTextArea} form-control mt-2`}
@@ -154,7 +139,7 @@ const FormContact = ({type}) => {
       </div>
       <div className="form-group">
         <Button
-          className="btn btn-secondary mt-4 text-uppercase py-2 px-4"
+          className="btn btn-complementary mt-4 text-uppercase py-2 px-4"
           text="Ingresar"
           loading={loading}
           submit
