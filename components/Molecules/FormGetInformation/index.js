@@ -41,7 +41,7 @@ const FormGetInfo = ({service, title, image, content}) => {
         },
       });
       if (response.ok) {
-        emailjs.sendForm('service_contactCfcCap', 'template_17mtb69', form.current, 'user_wfzYCDVa6rjF3mPxCIWiT')
+        emailjs.sendForm('service_8pof0qh', 'template_2rrh5ia', form.current, '9cidPWVw6ZjMK7J4e')
         .then((result) => {
           setLoading(false);
           // eslint-disable-next-line react-hooks/rules-of-hooks

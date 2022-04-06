@@ -1,5 +1,6 @@
-import Image from 'next/image'
-import { FaRegEnvelope, FaWhatsapp, FaRegDotCircle, FaFacebookSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa"
+import Image from 'next/image';
+import Link from 'next/link';
+import { FaRegEnvelope, FaWhatsapp, FaRegDotCircle, FaFacebookSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -52,7 +53,7 @@ const Footer = () => {
                     <FaRegDotCircle />
                   </li>
                   <li>
-                    <a href="https://goo.gl/maps/Md4zzZmssuSnqG96A" className="text-white"><small>Enrique Mac Iver 225, Piso 11, Santiago, Región Metropolitana, Chile</small></a>
+                    <a href="https://goo.gl/maps/Md4zzZmssuSnqG96A" className="text-white"><small>El Bosque Central 92, piso 11, Las Condes, Región Metropolitana, Chile</small></a>
                   </li>
                 </ul>
               </li>
@@ -62,7 +63,13 @@ const Footer = () => {
                   <FaRegEnvelope />
                   </li>
                   <li>
-                    <p><small>Formulario de denuncias Ley Nº 20.939</small></p>
+                    <p>
+                      <Link href="/formulario-denuncias">
+                        <a href="formulario-denuncias">
+                          <small className="text-white">Formulario de denuncias Ley Nº 20.939</small>
+                        </a>
+                      </Link>
+                    </p>
                   </li>
                 </ul>
               </li>
