@@ -39,7 +39,7 @@ const FormContact = ({type}) => {
       if (response.ok) {
         // If the response is ok than show the success alert
         // alert("Email registered successfully");
-        emailjs.sendForm('service_contactCfcCap', 'template_1qns8vv', form.current, 'user_wfzYCDVa6rjF3mPxCIWiT')
+        emailjs.sendForm('service_8pof0qh', 'template_tx2orac', form.current, '9cidPWVw6ZjMK7J4e')
         .then((result) => {
           setLoading(false);
           // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -49,6 +49,7 @@ const FormContact = ({type}) => {
           setLoading(false);
           // eslint-disable-next-line react-hooks/rules-of-hooks
           useNotify('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
+          console.log(error);
         });
       } else {
         // Else throw an error with the message returned

@@ -4,6 +4,10 @@ import styles from './styles.module.scss';
 const Contacto = () => {
   const memorial = [
     {
+      year: '2021',
+      url: '/memorias_fichas/2021_asdfqwer.pdf'
+    },
+    {
       year: '2020',
       url: '/memorias_fichas/2020_nMe3h.pdf'
     },

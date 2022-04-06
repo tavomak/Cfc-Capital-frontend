@@ -39,7 +39,8 @@ const FormContact = ({type}) => {
       if (response.ok) {
         // If the response is ok than show the success alert
         // alert("Email registered successfully");
-        emailjs.sendForm('service_contactCfcCap', 'template_1qns8vv', form.current, 'user_wfzYCDVa6rjF3mPxCIWiT')
+        // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID')
+        emailjs.sendForm('service_8pof0qh', 'template_tx2orac', form.current, '9cidPWVw6ZjMK7J4e')
         .then((result) => {
           setLoading(false);
           // eslint-disable-next-line react-hooks/rules-of-hooks
