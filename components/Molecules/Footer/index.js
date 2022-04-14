@@ -66,7 +66,7 @@ const Footer = () => {
                     <p>
                       <Link href="/formulario-denuncias">
                         <a href="formulario-denuncias">
-                          <small className="text-white">Formulario de denuncias Ley Nº 20.939</small>
+                          <small className="text-white">Formulario de denuncias Ley Nº 20.393</small>
                         </a>
                       </Link>
                     </p>
