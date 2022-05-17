@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Layout from 'components/Templates/Layout';
 import FormGetInfo from 'components/Molecules/FormGetInformation'
 import styles from './styles.module.scss';
+import FormFactoringActiveCampain from 'components/Molecules/FormFactoringActiveCampain';
 
 
 export default function Post({ data }) {
@@ -148,12 +149,16 @@ export default function Post({ data }) {
                 </div>
                 <div className="col-md-6">
                   <h3 className="text-center display-font pb-5">Solicitar Información</h3>
-                  <FormGetInfo
-                    service={data.Seo.metaTitle}
-                    title={formatedTitle}
-                    image={`${data.Seo.metaTitle.toLowerCase()}.jpg`}
-                    content={data.Como.Contenido}
-                  />
+                  {service && service === 'factoring' ? (
+                    <FormGetInfo
+                      service={data.Seo.metaTitle}
+                      title={formatedTitle}
+                      image={`${data.Seo.metaTitle.toLowerCase()}.jpg`}
+                      content={data.Como.Contenido}
+                    />
+                  ) : (
+                    <FormFactoringActiveCampain />
+                  )}
                 </div>
               </div>
             </section>
