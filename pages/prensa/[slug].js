@@ -54,6 +54,22 @@ export default function Post({ post, morePosts }) {
                   </div>
                   <div className="pt-5 pb-3">
                     <h1 className="display-font text-soft-purple pb-4 fs-4">{post.article.title}</h1>
+                    {post.article.video_url && (
+                      <div style={{ maxWidth: "500px", margin: "0 auto"}}>
+                        <figure
+                        className="video-container"
+                        >
+                            <iframe
+                              className="video-iframe"
+                                title="Embed video"
+                                src={`https://www.youtube.com/embed/${post.article.video_url}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen>
+                            </iframe>
+                        </figure>
+                      </div>
+                    )}
                     <div
                       dangerouslySetInnerHTML={{ __html: post.content }}
                     />
