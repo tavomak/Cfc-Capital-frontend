@@ -11,7 +11,7 @@ import Modal from 'components/Templates/Modal'
 import styles from 'styles/pages/Home.module.scss'
 
 export default function Home({ data }) {
-  const { seo, banners } = data.homepage;
+  const { seo } = data.homepage;
   const services = data.servicios;
   const settings = {
     dots: true,
@@ -25,6 +25,40 @@ export default function Home({ data }) {
     cssEase: "cubic-bezier(.8,0,0.5,1)",
     lazyLoad: 'progressive',
   };
+  const banners = [
+    {
+      id: '001',
+      item_image : {
+        url: '/slide-4.jpg'
+      },
+      titlulo: 'Apoyamos el desarrollo',
+      subtitulo: 'de tu negocio'
+    },
+    {
+      id: '002',
+      item_image : {
+        url: '/slide-5.jpg'
+      },
+      titlulo: 'Factoring',
+      subtitulo: 'Financiamos el desarrollo de tu negocio'
+    },
+    {
+      id: '003',
+      item_image : {
+        url: '/slide-6.jpg'
+      },
+      titlulo: 'Leasing',
+      subtitulo: 'Financiamos tu adquisición de activos fijjos'
+    },
+    {
+      id: '004',
+      item_image : {
+        url: '/slide-7.jpg'
+      },
+      titlulo: 'Leaseback',
+      subtitulo: 'Te lo compro, te lo arriendo'
+    },
+  ]
   const [modal, setModal] = useState(false);
   const [primaryModal, setPrimaryModal] = useState(true);
   const [modalText, setModalText] = useState(null);
