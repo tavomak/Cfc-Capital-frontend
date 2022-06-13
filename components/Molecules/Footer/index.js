@@ -53,7 +53,7 @@ const Footer = () => {
                     <FaRegDotCircle />
                   </li>
                   <li>
-                    <a href="https://goo.gl/maps/Md4zzZmssuSnqG96A" className="text-white"><small>El Bosque Central 92, piso 11, Las Condes, Región Metropolitana, Chile</small></a>
+                    <a href="https://goo.gl/maps/2nH53YZL7SBkM3eSA" className="text-white"><small>El Bosque Central 92, piso 11, Las Condes, Región Metropolitana, Chile</small></a>
                   </li>
                 </ul>
               </li>
