@@ -213,9 +213,10 @@ export async function getStaticProps({ params, preview = null }) {
 
 export async function getStaticPaths() {
   const allPosts = await getAllServices();
+  console.log('acá: ', allPosts);
   
   return {
     paths: allPosts?.map((post) => `/servicios/${post.slug}`) || [],
-    fallback: true,
+    fallback: false,
   }
 }
