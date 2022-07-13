@@ -17,7 +17,11 @@ export default function Post({ post, morePosts }) {
     >
       <section className="container">
         {router.isFallback ? (
-            <p>Loading</p>
+            <div className="row content-wrapper align-items-center justify-content-center">
+              <div className="spinner-border text-secondary-color" style={{width: '3rem', height: '3rem' }} role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
           ): (
             <>
               <Head>
@@ -91,7 +95,17 @@ export default function Post({ post, morePosts }) {
 }
 
 export async function getStaticProps({ params, preview = null }) {
-  const data = await getPostAndMorePosts(params.slug, preview)
+  const data = await getPostAndMorePosts(params.slug, preview);
+
+  if (data.articles.length < 1) {
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      },
+    }
+  }
+
   const content = await markdownToHtml(data.articles[0].content || '')
 
   return {
