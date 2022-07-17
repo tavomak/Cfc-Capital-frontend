@@ -149,7 +149,7 @@ export default function Post({ data }) {
                 </div>
                 <div className="col-md-6">
                   <h3 className="text-center display-font pb-5">Solicitar Información</h3>
-                  {service && service === 'factoring' ? (
+                  {service && service != 'Factoring' ? (
                     <FormGetInfo
                       service={data.Seo.metaTitle}
                       title={formatedTitle}
@@ -213,7 +213,6 @@ export async function getStaticProps({ params, preview = null }) {
 
 export async function getStaticPaths() {
   const allPosts = await getAllServices();
-  console.log('acá: ', allPosts);
   
   return {
     paths: allPosts?.map((post) => `/servicios/${post.slug}`) || [],
