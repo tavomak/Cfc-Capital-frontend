@@ -43,13 +43,14 @@ export default function News({ allPosts, preview }) {
                 <Link href={`/prensa/${item.slug}`}>
                   <a href="!#" className="noticeImg d-block mb-4">
                     <Image
-                      src={item.image?.url ? item.image.url : '/leasing-card.png'}
+                      src={item.coverImage?.url ? item.coverImage.url : '/leasing-card.png'}
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                       alt="Cfc Capital Logo"
                       width={16}
                       height={9}
                       layout="responsive"
-                      objectFit="contain"
+                      objectFit="cover"
+                      objectPosition="top left"
                     />
                   </a>
                 </Link>

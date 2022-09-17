@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import router from 'next/router'
+import { services } from 'data'
 
 import Layout from 'components/Templates/Layout';
 import Button from 'components/Atoms/Button';
@@ -8,64 +9,6 @@ import Modal from 'components/Templates/Modal'
 import styles from './styles.module.scss';
 
 const Services = () => {
-  const services = [
-    {
-      icon: 'factoring',
-      text: 'Si cuentas con facturas sin pagar, falta para que venza el plazo y necesitas liquidez inmediata, lo primero que debes hacer es cedernos tus facturas y nosotros te anticipamos ese dinero. Además, nos encargamos de cobrar las facturas pendientes a las empresas, para que solo te concentres en tu negocio.',
-      title: 'Factoring',
-      detail: () => (
-        <>
-          <p className="fs-5 font-bold">¿Cómo funciona?</p>
-          <ol>
-            <li>
-              <p>Tienes facturas sin pagar, falta para que venza el plazo, pero necesitas liquidez inmediata.</p>
-            </li>
-            <li>
-              <p>Nos entregas tus facturas cediendo las mismas  y nosotros te anticipamos ese dinero con una tasa de descuento.</p>
-            </li>
-            <li>
-              <p>Nosotros nos encargamos de cobrar las facturas pendientes a las empresas.</p>
-            </li>
-          </ol>
-        </>
-      ),
-    },
-    {
-      icon: 'factoring-web',
-      text: 'Desarrollamos una nueva plataforma digital donde facilitamos el proceso a nuestros clientes, ya que podrán cargar de manera masiva sus facturas, con cotización en línea, clara y transparente. Solo debes registrarte en nuestro sitio, cargar los DTE en el portal, esperar la cotización y podrás ceder de manera automática todas tus facturas en un solo click.',
-      title: 'Factoring Web',
-    },
-    {
-      icon: 'leasing',
-      title: 'Leasing',
-      text: 'Esta herramienta de financiamiento te permite, mediante un contrato, establecer el arriendo de un bien de capital por un determinado período de tiempo y una vez finalizado el contrato, el bien es devuelto a su propietario.',
-      detail: () => (
-        <>
-          <p className="fs-5 font-bold">¿Cómo funciona? </p>
-          <p>CFC adquiere activos fijos (Vehí­culos, maquinarí­as, equipos) por instrucción del cliente-empresa y los pone a disposición de la misma, mediante un contrato de arrendamiento a un plazo determinado con rentas mensuales, siendo esta última una opción de compra del bien para el cliente, la cual una vez pagada implica que CFC le transfiere la propiedad del bien..</p>
-        </>
-      ),
-    },
-    {
-      icon: 'leaseback',
-      title: 'Leaseback',
-      text: 'El Leaseback es una operación en donde el propietario de un bien inmueble vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.',
-      detail: () => (
-        <>
-          <p className="fs-5 font-bold">¿Cómo funciona?</p>
-          <p>Esta operación se realiza mediante un contrato de compraventa entre CFC y la empresa-cliente. </p>
-          <ol>
-            <li>
-              <p>CFC le compra a su cliente alguno de sus activos fijos, inmueble, vehículo, etc., pagando a la empresa-cliente según el valor pactado.</p>
-            </li>
-            <li>
-              <p>Al final del periodo de este arriendo,  la empresa tiene una opción de compra, la cual,  previo pago, permite el retorno del bien a la propiedad de la empresa-cliente.</p>
-            </li>
-          </ol>
-        </>
-      ),
-    }
-  ]
   const [modal, setModal] = useState(false);
   const [modalText, setModalText] = useState(null);
   const handleClick = (e, text) => {

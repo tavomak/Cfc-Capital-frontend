@@ -28,7 +28,7 @@ export default function Post({ post, morePosts }) {
                 <title>
                   {post.article.title} | CFC Capital
                 </title>
-                <meta property="og:image" content={post.article.image.url} />
+                <meta property="og:image" content={post.article.coverImage.url} />
               </Head>
               <article className="row">
                 <div className="col-12 pt-5">
@@ -36,7 +36,7 @@ export default function Post({ post, morePosts }) {
                     <div className="overlay"></div>
                     <div className="d-none d-lg-block">
                       <Image
-                        src={`${post.article.image.url}`}
+                        src={`${post.article.coverImage.url}`}
                         alt={post.article.title}
                         layout="responsive"
                         objectFit='contain'
@@ -47,7 +47,7 @@ export default function Post({ post, morePosts }) {
                     </div>
                     <div className="d-lg-none">
                       <Image
-                        src={`${post.article.image.url}`}
+                        src={`${post.article.coverImage.url}`}
                         alt={post.article.title}
                         layout="responsive"
                         objectFit='cover'
@@ -58,15 +58,15 @@ export default function Post({ post, morePosts }) {
                   </div>
                   <div className="pt-5 pb-3">
                     <h1 className="display-font text-soft-purple pb-4 fs-4">{post.article.title}</h1>
-                    {post.article.video_url && (
-                      <div style={{ maxWidth: "500px", margin: "0 auto"}}>
+                    {post.article.video && (
+                      <div style={{ maxWidth: "600px", margin: "0 auto"}}>
                         <figure
                         className="video-container"
                         >
                             <iframe
                               className="video-iframe"
                                 title="Embed video"
-                                src={`https://www.youtube.com/embed/${post.article.video_url}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
+                                src={`https://www.youtube.com/embed/${post.article.video}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen>
@@ -75,7 +75,7 @@ export default function Post({ post, morePosts }) {
                       </div>
                     )}
                     <div
-                      dangerouslySetInnerHTML={{ __html: post.content }}
+                      dangerouslySetInnerHTML={{ __html: post.article.content.html }}
                     />
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export default function Post({ post, morePosts }) {
 export async function getStaticProps({ params, preview = null }) {
   const data = await getPostAndMorePosts(params.slug, preview);
 
-  if (data.articles.length < 1) {
+  if (data.post.length < 1) {
     return {
       redirect: {
         destination: '/404',
@@ -106,13 +106,13 @@ export async function getStaticProps({ params, preview = null }) {
     }
   }
 
-  const content = await markdownToHtml(data.articles[0].content || '')
+  const content = await markdownToHtml(data.post.content || '')
 
   return {
     props: {
       preview,
       post: {
-        article: data.articles[0],
+        article: data.post,
         content,
     },
       morePosts: data.morePosts,
