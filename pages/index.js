@@ -3,10 +3,10 @@ import router from 'next/router'
 import Image from 'next/image'
 import {shimmer, toBase64} from 'helpers'
 import Link from 'next/link'
-import { servicios } from 'data';
+import { servicios } from 'data'
 
 import Layout from 'components/Templates/Layout'
-import Slider from "react-slick";
+import Slider from "react-slick"
 import Modal from 'components/Templates/Modal'
 import styles from 'styles/pages/Home.module.scss'
 
