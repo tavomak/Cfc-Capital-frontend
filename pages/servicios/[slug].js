@@ -201,7 +201,8 @@ export default function Post({ data }) {
 }
 
 export async function getStaticProps({ params, preview = null }) {
-  const data = fullservices.filter((article) => article.Seo.metaTitle.toLocaleLowerCase() === params.slug)
+  const array = fullservices.filter((article) => article.Seo.metaTitle.toLocaleLowerCase() === params.slug)
+  const data = Object.assign({}, array)
   return {
     props: {
       preview,
@@ -213,7 +214,7 @@ export async function getStaticProps({ params, preview = null }) {
 
 export async function getStaticPaths() {
   return {
-    paths: servicios?.map((post) => `/servicios/${post.slug}`) || [],
+    paths: servicios?.filter(item => item.slug !== 'factoring-web').map((post) => `/servicios/${post.slug}`) || [],
     fallback: false,
   }
 }
