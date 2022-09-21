@@ -1,18 +1,16 @@
 import { useState } from 'react'
 import router from 'next/router'
 import Image from 'next/image'
-import { getAllServicesForHome } from 'lib/api'
 import {shimmer, toBase64} from 'helpers'
 import Link from 'next/link'
+import { servicios } from 'data'
 
 import Layout from 'components/Templates/Layout'
-import Slider from "react-slick";
+import Slider from "react-slick"
 import Modal from 'components/Templates/Modal'
 import styles from 'styles/pages/Home.module.scss'
 
-export default function Home({ data }) {
-  const { seo } = data.homepage;
-  const services = data.servicios;
+export default function Home({ services }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -79,10 +77,18 @@ export default function Home({ data }) {
     e.preventDefault();
     setPrimaryModal(false);
   }
+  const handleClickService = (e, slug) => {
+    e.preventDefault();
+    if(slug === 'factoring-web') {
+      window.open ('/CFC-PasoaPaso.pdf', '_ blank');
+    } else {
+      router.push(`/servicios/${slug}`)
+    }
+  };
   return (
     <Layout
-      title={seo.metaTitle}
-      description="Financiamos tu adquisición de activos fijos"
+      title="Financiamos al motor de la economía"
+      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
       <>
         {banners && banners.length && (
@@ -168,10 +174,10 @@ export default function Home({ data }) {
                     <br />
                     <p className="text-center">{item.Seo.metaDescription}</p>
                     <a
-                      href={item.Url_externa ? item.Url_externa :`/servicios/${item.slug}`}
-                      target={item.Url_externa ? '_blank' : '_self'}
+                      href={`/servicios/${item.slug}`}
                       className="btn btn-primary mt-auto display-font mb-5"
                       rel='noreferrer'
+                      onClick={(e) => handleClickService(e, item.slug)}
                     >
                       ver más
                     </a>
@@ -266,9 +272,10 @@ export default function Home({ data }) {
     </Layout>
   )
 }
-export async function getStaticProps({ preview = null }) {
-  const data = (await getAllServicesForHome(preview)) || []
+export async function getStaticProps() {
   return {
-    props: { data, preview},
+    props: {
+      services: servicios
+    },
   }
 }

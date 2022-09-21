@@ -11,7 +11,7 @@ const MorePosts = ({posts}) => {
               <Link href={`/prensa/${item.slug}`}>
                 <a href="!#" className="noticeImg d-block mb-4">
                   <Image
-                    src={item.image.url}
+                    src={item.coverImage.url}
                     alt="Cfc Capital Logo"
                     width={16}
                     height={9}

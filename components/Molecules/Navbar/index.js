@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import router from 'next/router'
 import Link from 'next/link';
 import Image from 'next/image';
 import Modal from 'components/Templates/Modal';
@@ -28,7 +29,7 @@ const Navbar = () => {
         },
         {
           name: 'Factoring web',
-          route: '/servicios/factoring-web',
+          route: '/servicios/CFC-PasoaPaso.pdf',
         },
         {
           name: 'Leasing',
@@ -53,7 +54,15 @@ const Navbar = () => {
   const [modal, setModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
-  const handleClick = (e) => {
+  const handleClick = (e, name, route) => {
+    e.preventDefault();
+    if(name === 'Factoring web') {
+      window.open ('/CFC-PasoaPaso.pdf', '_ blank');
+    } else {
+      router.push(`${route}`)
+    }
+  };
+  const handleClickModal = (e) => {
     e.preventDefault();
     setModal(true);
   };
@@ -107,9 +116,9 @@ const Navbar = () => {
                         <ul className={`${styles.submenu}`}>
                           {item.children.map((subItem) => (
                             <li className="py-2" key={subItem.route}>
-                              <Link href={subItem.route}>
+                              <a href={subItem.route} onClick={(e) => handleClick(e, subItem.name, subItem.route)}>
                                 {subItem.name}
-                              </Link>
+                              </a>
                             </li>
                           ))}
                         </ul>
@@ -121,7 +130,7 @@ const Navbar = () => {
                   <a
                     className="nav-link text-uppercase btn btn-primary text-white display-font"
                     href="!#"
-                    onClick={handleClick}
+                    onClick={handleClickModal}
                   >
                     Acceso Clientes
                   </a>

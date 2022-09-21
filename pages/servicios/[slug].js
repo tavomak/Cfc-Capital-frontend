@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react';
 
 import { useRouter } from 'next/router';
-import { getServiceBySlug, getAllServices } from 'lib/api';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link'
@@ -10,6 +9,7 @@ import Layout from 'components/Templates/Layout';
 import FormGetInfo from 'components/Molecules/FormGetInformation'
 import styles from './styles.module.scss';
 import FormFactoringActiveCampain from 'components/Molecules/FormFactoringActiveCampain';
+import { servicios, fullservices } from 'data'
 
 
 export default function Post({ data }) {
@@ -149,7 +149,7 @@ export default function Post({ data }) {
                 </div>
                 <div className="col-md-6">
                   <h3 className="text-center display-font pb-5">Solicitar Información</h3>
-                  {service && service === 'factoring' ? (
+                  {service && service != 'Factoring' ? (
                     <FormGetInfo
                       service={data.Seo.metaTitle}
                       title={formatedTitle}
@@ -201,22 +201,20 @@ export default function Post({ data }) {
 }
 
 export async function getStaticProps({ params, preview = null }) {
-  const data = await getServiceBySlug(params.slug, preview);
+  const array = fullservices.filter((article) => article.Seo.metaTitle.toLocaleLowerCase() === params.slug)
+  const data = Object.assign({}, array)
   return {
     props: {
       preview,
-      data: data[0],
+      data: data[0]
     },
     revalidate: 100
   }
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllServices();
-  console.log('acá: ', allPosts);
-  
   return {
-    paths: allPosts?.map((post) => `/servicios/${post.slug}`) || [],
+    paths: servicios?.filter(item => item.slug !== 'factoring-web').map((post) => `/servicios/${post.slug}`) || [],
     fallback: false,
   }
 }
