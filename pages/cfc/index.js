@@ -76,11 +76,6 @@ const Cfc = () => {
       cargo: 'Ejecutiva Comercial',
       email: 'esantander@cfccapital.cl',
     },
-    {
-      name: 'Felipe Gutiérrez Carrasco',
-      cargo: 'Sub Gerente Comercial',
-      email: 'fgutierrez@cfccapital.cl',
-    },
   ];
 
   const directory = [
