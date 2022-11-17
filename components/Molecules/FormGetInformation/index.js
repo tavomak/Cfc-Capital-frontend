@@ -4,7 +4,17 @@ import emailjs from 'emailjs-com';
 import useNotify from 'hooks/useNotify';
 import Button from 'components/Atoms/Button';
 import ReCAPTCHA from "react-google-recaptcha";
-import styles from './styles.module.scss'
+import TagManager from 'react-gtm-module';
+import styles from './styles.module.scss';
+
+const tagManagerArgs = {
+  gtmId: process.env.NEXT_PUBLIC_GTM,
+  events: {
+    conversion: {
+      send_to: 'AW-10800512963/O9OaCOSdxIIYEMP_ip4o',
+    }
+  }
+}
 
 const FormGetInfo = ({service, title, image, content}) => {
   const [loading, setLoading] = useState(false);
@@ -47,6 +57,7 @@ const FormGetInfo = ({service, title, image, content}) => {
           // eslint-disable-next-line react-hooks/rules-of-hooks
           useNotify('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
           reset();
+          TagManager.initialize(tagManagerArgs);
         }, (error) => {
           setLoading(false);
           // eslint-disable-next-line react-hooks/rules-of-hooks
