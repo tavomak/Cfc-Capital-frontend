@@ -1,10 +1,14 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import {
+  ApolloClient,
+  InMemoryCache,
+  gql
+} from "@apollo/client";
 import Image from 'next/image';
 
 import Layout from 'components/Templates/Layout';
 
 import MoreStories from 'components/Molecules/MorePosts'
-import { getAllPostsForHome, getPostAndMorePosts } from 'lib/api'
 import Head from 'next/head'
 import markdownToHtml from 'lib/markdownToHtml'
 
@@ -95,9 +99,44 @@ export default function Post({ post, morePosts }) {
 }
 
 export async function getStaticProps({ params, preview = null }) {
-  const data = await getPostAndMorePosts(params.slug, preview);
+  const client = new ApolloClient({
+    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
+    cache: new InMemoryCache()
+  });
 
-  if (data.post.length < 1) {
+  const data = await client.query({
+    query: gql`
+      query Articles($slug: String!){
+        post(where: {slug: $slug}) {
+          id
+          content {
+            html
+          }
+          title
+          slug
+          video
+          coverImage {
+            url
+          }
+        }
+
+        morePosts: posts(orderBy: createdAt_DESC, first: 3, where: {NOT: {slug: $slug}}) {
+          id
+          title
+          slug
+          coverImage {
+            url
+          }
+        }
+
+      }
+    `,
+    variables: {
+      slug: params.slug,
+    }
+  })
+
+  if (data.data.post.length < 1) {
     return {
       redirect: {
         destination: '/404',
@@ -106,25 +145,47 @@ export async function getStaticProps({ params, preview = null }) {
     }
   }
 
-  const content = await markdownToHtml(data.post.content || '')
+  const content = await markdownToHtml(data.data.post.content || '')
 
   return {
     props: {
       preview,
       post: {
-        article: data.post,
+        article: data.data.post,
         content,
     },
-      morePosts: data.morePosts,
+      morePosts: data.data.morePosts,
     },
     revalidate: 100
   }
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsForHome()
+  const client = new ApolloClient({
+    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
+    cache: new InMemoryCache()
+  });
+
+  const allPosts = await client.query({
+    query: gql`
+      query getAllPostsForHome {
+      posts(orderBy: createdAt_DESC) {
+        id
+        slug
+        title
+        coverImage {
+          url
+        }
+        createdAt
+      }
+    }
+    `,
+  })
+
+  const posts = await allPosts.data.posts;
+
   return {
-    paths: allPosts?.map((post) => `/prensa/${post.slug}`) || [],
+    paths: posts?.map((post) => `/prensa/${post.slug}`) || [],
     fallback: true,
   }
 }
