@@ -1,10 +1,14 @@
-import { getAllPostsForHome } from 'lib/api'
-import {shimmer, toBase64} from 'helpers'
+import {shimmer, toBase64} from 'helpers';
+import {
+  ApolloClient,
+  InMemoryCache,
+  gql
+} from "@apollo/client";
 import Image from 'next/image';
 import Link from 'next/link'
 import Layout from 'components/Templates/Layout';
 
-export default function News({ allPosts, preview }) {
+export default function News({ posts, preview }) {
   return (
     <Layout
       title="Servicios"
@@ -36,7 +40,7 @@ export default function News({ allPosts, preview }) {
       </section>
       <section className="container mb-5">
         <div className="row justify-content-stretch">
-        {allPosts?.length > 0 && allPosts.map((item) => (
+        {posts?.length > 0 && posts.map((item) => (
           <div className="col-md-4 pb-5" key={item.id}>
             <div className="card shadow" style={{ height: '100%'}}>
               <div className="card-header">
@@ -75,9 +79,31 @@ export default function News({ allPosts, preview }) {
 }
 
 export async function getStaticProps({ preview = null }) {
-  const allPosts = (await getAllPostsForHome(preview)) || []
+  const client = new ApolloClient({
+    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
+    cache: new InMemoryCache()
+  });
+
+  const allPosts = (await client.query({
+    query: gql`
+      query getAllPostsForHome {
+      posts(orderBy: createdAt_DESC) {
+        id
+        slug
+        title
+        coverImage {
+          url
+        }
+        createdAt
+      }
+    }
+    `,
+  })) || []
+
+  const posts = await allPosts.data.posts;
+
   return {
-    props: { allPosts, preview },
+    props: { posts, preview },
     revalidate: 10
   }
 }
