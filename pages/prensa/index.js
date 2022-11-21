@@ -8,6 +8,11 @@ import Image from 'next/image';
 import Link from 'next/link'
 import Layout from 'components/Templates/Layout';
 
+const client = new ApolloClient({
+  uri: process.env.NEXT_PUBLIC_CMS_API_URL,
+  cache: new InMemoryCache()
+});
+
 export default function News({ posts, preview }) {
   return (
     <Layout
@@ -79,10 +84,6 @@ export default function News({ posts, preview }) {
 }
 
 export async function getStaticProps({ preview = null }) {
-  const client = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
-    cache: new InMemoryCache()
-  });
 
   const allPosts = (await client.query({
     query: gql`

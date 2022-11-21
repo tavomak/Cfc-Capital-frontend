@@ -12,6 +12,11 @@ import MoreStories from 'components/Molecules/MorePosts'
 import Head from 'next/head'
 import markdownToHtml from 'lib/markdownToHtml'
 
+const client = new ApolloClient({
+  uri: process.env.NEXT_PUBLIC_CMS_API_URL,
+  cache: new InMemoryCache()
+});
+
 export default function Post({ post, morePosts }) {
   const router = useRouter()
   return (
@@ -99,10 +104,6 @@ export default function Post({ post, morePosts }) {
 }
 
 export async function getStaticProps({ params, preview = null }) {
-  const client = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
-    cache: new InMemoryCache()
-  });
 
   const data = await client.query({
     query: gql`
@@ -161,10 +162,6 @@ export async function getStaticProps({ params, preview = null }) {
 }
 
 export async function getStaticPaths() {
-  const client = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
-    cache: new InMemoryCache()
-  });
 
   const allPosts = await client.query({
     query: gql`
