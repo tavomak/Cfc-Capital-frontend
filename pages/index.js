@@ -1,8 +1,5 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { servicios } from '@data/index';
-import {shimmer, toBase64} from 'helpers'
 
 import Layout from '@components/Templates/Layout';
 import Slider from 'react-slick';
