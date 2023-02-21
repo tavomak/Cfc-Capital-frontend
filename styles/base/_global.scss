@@ -52,6 +52,45 @@ strong, .font-bold {
   }
 }
 
+.bg-primary-gradient {
+  background: $primary-gradient;
+}
+.bg-secondary-gradient {
+  background: $secondary-gradient;
+}
+
+.bg-gradient-circle {
+  background: url("/ellipse.png") no-repeat right/contain, $secondary-gradient;
+}
+
+.bg-top-right-shape {
+  background: url("/top-right-shape.png") no-repeat;
+  background-position: top right;
+}
+
+.bg-bottom-left-shape {
+  background: url("/bottom-left-shape.png") no-repeat;
+  background-position: bottom left;
+}
+
+.bg-tag {
+  position: relative;
+  &::before {
+    content: 'Otras soluciones';
+    padding: 5px 15px;
+    background: $dark-blue;
+    color: $white;
+    position: absolute;
+    top: -88px;
+    border-top-left-radius: 10px;
+    font-size: 20px;
+  }
+}
+
+// .mask-bg {
+//   background: url("/mask-bg.png") no-repeat;
+// }
+
 .shadow {
   box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
 }
@@ -62,4 +101,15 @@ strong, .font-bold {
   height: 100%;
   z-index: 2;
   background: rgba($dark-blue, .2)
+}
+
+.slick-track {
+    display: flex !important;
+}
+
+.slick-slide {
+    height: inherit !important;
+    & > div {
+      min-height: 100%;
+    }
 }

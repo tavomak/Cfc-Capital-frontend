@@ -1,5 +1,5 @@
-$primary-font: 'Gothic A1', sans-serif;
-$display-font: 'Poppins', sans-serif;
+$primary-font: 'Open Sans', sans-serif;
+$display-font: 'Open Sans', sans-serif;
 $font-ligth: 200;
 $font-regular: 400;
 $font-bold: 700;
@@ -20,6 +20,7 @@ $palette: (
 $ligth-grey: map-get($palette,ligth-grey);
 $medium-grey: map-get($palette,medium-grey);
 $grey: map-get($palette,grey);
+$ligth-blue: map-get($palette,ligth-blue);
 $dark-grey: map-get($palette,dark-grey);
 $soft-blue: map-get($palette,soft-blue);
 $dark-blue: map-get($palette,dark-blue);
@@ -28,5 +29,5 @@ $soft-purple: map-get($palette,soft-purple);
 $white:white;
 $black: black;
 //Gradientes
-$primary-gradient: linear-gradient(#FBC567, #F89173);
-$secondary-gradient: linear-gradient(#B6BFC1, #747575);
+$primary-gradient: linear-gradient(45deg, $dark-blue, $soft-purple);
+$secondary-gradient: linear-gradient(45deg, $ligth-blue, $white);

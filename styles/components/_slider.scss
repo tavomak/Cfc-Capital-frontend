@@ -13,11 +13,17 @@
 }
 
 .slick-next {
-  right: 2%;
+  right: 0;
+  &::before {
+    color: $dark-blue;
+  }
 }
 
 .slick-prev {
-  left: 2%;
+  left: 0;
+  &::before {
+    color: $dark-blue;
+  }
 }
 
 .about-slider {

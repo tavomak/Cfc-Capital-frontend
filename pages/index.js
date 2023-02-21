@@ -1,17 +1,28 @@
-import { useState } from 'react'
-import router from 'next/router'
-import Image from 'next/image'
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { servicios } from '@data/index';
 import {shimmer, toBase64} from 'helpers'
-import Link from 'next/link'
-import { servicios } from 'data'
 
-import Layout from 'components/Templates/Layout'
-import Slider from "react-slick"
-import Modal from 'components/Templates/Modal'
-import styles from 'styles/pages/Home.module.scss'
+import Layout from '@components/Templates/Layout';
+import Slider from 'react-slick';
+import styles from '@styles/pages/Home.module.scss';
+import Button from '@components/Atoms/Button';
 
-export default function Home({ services }) {
+export default function Home() {
   const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: false,
+    arrows: true,
+    speed: 800,
+    autoplaySpeed: 5000,
+    cssEase: 'cubic-bezier(.8,0,0.5,1)',
+    lazyLoad: 'progressive',
+  };
+  const settings2 = {
     dots: true,
     infinite: true,
     slidesToShow: 1,
@@ -20,262 +31,485 @@ export default function Home({ services }) {
     arrows: true,
     speed: 800,
     autoplaySpeed: 5000,
-    cssEase: "cubic-bezier(.8,0,0.5,1)",
+    cssEase: 'cubic-bezier(.8,0,0.5,1)',
     lazyLoad: 'progressive',
   };
   const banners = [
     {
       id: '001',
-      item_image : {
-        url: '/slide-4.jpg'
+      item_image: {
+        url: '/matiasGomez.png',
       },
-      titlulo: 'Apoyamos el desarrollo',
-      subtitulo: 'de tu negocio'
+      title: 'Matias Gómez',
+      subtitle: 'Emprendedor',
+      description: '“Increíblemente no les asustó que fuera mi primera factura, el ejecutivo fue muy amable y en 48 horas tení­a los fondos para poder cumplir con la segunda orden de compra”.',
     },
     {
       id: '002',
-      item_image : {
-        url: '/slide-5.jpg'
+      item_image: {
+        url: '/camilaFuentes.png',
       },
-      titlulo: 'Factoring',
-      subtitulo: 'Financiamos el desarrollo de tu negocio'
+      title: 'Camila Fuentes',
+      subtitle: 'Fundadora',
+      description: '“Hoy después de dos años operando con CFC no tengo problemas y mis flujos están mucho más ordenados, CFC se transformó en un partner financiero”.',
     },
+  ];
+  const banners2 = [
     {
-      id: '003',
-      item_image : {
-        url: '/slide-6.jpg'
+      id: '0001',
+      item_image: {
+        url: '/icon-news.png',
       },
-      titlulo: 'Leasing',
-      subtitulo: 'Financiamos tu adquisición de activos fijjos'
+      tag: 'FACTORING | PYME',
+      title: 'Los 5 mitos más comunes sobre el Factoring',
+      origin: '14-01-2022 | El Mercurio',
+      url: '/prensa',
+      description: 'Francisco Goycoolea, gerente comercial de CFC Capital, aclara los 5 mitos más comunes que se tienen sobre esta popular opción de financiamiento.',
     },
-    {
-      id: '004',
-      item_image : {
-        url: '/slide-7.jpg'
-      },
-      titlulo: 'Leaseback',
-      subtitulo: 'Te lo compro, te lo arriendo'
-    },
-  ]
-  const [modal, setModal] = useState(false);
-  const [primaryModal, setPrimaryModal] = useState(true);
-  const [modalText, setModalText] = useState(null);
-
-  const handleClick = (e, text) => {
-    e.preventDefault();
-    setModalText(text);
-    setModal(true);
-  };
-  const handleClickClose = (e) => {
-    e.preventDefault();
-    setModal(false);
-    setTimeout(() => {
-      setModalText('');
-    }, 500);
-  }
-  const handleClickClosePrimaryModal = (e) => {
-    e.preventDefault();
-    setPrimaryModal(false);
-  }
-  const handleClickService = (e, slug) => {
-    e.preventDefault();
-    if(slug === 'factoring-web') {
-      window.open ('/CFC-PasoaPaso.pdf', '_ blank');
-    } else {
-      router.push(`/servicios/${slug}`)
-    }
-  };
+  ];
   return (
     <Layout
       title="Financiamos al motor de la economía"
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
-      <>
-        {banners && banners.length && (
-          <Slider {...settings}>
-            {
-              banners.map((item) => (
-                <div key={item.id} className="position-relative">
-                  <div className="position-relative">
-                    <div className="overlay"></div>
-                    <div className="d-none d-lg-block">
-                      <Image
-                        src={`${item.item_image.url}`}
-                        alt={`${item.title} | CFC Capital`}
-                        layout="responsive"
-                        objectFit='cover'
-                        objectPosition="top"
-                        width={700}
-                        height={280}
-                        placeholder="blur"
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                      />
-                    </div>
-                    <div className="d-lg-none">
-                      <Image
-                        src={`${item.item_image.url}`}
-                        alt={`${item.title} | CFC Capital`}
-                        layout="responsive"
-                        objectFit='cover'
-                        width={500}
-                        height={400}
-                        placeholder="blur"
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                      />
-                    </div>
-                  </div>
-                  <div className={`${styles.sliderText}`}>
-                    {item.icono && (
-                      <div className="d-none d-lg-block">
-                        <Image 
-                          src={`${item.icono.url}`}
-                          alt={`${item.title} | CFC Capital`}
-                          width={100}
-                          height={100}
-                        />
+      <section className="py-5 bg-gradient-circle">
+        <div className="container">
+          <div className="row justify-content-end align-items-center">
+            <div className="col-md-5">
+              <h1 className={`text-dark-blue fw-bolder ${styles.primaryTitle}`}>
+                No esperes por
+                <br />
+                el
+                <span className="text-soft-purple"> cobro</span>
+                {' '}
+                de tus cuentas
+              </h1>
+              <p>
+                Muévete con agilidad y planifica por adelantado
+              </p>
+            </div>
+            <div className="col-md-7">
+              <Image
+                src="/home-banner.png"
+                alt="Financiamos en 4 horas"
+                layout="responsive"
+                objectFit="contain"
+                width={1030}
+                height={660}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-5 mask-bg">
+        <div className="row justify-content-center py-5">
+          <div className="col-md-6">
+            <h2 className="text-center text-dark-blue fw-bolder">Cómo lo hacemos</h2>
+            <p className="text-center">
+              Ofrecemos a las empresas y pymes soluciones para transformar las cuentas
+              {' '}
+              por cobrar en dinero efectivo de inmediato
+              {' '}
+              o para la adquisición de activos productivos.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="py-5 bg-secondary-gradient">
+        <div className="container py-5">
+          <div className="row">
+            <div className="col-12">
+              <h2 className="text-center text-dark-blue fw-bolder">Te apoyamos desde la factura uno</h2>
+              {banners && banners.length && (
+                <Slider {...settings}>
+                  {
+                  banners.map((item) => (
+                    <div key={item.id} className="position-relative p-5">
+                      <div className="card shadow py-4 px-5">
+                        <ul className="d-lg-flex">
+                          <li className="me-3">
+                            <Image
+                              src={item.item_image.url}
+                              alt={item.title}
+                              width={50}
+                              height={50}
+                            />
+                          </li>
+                          <li>
+                            <p>
+                              <span className="text-dark-blue fw-bolder">
+                                {item.title}
+                              </span>
+                              <br />
+                              <small>
+                                {item.subtitle}
+                              </small>
+                            </p>
+                          </li>
+                        </ul>
+                        <p>{item.description}</p>
                       </div>
-                    )}
-                    <h2 className={`text-dark-blue fs-1 display-font ${styles.sliderTitle}`}>{item.titlulo}</h2>
-                    <p className={`fs-2 display-font ${styles.sliderSubTitle}`}>{item.subtitulo}</p>
-                  </div>
+                    </div>
+                  ))
+                }
+                </Slider>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="container py-5">
+        {banners2 && banners2.length && (
+          <Slider {...settings2}>
+            {
+            banners2.map((item) => (
+              <div key={item.id} className="position-relative p-5">
+                <div className="card shadow p-4 bg-secondary-gradient">
+                  <ul className="d-lg-flex w-100 align-items-center">
+                    <li className="p-4">
+                      <Image
+                        src={item.item_image.url}
+                        alt={item.title}
+                        width={300}
+                        height={300}
+                      />
+                    </li>
+                    <li className="px-4">
+                      <p className="text-soft-purple fw-bolder">
+                        {item.tag}
+                      </p>
+                      <p className="text-dark-blue fw-bolder fs-4 mb-0">
+                        {item.title}
+                      </p>
+                      <p>
+                        <small>
+                          {item.origin}
+                        </small>
+                      </p>
+                      <p>
+                        {item.description}
+                        {' '}
+                        <Link href="/prensa">
+                          <a href="!#" className="text-dark-blue fw-bolder">Leer más</a>
+                        </Link>
+                      </p>
+                    </li>
+                  </ul>
                 </div>
-              ))
-            }
+              </div>
+            ))
+          }
           </Slider>
         )}
-      </>
-
-        <section className="container">
+      </section>
+      <section className="py-5 bg-secondary-gradient">
+        <div className="container py-5">
           <div className="row">
-            <div className="col-12 text-center py-5">
-              <h1 className={`display-font ${styles.primaryTitle}`}>
-                Financiamos al <br />
-                <span className="text-soft-purple" >motor de la economía</span>
-              </h1>
-            </div>
-          </div>
-        </section>
-
-        <section className={`container-fluid ${styles.bgCurvedGrey}`}>
-          <div className="row align-tiems-stretch mt-lg-5 ">
-            {services && services.map((item) => (
-              <div className="col-md-6 col-lg-3 mb-5 mb-lg-0" key={item.slug}>
-                <div className={`px-4 pt-4 m-xxl-3 ${styles.firstsCards} shadow`}>
-                  <div className="text-center d-flex flex-column justify-content-between" style={{ height: "100%", }}>
-                    <Image 
-                      src={`/${item.slug}-bg.svg`}
-                      alt={item.title}
-                      layout="responsive"
-                      objectFit='contain'
-                      objectPosition="top"
-                      width={16}
-                      height={8}
-                    />
-                    <br />
-                    <p className="text-center">{item.Seo.metaDescription}</p>
-                    <a
-                      href={`/servicios/${item.slug}`}
-                      className="btn btn-primary mt-auto display-font mb-5"
-                      rel='noreferrer'
-                      onClick={(e) => handleClickService(e, item.slug)}
-                    >
-                      ver más
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
             <div className="col-12">
-              <div className="text-center py-5 my-md-5">
-                <a href="#!" className="btn btn-primary" onClick={() => router.push('/servicios')} >Pide tu financiamiento</a>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div>
-          <Image 
-            src="/curved-border-gris.svg"
-            alt="wave"
-            width={40}
-            height={3}
-            layout="responsive"
-          />
-        </div>
-        <section className="bg-grey container-fluid position-relative" style={{ top: '-4px'}}>
-          <div className="container py-5">
-            <div className="row pt-lg-5">
-              <div className="col-md-6">
-                <h2 className={`display-font text-soft-purple fs-1`}>Creando capacidad de <span className="text-soft-blue-not">crecer</span></h2>
-              </div>
-              <div className="col-md-6">
-                <p className="fs-5">Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país</p>
-              </div>
-            </div>
-            <div className="row align-items-stretch py-5 my-lg-5">
-            {services && services.filter((item) => item.review).map((item) => (
-              <div className="col-lg-4 mb-5 mb-lg-0" key={item.slug}>
-                <div className={`card d-flex flex-column justify-content-between ${styles.reviewCard}`}>
-                  <Image 
-                    src={`/${item.slug}-2.jpg`}
-                    alt={item.title}
-                    layout="responsive"
-                    objectFit='cover'
-                    objectPosition="top"
-                    width={100}
-                    height={70}
-                    placeholder="blur"
-                    blurDataURL={`/${item.icon}-2.jpg`}
-                  />
-                  <div className={`px-3 px-sm-4 px-md-5 py-4 text-white`}>
-                    <p className="display-font fs-5">{item.title}</p>
-                    <p>{item.review}</p>
-                  </div>
-                  <div className="text-center mb-4">
-                    <a href="#!" onClick={(e) => handleClick(e, item.Detalle)} className="btn btn-light btn-rounded display-font">Ver más</a>
-                  </div>
-                </div>
-              </div>
-            ))}
-            </div>
-          </div>
-          <Modal
-            bgColor="bg-dark-blue"
-            onClick={handleClickClose}
-            showModal={modal}
-            size="lg"
-          >
-            <div
-              dangerouslySetInnerHTML={{ __html: modalText }}
-            />
-          </Modal>
-          <Modal
-            onClick={handleClickClosePrimaryModal}
-            showModal={primaryModal}
-            bgColor="bg-dark-blue"
-            noPadding
-          >
-            <Link href="/contacto">
-              <a href="contacto" >
-                <Image 
-                  src={`/primary-popup.jpg`}
-                  alt="Financiamos en 4 horas"
-                  layout="responsive"
-                  objectFit='contain'
-                  width={160}
-                  height={82}
+              <h2 className="text-center text-dark-blue fw-bolder">
+                ¡Cuentas con una línea de Factoring pre aprobada*,
+                <br />
+                equivalente a un mes de venta!
+              </h2>
+              <div className="text-center">
+                <Button
+                  className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                  text="La quiero"
                 />
-                </a>
-            </Link>
+                <p className="pt-2">
+                  <small>*Pre aprobación sujeta a revisión de antecedentes comerciales.</small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-5">
+        <div className="container py-5">
+          <div className="row mb-5">
+            <div className="col-12">
+              <h2 className="text-center text-dark-blue fw-bolder">
+                El proceso de Factoring
+              </h2>
+              <ul className="d-lg-flex justify-content-between w-100 pt-5">
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 bg-secondary-gradient" style={{ height: '100%' }}>
+                    <ul className="d-lg-flex w-100 align-items-center text-dark-blue">
+                      <li>
+                        <span className="fw-bolder p-2 fs-2">1</span>
+                      </li>
+                      <li>
+                        <span className="fw-bolder">Envíanos tus facturas</span>
+                      </li>
+                    </ul>
+                    <p>
+                      Revisamos tu factura e información tributaria y te enviaremos una propuesta.
+                    </p>
+                  </div>
+                </li>
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 bg-secondary-gradient" style={{ height: '100%' }}>
+                    <ul className="d-lg-flex w-100 align-items-center text-dark-blue">
+                      <li>
+                        <span className="fw-bolder p-2 fs-2">2</span>
+                      </li>
+                      <li>
+                        <span className="fw-bolder">Acuerdo de simulación</span>
+                      </li>
+                    </ul>
+                    <p>
+                      Si estás de acuerdo con la simulación, nuestros ejecutivos solicitarán el
+                      {' '}
+                      resto de tu información para obtener un VB° del crédito.
+                    </p>
+                  </div>
+                </li>
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 bg-secondary-gradient" style={{ height: '100%' }}>
+                    <ul className="d-lg-flex w-100 align-items-center text-dark-blue">
+                      <li>
+                        <span className="fw-bolder p-2 fs-2">3</span>
+                      </li>
+                      <li>
+                        <span className="fw-bolder">Firma del contrato</span>
+                      </li>
+                    </ul>
+                    <p>
+                      Finalmente, te visitaremos para resolver las últimas dudas, firmamos el
+                      {' '}
+                      contrato, te ayudamos con la cesión electrónica y recibes el dinero.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+              <div className="text-center">
+                <Button
+                  className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                  text="Comenzar"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="row align-items-center py-5">
+            <div className="col-md-4">
+              <h3 className="text-dark-blue fw-bolder fs-2">
+                Más que ejecutivos
+              </h3>
+              <p>
+                Somos un equipo humano dispuesto a ser parte de tu empresa.
+              </p>
+              <Link href="/cfc">
+                <a href="!#" className="fw-bolder">Sobre nosotros</a>
+              </Link>
+            </div>
+            <div className="col-md-8">
+              <Image
+                src="/ejecutivos.png"
+                alt="Más que ejecutivos"
+                layout="responsive"
+                objectFit="contain"
+                width={1030}
+                height={660}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-5 bg-secondary-gradient">
+        <div className="container py-5">
+          <div className="row">
+            <div className="col-md-6">
+              <Image
+                src="/dicon.png"
+                alt="Más que ejecutivos"
+                layout="responsive"
+                objectFit="contain"
+                width={1030}
+                height={660}
+              />
+            </div>
+            <div className="col-md-5">
+              <p>Preguntas frecuentes</p>
+              <h4 className="text-dark-blue fw-bolder">¿Tienes dicom?</h4>
+              <p>
+                No te preocupes. Envíanos tu carpeta tributaria y factura emitida,
+                {' '}
+                nosotros nos encargamos del resto.
+              </p>
+              <h4 className="text-dark-blue fw-bolder">En sólo horas y sin papeleos</h4>
+              <p>
+                En CFC Capital puedes abrir una línea y realizar tu primera operación en horas.
+              </p>
+              <Button
+                className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                text="Comenzar"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-5 bg-top-right-shape">
+        <div className="container pt-5">
+          <div className="row align-items-center pt-5">
+            <div className="col-md-4">
+              <h3 className="text-dark-blue fw-bolder fs-2">
+                Factoring web
+              </h3>
+              <p>
+                Para nuestros clientes
+              </p>
+              <p>
+                <b>
+                  Deja de coleccionar facturas por cobrar
+                </b>
+                <br />
+                En nuestra plataforma digital podrás cargar de manera masiva tus facturas,
+                {' '}
+                con cotización en línea clara y transparente.
+              </p>
+              <Link href="/factoring-web" passHref>
+                <Button
+                  className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                  text="Saber más"
+                />
+              </Link>
+            </div>
+            <div className="col-md-8">
+              <Image
+                src="/factoring-web.png"
+                alt="Más que ejecutivos"
+                layout="responsive"
+                objectFit="contain"
+                width={1030}
+                height={660}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-5 bg-bottom-left-shape">
+        <div className="container py-5">
+          <div className="row justify-content-center">
+            <div className="col-md-8">
+              <h3 className="text-center text-dark-blue fw-bolder fs-2">
+                Tenemos la experiencia
+                <br />
+                para enfrentar el futuro
+              </h3>
+              <ul className="d-lg-flex justify-content-between w-100 pt-5">
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 text-center bg-secondary-gradient">
+                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
+                      19
+                    </h4>
+                    <p className="text-dark-blue fs-4 mb-0">
+                      AÑOS
+                    </p>
+                  </div>
+                </li>
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 text-center bg-secondary-gradient">
+                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
+                      4000
+                    </h4>
+                    <p className="text-dark-blue fs-4 mb-0">
+                      PYMES
+                    </p>
+                  </div>
+                </li>
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 text-center bg-secondary-gradient">
+                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
+                      600
+                    </h4>
+                    <p className="text-dark-blue fs-4 mb-0">
+                      MMUS$
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-5">
+        <div className="container py-5 bg-tag">
+          <div className="row justify-content-center">
+            <div className="col-md-10">
+              <h3 className="text-center text-dark-blue fw-bolder fs-2">
+                Para nuestros clientes
+              </h3>
+              <ul className="d-lg-flex justify-content-between w-100 pt-5">
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 bg-secondary-gradient">
+                    <h4 className="text-dark-blue fw-bolder">Leasing</h4>
+                    <p>
+                      <span className="text-dark-blue">¿Necesitas un vehículo nuevo o maquinaria?</span>
+                      <br />
+                      El Leasing es para ti. Mediante un contrato, establece el arriendo de un
+                      {' '}
+                      bien de capital por un determinado período de tiempo y una vez finalizado el
+                      {' '}
+                      contrato, el bien es devuelto a su propietario.
+                    </p>
+                    <Link href="/leasing" passHref>
+                      <Button
+                        className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                        text="Saber más"
+                      />
+                    </Link>
+                  </div>
+                </li>
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 bg-secondary-gradient">
+                    <h4 className="text-dark-blue fw-bolder">Leaseback</h4>
+                    <p>
+                      <span className="text-dark-blue">¿Tienes activos y necesitas liquidez?</span>
+                      <br />
+                      Te ofrecemos una solución de Leaseback. Un mecanismo de financiamiento
+                      {' '}
+                      que permite a las empresas obtener liquidez a través de la venta de sus
+                      {' '}
+                      activos mediante un contrato de arrendamiento.
 
-          </Modal>
-        </section>
+                    </p>
+                    <Link href="/leaseback" passHref>
+                      <Button
+                        className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                        text="Saber más"
+                      />
+                    </Link>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-5 bg-secondary-gradient">
+        <div className="container py-5">
+          <div className="row align-items-center">
+            <div className="col-md-6">
+              <h4 className="text-dark-blue fw-bolder fs-2">
+                Presentes en la tercera y cuarta región con agente zonal experto en financiamiento.
+              </h4>
+              <p>
+                En los rubros Transportes, Minería, Turismo y Servicios de Apoyo.
+              </p>
+            </div>
+            <div className="col-md-6">
+              <Image
+                src="/regiones.png"
+                alt="Más que ejecutivos"
+                layout="responsive"
+                objectFit="contain"
+                width={1030}
+                height={660}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </Layout>
-  )
-}
-export async function getStaticProps() {
-  return {
-    props: {
-      services: servicios
-    },
-  }
+  );
 }

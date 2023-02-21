@@ -1,100 +1,207 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaRegEnvelope, FaWhatsapp, FaRegDotCircle, FaFacebookSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
+import { useRouter } from 'next/router';
+import {
+  FaRegEnvelope, FaWhatsapp, FaRegDotCircle, FaFacebookSquare, FaLinkedin, FaInstagramSquare,
+} from 'react-icons/fa';
+import FormSubscribe from '@components/Molecules/FormSubscribe';
+import styles from './styles.module.scss';
 
 const Footer = () => {
+  const navItems = [
+    {
+      label: 'Inicio',
+      path: '/',
+      children: [
+        {
+          label: 'Nosotros',
+          path: '/cfc',
+        },
+        {
+          label: 'Contacto',
+          path: '/contacto',
+        }, {
+          label: 'Gerencia',
+          path: '/servicios/leaseback',
+        },
+      ],
+    },
+    {
+      label: 'Factoring',
+      path: '/servicios/factoring',
+      children: [
+        {
+          label: '¿Que es?',
+          path: '/cfc',
+        },
+        {
+          label: '¿Cómo funciona?',
+          path: '/contacto',
+        }, {
+          label: 'Saber más',
+          path: '/servicios/leaseback',
+        },
+      ],
+    },
+    {
+      label: 'Servicios',
+      path: '/servicios',
+      children: [
+        {
+          label: 'Factoring web',
+          path: '/servicios/CFC-PasoaPaso.pdf',
+        },
+        {
+          label: 'Leasing',
+          path: '/servicios/leasing',
+        }, {
+          label: 'Leaseback',
+          path: '/servicios/leaseback',
+        },
+      ],
+    },
+  ];
+  const router = useRouter();
+  const handleClick = (e, label, path) => {
+    e.preventDefault();
+    if (label === 'Factoring web') {
+      window.open('/CFC-PasoaPaso.pdf', '_ blank');
+    } else {
+      router.push(`${path}`);
+    }
+  };
   return (
-    <footer className="bg-dark-blue py-5" style={{ borderTop: '4px solid #212529' }}>
-      <div className="container">
+    <footer className="bg-primary-gradient py-5">
+      <section className="container">
         <div className="row justify-content-between">
-          <div className="col-md-6 text-white">
-            <Image src="/footer-logo.png" alt="Cfc Capital Logo" width={220} height={66} />
-            <p>
-              <small>
-                Somos una empresa de servicios financieros especializada en el segmento de empresas PYME del país, presentes en el mercado desde el año 2003.
-              </small>
-            </p>
-            <p>
-              <small>Todos los derechos reservados CFC Capital S.A.</small>
-            </p>
-          </div>
-          <div className="col-sm-6 col-md-5 col-lg-4 col-xl-3 text-white">
-            <h3 className="text-uppercase fs-5"><small>Contacto</small></h3>
+          <div className="col-md-3 text-white">
             <ul>
               <li>
-                <ul className="d-flex">
-                  <li className="me-3">
-                    <FaRegEnvelope />
-                  </li>
-                  <li>
-                    <a href="mailto:contacto@cfccapital.cl" className="text-white">
-                      <small>
-                        contacto@cfccapital.cl
-                      </small>
-                    </a>
-                  </li>
-                </ul>
+                <Image src="/footer-logo.png" alt="Cfc Capital Logo" width={220} height={66} />
               </li>
-              <li>
-                <ul className="d-flex">
-                  <li className="me-3">
-                    <FaWhatsapp />
-                  </li>
-                  <li>
-                    <a href="tel:+56228201100" className="text-white"><small>+56228201100</small></a>
-                    <span> | </span>
-                    <a href="tel:+56228201158" className="text-white"><small>+56228201158</small></a>
-                  </li>
-                </ul>
-              </li>
-              <li>
+              <li className="py-4">
                 <ul className="d-flex">
                   <li className="me-3">
                     <FaRegDotCircle />
                   </li>
                   <li>
-                    <a href="https://goo.gl/maps/2nH53YZL7SBkM3eSA" className="text-white"><small>El Bosque Central 92, piso 11, Las Condes, Región Metropolitana, Chile</small></a>
+                    <a href="https://goo.gl/maps/2nH53YZL7SBkM3eSA" className="text-white fw-lighter">El Bosque Central 92, piso 11, Las Condes, Región Metropolitana, Chile</a>
                   </li>
                 </ul>
               </li>
-              <li className="mt-4">
+              <li>
+                <p className="fw-lighter">
+                  <small>Todos los derechos reservados CFC Capital S.A.</small>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div className="col-md-6">
+            <ul className="d-flex w-100 justify-content-between px-md-5">
+              {navItems.length && navItems.map((item) => (
+                <li className="nav-item position-relative" key={item.label}>
+                  <Link href={item.path}>
+                    <a
+                      className="nav-link text-white"
+                      href={item.path}
+                    >
+                      <p className="mb-0 fw-bolder">
+                        {item.label}
+                      </p>
+                    </a>
+                  </Link>
+                  {item.children?.length > 1 && (
+                    <ul className={`${styles.submenu} text-white`}>
+                      {item.children.map((subItem) => (
+                        <li className="py-2" key={subItem.path}>
+                          <a
+                            href={subItem.path}
+                            onClick={(e) => handleClick(e, subItem.label, subItem.path)}
+                            className="text-white fw-lighter"
+                          >
+                            {subItem.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="col-md-3 text-white">
+            <p className="mb-0 fw-bolder">Contacto</p>
+            <ul>
+              <li className="py-2">
                 <ul className="d-flex">
                   <li className="me-3">
-                  <FaRegEnvelope />
+                    <FaRegEnvelope />
                   </li>
-                  <li>
+                  <li className="fw-lighter">
+                    <a href="mailto:contacto@cfccapital.cl" className="text-white">
+                      contacto@cfccapital.cl
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li className="py-2">
+                <ul className="d-flex">
+                  <li className="me-3">
+                    <FaWhatsapp />
+                  </li>
+                  <li className="fw-lighter">
+                    <a href="tel:+56228201100" className="text-white">+56228201100</a>
+                    <span> | </span>
+                    <a href="tel:+56228201158" className="text-white">+56228201158</a>
+                  </li>
+                </ul>
+              </li>
+              <li className="py-2">
+                <ul className="d-flex">
+                  <li className="me-3">
+                    <FaRegEnvelope />
+                  </li>
+                  <li className="fw-lighter">
                     <p>
                       <Link href="/formulario-denuncias">
-                        <a href="formulario-denuncias">
-                          <small className="text-white">Formulario de denuncias Ley Nº 20.393</small>
+                        <a href="formulario-denuncias" className="text-white">
+                          <small>
+                            Formulario de denuncias Ley Nº 20.393
+                          </small>
                         </a>
                       </Link>
                     </p>
                   </li>
                 </ul>
               </li>
-              <li>
-                <ul className="d-flex py-2">
-                  <li className="me-3">
-                    <FaFacebookSquare />
-                    <a href="https://www.facebook.com/cfccapitalchile/" className="text-white"><small> Facebook</small></a>
-                  </li>
-                  <li className="me-3">
-                    <FaLinkedin />
-                    <a href="https://www.linkedin.com/company/cfc-capital-s-a/" className="text-white"><small> Linkedin</small></a>
+              <li className="py-2">
+                <ul className="d-flex justify-content-between">
+                  <li>
+                    <a href="https://www.facebook.com/cfccapitalchile/" className="text-white fs-5">
+                      <FaFacebookSquare />
+                    </a>
                   </li>
                   <li>
-                    <FaInstagramSquare />
-                    <a href="https://www.instagram.com/cfc_capital" className="text-white"><small> Instagram</small></a>
+                    <a href="https://www.linkedin.com/company/cfc-capital-s-a/" className="text-white fs-5">
+                      <FaLinkedin />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.instagram.com/cfc_capital" className="text-white fs-5">
+                      <FaInstagramSquare />
+                    </a>
                   </li>
                 </ul>
               </li>
             </ul>
           </div>
         </div>
-      </div>
+      </section>
+      <section className="container text-center d-none">
+        <FormSubscribe />
+      </section>
     </footer>
   );
-}
- 
+};
+
 export default Footer;

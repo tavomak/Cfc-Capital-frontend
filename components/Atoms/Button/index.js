@@ -9,7 +9,7 @@ const ButtonSubmit = ({
   onClick,
   imgPrev,
   imgNext,
-  disabled
+  disabled,
 }) => (
   <button
     className={className}

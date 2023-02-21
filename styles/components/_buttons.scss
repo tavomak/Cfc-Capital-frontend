@@ -3,9 +3,11 @@
     font-weight: $font-bold;
 
     &-primary {
-        border: 1px solid $soft-purple;
-        background: $soft-purple;
+        border: 1px solid $dark-blue;
+        border-radius: 50rem;
+        background: $ligth-grey;
         transition: all .1s ease-in-out;
+        color: $dark-blue;
         &:hover {
             color: $white;
             background: $dark-blue;

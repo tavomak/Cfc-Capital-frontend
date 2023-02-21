@@ -1,65 +1,67 @@
 import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import router from 'next/router'
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import Modal from 'components/Templates/Modal';
-import FormAccess from 'components/Molecules/FromAccess';
+import Modal from '@components/Templates/Modal';
+import FormAccess from '@components/Molecules/FromAccess';
 import styles from './styles.module.scss';
 
 const Navbar = () => {
-  const links = [
+  const navItems = [
     {
-      name: 'Home',
-      route: '/',
+      label: 'Inicio',
+      path: '/',
       children: false,
     },
     {
-      name: 'CFC',
-      route: '/cfc',
+      label: 'CFC',
+      path: '/cfc',
       children: false,
     },
     {
-      name: 'Servicios',
-      route: '/servicios',
+      label: 'Factoring',
+      path: '/servicios/factoring',
+      children: false,
+    },
+    {
+      label: 'Servicios',
+      path: '/servicios',
       children: [
         {
-          name: 'Factoring',
-          route: '/servicios/factoring',
+          label: 'Factoring web',
+          path: '/servicios/CFC-PasoaPaso.pdf',
         },
         {
-          name: 'Factoring web',
-          route: '/servicios/CFC-PasoaPaso.pdf',
-        },
-        {
-          name: 'Leasing',
-          route: '/servicios/leasing',
+          label: 'Leasing',
+          path: '/servicios/leasing',
         }, {
-          name: 'Leaseback',
-          route: '/servicios/leaseback',
+          label: 'Leaseback',
+          path: '/servicios/leaseback',
         },
       ],
     },
     {
-      name: 'Prensa',
-      route: '/prensa',
+      label: 'Prensa',
+      path: '/prensa',
       children: false,
     },
     {
-      name: 'Contacto',
-      route: '/contacto',
+      label: 'Contacto',
+      path: '/contacto',
       children: false,
     },
   ];
   const [modal, setModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
-  const handleClick = (e, name, route) => {
+  const router = useRouter();
+  const handleClick = (e, label, path) => {
     e.preventDefault();
-    if(name === 'Factoring web') {
-      window.open ('/CFC-PasoaPaso.pdf', '_ blank');
+    if (label === 'Factoring web') {
+      window.open('/CFC-PasoaPaso.pdf', '_ blank');
     } else {
-      router.push(`${route}`)
+      router.push(`${path}`);
     }
   };
   const handleClickModal = (e) => {
@@ -70,72 +72,101 @@ const Navbar = () => {
     if (selected === 'Servicios') {
       setShowSubMenu(true);
     }
-  }
+  };
+  const itemActive = (path) => {
+    let underline = false;
+    switch (path) {
+      case '/':
+        underline = router.asPath === '/';
+        break;
+      case '/cfc':
+        underline = router.asPath === '/cfc';
+        break;
+      case '/servicios/factoring':
+        underline = router.asPath === '/servicios/factoring';
+        break;
+      case '/servicios':
+        underline = router.asPath === '/servicios' || router.asPath === '/servicios/leasing' || router.asPath === '/servicios/leaseback';
+        break;
+      case '/prensa':
+        underline = router.asPath === '/prensa';
+        break;
+      case '/contacto':
+        underline = router.asPath === '/contacto';
+        break;
+      default:
+        underline = false;
+        break;
+    }
+    return underline;
+  };
   return (
     <>
       <header className="container">
         <nav className="navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
             <Link href="/">
-              <a className={`navbar-brand ${styles.primaryNav}`} href="#">
+              <a className={`navbar-brand ${styles.primaryNav}`} href="!#">
                 <Image
                   src="/cfc-logo.png"
                   alt="Cfc Capital Logo"
-                  width={15}
-                  height={3}
-                  layout="responsive"
-                  objectFit="contain"
+                  width={208}
+                  height={41}
                 />
               </a>
             </Link>
-            <button className={`d-lg-none hamburger hamburger--emphatic ${menuOpen ? 'is-active' : ''}`} type="button" onClick={() => setMenuOpen(!menuOpen)} >
+            <button className={`d-lg-none hamburger hamburger--emphatic ${menuOpen ? 'is-active' : ''}`} type="button" onClick={() => setMenuOpen(!menuOpen)}>
               <span className="hamburger-box">
-                  <span className="hamburger-inner"></span>
+                <span className="hamburger-inner" />
               </span>
             </button>
             <div className={`collapse navbar-collapse text-center ${menuOpen ? 'show' : ''}`} id="navbarTogglerDemo02">
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                {links.length && links.map((item) => (
-                  <li className="nav-item position-relative" key={item.name} onMouseEnter={(e) => handleMouseEnter(e, item.name)} onMouseLeave={() => setShowSubMenu(false)}>
-                    <Link href={item.route}>
-                      <a className="nav-link text-uppercase text-dark-blue" href={item.route}>
+              <ul className="navbar-nav justify-content-center w-100 mb-2 mb-lg-0">
+                {navItems.length && navItems.map((item) => (
+                  <li className="nav-item position-relative" key={item.label} onMouseEnter={(e) => handleMouseEnter(e, item.label)} onMouseLeave={() => setShowSubMenu(false)}>
+                    <Link href={item.path}>
+                      <a
+                        className={`nav-link text-dark-blue ${itemActive(item.path) ? styles.underline : styles.navLink}`}
+                        href={item.path}
+                      >
                         <p className="mb-0 display-font">
-                          <b>
-                            {item.name}
-                          </b>
+                          {item.label}
                         </p>
                       </a>
                     </Link>
                     {item.children?.length > 1 && (
-                        <CSSTransition
-                          in={showSubMenu}
-                          timeout={300}
-                          classNames="alert"
-                          unmountOnExit
-                        >
-                        <ul className={`${styles.submenu}`}>
-                          {item.children.map((subItem) => (
-                            <li className="py-2" key={subItem.route}>
-                              <a href={subItem.route} onClick={(e) => handleClick(e, subItem.name, subItem.route)}>
-                                {subItem.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </CSSTransition>
+                    <CSSTransition
+                      in={showSubMenu}
+                      timeout={300}
+                      classNames="alert"
+                      unmountOnExit
+                    >
+                      <ul className={`${styles.submenu}`}>
+                        {item.children.map((subItem) => (
+                          <li className="py-2" key={subItem.path}>
+                            <a
+                              href={subItem.path}
+                              onClick={(e) => handleClick(e, subItem.label, subItem.path)}
+                            >
+                              {subItem.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </CSSTransition>
                     )}
                   </li>
                 ))}
-                <li className="nav-item">
-                  <a
-                    className="nav-link text-uppercase btn btn-primary text-white display-font"
-                    href="!#"
-                    onClick={handleClickModal}
-                  >
-                    Acceso Clientes
-                  </a>
-                </li>
               </ul>
+              <div className="ms-lg-auto text-center">
+                <a
+                  className={`nav-link text-uppercase btn btn-primary ${styles.access}`}
+                  href="!#"
+                  onClick={handleClickModal}
+                >
+                  Acceso Clientes
+                </a>
+              </div>
             </div>
           </div>
         </nav>

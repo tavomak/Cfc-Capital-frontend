@@ -4,6 +4,7 @@
   &Input {
     padding-top: 10px;
     padding-bottom: 10px;
+    border-color: $soft-purple;
     height: 40px ;
     &Error {
       border: 1px solid #FD2626 !important;
@@ -11,6 +12,9 @@
     &SpanError {
       color: #FD2626 !important;
     }
+  }
+  &TextArea {
+    border-color: $soft-purple;
   }
 }
 
