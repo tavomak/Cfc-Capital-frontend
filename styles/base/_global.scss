@@ -87,9 +87,9 @@ strong, .font-bold {
   }
 }
 
-// .mask-bg {
-//   background: url("/mask-bg.png") no-repeat;
-// }
+.bg-mask {
+  background: url("/mask-bg.png") right bottom no-repeat, url("/mask-bg.png") left top no-repeat;
+}
 
 .shadow {
   box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
