@@ -98,7 +98,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="py-5 mask-bg">
+
+      <section className="py-5 bg-mask">
         <div className="row justify-content-center py-5">
           <div className="col-md-6">
             <h2 className="text-center text-dark-blue fw-bolder">Cómo lo hacemos</h2>
@@ -112,6 +113,64 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="py-5 bg-secondary-gradient">
+        <div className="container py-5">
+          <div className="row">
+            <div className="col-md-6">
+              <h1 className="fw-bolder text-soft-purple">Factoring</h1>
+              <h2 className="fw-bolder text-dark-blue">
+                ¿Tus clientes te pagan a
+                <br />
+                30, 60, 90 días o más?
+              </h2>
+              <p className="mt-4">
+                <span className="text-dark-blue">
+                  Que el crecimiento no tarde en llegar
+                </span>
+                <br />
+                Obtén liquidez inmediata cediéndonos
+                {' '}
+                tus facturas a crédito.
+              </p>
+              <p>
+                <span className="text-dark-blue">
+                  Concéntrate en tu negocio
+                </span>
+                <br />
+                Nosotros nos encargamos de cobrar las facturas pendientes a las empresas
+              </p>
+              <Link href="/servicios/factoring" passHref>
+                <Button
+                  className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                  text="Saber más"
+                />
+              </Link>
+            </div>
+            <div className="col-md-6">
+              <Image
+                src="/factoring-image.png"
+                alt="Más que ejecutivos"
+                layout="responsive"
+                objectFit="contain"
+                width={1030}
+                height={660}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-5 bg-mask">
+        <div className="row justify-content-center py-5">
+          <div className="col-md-6">
+            <h2 className="text-center text-dark-blue fw-bolder">
+              Las finanzas son personas y CFC las mantiene en movimiento para que puedan crecer.
+            </h2>
+          </div>
+        </div>
+      </section>
+
       <section className="py-5 bg-secondary-gradient">
         <div className="container py-5">
           <div className="row">
@@ -155,6 +214,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section className="container py-5">
         {banners2 && banners2.length && (
           <Slider {...settings2}>
@@ -199,6 +259,7 @@ export default function Home() {
           </Slider>
         )}
       </section>
+
       <section className="py-5 bg-secondary-gradient">
         <div className="container py-5">
           <div className="row">
@@ -221,7 +282,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="py-5">
+
+      <section className="py-5 bg-mask">
         <div className="container py-5">
           <div className="row mb-5">
             <div className="col-12">
@@ -312,6 +374,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section className="py-5 bg-secondary-gradient">
         <div className="container py-5">
           <div className="row">
