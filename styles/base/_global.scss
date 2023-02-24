@@ -9,7 +9,7 @@ html{
 }
 body {
   font-family: $primary-font;
-  color: $dark-grey;
+  color: $medium-grey;
 }
 
 a {
@@ -60,7 +60,10 @@ strong, .font-bold {
 }
 
 .bg-gradient-circle {
-  background: url("/ellipse.png") no-repeat right/contain, $secondary-gradient;
+  background: $secondary-gradient;
+  @include MQ(L){
+    background: url("/ellipse.png") no-repeat right/contain, $secondary-gradient;
+  }
 }
 
 .bg-top-right-shape {
@@ -81,15 +84,22 @@ strong, .font-bold {
     background: $dark-blue;
     color: $white;
     position: absolute;
-    top: -88px;
     border-top-left-radius: 10px;
     font-size: 20px;
+    top: -40px;
+    @include MQ(L) {
+      top: -88px;
+    }
   }
 }
 
-// .mask-bg {
-//   background: url("/mask-bg.png") no-repeat;
-// }
+.bg-mask {
+  background: url("/mask-bg.png") right bottom no-repeat, url("/mask-bg.png") left top no-repeat;
+  @include MQ(L) {
+    background-size: auto;
+  }
+  background-size: 30%;
+}
 
 .shadow {
   box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
@@ -112,4 +122,13 @@ strong, .font-bold {
     & > div {
       min-height: 100%;
     }
+}
+
+.rec.rec-arrow {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  line-height: 0;
+  font-size: 10px;
 }
