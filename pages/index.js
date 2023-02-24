@@ -1,40 +1,20 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { servicios } from '@data/index';
-import {shimmer, toBase64} from 'helpers'
+import { shimmer, toBase64 } from '@helpers/index';
+import Carousel from 'react-elastic-carousel';
 
 import Layout from '@components/Templates/Layout';
-import Slider from 'react-slick';
 import styles from '@styles/pages/Home.module.scss';
 import Button from '@components/Atoms/Button';
 
 export default function Home() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: false,
-    arrows: true,
-    speed: 800,
-    autoplaySpeed: 5000,
-    cssEase: 'cubic-bezier(.8,0,0.5,1)',
-    lazyLoad: 'progressive',
-  };
-  const settings2 = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    arrows: true,
-    speed: 800,
-    autoplaySpeed: 5000,
-    cssEase: 'cubic-bezier(.8,0,0.5,1)',
-    lazyLoad: 'progressive',
-  };
-  const banners = [
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 1, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 2 },
+    { width: 1200, itemsToShow: 3 },
+  ];
+  const testimonialSliderData = [
     {
       id: '001',
       item_image: {
@@ -54,7 +34,7 @@ export default function Home() {
       description: '“Hoy después de dos años operando con CFC no tengo problemas y mis flujos están mucho más ordenados, CFC se transformó en un partner financiero”.',
     },
   ];
-  const banners2 = [
+  const newsSliderData = [
     {
       id: '0001',
       item_image: {
@@ -74,7 +54,7 @@ export default function Home() {
     >
       <section className="py-5 bg-gradient-circle">
         <div className="container">
-          <div className="row justify-content-end align-items-center">
+          <div className="row justify-content-end align-items-center text-center text-lg-start">
             <div className="col-md-5">
               <h1 className={`text-dark-blue fw-bolder ${styles.primaryTitle}`}>
                 No esperes por
@@ -91,11 +71,11 @@ export default function Home() {
             <div className="col-md-7">
               <Image
                 src="/home-banner.png"
-                alt="Financiamos en 4 horas"
+                alt="Financiamos tus facturas en 4 horas"
                 layout="responsive"
                 objectFit="contain"
-                width={1030}
-                height={660}
+                width={120}
+                height={87}
               />
             </div>
           </div>
@@ -103,24 +83,26 @@ export default function Home() {
       </section>
 
       <section className="py-5 bg-mask">
-        <div className="row justify-content-center py-5">
-          <div className="col-md-6">
-            <h2 className="text-center text-dark-blue fw-bolder">Cómo lo hacemos</h2>
-            <p className="text-center">
-              Ofrecemos a las empresas y pymes soluciones para transformar las cuentas
-              {' '}
-              por cobrar en dinero efectivo de inmediato
-              {' '}
-              o para la adquisición de activos productivos.
-            </p>
+        <div className="container">
+          <div className="row justify-content-center py-5">
+            <div className="col-md-6">
+              <h2 className="text-center text-dark-blue fw-bolder">Cómo lo hacemos</h2>
+              <p className="text-center">
+                Ofrecemos a las empresas y pymes soluciones para transformar las cuentas
+                {' '}
+                por cobrar en dinero efectivo de inmediato
+                {' '}
+                o para la adquisición de activos productivos.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-5 bg-secondary-gradient">
+      <section className="py-lg-5 bg-secondary-gradient">
         <div className="container py-5">
-          <div className="row">
-            <div className="col-md-6">
+          <div className="row align-items-center text-center text-lg-start">
+            <div className="col-md-6 mb-5 mb-lg-0">
               <h1 className="fw-bolder text-soft-purple">Factoring</h1>
               <h2 className="fw-bolder text-dark-blue">
                 ¿Tus clientes te pagan a
@@ -156,8 +138,10 @@ export default function Home() {
                 alt="Más que ejecutivos"
                 layout="responsive"
                 objectFit="contain"
-                width={1030}
-                height={660}
+                width={500}
+                height={500}
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
               />
             </div>
           </div>
@@ -165,26 +149,28 @@ export default function Home() {
       </section>
 
       <section className="py-5 bg-mask">
-        <div className="row justify-content-center py-5">
-          <div className="col-md-6">
-            <h2 className="text-center text-dark-blue fw-bolder">
-              Las finanzas son personas y CFC las mantiene en movimiento para que puedan crecer.
-            </h2>
+        <div className="container">
+          <div className="row justify-content-center py-5">
+            <div className="col-md-6">
+              <h2 className="text-center text-dark-blue fw-bolder">
+                Las finanzas son personas y CFC las mantiene en movimiento para que puedan crecer.
+              </h2>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="py-5 bg-secondary-gradient">
-        <div className="container py-5">
+        <div className="container py-lg-5">
           <div className="row">
             <div className="col-12">
               <h2 className="text-center text-dark-blue fw-bolder">Te apoyamos desde la factura uno</h2>
-              {banners && banners.length && (
-                <Slider {...settings}>
+              {testimonialSliderData && testimonialSliderData.length && (
+                <Carousel breakPoints={breakPoints}>
                   {
-                  banners.map((item) => (
-                    <div key={item.id} className="position-relative p-5">
-                      <div className="card shadow py-4 px-5">
+                  testimonialSliderData.map((item) => (
+                    <div key={item.id} className="position-relative p-1 p-lg-5">
+                      <div className="card shadow py-4 px-3 px-lg-5">
                         <ul className="d-lg-flex">
                           <li className="me-3">
                             <Image
@@ -211,19 +197,19 @@ export default function Home() {
                     </div>
                   ))
                 }
-                </Slider>
+                </Carousel>
               )}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="container py-5">
-        {banners2 && banners2.length && (
-          <Slider {...settings2}>
+      <section className="container py-lg-5">
+        {newsSliderData && newsSliderData.length && (
+          <Carousel pagination={false}>
             {
-            banners2.map((item) => (
-              <div key={item.id} className="position-relative p-5">
+            newsSliderData.map((item) => (
+              <div key={item.id} className="position-relative py-5 px-3 px-lg-5">
                 <div className="card shadow p-4 bg-secondary-gradient">
                   <ul className="d-lg-flex w-100 align-items-center">
                     <li className="p-4">
@@ -259,11 +245,11 @@ export default function Home() {
               </div>
             ))
           }
-          </Slider>
+          </Carousel>
         )}
       </section>
 
-      <section className="py-5 bg-secondary-gradient">
+      <section className="py-lg-5 bg-secondary-gradient">
         <div className="container py-5">
           <div className="row">
             <div className="col-12">
@@ -286,7 +272,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-5 bg-mask">
+      <section className="py-lg-5 bg-mask">
         <div className="container py-5">
           <div className="row mb-5">
             <div className="col-12">
@@ -309,7 +295,7 @@ export default function Home() {
                     </p>
                   </div>
                 </li>
-                <li className="px-4 w-100">
+                <li className="px-4 my-4 my-lg-0 w-100">
                   <div className="card shadow p-4 bg-secondary-gradient" style={{ height: '100%' }}>
                     <ul className="d-lg-flex w-100 align-items-center text-dark-blue">
                       <li>
@@ -352,7 +338,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="row align-items-center py-5">
+          <div className="row align-items-center py-5 text-center text-lg-start">
             <div className="col-md-4">
               <h3 className="text-dark-blue fw-bolder fs-2">
                 Más que ejecutivos
@@ -364,31 +350,31 @@ export default function Home() {
                 <a href="!#" className="fw-bolder">Sobre nosotros</a>
               </Link>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-8 mt-5 mt-lg-0">
               <Image
                 src="/ejecutivos.png"
                 alt="Más que ejecutivos"
                 layout="responsive"
                 objectFit="contain"
-                width={1030}
-                height={660}
+                width={500}
+                height={500}
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-5 bg-secondary-gradient">
+      <section className="py-lg-5 bg-secondary-gradient">
         <div className="container py-5">
-          <div className="row">
-            <div className="col-md-6">
+          <div className="row align-items-center text-center text-lg-start">
+            <div className="col-md-6 mb-4 mb-lg-0">
               <Image
                 src="/dicon.png"
                 alt="Más que ejecutivos"
                 layout="responsive"
                 objectFit="contain"
-                width={1030}
-                height={660}
+                width={500}
+                height={500}
               />
             </div>
             <div className="col-md-5">
@@ -411,10 +397,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="py-5 bg-top-right-shape">
-        <div className="container pt-5">
-          <div className="row align-items-center pt-5">
-            <div className="col-md-4">
+
+      <section className="py-lg-5 bg-top-right-shape">
+        <div className="container pt-lg-5">
+          <div className="row align-items-center pt-5 text-center text-lg-start">
+            <div className="col-md-4 mb-5 mb-lg-0">
               <h3 className="text-dark-blue fw-bolder fs-2">
                 Factoring web
               </h3>
@@ -443,14 +430,15 @@ export default function Home() {
                 alt="Más que ejecutivos"
                 layout="responsive"
                 objectFit="contain"
-                width={1030}
-                height={660}
+                width={600}
+                height={500}
               />
             </div>
           </div>
         </div>
       </section>
-      <section className="py-5 bg-bottom-left-shape">
+
+      <section className="pb-5 py-lg-5 bg-bottom-left-shape">
         <div className="container py-5">
           <div className="row justify-content-center">
             <div className="col-md-8">
@@ -470,7 +458,7 @@ export default function Home() {
                     </p>
                   </div>
                 </li>
-                <li className="px-4 w-100">
+                <li className="px-4 w-100 my-4 my-lg-0">
                   <div className="card shadow p-4 text-center bg-secondary-gradient">
                     <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
                       4000
@@ -495,7 +483,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="py-5">
+
+      <section className="py-lg-5">
         <div className="container py-5 bg-tag">
           <div className="row justify-content-center">
             <div className="col-md-10">
@@ -523,7 +512,7 @@ export default function Home() {
                     </Link>
                   </div>
                 </li>
-                <li className="px-4 w-100">
+                <li className="px-4 my-4 my-lg-0 w-100">
                   <div className="card shadow p-4 bg-secondary-gradient">
                     <h4 className="text-dark-blue fw-bolder">Leaseback</h4>
                     <p>
@@ -549,9 +538,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section className="py-5 bg-secondary-gradient">
-        <div className="container py-5">
-          <div className="row align-items-center">
+        <div className="container py-lg-5">
+          <div className="row align-items-center text-center text-lg-start">
             <div className="col-md-6">
               <h4 className="text-dark-blue fw-bolder fs-2">
                 Presentes en la tercera y cuarta región con agente zonal experto en financiamiento.
@@ -573,6 +563,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
     </Layout>
   );
 }
