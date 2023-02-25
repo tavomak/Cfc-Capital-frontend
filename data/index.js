@@ -332,3 +332,70 @@ export const fullservices = [
     Para: null,
   },
 ];
+
+export const testimonialSliderData = [
+  {
+    id: '001',
+    item_image: {
+      url: '/matiasGomez.png',
+    },
+    title: 'Matias Gómez',
+    subtitle: 'Emprendedor',
+    description: '“Increíblemente no les asustó que fuera mi primera factura, el ejecutivo fue muy amable y en 48 horas tení­a los fondos para poder cumplir con la segunda orden de compra”.',
+  },
+  {
+    id: '002',
+    item_image: {
+      url: '/camilaFuentes.png',
+    },
+    title: 'Camila Fuentes',
+    subtitle: 'Fundadora',
+    description: '“Hoy después de dos años operando con CFC no tengo problemas y mis flujos están mucho más ordenados, CFC se transformó en un partner financiero”.',
+  },
+];
+export const newsSliderData = [
+  {
+    id: '0001',
+    item_image: {
+      url: '/icon-news.png',
+    },
+    tag: 'FACTORING | PYME',
+    title: 'Los 5 mitos más comunes sobre el Factoring',
+    origin: '14-01-2022 | El Mercurio',
+    url: '/prensa',
+    description: 'Francisco Goycoolea, gerente comercial de CFC Capital, aclara los 5 mitos más comunes que se tienen sobre esta popular opción de financiamiento.',
+  },
+];
+
+export const sliderBreakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 1, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 2 },
+  { width: 1200, itemsToShow: 3 },
+];
+
+export const fakeNewsData = [
+  {
+    id: '00001',
+    content: {
+      html: '<div><p>Nuestro&nbsp;<strong>Gerente General de CFC Capital, Enrique Tenorio,</strong> estuvo en el programa Mercado Futuro de Radio Futuro, donde pudo explicar el rol relevante de las instituciones financieras no bancarias en el financiamiento de las pymes del país, considerando que hacen faltan correcciones y apoyo a los diferentes proyectos que tienen como fin apoyar a las pequeñas y medianas empresas durante estos tiempos de necesidad.</p><p>Escucha la entrevista <a title="https://portal.nexnews.cl/showN?valor=n03uk" href="https://portal.nexnews.cl/showN?valor=n03uk">AQUÍ</a></p></div>',
+    },
+    title: 'Enrique Tenorio',
+    slug: 'enrique-tenorio-gerente-general-CFC-capital-en-radio-futuro',
+    video: false,
+    coverImage: {
+      url: '/banner-factoring.jpg',
+    },
+    article: {
+      content: {
+        html: '<div><p>Nuestro&nbsp;<strong>Gerente General de CFC Capital, Enrique Tenorio,</strong> estuvo en el programa Mercado Futuro de Radio Futuro, donde pudo explicar el rol relevante de las instituciones financieras no bancarias en el financiamiento de las pymes del país, considerando que hacen faltan correcciones y apoyo a los diferentes proyectos que tienen como fin apoyar a las pequeñas y medianas empresas durante estos tiempos de necesidad.</p><p>Escucha la entrevista <a title="https://portal.nexnews.cl/showN?valor=n03uk" href="https://portal.nexnews.cl/showN?valor=n03uk">AQUÍ</a></p></div>',
+      },
+      title: 'Enrique Tenorio',
+      slug: 'enrique-tenorio-gerente-general-CFC-capital-en-radio-futuro',
+      video: false,
+      coverImage: {
+        url: '/banner-factoring.jpg',
+      },
+    },
+  },
+];

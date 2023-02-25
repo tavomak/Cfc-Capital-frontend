@@ -4,6 +4,8 @@ import {
   InMemoryCache,
   gql
 } from "@apollo/client";
+import { fakeNewsData } from '@data/index';
+
 import Image from 'next/image';
 import Link from 'next/link'
 import Layout from 'components/Templates/Layout';
@@ -19,38 +21,36 @@ export default function News({ posts, preview }) {
       title="Servicios"
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
-      <section className="container-fluid mb-md-5 py-5" style={{ background: 'url(/fondo-noticias.svg) no-repeat', backgroundSize: 'cover', backgroundPosition: 'bottom center'}}>
-        <div className="container">
-          {preview && <p>Preview mode</p>}
-          <div className="row mt-5">
+      <section className="py-5 mb-5 bg-secondary-gradient">
+        <div className="container py-lg-5">
+          <div className="row align-items-center text-center text-lg-start">
             <div className="col-md-6">
-              <h1 className={`display-font text-dark-blue`}>Como adecuar su Pyme según la realidad económica</h1>
+              <h1 className="text-dark-blue fw-bolder">
+              Recursos para orientar a tu <span className="text-soft-purple">pyme</span> en la realidad económica
+              </h1>
             </div>
-            <div className="col-md-6" >
-              <div className="px-4">
-                <Image
-                  src="/video-prensa.jpg"
-                  alt="Cfc Capital Logo"
-                  width={16}
-                  height={9}
-                  layout="responsive"
-                  objectFit="contain"
-                  placeholder="blur"
-                  blurDataURL="/video-prensa.jpg"
-                />
-              </div>
+            <div className="col-md-6">
+              <Image
+                src="/regiones.png"
+                alt="Más que ejecutivos"
+                layout="responsive"
+                objectFit="contain"
+                width={1030}
+                height={660}
+              />
             </div>
           </div>
         </div>
       </section>
+
       <section className="container mb-5">
         <div className="row justify-content-stretch">
         {posts?.length > 0 && posts.map((item) => (
           <div className="col-md-4 pb-5" key={item.id}>
             <div className="card shadow" style={{ height: '100%'}}>
-              <div className="card-header">
+              <div className="card-header p-0">
                 <Link href={`/prensa/${item.slug}`}>
-                  <a href="!#" className="noticeImg d-block mb-4">
+                  <a href="!#" className="noticeImg d-block overflow-hidden" style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
                     <Image
                       src={item.coverImage?.url ? item.coverImage.url : '/leasing-card.png'}
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
@@ -85,26 +85,35 @@ export default function News({ posts, preview }) {
 
 export async function getStaticProps({ preview = null }) {
 
-  const allPosts = (await client.query({
-    query: gql`
-      query getAllPostsForHome {
-      posts(orderBy: createdAt_DESC) {
-        id
-        slug
-        title
-        coverImage {
-          url
+  if (process.env.NODE_ENV === 'production') {
+    const allPosts = (await client.query({
+      query: gql`
+        query getAllPostsForHome {
+        posts(orderBy: createdAt_DESC) {
+          id
+          slug
+          title
+          coverImage {
+            url
+          }
+          createdAt
         }
-        createdAt
+      }
+      `,
+    })) || []
+  
+    const posts = await allPosts.data.posts;
+  
+    return {
+      props: { posts, preview },
+      revalidate: 10
+    }
+  } else {
+    return {
+      props: {
+        posts: fakeNewsData,
       }
     }
-    `,
-  })) || []
-
-  const posts = await allPosts.data.posts;
-
-  return {
-    props: { posts, preview },
-    revalidate: 10
   }
+
 }

@@ -89,7 +89,7 @@ const Navbar = () => {
         underline = router.asPath === '/servicios' || router.asPath === '/servicios/leasing' || router.asPath === '/servicios/leaseback';
         break;
       case '/prensa':
-        underline = router.asPath === '/prensa';
+        underline = router.asPath === '/prensa' || router.pathname === '/prensa/[slug]';
         break;
       case '/contacto':
         underline = router.asPath === '/contacto';

@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { shimmer, toBase64 } from '@helpers/index';
+import {
+  testimonialSliderData,
+  newsSliderData,
+  sliderBreakPoints,
+} from '@data/index';
 import Carousel from 'react-elastic-carousel';
 
 import Layout from '@components/Templates/Layout';
@@ -8,45 +13,6 @@ import styles from '@styles/pages/Home.module.scss';
 import Button from '@components/Atoms/Button';
 
 export default function Home() {
-  const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 1, itemsToScroll: 2 },
-    { width: 768, itemsToShow: 2 },
-    { width: 1200, itemsToShow: 3 },
-  ];
-  const testimonialSliderData = [
-    {
-      id: '001',
-      item_image: {
-        url: '/matiasGomez.png',
-      },
-      title: 'Matias Gómez',
-      subtitle: 'Emprendedor',
-      description: '“Increíblemente no les asustó que fuera mi primera factura, el ejecutivo fue muy amable y en 48 horas tení­a los fondos para poder cumplir con la segunda orden de compra”.',
-    },
-    {
-      id: '002',
-      item_image: {
-        url: '/camilaFuentes.png',
-      },
-      title: 'Camila Fuentes',
-      subtitle: 'Fundadora',
-      description: '“Hoy después de dos años operando con CFC no tengo problemas y mis flujos están mucho más ordenados, CFC se transformó en un partner financiero”.',
-    },
-  ];
-  const newsSliderData = [
-    {
-      id: '0001',
-      item_image: {
-        url: '/icon-news.png',
-      },
-      tag: 'FACTORING | PYME',
-      title: 'Los 5 mitos más comunes sobre el Factoring',
-      origin: '14-01-2022 | El Mercurio',
-      url: '/prensa',
-      description: 'Francisco Goycoolea, gerente comercial de CFC Capital, aclara los 5 mitos más comunes que se tienen sobre esta popular opción de financiamiento.',
-    },
-  ];
   return (
     <Layout
       title="Financiamos al motor de la economía"
@@ -166,7 +132,7 @@ export default function Home() {
             <div className="col-12">
               <h2 className="text-center text-dark-blue fw-bolder">Te apoyamos desde la factura uno</h2>
               {testimonialSliderData && testimonialSliderData.length && (
-                <Carousel breakPoints={breakPoints}>
+                <Carousel sliderBreakPoints={sliderBreakPoints}>
                   {
                   testimonialSliderData.map((item) => (
                     <div key={item.id} className="position-relative p-1 p-lg-5">
@@ -352,7 +318,7 @@ export default function Home() {
             </div>
             <div className="col-md-8 mt-5 mt-lg-0">
               <Image
-                src="/ejecutivos.png"
+                src="/pow-2.png"
                 alt="Más que ejecutivos"
                 layout="responsive"
                 objectFit="contain"
