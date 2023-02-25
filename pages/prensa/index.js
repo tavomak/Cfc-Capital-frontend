@@ -85,7 +85,7 @@ export default function News({ posts, preview }) {
 
 export async function getStaticProps({ preview = null }) {
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.ENVIRONMENT_KEY === 'production') {
     const allPosts = (await client.query({
       query: gql`
         query getAllPostsForHome {

@@ -105,7 +105,7 @@ export default function Post({ post, morePosts }) {
 
 export async function getStaticProps({ params, preview = null }) {
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.ENVIRONMENT_KEY === 'production') {
     const data = await client.query({
       query: gql`
         query Articles($slug: String!){
@@ -171,7 +171,7 @@ export async function getStaticProps({ params, preview = null }) {
 
 export async function getStaticPaths() {
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.ENVIRONMENT_KEY === 'production') {
     const allPosts = await client.query({
       query: gql`
         query getAllPostsForHome {
