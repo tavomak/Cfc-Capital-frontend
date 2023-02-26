@@ -7,8 +7,8 @@ import {
 import { fakeNewsData } from '@data/index';
 
 import Image from 'next/image';
-import Link from 'next/link'
-import Layout from 'components/Templates/Layout';
+import Link from 'next/link';
+import Layout from '@components/Templates/Layout';
 
 const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_CMS_API_URL,
@@ -31,7 +31,7 @@ export default function News({ posts, preview }) {
             </div>
             <div className="col-md-6">
               <Image
-                src="/regiones.png"
+                src="/prensa-bg.png"
                 alt="Más que ejecutivos"
                 layout="responsive"
                 objectFit="contain"

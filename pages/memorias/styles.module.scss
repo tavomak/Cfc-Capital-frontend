@@ -1,9 +1,8 @@
 @import "/styles/utils/media";
 .item {
   text-align: center;
-  width: 100%;
-  @include MQ(M) {
-    text-align: left;
-    width: 50%;
+  width: 200px;
+  &:last-child {
+    max-width: 265px;
   }
 }

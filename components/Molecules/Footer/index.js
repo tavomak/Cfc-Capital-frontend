@@ -71,11 +71,11 @@ const Footer = () => {
     }
   };
   return (
-    <footer className="bg-primary-gradient py-5">
+    <footer className={`bg-primary-gradient py-5 ${styles.footer}`}>
       <section className="container">
         <div className="row justify-content-between">
           <div className="col-md-3 text-white">
-            <ul>
+            <ul className={`${styles.footerFs}`}>
               <li>
                 <Image src="/footer-logo.png" alt="Cfc Capital Logo" width={220} height={66} />
               </li>
@@ -97,7 +97,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-md-6">
-            <ul className="d-flex w-100 justify-content-between px-md-5">
+            <ul className={`d-flex w-100 justify-content-between px-md-5 ${styles.footerFs}`}>
               {navItems.length && navItems.map((item) => (
                 <li className="nav-item position-relative" key={item.label}>
                   <Link href={item.path}>
