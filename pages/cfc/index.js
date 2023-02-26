@@ -1,270 +1,126 @@
-import { useState } from 'react'
-import { FaLinkedin } from "react-icons/fa";
+import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useCfcContext } from '@context/useCfcContext';
+import { gerencia, team, directory } from '@data/index';
 
-import Layout from 'components/Templates/Layout';
-import CountUp from 'react-countup';
-import VisibilitySensor from 'react-visibility-sensor';
-import Slider from "react-slick";
-import Modal from 'components/Templates/Modal'
-import VideoIframe from 'components/Molecules/VideoIframe'
+import Layout from '@components/Templates/Layout';
+import Modal from '@components/Templates/Modal';
+import VideoIframe from '@components/Molecules/VideoIframe';
+import RowTextImage from '@components/Molecules/RowTextImage';
+import { Player } from 'video-react';
+import 'video-react/dist/video-react.css';
 import styles from './styles.module.scss';
 
 const Cfc = () => {
+  const { cfcUserData } = useCfcContext();
+  console.log({ data: cfcUserData });
   const [modal, setModal] = useState(false);
-
-  const highlights = [
-    {
-      name: 'Fundada',
-      number: 2003,
-      prev: null,
-      next: null,
-      image: 'star'
-    },
-    {
-      name: 'Clientes',
-      number: 4000,
-      prev: '+',
-      next: null,
-      image: 'people'
-    },
-    {
-      name: 'Operaciones',
-      number: 500,
-      prev: 'US $',
-      next: 'MM',
-      image: 'money'
-    },
-  ];
-  
-  const gerencia = [
-    {
-      name: 'Enrique Tenorio Fuentes',
-      cargo: 'Gerente General',
-      email: 'etenorio@cfccapital.cl',
-      linkedin: 'https://www.linkedin.com/in/enrique-tenorio-0b439646/',
-      img: 'enrique',
-    },
-    {
-      name: 'Francisco Javier Goycoolea Brucher',
-      cargo: 'Gerente Comercial',
-      email: 'fgoycoolea@cfccapital.cl',
-      linkedin: 'https://www.linkedin.com/in/francisco-javier-goycoolea-brucher-871707142/',
-      img: 'francisco',
-    },
-  ];
-
-  const team = [
-    {
-      name: 'Laura Ferrada Martínez',
-      cargo: 'Ejecutiva Comercial',
-      email: 'lferrada@cfccapital.cl',
-    },
-    {
-      name: 'Mario Finschi Herrera',
-      cargo: 'Ejecutivo Comercial',
-      email: 'mfinschi@cfccapital.cl',
-    },
-    {
-      name: 'Ema Jara Colipi',
-      cargo: 'Ejecutiva Comercial',
-      email: 'ejara@cfccapital.cl',
-    },
-    {
-      name: 'Evelin Santander Gallardo',
-      cargo: 'Ejecutiva Comercial',
-      email: 'esantander@cfccapital.cl',
-    },
-  ];
-
-  const directory = [
-    {
-      name: 'Sergio Silva Alcalde',
-      cargo: 'Presidente',
-      linkedin: 'https://www.linkedin.com/in/sergio-silva-alcalde-22263b29/',
-    },
-    {
-      name: 'Alejandro Alarcón Pérez',
-      cargo: 'Vicepresidente',
-      linkedin: 'https://www.linkedin.com/feed/',
-    },
-    {
-      name: 'Felipe Ríos Yrarrazaval',
-      cargo: 'Director',
-      linkedin: 'https://www.linkedin.com/in/luis-felipe-rios-yrarr%C3%A1zaval-a1189318/',
-    },
-    {
-      name: 'Alejandro Toth Nebel',
-      cargo: 'Director',
-      linkedin: 'https://www.linkedin.com/in/alejandro-toth-nebel-55562855/',
-    },
-    {
-      name: 'Jorge Narbona Lemus',
-      cargo: 'Director',
-      linkedin: 'https://www.linkedin.com/in/jorge-narbona-8929b21a/',
-    },
-  ];
-
-  function SampleNextArrow({className, style, onClick}) {
-    return (
-      <span
-        className={className}
-        style={{ ...style}}
-        onClick={onClick}
-      />
-    );
-  };
-
-  function SamplePrevArrow({className, style, onClick}) {
-    return (
-      <span
-        className={className}
-        onClick={onClick}
-        style={{ ...style }}
-      />
-    );
-  };
-
-  const settings = {
-    className: 'about-slider',
-    dots: false,
-    infinite: true,
-    autoplay: false,
-    arrows: true,
-    speed: 800,
-    autoplaySpeed: 5000,
-    cssEase: "cubic-bezier(.8,0,0.5,1)",
-    lazyLoad: 'progressive',
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 420,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        },
-        {
-          breakpoint: 900,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1
-          }
-        },
-        {
-          breakpoint: 3024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1
-          }
-        },
-      ]
-  };
 
   return (
     <Layout
       title="Somos CFC"
       description="Somos una empresa de servicios financieros, presente en el mercado desde el año 2003"
     >
-      <section className={`position-relative overflow-hidden videoContainer`}>
-        <div className="container">
-          <div className="row content-wrapper align-items-center position-relative">
-            <div className="text-center pt-5">
-                <a 
-                  href="#"
-                  className="btn btn-complementary fs-4"
-                  data-src="https://player.vimeo.com/video/389778033"
-                  data-toggle="modal"
-                  data-target="#homeVideo"
-                  onClick={(e) => { e.preventDefault(); setModal(true); }}
-                >
-                  Ver video
-                </a>
-            </div>
-          </div>
-          <video id="myVideo" loop muted autoPlay className="d-none d-md-block">
-              <source src="/cfc_intro.mp4" type="video/mp4" />
-          </video>
+      <section>
+        <div className="embed-responsive embed-responsive-16by9">
+          <Player muted autoPlay loop>
+            <source src="/video-nosotros-CFC.mp4" type="video/mp4" />
+          </Player>
         </div>
       </section>
 
-      <section className="container-flluid bg-soft-purple">
-        <div className="container">
-          <div className="row pt-5">
-            <div className="col-lg-6 mb-4">
-              <h1 className="text-white display-font fs-2">
-                Somos una empresa de <span className="text-soft-blue">servicios financieros,</span> presente en el mercado desde el año 2003
-              </h1>
-            </div>
-            <div className="col-lg-6">
-              <p className="text-white">
-                Estamos especializados en el segmento de <span className="text-soft-blue">empresas y pymes</span> entregando soluciones a las necesidades de financiamiento de capital de trabajo y de inversión, transformando los flujos por cobrar a plazo, en dinero efectivo de inmediato o bien haciendo posible adquirir activos productivos a las empresas
+      <section className="py-lg-5 bg-top-right-shape">
+        <div className="container pt-lg-5">
+          <div className="row align-items-center pt-5 text-center text-lg-start">
+            <div className="col-md-4 mb-5 mb-lg-0">
+              <h3 className="text-dark-blue fw-bolder fs-2">
+                CFC CAPITAL
+              </h3>
+              <p>
+                Ofrecemos a las empresas y pymes soluciones para transformar las cuentas por cobrar
+                {' '}
+                en dinero efectivo de inmediato o para la adquisición de activos productivos.
               </p>
-              <Link href="/memorias">
-                <a href="#!" className="btn btn-white fs-5">Memorias</a>
-              </Link>
+            </div>
+            <div className="col-md-8">
+              <Image
+                src="/factoring-web.png"
+                alt="Más que ejecutivos"
+                layout="responsive"
+                objectFit="contain"
+                width={600}
+                height={500}
+              />
             </div>
           </div>
         </div>
-        <div>
-          <Image 
-            src="/curva-blanca.svg"
-            alt="wave"
-            width={12.40}
-            height={3}
-            layout="responsive"
-          />
-        </div>
       </section>
-      <section className="container-fluid bg-white position-relative" style={{ top: '-4px'}}>
-        <div className="container">
-          <div className="row">
-            {highlights.map((item) => (
-              <div className="col-lg-4" key={item.name}>
-                <div className={`${styles.card} bg-grey mx-5 p-5`}>
-                  <Image 
-                    src={`/${item.image}.png`}
-                    alt={item.name}
-                    width={1}
-                    height={1}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="text">
-                  <div className="text-center text-soft-purple">
-                    <h2 className="fs-1 display-font">
-                      <div className="d-flex w-100 justify-content-center">
-                        {item.prev && (
-                          <span>{item.prev}</span>
-                        )}
-                        {item.number && (
-                          <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
-                            {({ isVisible }) => (
-                              <div style={{ height: 50 }}>
-                                {isVisible ? <CountUp end={item.number} duration={1.75} />  : null}
-                                <span className="text-white">{isVisible ? ' ' : '.'}</span>
-                              </div>
-                            )}
-                          </VisibilitySensor>
-                        )}
-                        {item.next && (
-                          <span>{item.next}</span>
-                        )}
-                      </div>
-                    </h2>
-                    <p className="text-dark-grey display-font fs-4">
-                      <strong>{item.name}</strong>
+
+      <section className="pb-5 py-lg-5 bg-bottom-left-shape">
+        <div className="container py-5">
+          <div className="row justify-content-center">
+            <div className="col-md-8">
+              <h3 className="text-center text-dark-blue fw-bolder fs-2">
+                Tenemos la experiencia
+                <br />
+                para enfrentar el futuro
+              </h3>
+              <ul className="d-lg-flex justify-content-between w-100 pt-5">
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 text-center bg-secondary-gradient">
+                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
+                      19
+                    </h4>
+                    <p className="text-dark-blue fs-4 mb-0">
+                      AÑOS
                     </p>
                   </div>
-                </div>
-              </div>
-            ))}
+                </li>
+                <li className="px-4 w-100 my-4 my-lg-0">
+                  <div className="card shadow p-4 text-center bg-secondary-gradient">
+                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
+                      4000
+                    </h4>
+                    <p className="text-dark-blue fs-4 mb-0">
+                      PYMES
+                    </p>
+                  </div>
+                </li>
+                <li className="px-4 w-100">
+                  <div className="card shadow p-4 text-center bg-secondary-gradient">
+                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
+                      600
+                    </h4>
+                    <p className="text-dark-blue fs-4 mb-0">
+                      MMUS$
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
+
+      <section className="py-5 bg-mask">
+        <div className="container">
+          <div className="row justify-content-center py-5">
+            <div className="col-md-8">
+              <h2 className="text-center text-dark-blue fw-bolder">
+                Una sólida estructura profesional
+              </h2>
+              <p className="text-center">
+                Contamos con un subgerente de riesgo, un subgerente de operaciones y con equipo
+                {' '}
+                capacitado de primer nivel, lo cual permite que tengamos una posición financiera
+                {' '}
+                sólida y robusta en el mercado.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="container-fluid py-5">
         <div className="row mt-5 py-5">
           <div className="col-12">
@@ -275,20 +131,23 @@ const Cfc = () => {
             </h2>
           </div>
         </div>
-        <div className="row">
-          {gerencia && gerencia.map((item, index) => (
-            <div className="col-md-6" key={item.name}>
-              <div className={`text-center d-lg-flex ${index === 1 ? 'align-items-end' : 'align-items-center'}`}>
-                <div className={`${styles.itemImage} ${index === 1 ? 'order-2' : ''}`} >
-                  <Image 
-                    src={`/${item.img}.jpg`}
-                    alt={item.name}
-                    width={500}
-                    height={500}
-                  />
+        <div className="row justify-content-around">
+          {gerencia && gerencia.map((item) => (
+            <div className="col-md-5" key={item.name}>
+              <div className={`card shadow p-4 ${styles.card}`} style={{ height: '100%', borderRadius: 15 }}>
+                <div className={`${styles.itemImage}`}>
+                  <div className={`shadow ${styles.itemImageBg}`}>
+                    <Image
+                      src={item.img}
+                      alt={item.name}
+                      objectFit="contain"
+                      width={200}
+                      height={200}
+                    />
+                  </div>
                 </div>
-                <div className={`${styles.itemText} text-center ${index === 1 ? 'order-1' : ''}`} >
-                  <p className="display-font text-soft-purple mb-2">
+                <div className={`${styles.itemText} text-center`}>
+                  <p className="display-font text-soft-purple mb-0 fs-5">
                     <strong>
                       {item.name}
                     </strong>
@@ -299,114 +158,117 @@ const Cfc = () => {
                       {item.cargo}
                     </small>
                   </p>
-                  <p className="mb-0 text-soft-blue">
-                    <small>
-                      <a className="text-soft-purple" href={`mailto:${item.email}`}>
-                        {item.email}
-                      </a>
-                    </small>
-                  </p>
                   <div className="text-center">
-                    <a className="text-soft-purple fs-1" href={item.linkedin} target="_blank" rel="noreferrer">
-                      <FaLinkedin />
-                    </a>
+                    <p><small>{item.desc}</small></p>
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="row my-5 py-5">
-          <div className="col-12">
-            <h2 className="display-font text-center text-dark-blue mt-5">
-              <b className="fs-1">
-                Equipo Comercial
-              </b>
-            </h2>
+        <div className="row justify-content-center py-4">
+          <div className="col-lg-7 mt-5">
+            <h5>
+              Estos dos eventos sumados al esfuerzo, presencia estrecha del directorio y apoyo
+              {' '}
+              constante de sus socios hacen que CFC Capital tenga un salto importante en todos
+              {' '}
+              los aspectos llevando a la empresa a pasar de un stock de colocaciones de MM$ 4.600
+              {' '}
+              a MM$ 12.400 en el año 2022 logrando triplicar el tamaño de la empresa en 3,5 años.
+            </h5>
           </div>
         </div>
+      </section>
+
+      <section className="py-5 bg-mask">
         <div className="container">
-          <div className="row">
-            {team && team.length && (
-              <Slider {...settings}>
-                {
-                  team.map((item) => (
-                    <div key={item.name} className="text-center">
-                      <p className="display-font text-soft-purple mb-2">
-                        <strong>
-                          {item.name}
-                        </strong>
-                      </p>
-                      <span className={styles.divider} />
-                      <p className="mb-0 text-soft-blue">
+          <div className="row justify-content-center py-5">
+            <div className="col-md-8">
+              <div className="text-center">
+                <h2 className="text-dark-blue fw-bolder">Equipo Comercial</h2>
+                <p>
+                  <span className="text-dark-blue fw-bolder">Más que ejecutivos</span>
+                  {' '}
+                  somos un equipo humano dispuestos a ser
+                  {' '}
+                  parte de tu empresa. Porque sabemos que eres el motor de la economía.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-around">
+            {team && team.map((item) => (
+              <div className="col-md-5 mb-4" key={item.name}>
+                <div className={`card shadow p-4 ${styles.card}`} style={{ height: '100%', borderRadius: 15 }}>
+                  <div className={`${styles.itemText} text-center`}>
+                    <p className="display-font text-soft-purple mb-0 fs-5">
+                      <strong>
+                        {item.name}
+                      </strong>
+                    </p>
+                    <span className={styles.divider} />
+                    <p className="mb-0 text-soft-blue">
+                      <small>
+                        {item.cargo}
+                      </small>
+                    </p>
+                    <div className="text-center">
+                      <p><small>{item.email}</small></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="row justify-content-center py-5 my-lg-4">
+            <div className="col-md-8">
+              <div className="text-center">
+                <h2 className="text-dark-blue fw-bolder">Directorio</h2>
+              </div>
+            </div>
+          </div>
+          <div className="row justify-content-around">
+            {directory && directory.map((item) => (
+              <div className="col-md-5 mb-4" key={item.name}>
+                <div className={`card shadow p-4 ${styles.card}`} style={{ height: '100%', borderRadius: 15 }}>
+                  <div className={`${styles.itemText} text-center`}>
+                    <p className="display-font text-soft-purple mb-0 fs-5">
+                      <strong>
+                        {item.name}
+                      </strong>
+                    </p>
+                    <span className={styles.divider} />
+                    <p className="mb-0 text-soft-blue">
+                      <small>
+                        {item.cargo}
+                      </small>
+                    </p>
+                    <div className="text-center">
+                      <p>
                         <small>
-                          {item.cargo}
-                        </small>
-                      </p>
-                      <p className="mb-0 text-soft-blue">
-                        <small>
-                          <a className="text-soft-purple" href={`mailto:${item.email}`}>
-                            {item.email}
-                          </a>
+                          <a href={item.linkedin}>Linkedin</a>
                         </small>
                       </p>
                     </div>
-                  ))
-                }
-              </Slider>
-            )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-      <div>
-        <Image 
-          src="/curva-gris-12.svg"
-          alt="wave"
-          width={9.23}
-          height={3}
-          layout="responsive"
-        />
-      </div>
-      <section className="bg-grey container-fluid position-relative pb-5" style={{ top: '-4px'}} >
-        <div className="container">
-          <div className="row pb-5">
-            <div className="col-12">
-              <h2 className="display-font text-center text-dark-blue mt-5">
-                <b className="fs-1">
-                  Directorio
-                </b>
-              </h2>
-            </div>
-          </div>
-          <div className="row">
-          {directory && directory.length && directory.map((item, index) => (
-            <div key={item.name} className={`text-center mb-5 ${index === 0 || index === 1 ? 'col-md-6' : 'col-md-4'}`}>
-              <p className="display-font text-soft-purple mb-2 fs-5">
-                <strong>
-                  {item.name}
-                </strong>
-              </p>
-              <span className={styles.divider} />
-              <p className="mb-0 text-soft-blue">
-                <small>
-                  {item.cargo}
-                </small>
-              </p>
-              <p className="mb-0 text-soft-blue">
-                <small>
-                  <a className="text-soft-purple" href={`mailto:${item.email}`}>
-                    {item.email}
-                  </a>
-                </small>
-              </p>
-              <a className="text-soft-purple fs-1" href={item.linkedin} target="_blank" rel="noreferrer">
-                <FaLinkedin />
-              </a>
-            </div>
-          ))}
-          </div>
-        </div>
-      </section>
+
+      <RowTextImage
+        gradientType="secondary"
+        alignType="center"
+        title="Presentes en la tercera y cuarta región con agente zonal experto en financiamiento."
+        titleColor="dark-blue"
+        subtitle="En los rubros Transportes, Minería, Turismo y Servicios de Apoyo."
+        imageUrl="/regiones.png"
+        imageWidth="1030"
+        imageHeight="660"
+      />
       <Modal
         showModal={modal}
         onClick={(e) => { e.preventDefault(); setModal(false); }}
@@ -416,6 +278,6 @@ const Cfc = () => {
       </Modal>
     </Layout>
   );
-}
- 
+};
+
 export default Cfc;

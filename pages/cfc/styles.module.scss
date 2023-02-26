@@ -2,43 +2,21 @@
 @import "/styles/utils/media";
 
 .card {
-  border-radius: 25px;
-  margin-bottom: 50px;
+  background: linear-gradient(180deg, $ligth-blue, $white 60%);
 }
-
-.divider {
-  background: $dark-blue;
-  width: 60px;
-  height: 4px;
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
 .item {
   &Image {
-    @include MQ(L) {
-      width: 60%;
+    text-align: center;
+    & div {
+      top: 10px;
     }
   }
-  &Text{
-    @include MQ(L) {
-      width: 40%;
-    }
+  &ImageBg {
+    background: $primary-gradient;
+    max-width: 250px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
   }
-}
-
-.embedContainer {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-}
-
-.embedContainerIframe {
-  position: absolute;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 }

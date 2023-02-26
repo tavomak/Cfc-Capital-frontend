@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import Layout from '@components/Templates/Layout';
 import FormContact from '@components/Molecules/FormContact';
+import RowTextImage from '@components/Molecules/RowTextImage';
 
 const Contacto = () => (
   <Layout
@@ -54,30 +55,16 @@ const Contacto = () => (
       </div>
     </section>
 
-    <section className="py-5 bg-secondary-gradient">
-      <div className="container py-lg-5">
-        <div className="row align-items-center text-center text-lg-start">
-          <div className="col-md-6">
-            <h4 className="text-dark-blue fw-bolder fs-2">
-              Presentes en la tercera y cuarta región con agente zonal experto en financiamiento.
-            </h4>
-            <p>
-              En los rubros Transportes, Minería, Turismo y Servicios de Apoyo.
-            </p>
-          </div>
-          <div className="col-md-6">
-            <Image
-              src="/regiones.png"
-              alt="Más que ejecutivos"
-              layout="responsive"
-              objectFit="contain"
-              width={1030}
-              height={660}
-            />
-          </div>
-        </div>
-      </div>
-    </section>
+    <RowTextImage
+      gradientType="secondary"
+      alignType="center"
+      title="Presentes en la tercera y cuarta región con agente zonal experto en financiamiento."
+      titleColor="dark-blue"
+      subtitle="En los rubros Transportes, Minería, Turismo y Servicios de Apoyo."
+      imageUrl="/regiones.png"
+      imageWidth="1030"
+      imageHeight="660"
+    />
   </Layout>
 );
 

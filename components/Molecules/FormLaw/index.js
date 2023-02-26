@@ -41,13 +41,14 @@ const FormContact = ({ type }) => {
         // alert("Email registered successfully");
         // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID')
         emailjs.sendForm('service_8pof0qh', 'template_tx2orac', form.current, '9cidPWVw6ZjMK7J4e')
-          .then((result) => {
+          .then(() => {
             setLoading(false);
             // eslint-disable-next-line react-hooks/rules-of-hooks
             useNotify('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
             reset();
           }, (error) => {
             setLoading(false);
+            console.log(error);
             // eslint-disable-next-line react-hooks/rules-of-hooks
             useNotify('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
           });
@@ -59,7 +60,7 @@ const FormContact = ({ type }) => {
         throw new Error(error.message);
       }
     } catch (error) {
-      alert('error', error?.message);
+      console.log('error', error?.message);
     } finally {
       // Reset the reCAPTCHA when the request has failed or succeeeded
       // so that it can be executed again if user submits another email.
