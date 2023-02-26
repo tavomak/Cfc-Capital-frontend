@@ -75,6 +75,10 @@ strong, .font-bold {
   background: url("/bottom-left-shape.png") no-repeat;
   background-position: bottom left;
 }
+.bg-top-bottom-shape {
+  background: url("/top-left-shape.png") top left no-repeat, url("/bottom-right-shape.png") bottom right no-repeat;
+
+}
 
 .bg-tag {
   position: relative;

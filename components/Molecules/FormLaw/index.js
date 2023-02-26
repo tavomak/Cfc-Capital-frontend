@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
-import useNotify from 'hooks/useNotify';
-import Button from 'components/Atoms/Button';
-import ReCAPTCHA from "react-google-recaptcha";
-import styles from './styles.module.scss'
+import useNotify from '@hooks/useNotify';
+import Button from '@components/Atoms/Button';
+import ReCAPTCHA from 'react-google-recaptcha';
+import styles from './styles.module.scss';
 
-const FormContact = ({type}) => {
+const FormContact = ({ type }) => {
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef(null);
   const form = useRef();
@@ -29,11 +29,11 @@ const FormContact = ({type}) => {
       return;
     }
     try {
-      const response = await fetch("/api/register", {
-        method: "POST",
+      const response = await fetch('/api/register', {
+        method: 'POST',
         body: JSON.stringify({ captcha: captchaCode }),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
       if (response.ok) {
@@ -41,25 +41,25 @@ const FormContact = ({type}) => {
         // alert("Email registered successfully");
         // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID')
         emailjs.sendForm('service_8pof0qh', 'template_tx2orac', form.current, '9cidPWVw6ZjMK7J4e')
-        .then((result) => {
-          setLoading(false);
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useNotify('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
-          reset();
-        }, (error) => {
-          setLoading(false);
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useNotify('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
-        });
+          .then((result) => {
+            setLoading(false);
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            useNotify('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
+            reset();
+          }, (error) => {
+            setLoading(false);
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            useNotify('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
+          });
       } else {
         // Else throw an error with the message returned
         // from the API
         const error = await response.json();
         console.log(error);
-        throw new Error(error.message)
+        throw new Error(error.message);
       }
     } catch (error) {
-      alert('error', error?.message );
+      alert('error', error?.message);
     } finally {
       // Reset the reCAPTCHA when the request has failed or succeeeded
       // so that it can be executed again if user submits another email.
@@ -138,9 +138,9 @@ const FormContact = ({type}) => {
           />
         </label>
       </div>
-      <div className="form-group">
+      <div className="form-group text-center mb-4">
         <Button
-          className="btn btn-complementary mt-4 text-uppercase py-2 px-4"
+          className="btn btn-primary mt-4 text-uppercase py-2 px-4"
           text="Ingresar"
           loading={loading}
           submit
@@ -148,6 +148,6 @@ const FormContact = ({type}) => {
       </div>
     </form>
   );
-}
- 
+};
+
 export default FormContact;
