@@ -466,3 +466,73 @@ export const memorial = [
     url: '/memorias_fichas/2007_422ta.pdf',
   },
 ];
+
+export const gerencia = [
+  {
+    name: 'Enrique Tenorio Fuentes',
+    cargo: 'Gerente General',
+    email: 'etenorio@cfccapital.cl',
+    linkedin: 'https://www.linkedin.com/in/enrique-tenorio-0b439646/',
+    img: '/enrique.png',
+    desc: 'Contamos con un subgerente de riesgo, un subgerente de operaciones y con equipo capacitado de primer nivel, lo cual permite que tengamos una posición financiera sólida y robusta en el mercado.',
+  },
+  {
+    name: 'Francisco Javier Goycoolea Brucher',
+    cargo: 'Gerente Comercial',
+    email: 'fgoycoolea@cfccapital.cl',
+    linkedin: 'https://www.linkedin.com/in/francisco-javier-goycoolea-brucher-871707142/',
+    img: '/francisco.png',
+    desc: 'En el año 2017 se incorpora como gerente comercial el señor Francisco Javier Goycoolea Brucher ingeniero con MBA en Dirección de empresas de la escuela de negocios española IEDE, después de trabajar 25 años en el Bci dando un nuevo ímpetu a toda la parte comercial de la empresa.',
+  },
+];
+
+export const team = [
+  {
+    name: 'Laura Ferrada Martínez',
+    cargo: 'Ejecutiva Comercial',
+    email: 'lferrada@cfccapital.cl',
+  },
+  {
+    name: 'Mario Finschi Herrera',
+    cargo: 'Ejecutivo Comercial',
+    email: 'mfinschi@cfccapital.cl',
+  },
+  {
+    name: 'Ema Jara Colipi',
+    cargo: 'Ejecutiva Comercial',
+    email: 'ejara@cfccapital.cl',
+  },
+  {
+    name: 'Evelin Santander Gallardo',
+    cargo: 'Ejecutiva Comercial',
+    email: 'esantander@cfccapital.cl',
+  },
+];
+
+export const directory = [
+  {
+    name: 'Sergio Silva Alcalde',
+    cargo: 'Presidente',
+    linkedin: 'https://www.linkedin.com/in/sergio-silva-alcalde-22263b29/',
+  },
+  {
+    name: 'Alejandro Alarcón Pérez',
+    cargo: 'Vicepresidente',
+    linkedin: 'https://www.linkedin.com/feed/',
+  },
+  {
+    name: 'Felipe Ríos Yrarrazaval',
+    cargo: 'Director',
+    linkedin: 'https://www.linkedin.com/in/luis-felipe-rios-yrarr%C3%A1zaval-a1189318/',
+  },
+  {
+    name: 'Alejandro Toth Nebel',
+    cargo: 'Director',
+    linkedin: 'https://www.linkedin.com/in/alejandro-toth-nebel-55562855/',
+  },
+  {
+    name: 'Jorge Narbona Lemus',
+    cargo: 'Director',
+    linkedin: 'https://www.linkedin.com/in/jorge-narbona-8929b21a/',
+  },
+];
