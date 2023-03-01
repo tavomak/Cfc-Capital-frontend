@@ -39,10 +39,9 @@ export default function Post({ post, morePosts }) {
                 </title>
                 <meta property="og:image" content={post.article?.coverImage.url} />
               </Head>
-              <article className="row">
+              <article className="row justify-content-center">
                 <div className="col-12 pt-5">
-                <div className="position-relative">
-                    <div className="overlay"></div>
+                  <div className="position-relative">
                     <div className="d-none d-lg-block">
                       <Image
                         src={`${post.article?.coverImage.url}`}
@@ -65,6 +64,8 @@ export default function Post({ post, morePosts }) {
                       />
                     </div>
                   </div>
+                </div>
+                <div className="col-lg-8">
                   <div className="pt-5 pb-3">
                     <h1 className="display-font text-soft-purple pb-4 fs-4">{post.article?.title}</h1>
                     {post.article?.video && (

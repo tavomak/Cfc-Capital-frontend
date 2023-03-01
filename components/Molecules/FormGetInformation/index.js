@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
-import useNotify from 'hooks/useNotify';
-import Button from 'components/Atoms/Button';
-import ReCAPTCHA from "react-google-recaptcha";
+import useNotify from '@hooks/useNotify';
+import Button from '@components/Atoms/Button';
+import ReCAPTCHA from 'react-google-recaptcha';
 import TagManager from 'react-gtm-module';
 import styles from './styles.module.scss';
 
@@ -12,14 +12,16 @@ const tagManagerArgs = {
   events: {
     conversion: {
       send_to: 'AW-10800512963/O9OaCOSdxIIYEMP_ip4o',
-    }
-  }
-}
+    },
+  },
+};
 
-const FormGetInfo = ({service, title, image, content}) => {
+const FormGetInfo = ({
+  service, title, image, content,
+}) => {
   const [loading, setLoading] = useState(false);
   const [isLeasing, setLeasing] = useState(false);
-  const [leasingHab, setLeasingHab] = useState({name: 'seleccionar', errorMsg: false});
+  const [leasingHab, setLeasingHab] = useState({ name: 'seleccionar', errorMsg: false });
   const recaptchaRef = useRef(null);
   const form = useRef();
   const {
@@ -33,7 +35,7 @@ const FormGetInfo = ({service, title, image, content}) => {
     setLoading(true);
     if (isLeasing && leasingHab.name !== 'no') {
       setLoading(false);
-      return
+      return;
     }
     recaptchaRef.current.execute();
   };
@@ -43,33 +45,33 @@ const FormGetInfo = ({service, title, image, content}) => {
       return;
     }
     try {
-      const response = await fetch("/api/register", {
-        method: "POST",
+      const response = await fetch('/api/register', {
+        method: 'POST',
         body: JSON.stringify({ captcha: captchaCode }),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
       if (response.ok) {
         emailjs.sendForm('service_8pof0qh', 'template_2rrh5ia', form.current, '9cidPWVw6ZjMK7J4e')
-        .then((result) => {
-          setLoading(false);
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useNotify('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
-          reset();
-          TagManager.initialize(tagManagerArgs);
-        }, (error) => {
-          setLoading(false);
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useNotify('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
-        });
+          .then((result) => {
+            setLoading(false);
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            useNotify('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
+            reset();
+            TagManager.initialize(tagManagerArgs);
+          }, (error) => {
+            setLoading(false);
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            useNotify('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
+          });
       } else {
         const error = await response.json();
         console.log(error);
-        throw new Error(error.message)
+        throw new Error(error.message);
       }
     } catch (error) {
-      alert('error', error?.message );
+      alert('error', error?.message);
     } finally {
       recaptchaRef.current.reset();
     }
@@ -79,19 +81,19 @@ const FormGetInfo = ({service, title, image, content}) => {
     if (e.target.value === 'si') {
       setLeasingHab({
         name: 'si',
-        errorMsg: '😢 No trabajamos con Leasing Habitacional'
-      })
+        errorMsg: '😢 No trabajamos con Leasing Habitacional',
+      });
     }
     if (e.target.value === 'seleccionar') {
       setLeasingHab({
         name: 'seleccionar',
-        errorMsg: 'Debe seleccionar una opción'
-      })
+        errorMsg: 'Debe seleccionar una opción',
+      });
     }
     if (e.target.value === 'no') {
-      setLeasingHab({name: 'no', errorMsg: null});
+      setLeasingHab({ name: 'no', errorMsg: null });
     }
-  }
+  };
 
   useEffect(() => {
     if (service === 'Leasing') {
@@ -99,8 +101,8 @@ const FormGetInfo = ({service, title, image, content}) => {
     } else {
       setLeasing(false);
     }
-  }, [service])
-  
+  }, [service]);
+
   return (
     <form ref={form} className="form" onSubmit={handleSubmit(handleClick)}>
       <ReCAPTCHA
@@ -124,7 +126,7 @@ const FormGetInfo = ({service, title, image, content}) => {
             className={`form-select ${styles.formInput} my-2`}
             aria-label="¿Deseas leasing habitacional?"
             name="selectLeasing"
-            onChange={e => handleSelect(e)}
+            onChange={(e) => handleSelect(e)}
           >
             <option defaultValue value="seleccionar">Seleccionar una opción</option>
             <option value="si">Si</option>
@@ -151,9 +153,9 @@ const FormGetInfo = ({service, title, image, content}) => {
               required: true,
             })}
           />
-            <span className={`${styles.formInputSpanError}`}>
-              {errors.username ? 'Nombre requerido' : ''}
-            </span>
+          <span className={`${styles.formInputSpanError}`}>
+            {errors.username ? 'Nombre requerido' : ''}
+          </span>
         </label>
       </div>
       <div className="form-group">
@@ -170,9 +172,9 @@ const FormGetInfo = ({service, title, image, content}) => {
               required: true,
             })}
           />
-            <span className={`${styles.formInputSpanError}`}>
-              {errors.email ? 'Email Requerido' : '' }
-            </span>
+          <span className={`${styles.formInputSpanError}`}>
+            {errors.email ? 'Email Requerido' : '' }
+          </span>
         </label>
       </div>
       <div className="form-group">
@@ -196,11 +198,11 @@ const FormGetInfo = ({service, title, image, content}) => {
               })}
             />
           </div>
-            <span className={`${styles.formInputSpanError}`}>
-              {errors?.telefono?.type === 'required' && 'Teléfono Requerido'}
-              {errors?.telefono?.type === 'minLength' && 'Debe tener 9 digitos'}
-              {errors?.telefono?.type === 'maxLength' && 'Debe tener 9 digitos'}
-            </span>
+          <span className={`${styles.formInputSpanError}`}>
+            {errors?.telefono?.type === 'required' && 'Teléfono Requerido'}
+            {errors?.telefono?.type === 'minLength' && 'Debe tener 9 digitos'}
+            {errors?.telefono?.type === 'maxLength' && 'Debe tener 9 digitos'}
+          </span>
         </label>
       </div>
       <div className="form-group">
@@ -228,6 +230,6 @@ const FormGetInfo = ({service, title, image, content}) => {
       </div>
     </form>
   );
-}
- 
+};
+
 export default FormGetInfo;

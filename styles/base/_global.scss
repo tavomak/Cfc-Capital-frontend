@@ -1,3 +1,7 @@
+@import "../utils/variables";
+@import "../utils/media";
+@import "../utils/mixins";
+
 * {
   box-sizing: border-box;
 }
@@ -111,7 +115,7 @@ strong, .font-bold {
 }
 
 .shadow {
-  box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
+  box-shadow: 0 0.5rem 1rem rgba($dark-blue, .2) !important;
 }
 
 .overlay {

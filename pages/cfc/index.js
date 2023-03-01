@@ -44,7 +44,7 @@ const Cfc = () => {
             </div>
             <div className="col-md-8">
               <Image
-                src="/factoring-web.png"
+                src="/cfc-about.png"
                 alt="Más que ejecutivos"
                 layout="responsive"
                 objectFit="contain"
@@ -122,7 +122,7 @@ const Cfc = () => {
       </section>
 
       <section className="container-fluid py-5">
-        <div className="row mt-5 py-5">
+        <div className="row py-5">
           <div className="col-12">
             <h2 className="display-font text-center text-dark-blue">
               <b className="fs-1">
@@ -199,7 +199,7 @@ const Cfc = () => {
           </div>
           <div className="row justify-content-around">
             {team && team.map((item) => (
-              <div className="col-md-5 mb-4" key={item.name}>
+              <div className="col-md-5 mb-5" key={item.name}>
                 <div className={`card shadow p-4 ${styles.card}`} style={{ height: '100%', borderRadius: 15 }}>
                   <div className={`${styles.itemText} text-center`}>
                     <p className="display-font text-soft-purple mb-0 fs-5">
@@ -230,7 +230,7 @@ const Cfc = () => {
           </div>
           <div className="row justify-content-around">
             {directory && directory.map((item) => (
-              <div className="col-md-5 mb-4" key={item.name}>
+              <div className="col-md-5 mb-5" key={item.name}>
                 <div className={`card shadow p-4 ${styles.card}`} style={{ height: '100%', borderRadius: 15 }}>
                   <div className={`${styles.itemText} text-center`}>
                     <p className="display-font text-soft-purple mb-0 fs-5">

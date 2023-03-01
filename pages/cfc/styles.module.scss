@@ -1,9 +1,7 @@
 @import "/styles/utils/variables";
 @import "/styles/utils/media";
 
-.card {
-  background: linear-gradient(180deg, $ligth-blue, $white 60%);
-}
+
 .item {
   &Image {
     text-align: center;
