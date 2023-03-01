@@ -12,6 +12,20 @@ import Carousel from 'react-elastic-carousel';
 import styles from '@styles/pages/Home.module.scss';
 import Button from '@components/Atoms/Button';
 import RowTextImage from '@components/Molecules/RowTextImage';
+import GradientCircleSection from '@components/Molecules/GradientCircleSection';
+
+const SectionTitle = () => (
+  <h1 className={`text-dark-blue fw-bolder ${styles.primaryTitle}`}>
+    No esperes por
+    <br />
+    el
+    <span className="text-soft-purple"> cobro</span>
+    {' '}
+    de tus cuentas
+  </h1>
+);
+
+const SectionSubtitle = () => (<p>Muévete con agilidad y planifica por adelantado</p>);
 
 export default function Home() {
   return (
@@ -19,35 +33,13 @@ export default function Home() {
       title="Financiamos al motor de la economía"
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
-      <section className="py-5 bg-gradient-circle">
-        <div className="container">
-          <div className="row justify-content-end align-items-center text-center text-lg-start">
-            <div className="col-md-5">
-              <h1 className={`text-dark-blue fw-bolder ${styles.primaryTitle}`}>
-                No esperes por
-                <br />
-                el
-                <span className="text-soft-purple"> cobro</span>
-                {' '}
-                de tus cuentas
-              </h1>
-              <p>
-                Muévete con agilidad y planifica por adelantado
-              </p>
-            </div>
-            <div className="col-md-7">
-              <Image
-                src="/home-banner.png"
-                alt="Financiamos tus facturas en 4 horas"
-                layout="responsive"
-                objectFit="contain"
-                width={120}
-                height={87}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <GradientCircleSection
+        imageUrl="/home-banner.png"
+        title={<SectionTitle />}
+        subtitle={<SectionSubtitle />}
+        classFirstCol="col-lg-5"
+        classSecondCol="col-lg-7"
+      />
 
       <section className="py-5 bg-mask">
         <div className="container">
@@ -133,11 +125,10 @@ export default function Home() {
             <div className="col-12">
               <h2 className="text-center text-dark-blue fw-bolder">Te apoyamos desde la factura uno</h2>
               {testimonialSliderData && testimonialSliderData.length && (
-                <Carousel sliderBreakPoints={sliderBreakPoints}>
-                  {
-                  testimonialSliderData.map((item) => (
-                    <div key={item.id} className="position-relative p-1 p-lg-5">
-                      <div className="card shadow py-4 px-3 px-lg-5">
+                <Carousel breakPoints={sliderBreakPoints}>
+                  {testimonialSliderData.map((item) => (
+                    <div key={item.id} className="p-1 p-lg-4">
+                      <div className="card shadow py-4 px-3 px-lg-5" style={{ height: '100%' }}>
                         <ul className="d-lg-flex">
                           <li className="me-3">
                             <Image
@@ -162,8 +153,7 @@ export default function Home() {
                         <p>{item.description}</p>
                       </div>
                     </div>
-                  ))
-                }
+                  ))}
                 </Carousel>
               )}
             </div>
