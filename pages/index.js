@@ -16,16 +16,20 @@ import GradientCircleSection from '@components/Molecules/GradientCircleSection';
 
 const SectionTitle = () => (
   <h1 className={`text-dark-blue fw-bolder ${styles.primaryTitle}`}>
-    No esperes por
-    <br />
-    el
-    <span className="text-soft-purple"> cobro</span>
-    {' '}
-    de tus cuentas
+    Te apoyamos desde
+    <span className="text-dark-blue"> la factura número uno</span>
   </h1>
 );
 
-const SectionSubtitle = () => (<p>Muévete con agilidad y planifica por adelantado</p>);
+const SectionSubtitle = () => (
+  <p className="text-soft-purple fw-bolder fs-3">
+    ¡Para que te concentres
+    {' '}
+    <br />
+    {' '}
+    en tu negocio!
+  </p>
+);
 
 export default function Home() {
   return (
@@ -36,7 +40,7 @@ export default function Home() {
       <GradientCircleSection
         imageUrl="/home-banner.png"
         title={<SectionTitle />}
-        subtitle={<SectionSubtitle />}
+        subTitle={<SectionSubtitle />}
         classFirstCol="col-lg-5"
         classSecondCol="col-lg-7"
       />
