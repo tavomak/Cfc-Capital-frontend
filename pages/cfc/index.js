@@ -24,8 +24,8 @@ const Cfc = () => {
       <section>
         <div className="embed-responsive embed-responsive-16by9">
           <Player muted autoPlay loop>
-            <source src="/video-nosotros-CFC-850.mp4" media="(max-width: 854px)" type="video/mp4" />
-            <source src="/video-nosotros-CFC-1280.mp4" media="(max-width: 1280px)" type="video/mp4" />
+            <source src="/video-nosotros-CFC-480.mp4" media="(max-width: 854px)" type="video/mp4" />
+            <source src="/video-nosotros-CFC-720.mp4" media="(max-width: 1280px)" type="video/mp4" />
             <source src="/video-nosotros-CFC-hd.mp4" media="(min-width: 1281px)" type="video/mp4" />
           </Player>
         </div>
