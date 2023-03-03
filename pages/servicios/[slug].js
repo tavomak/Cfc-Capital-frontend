@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react';
-
-import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Head from 'next/head';
-import Link from 'next/link';
 
 import Layout from '@components/Templates/Layout';
 import RowTextImage from '@components/Molecules/RowTextImage';
@@ -12,23 +8,14 @@ import FactoringLayout from '@components/Templates/FactoringLayout';
 import ServiceLayout from '@components/Templates/ServiceLayout';
 
 export default function Post({ data }) {
-  const router = useRouter();
   const [formatedTitle, setFormatedTitle] = useState('');
   const [service, setService] = useState(null);
-  const [isLeasing, setLeasing] = useState(false);
 
   useEffect(() => {
     setFormatedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''));
     setService(data.Seo.metaTitle);
     console.log({ data });
   }, [data]);
-  useEffect(() => {
-    if (service === 'Leasing') {
-      setLeasing(true);
-    } else {
-      setLeasing(false);
-    }
-  }, [service]);
   return (
     <Layout
       title={data.Seo.metaTitle}
@@ -43,7 +30,9 @@ export default function Post({ data }) {
         <meta property="og:image" content={data.Seo.ShareImage} />
       </Head>
       {(service === 'Factoring')
-        ? (<FactoringLayout />)
+        ? (
+          <FactoringLayout />
+        )
         : (
           <ServiceLayout
             formatedTitle={formatedTitle}

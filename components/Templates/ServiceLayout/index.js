@@ -40,11 +40,8 @@ const ServiceLayout = ({ data, formatedTitle }) => (
       subTitle={<SectionSubtitle />}
       classFirstCol="col-lg-5"
       classSecondCol="col-lg-5"
-    >
-      <div className="card shadow bg-secondary-gradient p-lg-5">
-        <FormContact />
-      </div>
-    </GradientCircleSection>
+      imageUrl="/leasing.png"
+    />
     <ServiceItem
       imageUrl="/pow-2.png"
       order="first"

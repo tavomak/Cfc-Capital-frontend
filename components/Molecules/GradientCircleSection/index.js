@@ -4,7 +4,7 @@ const GradientCircleSection = ({
   title, subTitle, content, children, imageUrl, classFirstCol, classSecondCol,
 }) => (
   <section className="py-5 bg-gradient-circle">
-    <div className="container py-5">
+    <div className="container">
       <div className="row justify-content-around align-items-center text-center text-lg-start">
         <div className={classFirstCol}>
           {title && title}

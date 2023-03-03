@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import FormContact from '@components/Molecules/FormContact';
-import FormFactoringActiveCampain from '@components/Molecules/FormFactoringActiveCampain';
+import FormGetInformation from '@components/Molecules/FormGetInformation';
 import GradientCircleSection from '@components/Molecules/GradientCircleSection';
 import ServiceItem from '@components/Molecules/ServiceItem';
 import Button from '@components/Atoms/Button';
@@ -27,7 +27,7 @@ const SectionSubtitle = () => (
       <span className="text-dark-blue fw-bolder fs-4">Que el crecimiento no tarde en llegar</span>
       <br />
       {' '}
-      Obtén liquidez inmediata cediéndonos tus facturas a crédito.
+      Obtén liquidez inmediata cediéndonos tus facturas.
     </p>
     <p><small>*Pre aprobación sujeta a revisión de antecedentes comerciales</small></p>
   </>
@@ -207,7 +207,9 @@ const FactoringLayout = () => (
       <div className="container">
         <div className="row align-items-center justify-content-around">
           <div className="col-lg-5">
-            <FormFactoringActiveCampain />
+            <div className="card shadow p-4">
+              <FormContact />
+            </div>
           </div>
           <div className="col-lg-4">
             <h2 className="text-soft-purple fw-bolder">¿Tienes dudas?</h2>
