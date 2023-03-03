@@ -33,7 +33,7 @@ const SectionSubtitle = () => (
   </>
 );
 
-const ServiceLayout = ({ data, formatedTitle }) => (
+const ServiceLayout = ({ data, formattedTitle }) => (
   <>
     <GradientCircleSection
       title={<SectionTitle />}
@@ -207,7 +207,7 @@ const ServiceLayout = ({ data, formatedTitle }) => (
             <div className="card shadow p-4">
               <FormGetInfo
                 service={data.Seo.metaTitle}
-                title={formatedTitle}
+                title={formattedTitle}
                 image={`${data.Seo.metaTitle.toLowerCase()}.jpg`}
                 content={data.Como.Contenido}
               />

@@ -8,11 +8,11 @@ import FactoringLayout from '@components/Templates/FactoringLayout';
 import ServiceLayout from '@components/Templates/ServiceLayout';
 
 export default function Post({ data }) {
-  const [formatedTitle, setFormatedTitle] = useState('');
+  const [formattedTitle, setFormattedTitle] = useState('');
   const [service, setService] = useState(null);
 
   useEffect(() => {
-    setFormatedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''));
+    setFormattedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''));
     setService(data.Seo.metaTitle);
     console.log({ data });
   }, [data]);
@@ -35,7 +35,7 @@ export default function Post({ data }) {
         )
         : (
           <ServiceLayout
-            formatedTitle={formatedTitle}
+            formattedTitle={formattedTitle}
             data={data}
           />
         )}

@@ -42,6 +42,13 @@ export const services = [
     imageUrl: '/linea-credito.png',
     slug: 'factoring',
     order: 'first',
+    Seo: {
+      metaTitle: 'Factoring',
+      metaDescription: 'Permite a las empresas obtener liquidez inmediata, así logran ordenar su flujo de caja.',
+      shareImage: {
+        url: 'https://cfc-capital.s3.amazonaws.com/factoring_bg_1c7bd71d69.jpg',
+      },
+    },
   },
   {
     id: '2222',

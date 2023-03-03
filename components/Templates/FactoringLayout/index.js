@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import FormContact from '@components/Molecules/FormContact';
-import FormGetInformation from '@components/Molecules/FormGetInformation';
 import GradientCircleSection from '@components/Molecules/GradientCircleSection';
 import ServiceItem from '@components/Molecules/ServiceItem';
 import Button from '@components/Atoms/Button';
