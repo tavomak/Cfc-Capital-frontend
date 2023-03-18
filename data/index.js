@@ -34,51 +34,241 @@ export const business = [
 
 export const services = [
   {
-    id: '1111',
-    title: 'Factoring',
-    subtitle: '¿Tus clientes te pagan a 30, 60, 90 días o más?',
-    text: 'Obtén liquidez inmediata cediéndonos tus facturas a crédito. Concéntrate en tu negocio. Nosotros nos encargamos de cobrar las facturas pendientes a las empresas.',
-    bgType: '',
+    id: '111',
+    name: 'Factoring',
+    title: '¿Tus clientes te pagan a 30,60, 90 días o más?',
+    subtitle: 'Obtén liquidez inmediata cediéndonos tus facturas.',
+    legal: '*Pre aprobación sujeta a revisión de antecedentes comerciales',
+    shortDescription: 'Obtén liquidez inmediata cediéndonos tus facturas a crédito. Concéntrate en tu negocio. Nosotros nos encargamos de cobrar las facturas pendientes a las empresas.',
+    bgType: 'circle',
     imageUrl: '/linea-credito.png',
     slug: 'factoring',
     order: 'first',
-    Seo: {
+    seo: {
       metaTitle: 'Factoring',
-      metaDescription: 'Permite a las empresas obtener liquidez inmediata, así logran ordenar su flujo de caja.',
+      metaDescription: 'Permite transformar en dinero un bien productivo de la empresa, normalmente bienes raí­ces.',
       shareImage: {
-        url: 'https://cfc-capital.s3.amazonaws.com/factoring_bg_1c7bd71d69.jpg',
+        url: '/factoring_bg.jpg',
       },
+    },
+    description: {
+      title: '<h2 class="text-dark-blue fw-bolder">¿Tienes activos y necesitas liquidez?</h2>',
+      content: '<p>Te ofrecemos una solución de <span className="fw-bolder">Leaseback.</span> Un mecanismo de financiamiento que permite a las empresas obtener liquidez a través de la venta de sus activos mediante un contrato de arrendamiento.</p>',
+      imageUrl: '/pow.png',
+    },
+    howItWorks: {
+      title: '<h3 class="text-dark-blue fw-bolder">¿Cómo funciona?</h3>',
+      content: '<p>El Leaseback es una operación en donde el propietario de un bien inmueble vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.</p>',
+      imageUrl: '/linea-credito.png',
+    },
+    testimonial: [],
+    process: [
+      {
+        id: 1,
+        title: 'Envío de antecedentes',
+        content: 'Envía los antecedentes de la propiedad, tus antecedentes financieros y tu requerimiento de financiamiento.',
+      },
+      {
+        id: 2,
+        title: 'Acuerdo de contrato',
+        content: 'Luego de evaluar, te planteamos una propuesta sobre el valor de compra y condiciones del contrato de arrendamiento en cuanto a plazo y valor de rentas de arrendamiento.',
+      },
+      {
+        id: 3,
+        title: 'Obtención de dinero ',
+        content: 'Hacemos una tasación, estudio de títulos y realizamos el proceso de transferencia en el conservador de bienes raíces, una vez finalizado obtienes el dinero.',
+      },
+    ],
+    requirements: {
+      content: [
+        '<p><b>Facturas válidas:</b> La empresa debe contar con facturas que estén pendientes de pago y que sean válidas, es decir, que cumplan con los requisitos legales y fiscales correspondientes.',
+        '<p><b>Clientes solventes:</b> Nosotros evaluamos el riesgo crediticio de los clientes de la empresa que aparecen en las facturas para determinar si son solventes o no.',
+        '<p><b>Contrato de factoring:</b> Firmamos un contrato de factoring que establezca los términos y condiciones de la transacción, así como las comisiones que se aplicarán.',
+      ],
+      imageUrl: '',
+    },
+    whyToUse: {
+      content: [
+        'Proporciona una inyección de efectivo inmediata sin la necesidad de esperar a que los clientes paguen las facturas.',
+        'Ayuda a mejorar el flujo de caja y la gestión de la tesorería tu empresa.',
+        'Reduce el riesgo de impago y mejora la calidad de la cartera de clientes de tu empresa.',
+      ],
+      imageUrl: '',
     },
   },
   {
-    id: '2222',
-    title: 'Factoring web',
-    subtitle: 'Deja de coleccionar facturas por cobrar',
-    text: 'En nuestra plataforma digital podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente.',
-    bgType: '',
-    imageUrl: '/factoring-web.png',
-    slug: 'factoring-web',
-    order: 'last',
-  },
-  {
-    id: '3333',
-    title: 'Leasing',
-    subtitle: '¿Necesitas un vehículo nuevo o maquinaria?',
-    text: 'El Leasing es para ti. Una excelente alternativa para emprendimientos y pymes que requieren financiamiento para adquirir activos fijos. Además, es una herramienta de financiamiento de largo plazo que permite ordenar los pagos de acuerdo a los ingresos.',
+    id: '333',
+    name: 'leasing',
+    title: 'Tú negocio un vehículo?',
+    subtitle: '¡Un empresario es más que un propietario!',
+    shortDescription: 'El Leasing es un sistema de financiamiento que está pensado para personas naturales con giro y empresas, que busca resolver el financiamiento para la adquisición de activos fijos.',
     bgType: '',
     imageUrl: '/leasing.png',
     slug: 'leasing',
-    order: 'first',
+    order: 'last',
+    seo: {
+      metaTitle: 'Leasing',
+      metaDescription: 'El Leasing es un sistema de financiamiento que está pensado para personas naturales con giro y empresas, que busca resolver el financiamiento para la adquisición de activos fijos.',
+      shareImage: {
+        url: '/leasing_bg.jpg',
+      },
+    },
+    description: {
+      title: '<h2 class="text-dark-blue fw-bolder">¿Necesitas un vehículo nuevo o maquinaria?</h2>',
+      content: '<p>El Leasing es un sistema de financiamiento que está pensado para personas naturales con giro y empresas, que busca resolver el financiamiento para la adquisición de activos fijos.</p>',
+      imageUrl: '/leasing-first.png',
+    },
+    howItWorks: {
+      title: '<h3 class="text-dark-blue fw-bolder">¿Cómo funciona?</h3>',
+      content: '<p>Esta herramienta de financiamiento te permite, mediante un contrato, establece el arriendo de un bien de capital por un determinado período de tiempo y una vez finalizado el contrato, el bien es devuelto a su propietario.</p>',
+      imageUrl: '/factoring-image.png',
+    },
+    testimonial: [],
+    process: [
+      {
+        id: 1,
+        title: 'Cotización del activo',
+        content: 'Cotiza el activo que necesites adquirir con el proveedor de tu preferencia.',
+      },
+      {
+        id: 2,
+        title: 'Evaluación y propuesta',
+        content: 'Envíanos la cotización del activo y tu información financiera para evaluar la operación y te enviaremos la propuesta.',
+      },
+      {
+        id: 3,
+        title: 'Firma del contrato',
+        content: 'Formalizamos la operación mediante la firma del contrato de Leasing, para coordinar con el proveedor del activo, la compra y entrega del bien financiado.',
+      },
+    ],
+    requirements: {
+      content: [
+        'Debes contar con tus antecedentes financieros (Carpeta tributaria, balance, etc.), los antecedentes de la propiedad (documentación legal) y la descripción del destino de los fondos.',
+      ],
+      imageUrl: '/prensa-bg.png',
+    },
+    whyToUse: {
+      content: [
+        '<p><b>Preservación del capital de trabajo:</b> Al optar por el leasing, la empresa puede adquirir un activo sin tener que pagar el precio total de compra de manera inmediata, lo que le permite preservar su capital de trabajo para otras necesidades o contingencias.</p>',
+        '<p><b>Flexibilidad:</b> El leasing puede ofrecer opciones flexibles de financiamiento, como la posibilidad de hacer pagos personalizados y ajustables a los ingresos de la empresa, o incluso la posibilidad de actualizar el equipo arrendado con la última tecnología al final del contrato.        ',
+        '<p><b>Beneficios fiscales:</b> En algunos casos, los pagos de arrendamiento pueden ser deducibles de impuestos como un gasto operativo, lo que puede tener un impacto positivo en la rentabilidad de la empresa.',
+      ],
+      imageUrl: '/ejecutivos.png',
+    },
   },
   {
     id: '4444',
-    title: 'Leaseback',
-    subtitle: '¿Tienes activos y necesitas liquidez?',
-    text: 'Te ofrecemos una solución de Leaseback. Un mecanismo de financiamiento que permite a las empresas obtener liquidez a través de la venta de sus activos mediante un contrato de arrendamiento.',
+    name: 'leaseback',
+    title: '¿Tienes activos y necesitas liquidez?',
+    subtitle: 'Impúlsate hacia tu futuro hoy mismo',
+    shortDescription: 'Te ofrecemos una solución de Leaseback. Un mecanismo de financiamiento que permite a las empresas obtener liquidez a través de la venta de sus activos mediante un contrato de arrendamiento.',
     bgType: '',
-    imageUrl: '/ejecutivos.png',
+    imageUrl: '/leaseback.png',
     slug: 'leaseback',
+    order: 'first',
+    seo: {
+      metaTitle: 'Leaseback',
+      metaDescription: 'Permite transformar en dinero un bien productivo de la empresa, normalmente bienes raí­ces.',
+      shareImage: {
+        url: '/leaseback_bg.jpg',
+      },
+    },
+    description: {
+      title: '<h2 class="text-dark-blue fw-bolder">¿Tienes activos y necesitas liquidez?</h2>',
+      content: '<p>Te ofrecemos una solución de <span className="fw-bolder">Leaseback.</span> Un mecanismo de financiamiento que permite a las empresas obtener liquidez a través de la venta de sus activos mediante un contrato de arrendamiento.</p>',
+      imageUrl: '/leaseback-first.png',
+    },
+    howItWorks: {
+      title: '<h3 class="text-dark-blue fw-bolder">¿Cómo funciona?</h3>',
+      content: '<p>El Leaseback es una operación en donde el propietario de un bien inmueble vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.</p>',
+      imageUrl: '/leaseback-last.png',
+    },
+    testimonial: [],
+    process: [
+      {
+        id: 1,
+        title: 'Envío de antecedentes',
+        content: 'Envía los antecedentes de la propiedad, tus antecedentes financieros y tu requerimiento de financiamiento.',
+      },
+      {
+        id: 2,
+        title: 'Acuerdo de contrato',
+        content: 'Luego de evaluar, te planteamos una propuesta sobre el valor de compra y condiciones del contrato de arrendamiento en cuanto a plazo y valor de rentas de arrendamiento.',
+      },
+      {
+        id: 3,
+        title: 'Obtención de dinero ',
+        content: 'Hacemos una tasación, estudio de títulos y realizamos el proceso de transferencia en el conservador de bienes raíces, una vez finalizado obtienes el dinero.',
+      },
+    ],
+    requirements: {
+      content: [
+        'Debes contar con tus antecedentes financieros (Carpeta tributaria, balance, etc.), los antecedentes de la propiedad (documentación legal) y la descripción del destino de los fondos.',
+      ],
+      imageUrl: '/prensa-bg.png',
+    },
+    whyToUse: {
+      content: [
+        'Es una excelente alternativa para pymes que cuentan con mucho activo fijo (inmuebles, vehículos) y poco capital disponible.',
+        'Te permite reestructurar pasivos en el largo plazo ordenando los pagos en relación a los ingresos.',
+        'Puedes financiar nuevos proyectos o para otorgar liquidez a la empresa.',
+      ],
+      imageUrl: '/leasing-last.png',
+    },
+  },
+  {
+    id: '222',
+    name: 'factoring-web',
+    title: '¿Tienes activos y necesitas liquidez?',
+    subtitle: 'Deja de coleccionar facturas por cobrar',
+    shortDescription: 'En nuestra plataforma digital podrás cargar de manera masiva tus facturas, con cotización en línea clara y transparente.',
+    bgType: '',
+    imageUrl: '/business-guy.png',
+    slug: 'factoring-web',
     order: 'last',
+    seo: {
+      metaTitle: 'Factoring web',
+      metaDescription: 'Permite transformar en dinero un bien productivo de la empresa, normalmente bienes raí­ces.',
+      shareImage: {
+        url: '/leaseback_bg.jpg',
+      },
+    },
+    description: {
+      title: '<h2 class="text-dark-blue fw-bolder">¿Tienes activos y necesitas liquidez?</h2>',
+      content: '<p>Te ofrecemos una solución de <span className="fw-bolder">Leaseback.</span> Un mecanismo de financiamiento que permite a las empresas obtener liquidez a través de la venta de sus activos mediante un contrato de arrendamiento.</p>',
+      imageUrl: '/pow.png',
+    },
+    howItWorks: {
+      title: '<h3 class="text-dark-blue fw-bolder">¿Cómo funciona?</h3>',
+      content: '<p>El Leaseback es una operación en donde el propietario de un bien inmueble vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.</p>',
+      imageUrl: '/linea-credito.png',
+    },
+    testimonial: [],
+    process: [
+      {
+        id: 1,
+        title: 'Envío de antecedentes',
+        content: 'Envía los antecedentes de la propiedad, tus antecedentes financieros y tu requerimiento de financiamiento.',
+      },
+      {
+        id: 2,
+        title: 'Acuerdo de contrato',
+        content: 'Luego de evaluar, te planteamos una propuesta sobre el valor de compra y condiciones del contrato de arrendamiento en cuanto a plazo y valor de rentas de arrendamiento.',
+      },
+      {
+        id: 3,
+        title: 'Obtención de dinero ',
+        content: 'Hacemos una tasación, estudio de títulos y realizamos el proceso de transferencia en el conservador de bienes raíces, una vez finalizado obtienes el dinero.',
+      },
+    ],
+    requirements: {
+      content: 'Debes contar con tus antecedentes financieros (Carpeta tributaria, balance, etc.), los antecedentes de la propiedad (documentación legal) y la descripción del destino de los fondos.',
+      imageUrl: '',
+    },
+    whyToUse: {
+      content: '<ul><li>•Es una excelente alternativa para pymes que cuentan con mucho activo fijo (inmuebles, vehículos) y poco capital disponible.</li><li>•Te permite reestructurar pasivos en el largo plazo ordenando los pagos en relación a los ingresos.</li><li>•Puedes financiar nuevos proyectos o para otorgar liquidez a la empresa.</li></ul>',
+      imageUrl: '',
+    },
   },
 ];
 
@@ -455,5 +645,50 @@ export const directory = [
     name: 'Jorge Narbona Lemus',
     cargo: 'Director',
     linkedin: 'https://www.linkedin.com/in/jorge-narbona-8929b21a/',
+  },
+];
+
+export const navItems = [
+  {
+    label: 'Inicio',
+    path: '/',
+    children: false,
+  },
+  {
+    label: 'CFC',
+    path: '/cfc',
+    children: false,
+  },
+  {
+    label: 'Factoring',
+    path: '/servicios/factoring',
+    children: false,
+  },
+  {
+    label: 'Servicios',
+    path: '/servicios',
+    children: [
+      {
+        label: 'Factoring web',
+        path: '/servicios/CFC-PasoaPaso.pdf',
+      },
+      {
+        label: 'Leasing',
+        path: '/servicios/leasing',
+      }, {
+        label: 'Leaseback',
+        path: '/servicios/leaseback',
+      },
+    ],
+  },
+  {
+    label: 'Prensa',
+    path: '/prensa',
+    children: false,
+  },
+  {
+    label: 'Contacto',
+    path: '/contacto',
+    children: false,
   },
 ];

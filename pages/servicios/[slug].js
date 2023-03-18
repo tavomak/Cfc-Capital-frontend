@@ -1,43 +1,32 @@
-import { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 import Layout from '@components/Templates/Layout';
 import RowTextImage from '@components/Molecules/RowTextImage';
-import { services, fullServices } from '@data/index';
+import { services } from '@data/index';
 import FactoringLayout from '@components/Templates/FactoringLayout';
 import ServiceLayout from '@components/Templates/ServiceLayout';
 
 export default function Post({ data }) {
-  const [formattedTitle, setFormattedTitle] = useState('');
-  const [service, setService] = useState(null);
-
-  useEffect(() => {
-    setFormattedTitle(data.Slide.titlulo.replace('<br> <small class="text-dark-grey fs-2">', '').replace('</small>', ''));
-    setService(data.Seo.metaTitle);
-    console.log({ data });
-  }, [data]);
+  console.log(data.name);
   return (
     <Layout
-      title={data.Seo.metaTitle}
-      description={data.Seo.metaDescription}
+      title={data.seo?.metaTitle}
+      description={data.seo?.metaDescription}
     >
       <Head>
         <title>
-          {data.Seo.metaTitle}
+          {data.seo?.metaTitle}
           {' '}
           | CFC Capital
         </title>
-        <meta property="og:image" content={data.Seo.ShareImage} />
+        <meta property="og:image" content={data.seo?.ShareImage} />
       </Head>
-      {(service === 'Factoring')
+      {(data.name.toLowerCase() === 'factoring')
         ? (
-          <FactoringLayout />
+          <FactoringLayout data={data} />
         )
         : (
-          <ServiceLayout
-            formattedTitle={formattedTitle}
-            data={data}
-          />
+          <ServiceLayout data={data} />
         )}
       <RowTextImage
         gradientType="secondary"
@@ -54,8 +43,8 @@ export default function Post({ data }) {
 }
 
 export const getStaticProps = async ({ params, preview = null }) => {
-  const array = fullServices
-    .filter((article) => article.Seo.metaTitle.toLocaleLowerCase() === params.slug);
+  const array = services
+    .filter((article) => article.name.toLocaleLowerCase() === params.slug) || [];
   const data = { ...array };
   return {
     props: {
