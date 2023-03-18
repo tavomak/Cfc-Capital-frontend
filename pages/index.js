@@ -12,7 +12,10 @@ import Carousel from 'react-elastic-carousel';
 import styles from '@styles/pages/Home.module.scss';
 import Button from '@components/Atoms/Button';
 import RowTextImage from '@components/Molecules/RowTextImage';
-import GradientCircleSection from '@components/Molecules/GradientCircleSection';
+import GradientSection from '@components/Molecules/GradientSection';
+import DiconSection from '@components/Molecules/DiconSection';
+import ExperienceSection from '@components/Molecules/ExperienceSection';
+import FactoringWebSection from '@components/Molecules/FactoringWebSection';
 
 const SectionTitle = () => (
   <h1 className={`text-dark-blue fw-bolder ${styles.primaryTitle}`}>
@@ -37,12 +40,13 @@ export default function Home() {
       title="Financiamos al motor de la economía"
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
-      <GradientCircleSection
-        imageUrl="/home-banner.png"
+      <GradientSection
+        imageUrl="/factoring-banner.png"
         title={<SectionTitle />}
-        subTitle={<SectionSubtitle />}
+        subtitle={<SectionSubtitle />}
         classFirstCol="col-lg-5"
         classSecondCol="col-lg-7"
+        type="circle"
       />
 
       <section className="py-5 bg-mask">
@@ -220,10 +224,12 @@ export default function Home() {
                 equivalente a un mes de venta!
               </h2>
               <div className="text-center">
-                <Button
-                  className="btn btn-primary mt-4 text-uppercase py-2 px-4"
-                  text="La quiero"
-                />
+                <Link href="/servicios/factoring" passHref>
+                  <Button
+                    className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                    text="La quiero"
+                  />
+                </Link>
                 <p className="pt-2">
                   <small>*Pre aprobación sujeta a revisión de antecedentes comerciales.</small>
                 </p>
@@ -313,7 +319,7 @@ export default function Home() {
             </div>
             <div className="col-md-8 mt-5 mt-lg-0">
               <Image
-                src="/pow-2.png"
+                src="/business-guy.png"
                 alt="Más que ejecutivos"
                 layout="responsive"
                 objectFit="contain"
@@ -325,136 +331,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-lg-5 bg-secondary-gradient">
-        <div className="container py-5">
-          <div className="row align-items-center text-center text-lg-start">
-            <div className="col-md-6 mb-4 mb-lg-0">
-              <Image
-                src="/dicon.png"
-                alt="Más que ejecutivos"
-                layout="responsive"
-                objectFit="contain"
-                width={500}
-                height={500}
-              />
-            </div>
-            <div className="col-md-5">
-              <p>Preguntas frecuentes</p>
-              <h4 className="text-dark-blue fw-bolder">¿Tienes dicom?</h4>
-              <p>
-                No te preocupes. Envíanos tu carpeta tributaria y factura emitida,
-                {' '}
-                nosotros nos encargamos del resto.
-              </p>
-              <h4 className="text-dark-blue fw-bolder">En sólo horas y sin papeleos</h4>
-              <p>
-                En CFC Capital puedes abrir una línea y realizar tu primera operación en horas.
-              </p>
-              <Button
-                className="btn btn-primary mt-4 text-uppercase py-2 px-4"
-                text="Comenzar"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <DiconSection />
 
-      <section className="py-lg-5 bg-top-right-shape">
-        <div className="container pt-lg-5">
-          <div className="row align-items-center pt-5 text-center text-lg-start">
-            <div className="col-md-4 mb-5 mb-lg-0">
-              <h3 className="text-dark-blue fw-bolder fs-2">
-                Factoring web
-              </h3>
-              <p>
-                Para nuestros clientes
-              </p>
-              <p>
-                <b>
-                  Deja de coleccionar facturas por cobrar
-                </b>
-                <br />
-                En nuestra plataforma digital podrás cargar de manera masiva tus facturas,
-                {' '}
-                con cotización en línea clara y transparente.
-              </p>
-              <Link href="/factoring-web" passHref>
-                <Button
-                  className="btn btn-primary mt-4 text-uppercase py-2 px-4"
-                  text="Saber más"
-                />
-              </Link>
-            </div>
-            <div className="col-md-8">
-              <Image
-                src="/factoring-web.png"
-                alt="Más que ejecutivos"
-                layout="responsive"
-                objectFit="contain"
-                width={600}
-                height={500}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <FactoringWebSection />
 
-      <section className="pb-5 py-lg-5 bg-bottom-left-shape">
-        <div className="container py-5">
-          <div className="row justify-content-center">
-            <div className="col-md-8">
-              <h3 className="text-center text-dark-blue fw-bolder fs-2">
-                Tenemos la experiencia
-                <br />
-                para enfrentar el futuro
-              </h3>
-              <ul className="d-lg-flex justify-content-between w-100 pt-5">
-                <li className="px-4 w-100">
-                  <div className="card shadow p-4 text-center bg-secondary-gradient">
-                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
-                      19
-                    </h4>
-                    <p className="text-dark-blue fs-4 mb-0">
-                      AÑOS
-                    </p>
-                  </div>
-                </li>
-                <li className="px-4 w-100 my-4 my-lg-0">
-                  <div className="card shadow p-4 text-center bg-secondary-gradient">
-                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
-                      4000
-                    </h4>
-                    <p className="text-dark-blue fs-4 mb-0">
-                      PYMES
-                    </p>
-                  </div>
-                </li>
-                <li className="px-4 w-100">
-                  <div className="card shadow p-4 text-center bg-secondary-gradient">
-                    <h4 className="text-dark-blue fw-bolder fs-3 mb-0">
-                      600
-                    </h4>
-                    <p className="text-dark-blue fs-4 mb-0">
-                      MMUS$
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ExperienceSection shape="bottom-left" />
 
       <section className="py-lg-5">
-        <div className="container py-5 bg-tag">
+        <div className="container py-5">
           <div className="row justify-content-center">
             <div className="col-md-10">
               <h3 className="text-center text-dark-blue fw-bolder fs-2">
-                Para nuestros clientes
+                Otras soluciones
               </h3>
               <ul className="d-lg-flex justify-content-between w-100 pt-5">
                 <li className="px-4 w-100">
-                  <div className="card shadow p-4 bg-secondary-gradient">
+                  <div className="card shadow p-4 bg-secondary-gradient d-flex flex-column justify-content-between">
                     <h4 className="text-dark-blue fw-bolder">Leasing</h4>
                     <p>
                       <span className="text-dark-blue">¿Necesitas un vehículo nuevo o maquinaria?</span>
@@ -465,7 +357,7 @@ export default function Home() {
                       {' '}
                       contrato, el bien es devuelto a su propietario.
                     </p>
-                    <Link href="/leasing" passHref>
+                    <Link href="/servicios/leasing" passHref>
                       <Button
                         className="btn btn-primary mt-4 text-uppercase py-2 px-4"
                         text="Saber más"
@@ -474,7 +366,7 @@ export default function Home() {
                   </div>
                 </li>
                 <li className="px-4 my-4 my-lg-0 w-100">
-                  <div className="card shadow p-4 bg-secondary-gradient">
+                  <div className="card shadow p-4 bg-secondary-gradient d-flex flex-column justify-content-between" style={{ height: '100%' }}>
                     <h4 className="text-dark-blue fw-bolder">Leaseback</h4>
                     <p>
                       <span className="text-dark-blue">¿Tienes activos y necesitas liquidez?</span>
@@ -486,7 +378,7 @@ export default function Home() {
                       activos mediante un contrato de arrendamiento.
 
                     </p>
-                    <Link href="/leaseback" passHref>
+                    <Link href="/servicios/leaseback" passHref>
                       <Button
                         className="btn btn-primary mt-4 text-uppercase py-2 px-4"
                         text="Saber más"

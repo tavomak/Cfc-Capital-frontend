@@ -75,6 +75,11 @@ strong, .font-bold {
   background-position: top right;
 }
 
+.bg-top-left-shape {
+  background: url("/top-left-shape.png") top left no-repeat;
+
+}
+
 .bg-bottom-left-shape {
   background: url("/bottom-left-shape.png") no-repeat;
   background-position: bottom left;

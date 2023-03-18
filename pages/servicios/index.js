@@ -56,9 +56,9 @@ const Services = () => {
       {services && services.map((item) => (
         <ServiceItem
           key={item.id}
-          title={item.title}
+          title={item.seo.metaTitle}
           subtitle={item.subtitle}
-          text={item.text}
+          shortDescription={item.shortDescription}
           bgType={item.bgType}
           imageUrl={item.imageUrl}
           slug={item.slug}

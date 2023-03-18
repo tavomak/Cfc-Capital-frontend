@@ -21,7 +21,6 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "tsx"] }],
     "camelcase": "off",
-    "no-console": "off",
     "no-underscore-dangle": "off",
     "no-use-before-define": "off",
     "react/function-component-definition": [
