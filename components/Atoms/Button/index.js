@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ButtonSubmit = ({
+const ButtonSubmit = React.forwardRef(({
   loading,
   text,
   className,
@@ -10,12 +10,13 @@ const ButtonSubmit = ({
   imgPrev,
   imgNext,
   disabled,
-}) => (
+}, ref) => (
   <button
     className={className}
     type={submit ? 'submit' : 'button'}
     onClick={onClick}
     disabled={loading || disabled}
+    ref={ref}
   >
     {imgPrev && <span className="me-2">{imgPrev}</span>}
     <span className="font-weight-bold px-1">{`${text} `}</span>
@@ -28,7 +29,7 @@ const ButtonSubmit = ({
       />
     )}
   </button>
-);
+));
 
 ButtonSubmit.defaultProps = {
   loading: false,
@@ -48,5 +49,7 @@ ButtonSubmit.propTypes = {
   imgPrev: PropTypes.node,
   imgNext: PropTypes.node,
 };
+
+ButtonSubmit.displayName = 'ButtonSubmit';
 
 export default ButtonSubmit;

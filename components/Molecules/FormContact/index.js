@@ -50,7 +50,7 @@ const FormContact = ({ type }) => {
         // If the response is ok than show the success alert
         // alert("Email registered successfully");
         emailjs.sendForm('service_8pof0qh', 'template_tx2orac', form.current, '9cidPWVw6ZjMK7J4e')
-          .then((result) => {
+          .then(() => {
             setLoading(false);
             // eslint-disable-next-line react-hooks/rules-of-hooks
             useNotify('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');

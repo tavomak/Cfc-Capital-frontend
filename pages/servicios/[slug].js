@@ -7,7 +7,6 @@ import FactoringLayout from '@components/Templates/FactoringLayout';
 import ServiceLayout from '@components/Templates/ServiceLayout';
 
 export default function Post({ data }) {
-  console.log(data.name);
   return (
     <Layout
       title={data.seo?.metaTitle}

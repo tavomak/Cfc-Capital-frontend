@@ -10,7 +10,9 @@
 }
 
 .nav {
-  padding: 4px 0 0 0;
+  @include MQ(L) {
+    padding: 4px 0 0 0;
+  }
 }
 
 .primaryNav {
@@ -47,10 +49,12 @@
   color: $dark-blue !important;
   &::after {
     content: '';
-    display: block;
-    width: 100%;
-    height: 2px;
-    background: $dark-blue;
+    @include MQ(L) {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: $dark-blue;
+    }
   }
 }
 

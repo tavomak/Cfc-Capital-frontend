@@ -14,7 +14,6 @@ import styles from './styles.module.scss';
 
 const Cfc = () => {
   const { cfcUserData } = useCfcContext();
-  console.log({ data: cfcUserData });
   const [modal, setModal] = useState(false);
 
   // Create and configure your Cloudinary instance.
@@ -76,7 +75,6 @@ const Cfc = () => {
       </section>
 
       <ExperienceSection shape="top-left" />
-
       <section className="py-5 bg-mask">
         <div className="container">
           <div className="row justify-content-center py-5">
