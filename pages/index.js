@@ -5,6 +5,7 @@ import {
   testimonialSliderData,
   newsSliderData,
   sliderBreakPoints,
+  newsBreakPoints,
 } from '@data/index';
 
 import Layout from '@components/Templates/Layout';
@@ -171,7 +172,7 @@ export default function Home() {
 
       <section className="container py-lg-5">
         {newsSliderData && newsSliderData.length && (
-          <Carousel pagination={false}>
+          <Carousel breakPoints={newsBreakPoints}>
             {
             newsSliderData.map((item) => (
               <div key={item.id} className="position-relative py-5 px-3 px-lg-5">

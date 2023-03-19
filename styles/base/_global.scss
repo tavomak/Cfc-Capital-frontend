@@ -157,3 +157,9 @@ strong, .font-bold {
 // h1 {
 //   font-size: 4rem !important;
 // }
+
+.grecaptcha-badge {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}

@@ -85,7 +85,7 @@ export const services = [
         '<p><b>Clientes solventes:</b> Nosotros evaluamos el riesgo crediticio de los clientes de la empresa que aparecen en las facturas para determinar si son solventes o no.',
         '<p><b>Contrato de factoring:</b> Firmamos un contrato de factoring que establezca los términos y condiciones de la transacción, así como las comisiones que se aplicarán.',
       ],
-      imageUrl: '',
+      imageUrl: '/factoring-image.png',
     },
     whyToUse: {
       content: [
@@ -93,7 +93,7 @@ export const services = [
         'Ayuda a mejorar el flujo de caja y la gestión de la tesorería tu empresa.',
         'Reduce el riesgo de impago y mejora la calidad de la cartera de clientes de tu empresa.',
       ],
-      imageUrl: '',
+      imageUrl: '/leaseback-last.png',
     },
   },
   {
@@ -483,6 +483,13 @@ export const sliderBreakPoints = [
   { width: 550, itemsToShow: 2, itemsToScroll: 2 },
   { width: 768, itemsToShow: 2 },
   { width: 1200, itemsToShow: 3 },
+];
+
+export const newsBreakPoints = [
+  { width: 1, pagination: false, showArrows: false },
+  { width: 550, pagination: false, showArrows: false },
+  { width: 768, pagination: false, showArrows: false },
+  { width: 1200, pagination: false, showArrows: false },
 ];
 
 export const fakeNewsData = [

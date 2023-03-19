@@ -47,7 +47,7 @@ const FactoringLayout = ({ data }) => {
         classSecondCol="col-lg-5"
         type="circle"
       >
-        <div className="card shadow bg-secondary-gradient p-lg-5">
+        <div className="card shadow bg-secondary-gradient p-4 p-lg-5 text-start">
           <FormContact />
         </div>
       </GradientSection>
@@ -200,7 +200,7 @@ const FactoringLayout = ({ data }) => {
                 height={500}
               />
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-5 mb-5 mb-lg-0">
               <h2 className="text-dark-blue fw-bolder">
                 ¿Por qué es la opción ideal?
               </h2>
@@ -242,12 +242,12 @@ const FactoringLayout = ({ data }) => {
         </div>
         <div className="container">
           <div className="row align-items-center justify-content-between">
-            <div className="col-lg-6">
+            <div className="col-lg-6 mb-5 mb-lg-0">
               <div className="card shadow p-4">
                 <FormContact />
               </div>
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-5 text-center text-lg-start">
               <h2 className="text-soft-purple fw-bolder">¿Tienes dudas?</h2>
               <p>Conversemos</p>
               <h3 className="text-dark-blue fw-bolder">Más que ejecutivos</h3>
