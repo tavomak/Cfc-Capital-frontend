@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
-import Button from '@components/Atoms/Button';
 
 const FactoringWebSection = () => (
   <section className="py-lg-5 bg-top-right-shape">
@@ -22,12 +20,9 @@ const FactoringWebSection = () => (
             {' '}
             con cotización en línea clara y transparente.
           </p>
-          <Link href="/factoring-web" passHref>
-            <Button
-              className="btn btn-primary mt-4 text-uppercase py-2 px-4"
-              text="Saber más"
-            />
-          </Link>
+          <a href="/CFC-PasoaPaso.pdf" target="_blank" className="btn btn-primary mt-4 text-uppercase py-2 px-4">
+            Saber más
+          </a>
         </div>
         <div className="col-md-8">
           <Image

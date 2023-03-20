@@ -96,7 +96,7 @@ const FormGetInfo = ({
   };
 
   useEffect(() => {
-    if (service === 'Leasing') {
+    if (service.toLowerCase() === 'leasing') {
       setLeasing(true);
     } else {
       setLeasing(false);

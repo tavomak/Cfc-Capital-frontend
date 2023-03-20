@@ -5,7 +5,7 @@
     &-primary {
         // border: 1px solid $dark-blue;
         border-radius: 50rem;
-        background: $soft-purple;
+        background: $accent-yellow;
         transition: all .1s ease-in-out;
         color: $white;
         &:hover {
@@ -30,6 +30,7 @@
         border: 1px solid $soft-purple;
         background: $soft-purple;
         transition: all .1s ease-in-out;
+        color: $white;
         &:hover {
             color: $soft-purple;
             background: $white;

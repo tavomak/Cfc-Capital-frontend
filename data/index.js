@@ -473,7 +473,7 @@ export const newsSliderData = [
     tag: 'FACTORING | PYME',
     title: 'Los 5 mitos más comunes sobre el Factoring',
     origin: '14-01-2022 | El Mercurio',
-    url: '/prensa',
+    url: '/prensa/los-5-mitos-mas-comunes-sobre-el-factoring',
     description: 'Francisco Goycoolea, gerente comercial de CFC Capital, aclara los 5 mitos más comunes que se tienen sobre esta popular opción de financiamiento.',
   },
 ];

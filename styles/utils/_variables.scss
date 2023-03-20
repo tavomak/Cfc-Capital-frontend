@@ -16,6 +16,7 @@ $palette: (
     soft-blue: #00abc8,
     dark-blue: #002169,
     soft-purple: #623482,
+    accent-yellow: #E5B132,
 );
 $ligth-grey: map-get($palette,ligth-grey);
 $medium-grey: map-get($palette,medium-grey);
@@ -25,6 +26,7 @@ $dark-grey: map-get($palette,dark-grey);
 $soft-blue: map-get($palette,soft-blue);
 $dark-blue: map-get($palette,dark-blue);
 $soft-purple: map-get($palette,soft-purple);
+$accent-yellow: map-get($palette,accent-yellow);
 
 $white:white;
 $black: black;
