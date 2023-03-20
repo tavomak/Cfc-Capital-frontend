@@ -299,10 +299,12 @@ export default function Home() {
                 </li>
               </ul>
               <div className="text-center">
-                <Button
-                  className="btn btn-primary mt-4 text-uppercase py-2 px-4"
-                  text="Comenzar"
-                />
+                <Link href="/servicios/factoring" passHref>
+                  <Button
+                    className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+                    text="Comenzar"
+                  />
+                </Link>
               </div>
             </div>
           </div>
