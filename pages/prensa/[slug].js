@@ -17,7 +17,7 @@ export default function Post({ post, morePosts }) {
   return (
     <Layout 
       title="Servicios"
-      description={post.article.title}
+      description={!router.isFallback ? post.article.title : ''}
     >
       <section className="container">
         {router.isFallback ? (
