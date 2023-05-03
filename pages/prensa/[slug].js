@@ -17,7 +17,7 @@ export default function Post({ post, morePosts }) {
   return (
     <Layout 
       title="Servicios"
-      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
+      description={post.article.title}
     >
       <section className="container">
         {router.isFallback ? (

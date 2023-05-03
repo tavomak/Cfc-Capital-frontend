@@ -203,8 +203,8 @@ const Cfc = () => {
               <p className="text-white">
                 Estamos especializados en el segmento de <span className="text-soft-blue">empresas y pymes</span> entregando soluciones a las necesidades de financiamiento de capital de trabajo y de inversión, transformando los flujos por cobrar a plazo, en dinero efectivo de inmediato o bien haciendo posible adquirir activos productivos a las empresas
               </p>
-              <Link href="/memorias">
-                <a href="#!" className="btn btn-white fs-5">Memorias</a>
+              <Link href="/memorias" passHref>
+                <span className="btn btn-white fs-5">Memorias</span>
               </Link>
             </div>
           </div>

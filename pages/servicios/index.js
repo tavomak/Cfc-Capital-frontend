@@ -29,7 +29,7 @@ const Services = () => {
   return (
     <Layout
       title="Servicios"
-      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
+      description="Nos encargamos de cobrar las facturas pendientes a las empresas, para que solo te concentres en tu negocio."
       bgImage="fondo-servicios.svg"
     >
       <section className="container mb-md-5 py-5">

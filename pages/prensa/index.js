@@ -12,7 +12,7 @@ export default function News({ posts, preview }) {
   return (
     <Layout
       title="Servicios"
-      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
+      description="Noticias de actualidad que ayudan a tus finanzas"
     >
       <section className="container-fluid mb-md-5 py-5" style={{ background: 'url(/fondo-noticias.svg) no-repeat', backgroundSize: 'cover', backgroundPosition: 'bottom center'}}>
         <div className="container">

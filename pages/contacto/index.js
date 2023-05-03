@@ -6,7 +6,7 @@ const Contacto = () => {
   return (
     <Layout
       title="Contacto"
-      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
+      description="Escríbenos para fomentar tu capacidad de desarrollar negocios que crezcan y se proyecten en el tiempo"
     >
       <div className={`container-fluid position-relative ${styles.contactHero}`}>
         <div className={`${styles.contactHeroOverlay}`}></div>

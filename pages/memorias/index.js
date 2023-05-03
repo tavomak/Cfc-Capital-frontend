@@ -75,7 +75,7 @@ const Contacto = () => {
   return (
     <Layout
       title="Memorias"
-      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
+      description="Cuentas públicas de CFC capital, porque creemos en la transparencia como un valor fundamental"
     >
       <div className={`container-fluid bg-grey py-5`}>
         <div className="container">
