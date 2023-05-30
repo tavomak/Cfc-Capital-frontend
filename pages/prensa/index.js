@@ -9,7 +9,7 @@ import Link from 'next/link'
 import Layout from 'components/Templates/Layout';
 import Hero from "@components/Molecules/Hero";
 
-export default function News({ posts, preview }) {
+export default function News({ posts }) {
   return (
     <Layout
       title="Servicios"
