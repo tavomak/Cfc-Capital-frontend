@@ -23,7 +23,10 @@ export default function Service({ data }) {
     setModal(!modal);
   };
   return (
-    <section className="container">
+    <Layout
+      title={router.isFallback ? data.title : 'CFC Capital'}
+      description={router.isFallback ? data.description : 'CFC Capital'}
+    >
       {router.isFallback ? (
         <div className="row content-wrapper align-items-center justify-content-center">
           <div className="spinner-border text-secondary-color" style={{ width: '3rem', height: '3rem' }} role="status">
@@ -31,11 +34,7 @@ export default function Service({ data }) {
           </div>
         </div>
       ) : (
-        <Layout
-          title={data.title}
-          description={data.description}
-        >
-
+        <>
           <Hero image={data.heroImage.url} alt={data.title} />
 
           <ServicesInfo services={data.serviceContent} />
@@ -63,10 +62,10 @@ export default function Service({ data }) {
               <FormFactoringActiveCampaign />
             )}
           </Modal>
+        </>
 
-        </Layout>
       )}
-    </section>
+    </Layout>
   );
 }
 
