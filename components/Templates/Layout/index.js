@@ -1,16 +1,16 @@
 import { ToastContainer } from 'react-toastify';
 import Head from 'next/head';
-import Script from 'next/script'
-import Navbar from 'components/Molecules/Navbar'
-import Footer from 'components/Molecules/Footer'
-import styles from './styles.module.scss'
+import Script from 'next/script';
+import Navbar from '@components/Molecules/Navbar';
+import Footer from '@components/Molecules/Footer';
 import PropTypes from 'prop-types';
+import styles from './styles.module.scss';
 
 const Layout = ({
   children,
   title,
   bgImage,
-  description
+  description,
 }) => {
   const hostname = typeof window !== 'undefined' ? window.location.href : '';
   return (
@@ -20,7 +20,7 @@ const Layout = ({
         <meta charSet="UTF-8" />
         <meta
           name="description"
-          content={`${description ? description : ' CFC Capital'}`}
+          content={`${description || ' CFC Capital'}`}
         />
         <link rel="canonical" href={hostname} />
         <meta property="og:locale" content="es_ES" />
@@ -40,7 +40,7 @@ const Layout = ({
         />
       </Head>
       <Navbar />
-      <main className={`content-wrapper ${bgImage ? styles.isBgActive : ''}`} style={{ background: `url(/${bgImage}) no-repeat`}}>
+      <main className={`content-wrapper ${bgImage ? styles.isBgActive : ''}`} style={{ background: `url(/${bgImage}) no-repeat` }}>
         {children}
       </main>
       <ToastContainer />
@@ -52,13 +52,11 @@ const Layout = ({
 
 Layout.defaultProps = {
   title: 'Bienvenido a CFC Capital',
-  subtitle: null,
-  bgImage: ''
+  bgImage: '',
 };
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
-  subtitle: PropTypes.string,
   bgImage: PropTypes.string,
 };
 

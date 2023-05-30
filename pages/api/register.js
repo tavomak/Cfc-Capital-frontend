@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import fetch from 'node-fetch';
 
 const sleep = () => new Promise((resolve) => {

@@ -104,7 +104,7 @@ export async function getStaticProps({ params }) {
 
     return {
       props: {
-        data: data.service
+        data: data.service,
       },
       revalidate: 100,
     };
@@ -126,7 +126,7 @@ export async function getStaticPaths() {
         }
       }
     `,
-  })
+  });
 
   const services = await data.services;
   return {
