@@ -71,7 +71,6 @@ export default function Service({ data }) {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-
   try {
     const { data } = await client.query({
       query: gql`
