@@ -1,64 +1,78 @@
-import { useState } from 'react'
-import router from 'next/router'
-import Image from 'next/image'
-import {shimmer, toBase64} from 'helpers'
-import Link from 'next/link'
-import { servicios } from 'data'
+import { useState } from 'react';
+import Image from 'next/legacy/image';
+import Link from 'next/link';
+import { services } from '@data/index';
 
-import Layout from 'components/Templates/Layout'
-import Slider from "react-slick"
-import Modal from 'components/Templates/Modal'
-import styles from 'styles/pages/Home.module.scss'
+import Layout from '@components/Templates/Layout';
+import Divider from '@components/Atoms/Divider';
+import Icon from '@components/Atoms/Icon';
+import Carousel from '@components/Molecules/Carousel';
+import ServicesInfo from '@components/Molecules/ServicesInfo';
+import Modal from '@components/Templates/Modal';
 
-export default function Home({ services }) {
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    arrows: true,
-    speed: 800,
-    autoplaySpeed: 5000,
-    cssEase: "cubic-bezier(.8,0,0.5,1)",
-    lazyLoad: 'progressive',
-  };
-  const banners = [
-    {
-      id: '001',
-      item_image : {
-        url: '/slide-4.jpg'
-      },
-      titlulo: 'Apoyamos el desarrollo',
-      subtitulo: 'de tu negocio'
+const settings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: false,
+  arrows: true,
+  speed: 800,
+  autoplaySpeed: 5000,
+  cssEase: 'cubic-bezier(.8,0,0.5,1)',
+  lazyLoad: 'progressive',
+};
+
+const banners = [
+  {
+    id: '000',
+    item_image: {
+      url: '/hero-home.jpg',
     },
-    {
-      id: '002',
-      item_image : {
-        url: '/slide-5.jpg'
-      },
-      titlulo: 'Factoring',
-      subtitulo: 'Financiamos el desarrollo de tu negocio'
+    item_image_mobile: {
+      url: '/m-home.jpg',
     },
-    {
-      id: '003',
-      item_image : {
-        url: '/slide-6.jpg'
-      },
-      titlulo: 'Leasing',
-      subtitulo: 'Financiamos tu adquisición de activos fijjos'
+    titlulo: 'Apoyamos el desarrollo',
+    subtitulo: 'de tu negocio',
+  },
+  {
+    id: '001',
+    item_image: {
+      url: '/hero-factoring.jpg',
     },
-    {
-      id: '004',
-      item_image : {
-        url: '/slide-7.jpg'
-      },
-      titlulo: 'Leaseback',
-      subtitulo: 'Te lo compro, te lo arriendo'
+    item_image_mobile: {
+      url: '/m-factoring.jpg',
     },
-  ]
+    titlulo: 'Apoyamos el desarrollo',
+    subtitulo: 'de tu negocio',
+  },
+  {
+    id: '002',
+    item_image: {
+      url: '/hero-leasing.jpg',
+    },
+    item_image_mobile: {
+      url: '/m-leasing.jpg',
+    },
+    titlulo: 'Factoring',
+    subtitulo: 'Financiamos el desarrollo de tu negocio',
+  },
+  {
+    id: '003',
+    item_image_mobile: {
+      url: '/m-leaseback.jpg',
+    },
+    item_image: {
+      url: '/hero-leaseback.jpg',
+    },
+    titlulo: 'Leasing',
+    subtitulo: 'Financiamos tu adquisición de activos fijjos',
+  },
+];
+
+export default function Home({ data }) {
   const [modal, setModal] = useState(false);
-  const [primaryModal, setPrimaryModal] = useState(true);
+  const [primaryModal, setPrimaryModal] = useState(false);
   const [modalText, setModalText] = useState(null);
 
   const handleClick = (e, text) => {
@@ -72,210 +86,130 @@ export default function Home({ services }) {
     setTimeout(() => {
       setModalText('');
     }, 500);
-  }
+  };
   const handleClickClosePrimaryModal = (e) => {
     e.preventDefault();
     setPrimaryModal(false);
-  }
-  const handleClickService = (e, slug) => {
-    e.preventDefault();
-    if(slug === 'factoring-web') {
-      window.open ('/CFC-PasoaPaso.pdf', '_ blank');
-    } else {
-      router.push(`/servicios/${slug}`)
-    }
   };
   return (
     <Layout
       title="Financiamos al motor de la economía"
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
-      <>
-        {banners && banners.length && (
-          <Slider {...settings}>
-            {
-              banners.map((item) => (
-                <div key={item.id} className="position-relative">
-                  <div className="position-relative">
-                    <div className="overlay"></div>
-                    <div className="d-none d-lg-block">
-                      <Image
-                        src={`${item.item_image.url}`}
-                        alt={`${item.title} | CFC Capital`}
-                        layout="responsive"
-                        objectFit='cover'
-                        objectPosition="top"
-                        width={700}
-                        height={280}
-                        placeholder="blur"
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                      />
-                    </div>
-                    <div className="d-lg-none">
-                      <Image
-                        src={`${item.item_image.url}`}
-                        alt={`${item.title} | CFC Capital`}
-                        layout="responsive"
-                        objectFit='cover'
-                        width={500}
-                        height={400}
-                        placeholder="blur"
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                      />
-                    </div>
-                  </div>
-                  <div className={`${styles.sliderText}`}>
-                    {item.icono && (
-                      <div className="d-none d-lg-block">
-                        <Image 
-                          src={`${item.icono.url}`}
-                          alt={`${item.title} | CFC Capital`}
-                          width={100}
-                          height={100}
-                        />
-                      </div>
-                    )}
-                    <h2 className={`text-dark-blue fs-1 display-font ${styles.sliderTitle}`}>{item.titlulo}</h2>
-                    <p className={`fs-2 display-font ${styles.sliderSubTitle}`}>{item.subtitulo}</p>
-                  </div>
-                </div>
-              ))
-            }
-          </Slider>
-        )}
-      </>
 
-        <section className="container">
-          <div className="row">
-            <div className="col-12 text-center py-5">
-              <h1 className={`display-font ${styles.primaryTitle}`}>
-                Financiamos al <br />
-                <span className="text-soft-purple" >motor de la economía</span>
-              </h1>
-            </div>
-          </div>
-        </section>
+      <Carousel
+        settings={settings}
+        banners={banners}
+      />
 
-        <section className={`container-fluid ${styles.bgCurvedGrey}`}>
-          <div className="row align-tiems-stretch mt-lg-5 ">
-            {services && services.map((item) => (
-              <div className="col-md-6 col-lg-3 mb-5 mb-lg-0" key={item.slug}>
-                <div className={`px-4 pt-4 m-xxl-3 ${styles.firstsCards} shadow`}>
-                  <div className="text-center d-flex flex-column justify-content-between" style={{ height: "100%", }}>
-                    <Image 
-                      src={`/${item.slug}-bg.svg`}
-                      alt={item.title}
-                      layout="responsive"
-                      objectFit='contain'
-                      objectPosition="top"
-                      width={16}
-                      height={8}
-                    />
-                    <br />
-                    <p className="text-center">{item.Seo.metaDescription}</p>
-                    <a
-                      href={`/servicios/${item.slug}`}
-                      className="btn btn-primary mt-auto display-font mb-5"
-                      rel='noreferrer'
-                      onClick={(e) => handleClickService(e, item.slug)}
-                    >
-                      ver más
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-            <div className="col-12">
-              <div className="text-center py-5 my-md-5">
-                <a href="#!" className="btn btn-primary" onClick={() => router.push('/servicios')} >Pide tu financiamiento</a>
-              </div>
-            </div>
+      <section className="container py-5">
+        <div className="row justify-content-between">
+          <div className="col-md-5 col-xl-4 py-5">
+            <h1 className="display-font fs-2 text-dark-blue">
+              Somos una
+              <br />
+              <span className="text-soft-purple">empresa de servicios financieros, </span>
+              presente en el mercado desde el año 2003
+            </h1>
+            <Divider theme="dark" className="py-5" />
+            <p className="text-dark-blue mb-5">
+              Estamos especializados en el segmento de empresas y pymes entregando soluciones a
+              {' '}
+              las necesidades de financiamiento de capital de trabajo y de inversión, transformando
+              {' '}
+              los flujos por cobrar a plazo, en dinero efectivo de inmediato o bien haciendo posible
+              {' '}
+              adquirir activos productivos a las empresas
+            </p>
+            <a href="!#" className="btn btn-primary">Pide tu financiamiento</a>
           </div>
-        </section>
-        <div>
-          <Image 
-            src="/curved-border-gris.svg"
-            alt="wave"
-            width={40}
-            height={3}
-            layout="responsive"
-          />
-        </div>
-        <section className="bg-grey container-fluid position-relative" style={{ top: '-4px'}}>
-          <div className="container py-5">
-            <div className="row pt-lg-5">
-              <div className="col-md-6">
-                <h2 className={`display-font text-soft-purple fs-1`}>Creando capacidad de <span className="text-soft-blue-not">crecer</span></h2>
-              </div>
-              <div className="col-md-6">
-                <p className="fs-5">Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país</p>
-              </div>
-            </div>
-            <div className="row align-items-stretch py-5 my-lg-5">
-            {services && services.filter((item) => item.review).map((item) => (
-              <div className="col-lg-4 mb-5 mb-lg-0" key={item.slug}>
-                <div className={`card d-flex flex-column justify-content-between ${styles.reviewCard}`}>
-                  <Image 
-                    src={`/${item.slug}-2.jpg`}
-                    alt={item.title}
-                    layout="responsive"
-                    objectFit='cover'
-                    objectPosition="top"
-                    width={100}
-                    height={70}
-                    placeholder="blur"
-                    blurDataURL={`/${item.icon}-2.jpg`}
-                  />
-                  <div className={`px-3 px-sm-4 px-md-5 py-4 text-white`}>
-                    <p className="display-font fs-5">{item.title}</p>
-                    <p>{item.review}</p>
-                  </div>
-                  <div className="text-center mb-4">
-                    <a href="#!" onClick={(e) => handleClick(e, item.Detalle)} className="btn btn-light btn-rounded display-font">Ver más</a>
-                  </div>
-                </div>
-              </div>
-            ))}
-            </div>
-          </div>
-          <Modal
-            bgColor="bg-dark-blue"
-            onClick={handleClickClose}
-            showModal={modal}
-            size="lg"
-          >
-            <div
-              dangerouslySetInnerHTML={{ __html: modalText }}
+          <div className="col-md-7">
+            <Image
+              src="/home-hero2.jpg"
+              alt="CFC capital"
+              layout="responsive"
+              objectFit="contain"
+              objectPosition="top"
+              width={1200}
+              height={1121}
             />
-          </Modal>
-          <Modal
-            onClick={handleClickClosePrimaryModal}
-            showModal={primaryModal}
-            bgColor="bg-dark-blue"
-            noPadding
-          >
-            <Link href="/contacto">
-              <a href="contacto" >
-                <Image 
-                  src={`/primary-popup.jpg`}
-                  alt="Financiamos en 4 horas"
-                  layout="responsive"
-                  objectFit='contain'
-                  width={160}
-                  height={82}
-                />
-                </a>
-            </Link>
+          </div>
+        </div>
+      </section>
 
-          </Modal>
-        </section>
+      <ServicesInfo services={data} />
+
+      <section>
+        <div className="container py-5">
+          <div className="row justify-content-center my-5">
+            <div className="col-md-6">
+              <h2 className="display-font text-center text-dark-blue fs-2">
+                Creando capacidad de
+                {' '}
+                <span className="text-soft-blue-not">crecer</span>
+              </h2>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <p className="fs-5 text-center text-soft-purple">Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país</p>
+            </div>
+          </div>
+          <div className="row align-items-stretch py-5 my-lg-5">
+            {data && data.filter((item) => item.review).map((item) => (
+              <div className="col-lg-4 mb-5 mb-lg-0" key={item.slug}>
+                <div className="d-flex" style={{ height: '80%' }}>
+                  <div className="px-3 px-sm-4 px-md-5 py-5 text-dark-blue bg-grey position-relative">
+                    <Icon bgColor="bg-dark-blue" icon={item.slug} absolute />
+                    <p className="mt-5">{item.review}</p>
+                  </div>
+                </div>
+                <div className="text-center my-4">
+                  <a href="#!" onClick={(e) => handleClick(e, item.detail)} className="btn btn-complementary px-4">Ver más</a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Modal
+        bgColor="bg-dark-blue"
+        onClick={handleClickClose}
+        showModal={modal}
+        size="lg"
+      >
+        <div
+          dangerouslySetInnerHTML={{ __html: modalText }}
+        />
+      </Modal>
+
+      <Modal
+        onClick={handleClickClosePrimaryModal}
+        showModal={primaryModal}
+        bgColor="bg-dark-blue"
+        noPadding
+      >
+        <Link href="/contacto" passHref>
+          <Image
+            src="/primary-popup.jpg"
+            alt="Financiamos en 4 horas"
+            layout="responsive"
+            objectFit="contain"
+            width={160}
+            height={82}
+          />
+        </Link>
+
+      </Modal>
     </Layout>
-  )
+  );
 }
+
 export async function getStaticProps() {
   return {
     props: {
-      services: servicios
+      data: services,
     },
-  }
+  };
 }

@@ -1,3 +1,51 @@
 {
-  "extends": "next/core-web-vitals"
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb",
+        "plugin:react/recommended",
+        "next/core-web-vitals"
+      ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "tsx"] }],
+        "camelcase": "off",
+        "no-underscore-dangle": "off",
+        "no-use-before-define": "off",
+        "react/function-component-definition": [
+          2,
+          {
+            "namedComponents": ["function-declaration", "function-expression", "arrow-function"]
+          }
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+          "alias": {
+            "map": [
+              ["@context", "./context"],
+              ["@components", "./components"],
+              ["@data", "./data"],
+              ["@helpers", "./helpers"],
+              ["@hooks", "./hooks"],
+              ["@styles", "./styles"],
+              ["@lib", "./lib"],
+              ["@utils", "./utils"]
+            ]
+          }
+        }
+    }
 }

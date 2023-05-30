@@ -7,7 +7,6 @@ import {
 import Image from 'next/image';
 
 import Layout from 'components/Templates/Layout';
-
 import MoreStories from 'components/Molecules/MorePosts'
 import Head from 'next/head'
 import markdownToHtml from 'lib/markdownToHtml'

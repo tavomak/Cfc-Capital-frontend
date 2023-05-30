@@ -1,26 +1,37 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { CfcProvider } from '@context/useCfcContext';
+import sbjs from 'sourcebuster';
 import Router from 'next/router';
 import NProgress from 'nprogress';
+import TagManager from 'react-gtm-module';
 import 'nprogress/nprogress.css';
 import 'react-toastify/dist/ReactToastify.css';
-import 'styles/main.scss'
-import TagManager from 'react-gtm-module'
+import '@styles/main.scss';
 
 NProgress.configure({ showSpinner: false });
- 
+
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());  
+Router.events.on('routeChangeError', () => NProgress.done());
 
 const tagManagerArgs = {
-    gtmId: process.env.NEXT_PUBLIC_GTM,
-}
+  gtmId: process.env.NEXT_PUBLIC_GTM,
+};
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
+  const [userData, setUserData] = useState({});
   useEffect(() => {
-    TagManager.initialize(tagManagerArgs)
-  }, [])
-  return <Component {...pageProps} />
+    sbjs.init();
+    setUserData(sbjs.get.current);
+  }, [setUserData]);
+  useEffect(() => {
+    TagManager.initialize(tagManagerArgs);
+  }, []);
+  return (
+    <CfcProvider userData={userData}>
+      <Component {...pageProps} />
+    </CfcProvider>
+  );
 }
 
-export default MyApp
+export default App;

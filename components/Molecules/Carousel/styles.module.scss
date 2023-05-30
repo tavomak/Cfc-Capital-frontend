@@ -1,0 +1,44 @@
+@import '@styles/utils/variables';
+@import '@styles/utils/media';
+
+.slider{
+  &Title {
+    @include MQ(S) {
+      font-size: 32px !important;
+    }
+    @include MQ(M) {
+      font-size: 45px !important;
+    }
+  }
+  &SubTitle {
+    @include MQ(M) {
+      max-width: 450px;
+    }
+    line-height: 1.18;
+  }
+  &Text {
+    padding: 10px;
+    z-index: 3;
+    text-align: center;
+    @include MQ(M) {
+      background: none;
+      font-size: 1.5em;
+      position: absolute;
+      left: 5%;
+      top: 20%;
+      text-align: left;
+    }
+    @include MQ(L) {
+      background: none;
+      top: 25%;
+      left: 10%;
+      text-align: left;
+    }
+    @include MQ(1700px) {
+      background: none;
+      top: 25%;
+      left: 12%;
+      text-align: left;
+    }
+  }
+}

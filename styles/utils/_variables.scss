@@ -1,32 +1,35 @@
-$primary-font: 'Gothic A1', sans-serif;
+$primary-font: 'Open Sans', sans-serif;
 $display-font: 'Poppins', sans-serif;
-$font-ligth: 200;
+$font-light: 200;
 $font-regular: 400;
 $font-bold: 700;
 
 // Colores
 $palette: (
-    ligth-grey: #F6F6F6,
-    ligth-blue: #EAF8FF,
+    light-grey: #F6F6F6,
+    light-blue: #EAF8FF,
 
     medium-grey: #777777,
     grey: #DADADA,
     dark-grey: #232323,
 
-    soft-blue: #00abc8,
+    soft-blue: #049bbc,
     dark-blue: #002169,
-    soft-purple: #623482,
+    soft-purple: #5a377f,
+    accent-yellow: #E5B132,
 );
-$ligth-grey: map-get($palette,ligth-grey);
+$light-grey: map-get($palette,light-grey);
 $medium-grey: map-get($palette,medium-grey);
 $grey: map-get($palette,grey);
+$light-blue: map-get($palette,light-blue);
 $dark-grey: map-get($palette,dark-grey);
 $soft-blue: map-get($palette,soft-blue);
 $dark-blue: map-get($palette,dark-blue);
 $soft-purple: map-get($palette,soft-purple);
+$accent-yellow: map-get($palette,accent-yellow);
 
 $white:white;
 $black: black;
 //Gradientes
-$primary-gradient: linear-gradient(#FBC567, #F89173);
-$secondary-gradient: linear-gradient(#B6BFC1, #747575);
+$primary-gradient: linear-gradient(45deg, $dark-blue, $soft-purple);
+$secondary-gradient: linear-gradient(45deg, $light-blue, $white);

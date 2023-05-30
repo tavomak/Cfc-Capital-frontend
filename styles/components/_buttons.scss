@@ -1,10 +1,12 @@
 .btn {
     border: none;
     font-weight: $font-bold;
+    border-radius: 50rem;
 
     &-primary {
-        border: 1px solid $soft-purple;
-        background: $soft-purple;
+        background: transparent;
+        border: 1px solid $dark-blue;
+        color: $dark-blue;
         transition: all .1s ease-in-out;
         &:hover {
             color: $white;
@@ -25,11 +27,11 @@
     }
 
     &-secondary{
-        border: 1px solid $soft-purple;
-        background: $soft-purple;
+        border: 1px solid $white;
+        background: transparent;
         transition: all .1s ease-in-out;
         &:hover {
-            color: $soft-purple;
+            color: $dark-blue;
             background: $white;
             box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%) !important;
             transform: translateY(-2px);
@@ -49,7 +51,7 @@
 
     &-complementary{
         border: 1px solid $white;
-        background: transparent !important;
+        background: $dark-blue !important;
         color: $white;
         transition: all .1s ease-in-out;
         &:hover {
