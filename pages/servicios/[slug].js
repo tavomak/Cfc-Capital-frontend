@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+
 import Hero from '@components/Molecules/Hero';
 import Layout from '@components/Templates/Layout';
 import ServicesInfo from '@components/Molecules/ServiceContent';
@@ -16,45 +18,55 @@ const client = new ApolloClient({
 
 export default function Service({ data }) {
   const [modal, setModal] = useState(false);
-
+  const router = useRouter();
   const handleClick = () => {
     setModal(!modal);
   };
   return (
-    <Layout
-      title={data.title}
-      description={data.description}
-    >
+    <section className="container">
+      {router.isFallback ? (
+        <div className="row content-wrapper align-items-center justify-content-center">
+          <div className="spinner-border text-secondary-color" style={{ width: '3rem', height: '3rem' }} role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      ) : (
+        <Layout
+          title={data.title}
+          description={data.description}
+        >
 
-      <Hero image={data.heroImage.url} alt={data.title} />
+          <Hero image={data.heroImage.url} alt={data.title} />
 
-      <ServicesInfo services={data.serviceContent} />
+          <ServicesInfo services={data.serviceContent} />
 
-      <ServiceFaq services={data.serviceFaq} />
+          <ServiceFaq services={data.serviceFaq} />
 
-      <ServiceProcess
-        services={data.serviceProcess}
-        name={data.title}
-        onClick={() => handleClick()}
-      />
-
-      <Modal
-        bgColor="bg-dark-blue"
-        onClick={handleClick}
-        showModal={modal}
-        size="lg"
-      >
-        {data.title && data.title !== 'Factoring' ? (
-          <FormGetInfo
-            service={data.title}
-            title={data.title}
+          <ServiceProcess
+            services={data.serviceProcess}
+            name={data.title}
+            onClick={() => handleClick()}
           />
-        ) : (
-          <FormFactoringActiveCampaign />
-        )}
-      </Modal>
 
-    </Layout>
+          <Modal
+            bgColor="bg-dark-blue"
+            onClick={handleClick}
+            showModal={modal}
+            size="lg"
+          >
+            {data.title && data.title !== 'Factoring' ? (
+              <FormGetInfo
+                service={data.title}
+                title={data.title}
+              />
+            ) : (
+              <FormFactoringActiveCampaign />
+            )}
+          </Modal>
+
+        </Layout>
+      )}
+    </section>
   );
 }
 
