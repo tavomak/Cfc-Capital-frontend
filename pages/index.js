@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { services } from '@data/index';
 
@@ -190,15 +190,17 @@ export default function Home({ data }) {
         bgColor="bg-dark-blue"
         noPadding
       >
-        <Link href="/contacto" passHref>
-          <Image
-            src="/primary-popup.jpg"
-            alt="Financiamos en 4 horas"
-            layout="responsive"
-            objectFit="contain"
-            width={160}
-            height={82}
-          />
+        <Link href="/contacto">
+          <a href="!#">
+            <Image
+              src="/primary-popup.jpg"
+              alt="Financiamos en 4 horas"
+              layout="responsive"
+              objectFit="contain"
+              width={160}
+              height={82}
+            />
+          </a>
         </Link>
 
       </Modal>

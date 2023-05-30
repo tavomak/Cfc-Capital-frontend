@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 // import markdownToHtml from '@lib/markdownToHtml';
 
 import Divider from '@components/Atoms/Divider';

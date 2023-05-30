@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Layout from '@components/Templates/Layout';
 import FormContact from '@components/Molecules/FormLaw';
 

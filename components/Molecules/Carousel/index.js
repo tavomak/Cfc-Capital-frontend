@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import { shimmer, toBase64 } from '@helpers/index';
 import styles from './styles.module.scss';

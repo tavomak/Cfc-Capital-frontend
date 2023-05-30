@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '@components/Templates/Layout';
 
@@ -17,8 +17,10 @@ const FourOhFour = () => (
           />
         </div>
         <div className="mt-5 text-center">
-          <Link href="/" className="btn btn-complementary btn-sm shadow px-5 py-2">
-            Volver al sitio
+          <Link href="/">
+            <a href="!#" className="btn btn-complementary btn-sm shadow px-5 py-2">
+              Volver al sitio
+            </a>
           </Link>
         </div>
       </div>

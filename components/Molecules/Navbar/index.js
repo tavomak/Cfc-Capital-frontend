@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import { navItems } from '@data/index';
 import Modal from '@components/Templates/Modal';
 import FormAccess from '@components/Molecules/FromAccess';
@@ -66,14 +66,15 @@ const Navbar = () => {
               <Link
                 href="/"
                 className={`navbar-brand ${styles.primaryNav}`}
-                passHref
               >
-                <Image
-                  src="/cfc-logo.png"
-                  alt="Cfc Capital Logo"
-                  width={208}
-                  height={41}
-                />
+                <a href="!#" className={`navbar-brand ${styles.primaryNav}`}>
+                  <Image
+                    src="/cfc-logo.png"
+                    alt="Cfc Capital Logo"
+                    width={208}
+                    height={41}
+                  />
+                </a>
               </Link>
               <button className={`d-lg-none hamburger hamburger--emphatic ${menuOpen ? 'is-active' : ''}`} type="button" onClick={() => setMenuOpen(!menuOpen)}>
                 <span className="hamburger-box">
@@ -85,13 +86,16 @@ const Navbar = () => {
                   {navItems && navItems.length && navItems.map((item) => (
                     <li className="nav-item position-relative" key={item.label} onMouseEnter={() => handleMouseEnter(item.label)} onMouseLeave={() => setShowSubMenu(false)} style={{ minWidth: 92 }}>
                       <Link
-                        className={`nav-link text-dark-blue ${itemActive(item.path) ? styles.underline : styles.navLink}`}
                         href={item.path}
-                        passHref
                       >
-                        <p className="mb-0 display-font">
-                          {item.label}
-                        </p>
+                        <a
+                          href="!#"
+                          className={`nav-link text-dark-blue ${itemActive(item.path) ? styles.underline : styles.navLink}`}
+                        >
+                          <p className="mb-0 display-font">
+                            {item.label}
+                          </p>
+                        </a>
                       </Link>
                       {item.children?.length > 1 && (
                       <CSSTransition

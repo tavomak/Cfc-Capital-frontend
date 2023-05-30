@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import { gerencia, team, directory } from '@data/index';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
@@ -107,10 +107,14 @@ const Cfc = () => {
           <div className="row pb-5">
             <div className="col text-center">
               <Link
-                className="btn btn-primary"
                 href="/memorias"
               >
-                Ver memorias
+                <a
+                  href="!#"
+                  className="btn btn-primary"
+                >
+                  Ver memorias
+                </a>
               </Link>
             </div>
           </div>

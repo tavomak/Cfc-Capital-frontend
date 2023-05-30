@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const MorePosts = ({ posts }) => (
@@ -9,17 +9,17 @@ const MorePosts = ({ posts }) => (
           <div className="card-header">
             <Link
               href={`/prensa/${item.slug}`}
-              className="noticeImg d-block mb-4"
-              passHref
             >
-              <Image
-                src={item.coverImage.url}
-                alt="Cfc Capital Logo"
-                width={16}
-                height={9}
-                layout="responsive"
-                objectFit="contain"
-              />
+              <a href="!#" className="noticeImg d-block mb-4">
+                <Image
+                  src={item.coverImage.url}
+                  alt="Cfc Capital Logo"
+                  width={16}
+                  height={9}
+                  layout="responsive"
+                  objectFit="contain"
+                />
+              </a>
             </Link>
           </div>
           <div className="card-body d-flex flex-column">
@@ -28,9 +28,10 @@ const MorePosts = ({ posts }) => (
             </p>
             <Link
               href={`/prensa/${item.slug}`}
-              className="btn btn-primary display-font mt-auto"
             >
-              Ver más
+              <a href="!#" className="btn btn-primary display-font mt-auto">
+                Ver más
+              </a>
             </Link>
           </div>
         </div>
