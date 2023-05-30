@@ -17,5 +17,7 @@
 
 .icon {
   position: absolute;
-  @include center(xy);
+  @include center(x);
+  padding-top: 5px;
+  font-size: 60px;
 }

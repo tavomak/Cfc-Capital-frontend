@@ -10,7 +10,7 @@ $palette: (
     light-blue: #EAF8FF,
 
     medium-grey: #777777,
-    grey: #DADADA,
+    grey: #e5e5e5,
     dark-grey: #232323,
 
     soft-blue: #049bbc,
@@ -31,5 +31,5 @@ $accent-yellow: map-get($palette,accent-yellow);
 $white:white;
 $black: black;
 //Gradientes
-$primary-gradient: linear-gradient(45deg, $dark-blue, $soft-purple);
-$secondary-gradient: linear-gradient(45deg, $light-blue, $white);
+$primary-gradient: linear-gradient(90deg, $dark-blue, $soft-purple);
+$secondary-gradient: linear-gradient(90deg, $soft-purple, $dark-blue);

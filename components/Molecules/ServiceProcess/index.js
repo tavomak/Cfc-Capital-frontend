@@ -17,8 +17,8 @@ const ServiceProcess = ({ services, name, onClick }) => (
         {services && services.map((item, key) => (
           <div className="col-lg-4 mb-5 mb-lg-0" key={item.description}>
             <div className="px-3 px-sm-4 px-md-5 py-5 text-center text-white">
-              <span className={`text-dark-blue ${styles.ball}`}>
-                <span className={`${styles.number} fs-3`}>
+              <span className={`text-soft-purple ${styles.ball}`}>
+                <span className={`${styles.number} fs-3 display-font fw-bolder`}>
                   {key + 1}
                 </span>
               </span>

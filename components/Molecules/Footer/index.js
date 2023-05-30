@@ -76,7 +76,7 @@ const Footer = () => {
           <div className="col-md-3 text-white">
             <ul className={`${styles.footerFs}`}>
               <li>
-                <Image src="/footer-logo.png" alt="Cfc Capital Logo" width={220} height={66} />
+                <Image src="/footer-logos.png" alt="Cfc Capital Logo" width={332} height={100} />
               </li>
               <li className="py-4">
                 <ul className="d-flex">

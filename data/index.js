@@ -273,7 +273,7 @@ export const gerencia = [
     cargo: 'Gerente General',
     email: 'etenorio@cfccapital.cl',
     linkedin: 'https://www.linkedin.com/in/enrique-tenorio-0b439646/',
-    img: '/enrique.png',
+    img: '/enrique-am.png',
     desc: 'Contamos con un subgerente de riesgo, un subgerente de operaciones y con equipo capacitado de primer nivel, lo cual permite que tengamos una posición financiera sólida y robusta en el mercado.',
   },
   {
@@ -281,7 +281,7 @@ export const gerencia = [
     cargo: 'Gerente Comercial',
     email: 'fgoycoolea@cfccapital.cl',
     linkedin: 'https://www.linkedin.com/in/francisco-javier-goycoolea-brucher-871707142/',
-    img: '/francisco.png',
+    img: '/francisco-am.png',
     desc: 'En el año 2017 se incorpora como gerente comercial el señor Francisco Javier Goycoolea Brucher ingeniero con MBA en Dirección de empresas de la escuela de negocios española IEDE, después de trabajar 25 años en el Bci dando un nuevo ímpetu a toda la parte comercial de la empresa.',
   },
 ];

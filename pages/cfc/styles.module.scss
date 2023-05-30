@@ -1,5 +1,6 @@
 @import "/styles/utils/variables";
 @import "/styles/utils/media";
+@import "/styles/utils/mixins";
 
 
 .item {
@@ -27,5 +28,12 @@
 }
 
 .card {
+  height: 160px;
   border-radius: 50rem;
+  display: inline-block;
+  position: relative;
+  &Image {
+    position: absolute;
+    @include center(xy)
+  }
 }

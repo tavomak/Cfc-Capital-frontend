@@ -1,16 +1,15 @@
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/legacy/image';
-import { useCfcContext } from '@context/useCfcContext';
 import { gerencia, team, directory } from '@data/index';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
+import { FaLinkedin } from 'react-icons/fa';
 
 import Layout from '@components/Templates/Layout';
-import CountUp from 'react-countup';
 import VisibilitySensor from 'react-visibility-sensor';
-import Modal from '@components/Templates/Modal';
-import VideoIframe from '@components/Molecules/VideoIframe';
+import Carousel from 'react-elastic-carousel';
+import Divider from '@components/Atoms/Divider';
+import Icon from '@components/Atoms/Icon';
 import styles from './styles.module.scss';
 
 const highlights = [
@@ -36,14 +35,14 @@ const highlights = [
     image: 'money',
   },
 ];
+const newsBreakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 3 },
+  { width: 1200, itemsToShow: 3 },
+];
 
 const Cfc = () => {
-  const { cfcUserData } = useCfcContext();
-  const [modal, setModal] = useState(false);
-
-  console.log({ cfcUserData });
-
-  // Create and configure your Cloudinary instance.
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'deevr9k54',
@@ -76,18 +75,14 @@ const Cfc = () => {
 
       <section>
         <div className="container py-5">
-          <div className="row justify-content-center py-5 my-lg-5">
+          <div className="row justify-content-center py-5">
             {highlights.map((item) => (
-              <div className="col-lg-4" key={item.name}>
-                <div className={`${styles.card} bg-dark-blue mx-5 p-5`}>
-                  <Image
-                    src={`/${item.image}.png`}
-                    alt={item.name}
-                    width={1}
-                    height={1}
-                    layout="responsive"
-                  />
-                </div>
+              <div className="col-lg-4 text-center" key={item.name}>
+                <span className={`${styles.card} bg-dark-blue mx-5`}>
+                  <span className={`${styles.cardImage}`}>
+                    <Icon bgColor="bg-dark-blue" icon={item.image} />
+                  </span>
+                </span>
                 <h2 className="display-font py-4 text-dark-blue text-center fs-3">
                   {item.prev && (
                   <span>{item.prev}</span>
@@ -96,7 +91,7 @@ const Cfc = () => {
                   <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
                     {({ isVisible }) => (
                       <span>
-                        {isVisible ? <CountUp end={item.number} duration={1.75} /> : null}
+                        {item.number}
                         <span className="text-white">{isVisible ? ' ' : '.'}</span>
                       </span>
                     )}
@@ -109,7 +104,7 @@ const Cfc = () => {
               </div>
             ))}
           </div>
-          <div className="row">
+          <div className="row pb-5">
             <div className="col text-center">
               <Link
                 className="btn btn-primary"
@@ -122,40 +117,39 @@ const Cfc = () => {
         </div>
       </section>
 
-      <section className="container py-5">
-        <div className="row">
-          {gerencia && gerencia.map((item) => (
-            <>
-              <div className="col-md-6" key={item.name}>
-                <Image
-                  src={item.img}
-                  alt={item.name}
-                  objectFit="contain"
-                  width={200}
-                  height={200}
-                />
+      {gerencia && gerencia.map((item, index) => (
+        <section className={`container py-5 ${((index + 1) % 2 === 0) ? 'bg-primary-gradient' : 'bg-secondary-gradient'}`} key={item.name}>
+          <div className="row align-items-center">
+            <div className={`col-md-6 ${((index + 1) % 2 === 0) ? 'order-md-2' : 'order-md-1'}`}>
+              <Image
+                src={item.img}
+                alt={item.name}
+                objectFit="contain"
+                width={1205}
+                height={740}
+                layout="responsive"
+              />
+            </div>
+            <div className={`col-md-6 ${((index + 1) % 2 === 0) ? 'order-md-1' : 'order-md-2'}`}>
+              <div className={`${styles.itemText} ps-md-5`}>
+                <p className="display-font text-white mb-0 fs-1">
+                  <strong>
+                    {item.name}
+                  </strong>
+                </p>
+                <Divider theme="light" className="py-2" />
+                <p className="mb-0 text-white fs-3">
+                  <small>
+                    {item.cargo}
+                  </small>
+                </p>
               </div>
-              <div className="col-md-6">
-                <div className={`${styles.itemText} text-center`}>
-                  <p className="display-font text-soft-purple mb-0 fs-5">
-                    <strong>
-                      {item.name}
-                    </strong>
-                  </p>
-                  <span className={styles.divider} />
-                  <p className="mb-0 text-soft-blue">
-                    <small>
-                      {item.cargo}
-                    </small>
-                  </p>
-                </div>
-              </div>
-            </>
-          ))}
-        </div>
-      </section>
+            </div>
+          </div>
+        </section>
+      ))}
 
-      <section className="py-5 bg-mask">
+      <section className="py-5">
         <div className="container">
           <div className="row justify-content-center py-5">
             <div className="col-md-8">
@@ -166,79 +160,84 @@ const Cfc = () => {
                   {' '}
                   somos un equipo humano dispuestos a ser
                   {' '}
-                  parte de tu empresa. Porque sabemos que eres el motor de la economía.
+                  parte de tu empresa.
+                  <br />
+                  {' '}
+                  Porque sabemos que eres el motor de la economía.
                 </p>
               </div>
             </div>
           </div>
           <div className="row justify-content-around">
-            {team && team.map((item) => (
-              <div className="col-md-5 mb-5" key={item.name}>
-                <div className={`card shadow p-4 ${styles.card}`} style={{ height: '100%', borderRadius: 15 }}>
-                  <div className={`${styles.itemText} text-center`}>
-                    <p className="display-font text-soft-purple mb-0 fs-5">
-                      <strong>
-                        {item.name}
-                      </strong>
-                    </p>
-                    <span className={styles.divider} />
-                    <p className="mb-0 text-soft-blue">
-                      <small>
-                        {item.cargo}
-                      </small>
-                    </p>
-                    <div className="text-center">
-                      <p><small>{item.email}</small></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="row justify-content-center py-5 my-lg-4">
-            <div className="col-md-8">
-              <div className="text-center">
-                <h2 className="text-dark-blue fw-bolder">Directorio</h2>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-around">
-            {directory && directory.map((item) => (
-              <div className="col-md-5 mb-5" key={item.name}>
-                <div className={`card shadow p-4 ${styles.card}`} style={{ height: '100%', borderRadius: 15 }}>
-                  <div className={`${styles.itemText} text-center`}>
-                    <p className="display-font text-soft-purple mb-0 fs-5">
-                      <strong>
-                        {item.name}
-                      </strong>
-                    </p>
-                    <span className={styles.divider} />
-                    <p className="mb-0 text-soft-blue">
-                      <small>
-                        {item.cargo}
-                      </small>
-                    </p>
-                    <div className="text-center">
-                      <p>
+            {team && team.length && (
+              <Carousel breakPoints={newsBreakPoints}>
+                {team.map((item) => (
+                  <div key={item.name} className=" p-4 w-100 mx-3 bg-grey" style={{ height: '100%', borderRadius: 0 }}>
+                    <div className={`${styles.itemText} text-center`}>
+                      <p className="display-font text-soft-purple mb-0 fs-5">
+                        <strong>
+                          {item.name}
+                        </strong>
+                      </p>
+                      <span className={styles.divider} />
+                      <p className="text-dark-blue">
                         <small>
-                          <a href={item.linkedin}>Linkedin</a>
+                          {item.cargo}
                         </small>
                       </p>
+                      <div className="text-center">
+                        <a href={item.email} className="text-soft-purple" target="_blanc">
+                          {item.email}
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                ))}
+              </Carousel>
+            )}
           </div>
         </div>
       </section>
-      <Modal
-        showModal={modal}
-        onClick={(e) => { e.preventDefault(); setModal(false); }}
-        size="xl"
-      >
-        <VideoIframe url="//player.vimeo.com/video/442189935?autoplay=1&amp;loop=1" />
-      </Modal>
+
+      <section className="container-fluid bg-soft-blue py-lg-5">
+        <div className="row justify-content-center py-5 my-lg-4">
+          <div className="col-md-8">
+            <div className="text-center">
+              <h2 className="text-white fw-bolder">Directorio</h2>
+            </div>
+          </div>
+        </div>
+
+        <article className="container mb-5">
+          {directory && directory.length && (
+            <Carousel breakPoints={newsBreakPoints}>
+              {directory.map((item) => (
+                <div key={item.name} className="p-4 w-100 mx-3 bg-soft-blue" style={{ height: '100%', borderRadius: 0 }}>
+                  <div className={`${styles.itemText} text-center`}>
+                    <p className="display-font text-white mb-0 fs-4">
+                      <strong>
+                        {item.name}
+                      </strong>
+                    </p>
+                    <span className={styles.divider} />
+                    <p className="mb-0 text-dark-blue">
+                      <small>
+                        {item.cargo}
+                      </small>
+                    </p>
+                    <div className="text-center">
+                      <a href={item.linkedin} className="text-white fs-1" target="_blanc">
+                        <FaLinkedin />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </Carousel>
+          )}
+        </article>
+      </section>
+
     </Layout>
   );
 };
