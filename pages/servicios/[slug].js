@@ -24,8 +24,8 @@ export default function Service({ data }) {
   };
   return (
     <Layout
-      title={router.isFallback ? data.title : 'CFC Capital'}
-      description={router.isFallback ? data.description : 'CFC Capital'}
+      title={!router.isFallback ? data.title : 'CFC Capital'}
+      description={!router.isFallback ? data.description : 'CFC Capital'}
     >
       {router.isFallback ? (
         <div className="row content-wrapper align-items-center justify-content-center">
