@@ -5,11 +5,11 @@ module.exports = {
       'localhost',
       'cfc-capital-strapi.herokuapp.com',
       'cfc-capital.s3.amazonaws.com',
-      'media.graphassets.com'
+      'media.graphassets.com',
     ],
   },
   experimental: {
     workerThreads: false,
-    cpus: 1
+    cpus: 1,
   },
-}
+};
