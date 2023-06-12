@@ -101,7 +101,7 @@ export const services = [
     color: '#049bbc',
     title: 'Leasing',
     slug: 'leasing',
-    detail: 'Esta herramienta de financiamiento te permite, mediante un contrato, establecer el arriendo de un bien de capital por un determinado período de tiempo y una vez finalizado el contrato, el bien es devuelto a su propietario.',
+    detail: 'Esta herramienta de financiamiento te permite, mediante un contrato, establecer el arriendo de un bien de capital por un determinado período de tiempo y una vez finalizado el contrato, haciendo efectiva y pagando la opción de compra el bien pasa a ser tuyo.',
     review: '“Haciendo un análisis de costos de producción en mi empresa me di cuenta que haciendo una inversión en maquinaria podía hacer más eficiente mi gestión, obtener un importante ahorro en costos e incluso aumentar mis ventas, eran máquinas muy ...”',
     process: [
       {
@@ -134,7 +134,7 @@ export const services = [
     },
     how: {
       image: '',
-      text: 'Esta herramienta de financiamiento te permite, mediante un contrato, establecer el arriendo de un bien de capital por un determinado período de tiempo y una vez finalizado el contrato, el bien es devuelto a su propietario.',
+      text: 'Esta herramienta de financiamiento te permite, mediante un contrato, establecer el arriendo de un bien de capital por un determinado período de tiempo y una vez finalizado el contrato, haciendo efectiva y pagando la opción de compra el bien pasa a ser tuyo.',
     },
     seo: {
       metaTitle: 'Leasing',
@@ -149,7 +149,7 @@ export const services = [
     color: '#5a377f',
     title: 'Leaseback',
     slug: 'leaseback',
-    detail: 'El Leaseback es una operación en donde el propietario de un bien inmueble vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.',
+    detail: 'El Leaseback es una operación en donde El propietario de un bien inmueble, vehículo o maquinaria vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.',
     review: '“Me adjudique un contrato por Mercado Público para trabajar en una importante obra en el sur del país transportando áridos, dentro de las bases se establecía que el contrato debí­a ejecutarlo con un camión nuevo, yo ya había estado cotizando ...”',
     process: [
       {
@@ -182,7 +182,7 @@ export const services = [
     },
     how: {
       image: '',
-      Contenido: 'El Leaseback es una operación en donde el propietario de un bien inmueble vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.',
+      Contenido: 'El Leaseback es una operación en donde El propietario de un bien inmueble, vehículo o maquinaria vende éste a una entidad financiera y a su vez, suscribe un contrato de arrendamiento. De esta forma, obtiene liquidez producto de la venta, pero no pierde el uso del inmueble. Al momento de finalizar el contrato y ejercer la opción de compra, el activo vuelve a ser parte de su propiedad.',
     },
     seo: {
       metaTitle: 'Leaseback',
@@ -307,6 +307,11 @@ export const team = [
     cargo: 'Ejecutiva Comercial',
     email: 'esantander@cfccapital.cl',
   },
+  {
+    name: 'Carmen Paz Olhaberry',
+    cargo: 'Ejecutiva Comercial',
+    email: 'colhaberry@cfccapital.cl',
+  },
 ];
 
 export const directory = [
@@ -326,9 +331,9 @@ export const directory = [
     linkedin: 'https://www.linkedin.com/in/luis-felipe-rios-yrarr%C3%A1zaval-a1189318/',
   },
   {
-    name: 'Alejandro Toth Nebel',
+    name: 'Ricardo Perez de Arce',
     cargo: 'Director',
-    linkedin: 'https://www.linkedin.com/in/alejandro-toth-nebel-55562855/',
+    linkedin: '',
   },
   {
     name: 'Jorge Narbona Lemus',
