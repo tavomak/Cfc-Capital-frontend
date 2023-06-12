@@ -89,13 +89,13 @@ const Footer = () => {
                 </ul>
               </li>
               <li>
-                <p className="fw-lighter">
+                <p className="fw-lighter d-none d-md-block">
                   <small>Todos los derechos reservados CFC Capital S.A.</small>
                 </p>
               </li>
             </ul>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 d-none d-md-block">
             <ul className={`d-flex w-100 justify-content-between px-md-5 ${styles.footerFs}`}>
               {navItems.length && navItems.map((item) => (
                 <li className="nav-item position-relative" key={item.label}>

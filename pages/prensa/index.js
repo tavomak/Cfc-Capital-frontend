@@ -15,7 +15,7 @@ export default function News({ posts }) {
       title="Servicios"
       description="Noticias de actualidad que ayudan a tus finanzas"
     >
-      <Hero image="/hero-blog.jpg" alt="Prensa" />
+      <Hero image="blog" alt="Prensa" />
 
       <section className="container my-5">
         <div className="row py-5">

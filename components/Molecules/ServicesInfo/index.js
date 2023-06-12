@@ -29,7 +29,7 @@ const ServicesInfo = ({ services }) => {
           <div className={`col-md-6 px-0 ${((index + 1) % 2 === 0) ? 'order-md-1' : 'order-md-2'}`} style={{ background: item.color }}>
             <div className="d-flex flex-column justify-content-center align-items-center" style={{ height: '100%' }}>
               <div className="px-5">
-                <h1 className="text-white display-font">{item.title}</h1>
+                <h1 className="text-white display-font pt-5">{item.title}</h1>
                 <Divider theme="light" className="py-2" />
                 <p
                   className="text-white py-4"

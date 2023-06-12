@@ -16,7 +16,7 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: false,
-  arrows: true,
+  arrows: false,
   speed: 800,
   autoplaySpeed: 5000,
   cssEase: 'cubic-bezier(.8,0,0.5,1)',

@@ -35,7 +35,7 @@ export default function Service({ data }) {
         </div>
       ) : (
         <>
-          <Hero image={data.heroImage.url} alt={data.title} />
+          <Hero image={data.title} alt={data.title} />
 
           <ServicesInfo services={data.serviceContent} />
 

@@ -7,7 +7,7 @@ const Contacto = () => (
     title="Contacto"
     description="Escríbenos para fomentar tu capacidad de desarrollar negocios que crezcan y se proyecten en el tiempo"
   >
-    <Hero image="/hero-contacto.jpg" alt="Contacto" />
+    <Hero image="contacto" alt="Contacto" />
     <section className="container py-5">
       <div className="row justify-content-center">
         <div className="col-md-6">

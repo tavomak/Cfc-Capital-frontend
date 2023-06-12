@@ -8,7 +8,7 @@ const Contacto = () => (
     title="Memorias"
     description="Cuentas públicas de CFC capital, porque creemos en la transparencia como un valor fundamental"
   >
-    <Hero image="/hero-blog.jpg" alt="Prensa" />
+    <Hero image="blog" alt="Prensa" />
     <div className="container-fluid bg-grey py-5">
       <div className="container">
         <div className="row pb-5">

@@ -216,7 +216,7 @@ const Cfc = () => {
           {directory && directory.length && (
             <Carousel breakPoints={newsBreakPoints}>
               {directory.map((item) => (
-                <div key={item.name} className="p-4 w-100 mx-3 bg-soft-blue" style={{ height: '100%', borderRadius: 0 }}>
+                <div key={item.name} className="p-md-4 w-100 mx-md-3 bg-soft-blue" style={{ height: '100%', borderRadius: 0 }}>
                   <div className={`${styles.itemText} text-center`}>
                     <p className="display-font text-white mb-0 fs-4">
                       <strong>

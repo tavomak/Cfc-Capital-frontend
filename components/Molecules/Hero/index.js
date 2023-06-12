@@ -5,7 +5,7 @@ const Hero = ({ image, alt }) => (
   <section>
     <div className="d-none d-lg-block">
       <Image
-        src={image}
+        src={`/hero-${image}.jpg`}
         alt="Servicios | CFC Capital"
         layout="responsive"
         objectFit="cover"
@@ -18,7 +18,7 @@ const Hero = ({ image, alt }) => (
     </div>
     <div className="d-lg-none">
       <Image
-        src={image}
+        src={`/m-${image}.jpg`}
         alt={`${alt} | CFC Capital`}
         layout="responsive"
         objectFit="cover"

@@ -9,7 +9,7 @@ const Services = ({ data }) => (
     title="Servicios"
     description="Nos encargamos de cobrar las facturas pendientes a las empresas, para que solo te concentres en tu negocio."
   >
-    <Hero image="/hero-servicios.jpg" alt="Servicios" />
+    <Hero image="servicios" alt="Servicios" />
 
     <section className="py-1">
       <ServicesInfo services={data} />
