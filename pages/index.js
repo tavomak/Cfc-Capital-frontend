@@ -125,7 +125,7 @@ export default function Home({ data }) {
           </div>
           <div className="col-md-7">
             <Image
-              src="/home-hero2.jpg"
+              src="/hombre-ameba-s.png"
               alt="CFC capital"
               layout="responsive"
               objectFit="contain"
@@ -174,7 +174,6 @@ export default function Home({ data }) {
       </section>
 
       <Modal
-        bgColor="bg-dark-blue"
         onClick={handleClickClose}
         showModal={modal}
         size="lg"

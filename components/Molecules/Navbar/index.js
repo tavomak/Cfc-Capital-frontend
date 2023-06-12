@@ -69,7 +69,7 @@ const Navbar = () => {
               >
                 <a href="!#" className={`navbar-brand ${styles.primaryNav}`}>
                   <Image
-                    src="/cfc-logo.png"
+                    src="/logo-cfc.svg"
                     alt="Cfc Capital Logo"
                     width={208}
                     height={41}
