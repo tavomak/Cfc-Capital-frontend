@@ -57,7 +57,7 @@ const Cfc = () => {
       title="Somos CFC"
       description="Somos una empresa de servicios financieros, presente en el mercado desde el año 2003"
     >
-      <section className="container-fluid">
+      <section className="container">
         <div className="row">
           <div className={`col-12 ${styles.video}`}>
             <AdvancedVideo
