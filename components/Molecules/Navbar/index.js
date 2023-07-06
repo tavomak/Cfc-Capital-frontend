@@ -84,7 +84,7 @@ const Navbar = () => {
               <div className={`collapse navbar-collapse text-center ${menuOpen ? 'show' : ''}`} id="navbarTogglerDemo02">
                 <ul className="navbar-nav justify-content-center w-100 mb-2 mb-lg-0">
                   {navItems && navItems.length && navItems.map((item) => (
-                    <li className="nav-item position-relative" key={item.label} onMouseEnter={() => handleMouseEnter(item.label)} onMouseLeave={() => setShowSubMenu(false)} style={{ minWidth: 92 }}>
+                    <li className="nav-item position-relative" key={item.label} onMouseEnter={() => handleMouseEnter(item.label)} onMouseLeave={() => setShowSubMenu(false)}>
                       <Link
                         href={item.path}
                       >
