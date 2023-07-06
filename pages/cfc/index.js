@@ -50,7 +50,7 @@ const Cfc = () => {
   });
 
   // Use the video with public ID, 'docs/walking_talking'.
-  const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy');
+  const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
 
   return (
     <Layout
