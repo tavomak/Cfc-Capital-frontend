@@ -29,7 +29,7 @@ const highlights = [
   },
   {
     name: 'Operaciones',
-    number: 500,
+    number: 591,
     prev: 'US $',
     next: 'MM',
     image: 'money',

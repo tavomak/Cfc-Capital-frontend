@@ -288,14 +288,19 @@ export const gerencia = [
 
 export const team = [
   {
-    name: 'Laura Ferrada Martínez',
-    cargo: 'Ejecutiva Comercial',
-    email: 'lferrada@cfccapital.cl',
+    name: 'Victor Nario Mouat',
+    cargo: 'Agente Región Metropolitana',
+    email: 'vnario@cfccapital.cl',
   },
   {
     name: 'Mario Finschi Herrera',
-    cargo: 'Ejecutivo Comercial',
+    cargo: 'Agente Zona Norte',
     email: 'mfinschi@cfccapital.cl',
+  },
+  {
+    name: 'Laura Ferrada Martínez',
+    cargo: 'Ejecutiva Comercial',
+    email: 'lferrada@cfccapital.cl',
   },
   {
     name: 'Ema Jara Colipi',
@@ -331,7 +336,7 @@ export const directory = [
     linkedin: 'https://www.linkedin.com/in/luis-felipe-rios-yrarr%C3%A1zaval-a1189318/',
   },
   {
-    name: 'Ricardo Perez de Arce',
+    name: 'Ricardo Perez de Araya',
     cargo: 'Director',
     linkedin: '',
   },
@@ -362,6 +367,10 @@ export const navItems = [
     label: 'Servicios',
     path: '/servicios',
     children: [
+      {
+        label: 'Factoring',
+        path: '/servicios/factoring',
+      },
       {
         label: 'Factoring web',
         path: '/servicios/CFC-PasoaPaso.pdf',

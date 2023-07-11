@@ -47,6 +47,10 @@ const Footer = () => {
       path: '/servicios',
       children: [
         {
+          label: 'Factoring',
+          path: '/servicios/factoring',
+        },
+        {
           label: 'Factoring web',
           path: '/servicios/CFC-PasoaPaso.pdf',
         },
