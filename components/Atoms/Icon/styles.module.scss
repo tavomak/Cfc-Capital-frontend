@@ -1,0 +1,23 @@
+@import "/styles/utils/mixins";
+@import "/styles/utils/variables";
+
+.container {
+  position: relative;
+  display: block;
+  border-radius: 50rem;
+  width: 115px;
+  height: 115px;
+  color: $white;
+  &Absolute {
+    position: absolute;
+    @include center(x);
+    top: -50px;
+  }
+}
+
+.icon {
+  position: absolute;
+  @include center(x);
+  padding-top: 5px;
+  font-size: 60px;
+}

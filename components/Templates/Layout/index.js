@@ -1,27 +1,26 @@
-import Head from 'next/head';
-import Script from 'next/script'
 import { ToastContainer } from 'react-toastify';
-import Navbar from 'components/Molecules/Navbar'
-import Footer from 'components/Molecules/Footer'
+import Head from 'next/head';
+import Script from 'next/script';
+import Navbar from '@components/Molecules/Navbar';
+import Footer from '@components/Molecules/Footer';
 import PropTypes from 'prop-types';
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
-export default function Layout({
+const Layout = ({
   children,
   title,
-  subtitle,
   bgImage,
-  description
-}) {
+  description,
+}) => {
   const hostname = typeof window !== 'undefined' ? window.location.href : '';
   return (
     <>
       <Head>
         <title>{`${title} | CFC Capital`}</title>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta
           name="description"
-          content={`${description ? description : ' CFC Capital'}`}
+          content={`${description || ' CFC Capital'}`}
         />
         <link rel="canonical" href={hostname} />
         <meta property="og:locale" content="es_ES" />
@@ -41,7 +40,7 @@ export default function Layout({
         />
       </Head>
       <Navbar />
-      <main className={`content-wrapper ${bgImage ? styles.isBgActive : ''}`} style={{ background: `url(/${bgImage}) no-repeat`}}>
+      <main className={`content-wrapper ${bgImage ? styles.isBgActive : ''}`} style={{ background: `url(/${bgImage}) no-repeat` }}>
         {children}
       </main>
       <ToastContainer />
@@ -49,15 +48,16 @@ export default function Layout({
       <Script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=e2a24a24-64b6-4805-ad57-dbfadaa4ec69" />
     </>
   );
-}
+};
+
 Layout.defaultProps = {
   title: 'Bienvenido a CFC Capital',
-  subtitle: null,
-  bgImage: ''
+  bgImage: '',
 };
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
-  subtitle: PropTypes.string,
   bgImage: PropTypes.string,
 };
+
+export default Layout;

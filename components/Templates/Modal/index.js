@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 const Modal = ({
-  children, onClick, showModal, size, bgColor, noPadding
+  children, onClick, showModal, size, bgColor, noPadding,
 }) => (
   <CSSTransition
     in={showModal}
@@ -11,16 +11,16 @@ const Modal = ({
     classNames="alert"
     unmountOnExit
   >
-    <div className={`${styles.modal}`} >
+    <div className={`${styles.modal}`}>
       <div
         className={`${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor} text-white` : 'bg-white'} ${noPadding ? 'p-0' : 'p-3'} shadow m-auto border-0 position-relative`}
         style={{ borderRadius: '16px' }}
       >
-        <a href="!#" data-testid="printed-username" className={`p-0 ${styles.close}`} onClick={onClick}>
+        <button data-testid="printed-username" className={`p-0 ${styles.close}`} onClick={onClick} type="button">
           <span aria-hidden="true" className={`p-0 ${styles.closeIcon}`}>
             &times;
           </span>
-        </a>
+        </button>
         <div className={`modal-body ${noPadding ? 'p-0' : ''}`}>
           {children}
         </div>

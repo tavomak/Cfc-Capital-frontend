@@ -1,15 +1,16 @@
 import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
-import useNotify from 'hooks/useNotify';
-import Button from 'components/Atoms/Button';
-import ReCAPTCHA from "react-google-recaptcha";
-import styles from './styles.module.scss'
+import ReCAPTCHA from 'react-google-recaptcha';
+import useNotify from '@hooks/useNotify';
+import Button from '@components/Atoms/Button';
+import styles from './styles.module.scss';
 
-const FormContact = ({type}) => {
+const FormContact = ({ type }) => {
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef(null);
   const form = useRef();
+  const [notification] = useNotify();
   const {
     register,
     handleSubmit,
@@ -23,48 +24,35 @@ const FormContact = ({type}) => {
   };
 
   const onReCAPTCHAChange = async (captchaCode) => {
-    // If the reCAPTCHA code is null or undefined indicating that
-    // the reCAPTCHA was expired then return early
     if (!captchaCode) {
       return;
     }
     try {
-      const response = await fetch("/api/register", {
-        method: "POST",
+      const response = await fetch('/api/register', {
+        method: 'POST',
         body: JSON.stringify({ captcha: captchaCode }),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       });
       if (response.ok) {
-        // If the response is ok than show the success alert
-        // alert("Email registered successfully");
-        // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID')
         emailjs.sendForm('service_8pof0qh', 'template_tx2orac', form.current, '9cidPWVw6ZjMK7J4e')
-        .then((result) => {
-          setLoading(false);
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useNotify('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
-          reset();
-        }, (error) => {
-          setLoading(false);
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useNotify('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
-        });
+          .then(() => {
+            setLoading(false);// eslint-disable-next-line react-hooks/rules-of-hooks
+            notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
+            reset();
+          }, () => {
+            setLoading(false); notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
+          });
       } else {
-        // Else throw an error with the message returned
-        // from the API
         const error = await response.json();
         console.log(error);
-        throw new Error(error.message)
+        throw new Error(error.message);
       }
     } catch (error) {
-      alert('error', error?.message );
+      console.log('error', error?.message);
     } finally {
-      // Reset the reCAPTCHA when the request has failed or succeeeded
-      // so that it can be executed again if user submits another email.
       recaptchaRef.current.reset();
-      // setEmail("");
     }
   };
 
@@ -148,6 +136,6 @@ const FormContact = ({type}) => {
       </div>
     </form>
   );
-}
- 
+};
+
 export default FormContact;

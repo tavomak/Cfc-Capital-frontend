@@ -37,6 +37,7 @@ strong, .font-bold {
 
 .display-font {
   font-family: $display-font;
+  font-weight: 600;
 }
 
 .content-wrapper {
@@ -50,6 +51,14 @@ strong, .font-bold {
   .text-#{""+$name} {
     color: $color !important;
   }
+}
+
+.bg-primary-gradient {
+  background: $primary-gradient;
+}
+
+.bg-secondary-gradient {
+  background: $secondary-gradient;
 }
 
 .shadow {

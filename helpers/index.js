@@ -9,9 +9,8 @@ export const shimmer = (w, h) => `
       <polygon points="50,200, 300,50, 400,300" />
   </clipPath>
 </defs>
-</svg>`
+</svg>`;
 
-export const toBase64 = (str) =>
-  typeof window === 'undefined'
-    ? Buffer.from(str).toString('base64')
-    : window.btoa(str)
+export const toBase64 = (str) => (typeof window === 'undefined'
+  ? Buffer.from(str).toString('base64')
+  : window.btoa(str));

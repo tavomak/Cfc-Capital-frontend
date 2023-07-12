@@ -1,0 +1,17 @@
+@import '@styles/utils/variables';
+@import "/styles/utils/mixins";
+
+.ball {
+  display: inline-block;
+  border-radius: 50rem;
+  width: 80px;
+  height: 80px;
+  color: $dark-blue;
+  background: $white;
+  position: relative;
+}
+
+.number {
+  position: absolute;
+  @include center(xy)
+}
