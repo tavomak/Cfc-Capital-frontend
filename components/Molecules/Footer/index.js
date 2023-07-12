@@ -52,7 +52,7 @@ const Footer = () => {
         },
         {
           label: 'Factoring web',
-          path: '/servicios/CFC-PasoaPaso.pdf',
+          path: '/servicios/cfc_paso_a_paso.pdf',
         },
         {
           label: 'Leasing',
@@ -68,7 +68,7 @@ const Footer = () => {
   const handleClick = (e, label, path) => {
     e.preventDefault();
     if (label === 'Factoring web') {
-      window.open('/CFC-PasoaPaso.pdf', '_ blank');
+      window.open('/cfc_paso_a_paso.pdf', '_ blank');
     } else {
       router.push(`${path}`);
     }

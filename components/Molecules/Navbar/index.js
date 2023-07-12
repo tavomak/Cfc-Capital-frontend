@@ -16,7 +16,7 @@ const Navbar = () => {
   const handleClick = (e, label, path) => {
     e.preventDefault();
     if (label === 'Factoring web') {
-      window.open('/CFC-PasoaPaso.pdf', '_ blank');
+      window.open('/cfc_paso_a_paso.pdf', '_ blank');
     } else {
       router.push(`${path}`);
     }

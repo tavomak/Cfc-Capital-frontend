@@ -6,7 +6,7 @@ const ServicesInfo = ({ services }) => {
   const handleClickService = (e, slug) => {
     e.preventDefault();
     if (slug === 'factoring-web') {
-      window.open('/CFC-PasoaPaso.pdf', '_ blank');
+      window.open('/cfc_paso_a_paso.pdf', '_ blank');
     } else {
       router.push(`/servicios/${slug}`);
     }

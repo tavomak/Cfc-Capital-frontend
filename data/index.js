@@ -336,7 +336,7 @@ export const directory = [
     linkedin: 'https://www.linkedin.com/in/luis-felipe-rios-yrarr%C3%A1zaval-a1189318/',
   },
   {
-    name: 'Ricardo Perez de Araya',
+    name: 'Ricardo Perez de Arce Araya',
     cargo: 'Director',
     linkedin: '',
   },
@@ -373,7 +373,7 @@ export const navItems = [
       },
       {
         label: 'Factoring web',
-        path: '/servicios/CFC-PasoaPaso.pdf',
+        path: '/servicios/cfc_paso_a_paso.pdf',
       },
       {
         label: 'Leasing',
