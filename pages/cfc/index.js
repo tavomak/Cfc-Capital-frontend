@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { gerencia, team, directory } from '@data/index';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { FaLinkedin } from 'react-icons/fa';
 
 import Layout from '@components/Templates/Layout';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -122,7 +121,7 @@ const Cfc = () => {
       </section>
 
       {gerencia && gerencia.map((item, index) => (
-        <section className={`container py-5 ${((index + 1) % 2 === 0) ? 'bg-primary-gradient' : 'bg-secondary-gradient'}`} key={item.name}>
+        <section id="gerencia" className={`container py-5 ${((index + 1) % 2 === 0) ? 'bg-primary-gradient' : 'bg-secondary-gradient'}`} key={item.name}>
           <div className="row align-items-center">
             <div className={`col-md-6 ${((index + 1) % 2 === 0) ? 'order-md-2' : 'order-md-1'}`}>
               <Image
@@ -190,7 +189,7 @@ const Cfc = () => {
                         </small>
                       </p>
                       <div className="text-center">
-                        <a href={item.email} className="text-soft-purple" target="_blanc">
+                        <a href={`mailto:${item.email}`} className="text-soft-purple" target="_blanc">
                           {item.email}
                         </a>
                       </div>
@@ -229,11 +228,6 @@ const Cfc = () => {
                         {item.cargo}
                       </small>
                     </p>
-                    <div className="text-center">
-                      <a href={item.linkedin} className="text-white fs-1" target="_blanc">
-                        <FaLinkedin />
-                      </a>
-                    </div>
                   </div>
                 </div>
               ))}

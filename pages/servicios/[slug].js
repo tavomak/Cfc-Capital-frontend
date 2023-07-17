@@ -37,9 +37,15 @@ export default function Service({ data }) {
         <>
           <Hero image={data.title} alt={data.title} />
 
-          <ServicesInfo services={data.serviceContent} />
+          <ServicesInfo
+            services={data.serviceContent}
+            name={data.title}
+          />
 
-          <ServiceFaq services={data.serviceFaq} />
+          <ServiceFaq
+            services={data.serviceFaq}
+            name={data.title}
+          />
 
           <ServiceProcess
             services={data.serviceProcess}

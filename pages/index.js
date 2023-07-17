@@ -121,7 +121,7 @@ export default function Home({ data }) {
               {' '}
               adquirir activos productivos a las empresas
             </p>
-            <a href="!#" className="btn btn-primary">Pide tu financiamiento</a>
+            <a href="!#" className="btn btn-primary d-none">Pide tu financiamiento</a>
           </div>
           <div className="col-md-7">
             <Image

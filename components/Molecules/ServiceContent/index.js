@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 import Divider from '@components/Atoms/Divider';
 
-const Service = ({ services }) => (
-  <section className="container">
+const Service = ({ services, name }) => (
+  <section className="container" id={`que-es-${name?.toLowerCase()}`}>
     {services && services.map((item, index) => (
       <div className="row" key={item.title}>
         <div className={`col-md-6 px-0 ${((index + 1) % 2 === 0) ? 'order-md-2' : 'order-md-1'}`}>

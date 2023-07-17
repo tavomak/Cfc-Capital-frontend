@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
-  FaRegEnvelope, FaWhatsapp, FaRegDotCircle, FaFacebookSquare, FaLinkedin, FaInstagramSquare,
+  FaRegEnvelope, FaPhone, FaRegDotCircle, FaFacebookSquare, FaLinkedin, FaInstagramSquare,
 } from 'react-icons/fa';
 import styles from './styles.module.scss';
 
@@ -21,7 +21,7 @@ const Footer = () => {
           path: '/contacto',
         }, {
           label: 'Gerencia',
-          path: '/servicios/leaseback',
+          path: '/cfc#gerencia',
         },
       ],
     },
@@ -31,14 +31,14 @@ const Footer = () => {
       children: [
         {
           label: '¿Que es?',
-          path: '/cfc',
+          path: '/servicios/factoring#que-es-factoring',
         },
         {
           label: '¿Cómo funciona?',
-          path: '/contacto',
+          path: '/servicios/factoring#como-funciona-factoring',
         }, {
           label: 'Saber más',
-          path: '/servicios/leaseback',
+          path: '/servicios/factoring#saber-mas-factoring',
         },
       ],
     },
@@ -147,12 +147,12 @@ const Footer = () => {
               <li className="py-2">
                 <ul className="d-flex">
                   <li className="me-3">
-                    <FaWhatsapp />
+                    <FaPhone />
                   </li>
                   <li className="fw-lighter">
-                    <a href="tel:+56228201100" className="text-white">+56228201100</a>
+                    <a href="tel:+56228201100" className="text-white">+56 2 2820 1100</a>
                     <span> | </span>
-                    <a href="tel:+56228201158" className="text-white">+56228201158</a>
+                    <a href="tel:+56228201158" className="text-white">+56 2 2820 1158</a>
                   </li>
                 </ul>
               </li>

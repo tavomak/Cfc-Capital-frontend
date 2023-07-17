@@ -62,7 +62,7 @@ export const services = [
         description: 'Envíanos tus facturas e información tributaria y te enviaremos una propuesta.',
       },
       {
-        description: 'Si estás de acuerdo con la simulación, nuestros ejecutivos solicitarán el resto de tu información para obtener un VB° del crédito.',
+        description: 'Si estás de acuerdo con la simulación, nuestros ejecutivos solicitarán el resto de tu información para obtener un V°B° del crédito.',
       },
       {
         description: 'Finalmente, te visitaremos para resolver las últimas dudas, firmamos el contrato, te ayudamos con la cesión electrónica y recibes el dinero.',

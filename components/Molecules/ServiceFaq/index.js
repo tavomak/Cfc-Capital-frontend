@@ -1,7 +1,7 @@
 import Icon from '@components/Atoms/Icon';
 
-const ServiceFaq = ({ services }) => (
-  <section>
+const ServiceFaq = ({ services, name }) => (
+  <section id={`como-funciona-${name?.toLowerCase()}`}>
     <div className="container py-5">
       <div className="row justify-content-center my-5">
         <div className="col-md-6">

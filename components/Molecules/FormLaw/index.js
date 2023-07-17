@@ -122,14 +122,21 @@ const FormContact = ({ type }) => {
             name="mensaje"
             rows="4"
             placeholder="Introduce tu mensaje"
-            {...register('mensaje')}
+            {...register('mensaje', {
+              required: true,
+              maxLength: 9,
+              minLength: 9,
+            })}
           />
+          <span className={`${styles.formInputSpanError}`}>
+            {errors?.mensaje?.type === 'required' && 'Denuncia Requerida'}
+          </span>
         </label>
       </div>
       <div className="form-group">
         <Button
           className="btn btn-complementary mt-4 text-uppercase py-2 px-4"
-          text="Ingresar"
+          text="Enviar Denuncia"
           loading={loading}
           submit
         />
