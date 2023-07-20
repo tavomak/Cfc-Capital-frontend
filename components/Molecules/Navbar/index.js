@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -12,6 +12,8 @@ const Navbar = () => {
   const [modal, setModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
+
   const router = useRouter();
   const handleClick = (e, label, path) => {
     e.preventDefault();
@@ -57,9 +59,21 @@ const Navbar = () => {
     }
     return underline;
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollTop(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <>
-      <header className={`${styles.header} shadow`}>
+      <header className={`${styles.header} ${scrollTop > 150 && styles.active} shadow`}>
         <div className="container">
           <nav className={`navbar navbar-expand-lg navbar-light ${styles.nav}`}>
             <div className="container-fluid">

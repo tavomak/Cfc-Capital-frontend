@@ -16,7 +16,7 @@
   border-bottom: 1px solid $grey;
   @include MQ(L) {
     border: none;
-    background: rgba($white, .9);
+    background: $white;
     min-width: 170px;
     z-index: 2;
     position: absolute;
@@ -27,4 +27,14 @@
 
 .access {
   min-width: 160px;
+}
+
+.header {
+  transition: all ease-in-out .2s;
+  z-index: 2;
+  &.active {
+    background: $white;
+    position: sticky;
+    top: 0;
+  }
 }

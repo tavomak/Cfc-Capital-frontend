@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
-  FaRegEnvelope, FaPhone, FaRegDotCircle, FaFacebookSquare, FaLinkedin, FaInstagramSquare,
+  FaRegEnvelope, FaPhone, FaRegDotCircle, FaFacebook, FaLinkedin, FaInstagram,
 } from 'react-icons/fa';
 import styles from './styles.module.scss';
 
@@ -175,20 +175,20 @@ const Footer = () => {
                 </ul>
               </li>
               <li className="py-2">
-                <ul className="d-flex justify-content-between">
-                  <li>
-                    <a href="https://www.facebook.com/cfccapitalchile/" className="text-white fs-5">
-                      <FaFacebookSquare />
+                <ul className={`d-flex ${styles.social}`}>
+                  <li className={styles.socialListItem}>
+                    <a href="https://www.facebook.com/cfccapitalchile/" className={`text-white ${styles.icon}`}>
+                      <FaFacebook />
                     </a>
                   </li>
-                  <li>
-                    <a href="https://www.linkedin.com/company/cfc-capital-s-a/" className="text-white fs-5">
+                  <li className={styles.socialListItem}>
+                    <a href="https://www.linkedin.com/company/cfc-capital-s-a/" className={`text-white ${styles.icon}`}>
                       <FaLinkedin />
                     </a>
                   </li>
-                  <li>
-                    <a href="https://www.instagram.com/cfc_capital" className="text-white fs-5">
-                      <FaInstagramSquare />
+                  <li className={styles.socialListItem}>
+                    <a href="https://www.instagram.com/cfc_capital" className={`text-white ${styles.icon}`}>
+                      <FaInstagram />
                     </a>
                   </li>
                 </ul>
