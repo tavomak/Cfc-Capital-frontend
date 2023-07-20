@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { gerencia, team, directory } from '@data/index';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
+import { shimmer, toBase64 } from '@helpers/index';
 
 import Layout from '@components/Templates/Layout';
 import VisibilitySensor from 'react-visibility-sensor';
@@ -131,6 +132,8 @@ const Cfc = () => {
                 width={1205}
                 height={740}
                 layout="responsive"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
               />
             </div>
             <div className={`col-md-6 ${((index + 1) % 2 === 0) ? 'order-md-1' : 'order-md-2'}`}>

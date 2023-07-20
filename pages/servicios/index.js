@@ -1,4 +1,4 @@
-import { services } from '@data/index';
+import { getServices } from '@lib/api';
 
 import Layout from '@components/Templates/Layout';
 import ServicesInfo from '@components/Molecules/ServicesInfo';
@@ -21,9 +21,18 @@ const Services = ({ data }) => (
 export default Services;
 
 export async function getStaticProps() {
-  return {
-    props: {
-      data: services,
-    },
-  };
+  try {
+    const { data } = await getServices();
+    return {
+      props: {
+        data: data.services,
+      },
+      revalidate: 100,
+    };
+  } catch (error) {
+    console.error('Error fetching service data:', error);
+    return {
+      notFound: true,
+    };
+  }
 }

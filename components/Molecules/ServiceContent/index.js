@@ -1,5 +1,6 @@
 import Image from 'next/image';
 // import markdownToHtml from '@lib/markdownToHtml';
+import { shimmer, toBase64 } from '@helpers/index';
 
 import Divider from '@components/Atoms/Divider';
 
@@ -14,8 +15,10 @@ const Service = ({ services, name }) => (
             layout="responsive"
             objectFit="cover"
             objectPosition="center"
-            width={16}
-            height={12}
+            width={160}
+            height={120}
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
           />
         </div>
         <div className={`col-md-6 px-0 ${((index + 1) % 2 === 0) ? 'order-md-1' : 'order-md-2'} ${item.color}`}>
