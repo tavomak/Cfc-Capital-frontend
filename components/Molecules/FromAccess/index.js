@@ -18,7 +18,7 @@ const FormAccess = () => (
           </p>
           <input name="telefono" type="text" tabIndex="1" placeholder="Teléfono" className="form-control" />
           <input name="email" type="email" tabIndex="1" placeholder="Email" className="form-control mt-2" />
-          <input type="submit" value="Solicitar Información" className="form-control btn-secondary mt-3" />
+          <input type="submit" value="Solicitar Información" className="form-control btn btn-primary mt-3" />
         </form>
 
         <hr className="my-4" />
@@ -35,7 +35,7 @@ const FormAccess = () => (
           <input name="txtRut" type="text" tabIndex="1" placeholder="Rut" className="form-control mt-2" />
           <input name="txtPass" type="password" tabIndex="2" placeholder="Clave" className="form-control mt-2" />
           <input type="hidden" name="Factoring" value="26" />
-          <input type="submit" value="Ingresar" className="form-control mt-2 btn-secondary mt-3" />
+          <input type="submit" value="Ingresar" className="form-control mt-2 btn btn-primary mt-3" />
         </form>
 
         <hr className="my-4" />
@@ -50,7 +50,7 @@ const FormAccess = () => (
         >
           <input type="hidden" name="Tipo" value="0" className="form-control" />
           <input type="hidden" name="FactID" value="26" className="form-control" />
-          <input type="submit" value="¿Olvidó su clave?" className="form-control btn-secondary bg-dark-blue text-white mb-2" />
+          <input type="submit" value="¿Olvidó su clave?" className="form-control btn btn-secondary bg-dark-blue text-white mb-2" />
         </form>
 
         <form
@@ -63,7 +63,7 @@ const FormAccess = () => (
         >
           <input type="hidden" name="Tipo" value="1" className="form-control" />
           <input type="hidden" name="FactID" value="26" className="form-control" />
-          <input type="submit" value="Solicitar Clave" className="form-control btn-secondary bg-dark-blue text-white mb-2" />
+          <input type="submit" value="Solicitar Clave" className="form-control btn btn-secondary bg-dark-blue text-white mb-2" />
         </form>
 
       </div>

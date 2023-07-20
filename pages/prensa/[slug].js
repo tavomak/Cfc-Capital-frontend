@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import { shimmer, toBase64 } from '@helpers/index';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -48,6 +50,8 @@ export default function Post({ post, morePosts }) {
                       objectPosition="top"
                       width={700}
                       height={280}
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                     />
                   </div>
                   <div className="d-lg-none">
@@ -58,6 +62,8 @@ export default function Post({ post, morePosts }) {
                       objectFit="cover"
                       width={500}
                       height={400}
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                     />
                   </div>
                 </div>

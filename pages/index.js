@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { services } from '@data/index';
+import { getServicesForHome } from '@lib/api';
+import { shimmer, toBase64 } from '@helpers/index';
 
 import Layout from '@components/Templates/Layout';
 import Divider from '@components/Atoms/Divider';
@@ -23,52 +24,24 @@ const settings = {
   lazyLoad: 'progressive',
 };
 
-const banners = [
-  {
-    id: '000',
-    item_image: {
-      url: '/hero-home.jpg',
-    },
-    item_image_mobile: {
-      url: '/m-home.jpg',
-    },
-    titlulo: 'Apoyamos el desarrollo',
-    subtitulo: 'de tu negocio',
-  },
-  {
-    id: '001',
-    item_image: {
-      url: '/hero-factoring.jpg',
-    },
-    item_image_mobile: {
-      url: '/m-factoring.jpg',
-    },
-    titlulo: 'Apoyamos el desarrollo',
-    subtitulo: 'de tu negocio',
-  },
-  {
-    id: '002',
-    item_image: {
-      url: '/hero-leasing.jpg',
-    },
-    item_image_mobile: {
-      url: '/m-leasing.jpg',
-    },
-    titlulo: 'Factoring',
-    subtitulo: 'Financiamos el desarrollo de tu negocio',
-  },
-  {
-    id: '003',
-    item_image_mobile: {
-      url: '/m-leaseback.jpg',
-    },
-    item_image: {
-      url: '/hero-leaseback.jpg',
-    },
-    titlulo: 'Leasing',
-    subtitulo: 'Financiamos tu adquisición de activos fijjos',
-  },
-];
+const setBanners = (data) => {
+  if (!data) return null;
+
+  const banners = data
+    .map((item) => ({
+      id: item.id,
+      item_image: {
+        url: item.heroImage.url,
+      },
+      item_image_mobile: {
+        url: item.heroImageMobile.url,
+      },
+      title: item.title,
+      subtitulo: item.description,
+      slug: item.slug,
+    }));
+  return banners;
+};
 
 export default function Home({ data }) {
   const [modal, setModal] = useState(false);
@@ -99,7 +72,7 @@ export default function Home({ data }) {
 
       <Carousel
         settings={settings}
-        banners={banners}
+        banners={setBanners(data)}
       />
 
       <section className="container py-5">
@@ -132,6 +105,8 @@ export default function Home({ data }) {
               objectPosition="top"
               width={1200}
               height={1121}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
             />
           </div>
         </div>
@@ -161,11 +136,11 @@ export default function Home({ data }) {
                 <div className="d-flex" style={{ height: '80%' }}>
                   <div className="px-3 px-sm-4 px-md-5 py-5 text-dark-blue bg-grey position-relative">
                     <Icon bgColor="bg-dark-blue" icon={item.slug} absolute />
-                    <p className="mt-5">{item.review}</p>
+                    <div className="mt-5" dangerouslySetInnerHTML={{ __html: item.review.html }} />
                   </div>
                 </div>
                 <div className="text-center my-4">
-                  <a href="#!" onClick={(e) => handleClick(e, item.detail)} className="btn btn-complementary px-4">Ver más</a>
+                  <a href="#!" onClick={(e) => handleClick(e, item.description)} className="btn btn-complementary px-4">Ver más</a>
                 </div>
               </div>
             ))}
@@ -208,9 +183,18 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  return {
-    props: {
-      data: services,
-    },
-  };
+  try {
+    const { data } = await getServicesForHome();
+    return {
+      props: {
+        data: data.services,
+      },
+      revalidate: 100,
+    };
+  } catch (error) {
+    console.error('Error fetching service data:', error);
+    return {
+      notFound: true,
+    };
+  }
 }
