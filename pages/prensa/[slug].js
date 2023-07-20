@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import { shimmer, toBase64 } from '@helpers/index';
+
 import {
   ApolloClient,
   InMemoryCache,
