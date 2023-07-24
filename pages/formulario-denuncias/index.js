@@ -1,5 +1,5 @@
 import Layout from '@components/Templates/Layout';
-import FormContact from '@components/Molecules/FormLaw';
+import FormLaw from '@components/Molecules/FormLaw';
 import Hero from '@components/Molecules/Hero';
 
 const LawForm = () => (
@@ -21,7 +21,7 @@ const LawForm = () => (
             <p className="">El canal dispuesto a continuación está destinado exclusivamente para recibir información relacionada a la comisión de los delitos establecidos en la Ley N° 20.393, de Lavado de Activos, Financiamiento del Terrorismo y/o Cohecho a funcionario público nacional o extranjero; cometido por accionistas, directores, funcionarios o proveedores de ésta institución, en el ejercicio de sus funciones y en beneficio ésta institución.</p>
           </div>
           <div className="col-lg-6 pb-5">
-            <FormContact type="Denuncia" />
+            <FormLaw type="Denuncia" />
           </div>
         </div>
       </div>
