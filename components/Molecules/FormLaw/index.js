@@ -59,6 +59,7 @@ const FormContact = ({ type }) => {
   return (
     <form ref={form} className="form" onSubmit={handleSubmit(handleClick)}>
       <input type="hidden" name="type" value={type} />
+      <input type="hidden" name="destiny" value={type === 'Denuncias' ? process.env.NEXT_PUBLIC_DENUNCIAS_EMAIL : process.env.NEXT_PUBLIC_CONTACTO_EMAIL} />
       <ReCAPTCHA
         ref={recaptchaRef}
         size="invisible"
