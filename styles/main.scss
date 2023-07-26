@@ -1,5 +1,3 @@
-// @import 'react-datepicker/dist/react-datepicker.css';
-// @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import 'bootstrap/dist/css/bootstrap.css';
 @import "utils/variables";
 @import "utils/media";
@@ -15,3 +13,11 @@
 @import "components/transitions";
 @import "components/video";
 @import "components/forms";
+
+.react-datepicker-wrapper {
+  display: block !important;
+}
+
+input.form-check-input {
+  transform: scale(1.25);
+}

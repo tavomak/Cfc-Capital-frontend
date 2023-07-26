@@ -21,3 +21,8 @@
 .formInputError.form-control:focus {
   border: 1px solid #FD2626 !important;
 }
+
+.select > div {
+  border: 1px solid $soft-purple !important;
+  border-radius: 0;
+}

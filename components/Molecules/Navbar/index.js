@@ -27,11 +27,7 @@ const Navbar = () => {
     e.preventDefault();
     setModal(true);
   };
-  const handleMouseEnter = (selected) => {
-    if (selected === 'Servicios') {
-      setShowSubMenu(true);
-    }
-  };
+
   const itemActive = (path) => {
     let underline = false;
     switch (path) {
@@ -98,7 +94,12 @@ const Navbar = () => {
               <div className={`collapse navbar-collapse text-center ${menuOpen ? 'show' : ''}`} id="navbarTogglerDemo02">
                 <ul className="navbar-nav justify-content-center w-100 mb-2 mb-lg-0">
                   {navItems && navItems.length && navItems.map((item) => (
-                    <li className="nav-item position-relative" key={item.label} onMouseEnter={() => handleMouseEnter(item.label)} onMouseLeave={() => setShowSubMenu(false)}>
+                    <li
+                      className="nav-item position-relative"
+                      key={item.label}
+                      onMouseEnter={() => setShowSubMenu(item.label)}
+                      onMouseLeave={() => setShowSubMenu(false)}
+                    >
                       <Link
                         href={item.path}
                       >
@@ -113,7 +114,7 @@ const Navbar = () => {
                       </Link>
                       {item.children?.length > 1 && (
                       <CSSTransition
-                        in={showSubMenu}
+                        in={item.label === showSubMenu}
                         timeout={300}
                         classNames="alert"
                         unmountOnExit

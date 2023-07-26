@@ -392,6 +392,15 @@ export const navItems = [
   {
     label: 'Contacto',
     path: '/contacto',
-    children: false,
+    children: [
+      {
+        label: 'Formulario de Contacto',
+        path: '/contacto',
+      },
+      {
+        label: 'Formulario de Denuncias',
+        path: '/formulario-denuncias',
+      },
+    ],
   },
 ];
