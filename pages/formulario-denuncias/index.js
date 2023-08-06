@@ -7,7 +7,7 @@ const LawForm = () => (
     title="Formulario de denuncias Ley 20.393"
     description="El canal dispuesto a continuación está destinado exclusivamente para recibir información relacionada a la comisión de los delitos establecidos en la Ley N° 20.393, de Lavado de Activos, Financiamiento del Terrorismo y/o Cohecho a funcionario público nacional o extranjero; cometido por accionistas, directores, funcionarios o proveedores de ésta institución, en el ejercicio de sus funciones y en beneficio ésta institución."
   >
-    <Hero image="contacto" alt="Contacto" />
+    <Hero image="ley" alt="Formulario de denuncias" />
     <section className="container-flluid">
       <div className="container">
         <div className="row pt-5">
