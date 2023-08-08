@@ -30,7 +30,7 @@ const optionList = [
   'Procesamiento y almacenamiento ilegal de productos escasos',
 ];
 
-const FormContact = ({ type }) => {
+const FormContact = () => {
   const [loading, setLoading] = useState(false);
   const [anonymity, setAnonymity] = useState('no');
   const [startDate] = useState(new Date());
@@ -40,12 +40,13 @@ const FormContact = ({ type }) => {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
+    control,
     reset,
   } = useForm();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     setLoading(true);
     recaptchaRef.current.execute();
   };
@@ -84,15 +85,13 @@ const FormContact = ({ type }) => {
   };
 
   return (
-    <form ref={form} className="form" onSubmit={handleSubmit(handleClick)}>
+    <form ref={form} className="form" onSubmit={(e) => handleSubmit(handleClick(e))}>
       <ReCAPTCHA
         ref={recaptchaRef}
         size="invisible"
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
         onChange={onReCAPTCHAChange}
       />
-      <input type="hidden" name="type" value={type} />
-      <input type="hidden" name="destiny" value={type === 'Denuncias' ? process.env.NEXT_PUBLIC_DENUNCIAS_EMAIL : process.env.NEXT_PUBLIC_CONTACTO_EMAIL} />
       <div className="form-group">
         <h4 className="py-2">Mantener el anonimato</h4>
         <div className="form-check form-check-inline">

@@ -1,6 +1,6 @@
 import Layout from '@components/Templates/Layout';
-import FormLaw from '@components/Molecules/FormLaw';
 import Hero from '@components/Molecules/Hero';
+import FormLaw from '@components/Molecules/FormLaw';
 
 const LawForm = () => (
   <Layout
@@ -25,7 +25,7 @@ const LawForm = () => (
             </div>
           </div>
           <div className="col-lg-6 pb-5">
-            <FormLaw type="Denuncia" />
+            <FormLaw />
           </div>
         </div>
       </div>

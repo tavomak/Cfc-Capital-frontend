@@ -11,7 +11,7 @@ const tagManagerArgs = {
   gtmId: process.env.NEXT_PUBLIC_GTM,
   events: {
     conversion: {
-      send_to: 'AW-10800512963/O9OaCOSdxIIYEMP_ip4o',
+      send_to: process.env.NEXT_PUBLIC_GA_CONVERSION,
     },
   },
 };
@@ -55,16 +55,20 @@ const FormGetInfo = ({
         },
       });
       if (response.ok) {
-        emailjs.sendForm('service_8pof0qh', 'template_tx2orac', form.current, '9cidPWVw6ZjMK7J4e')
-          .then(() => {
-            setLoading(false);
-            notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
-            reset();
-            TagManager.initialize(tagManagerArgs);
-          }, () => {
-            setLoading(false);
-            notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
-          });
+        emailjs.sendForm(
+          process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_SERVICES_ID,
+          form.current,
+          process.env.NEXT_PUBLIC_EMAIL_JS_PUBlIC_KEY,
+        ).then(() => {
+          setLoading(false);
+          notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
+          reset();
+          TagManager.initialize(tagManagerArgs);
+        }, () => {
+          setLoading(false);
+          notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
+        });
       } else {
         const error = await response.json();
         console.log(error);
@@ -119,7 +123,7 @@ const FormGetInfo = ({
       </div>
       {isLeasing && (
         <label htmlFor="selectLeasing" className="form-label w-100">
-          <span className={`${styles.formLabel}`}>
+          <span className={styles.formLabel}>
             ¿Deseas leasing habitacional?
           </span>
           <select
@@ -133,7 +137,7 @@ const FormGetInfo = ({
             <option value="no">No</option>
           </select>
           {leasingHab.errorMsg && (
-            <span className={`${styles.formInputSpanError}`}>
+            <span className={styles.formInputSpanError}>
               {leasingHab.errorMsg}
             </span>
           )}
@@ -141,7 +145,7 @@ const FormGetInfo = ({
       )}
       <div className="form-group">
         <label htmlFor="username" className="form-label w-100">
-          <span className={`${styles.formLabel}`}>
+          <span className={styles.formLabel}>
             Nombre
           </span>
           <input
@@ -153,14 +157,14 @@ const FormGetInfo = ({
               required: true,
             })}
           />
-          <span className={`${styles.formInputSpanError}`}>
+          <span className={styles.formInputSpanError}>
             {errors.username ? 'Nombre requerido' : ''}
           </span>
         </label>
       </div>
       <div className="form-group">
         <label htmlFor="email" className="form-label w-100 position-relative">
-          <span className={`${styles.formLabel}`}>
+          <span className={styles.formLabel}>
             Email
           </span>
           <input
@@ -172,14 +176,14 @@ const FormGetInfo = ({
               required: true,
             })}
           />
-          <span className={`${styles.formInputSpanError}`}>
+          <span className={styles.formInputSpanError}>
             {errors.email ? 'Email Requerido' : '' }
           </span>
         </label>
       </div>
       <div className="form-group">
         <label htmlFor="telefono" className="form-label w-100 position-relative">
-          <span className={`${styles.formLabel}`}>
+          <span className={styles.formLabel}>
             Teléfono
           </span>
           <div className="input-group">
@@ -198,7 +202,7 @@ const FormGetInfo = ({
               })}
             />
           </div>
-          <span className={`${styles.formInputSpanError}`}>
+          <span className={styles.formInputSpanError}>
             {errors?.telefono?.type === 'required' && 'Teléfono Requerido'}
             {errors?.telefono?.type === 'minLength' && 'Debe tener 9 digitos'}
             {errors?.telefono?.type === 'maxLength' && 'Debe tener 9 digitos'}
@@ -207,7 +211,7 @@ const FormGetInfo = ({
       </div>
       <div className="form-group">
         <label htmlFor="mensaje" className="form-label w-100 position-relative">
-          <span className={`${styles.formLabel}`}>
+          <span className={styles.formLabel}>
             Mensaje
           </span>
           <textarea
