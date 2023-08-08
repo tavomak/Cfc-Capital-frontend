@@ -8,7 +8,7 @@ import ServicesInfo from '@components/Molecules/ServiceContent';
 import ServiceFaq from '@components/Molecules/ServiceFaq';
 import ServiceProcess from '@components/Molecules/ServiceProcess';
 import Modal from '@components/Templates/Modal';
-import FormGetInfo from '@components/Molecules/FormGetInformation';
+import FormGetInfo from '@components/Molecules/FormContact';
 import FormFactoringActiveCampaign from '@components/Molecules/FormFactoringActiveCampaign';
 
 const client = new ApolloClient({
