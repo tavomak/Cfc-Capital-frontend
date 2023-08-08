@@ -69,7 +69,8 @@
         }
 
         &:disabled {
-            background: $white !important;
+            color: $white;
+            background: $soft-blue !important;
         }
     }
     &-white{
