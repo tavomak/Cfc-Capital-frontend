@@ -336,7 +336,7 @@ export const directory = [
     linkedin: 'https://www.linkedin.com/in/luis-felipe-rios-yrarr%C3%A1zaval-a1189318/',
   },
   {
-    name: 'Ricardo Perez de Arce Araya',
+    name: 'Ricardo Pérez de Arce Araya',
     cargo: 'Director',
     linkedin: '',
   },
