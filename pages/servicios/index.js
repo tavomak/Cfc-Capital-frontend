@@ -9,6 +9,7 @@ const Services = ({ data }) => (
     title="Servicios"
     description="Nos encargamos de cobrar las facturas pendientes a las empresas, para que solo te concentres en tu negocio."
   >
+
     <Hero image="servicios" alt="Servicios" />
 
     <section className="py-1">
@@ -27,7 +28,7 @@ export async function getStaticProps() {
       props: {
         data: data.services,
       },
-      revalidate: 100,
+      revalidate: 10,
     };
   } catch (error) {
     console.error('Error fetching service data:', error);
