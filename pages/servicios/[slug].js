@@ -122,7 +122,7 @@ export async function getStaticProps({ params }) {
       props: {
         data: data.service,
       },
-      revalidate: 100,
+      revalidate: 10,
     };
   } catch (error) {
     console.error('Error fetching service data:', error);
