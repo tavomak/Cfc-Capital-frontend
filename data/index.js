@@ -298,14 +298,24 @@ export const team = [
     email: 'mfinschi@cfccapital.cl',
   },
   {
+    name: 'Ema Jara Colipi',
+    cargo: 'Sub Gerente Comercial',
+    email: 'ejara@cfccapital.cl',
+  },
+  {
+    name: 'Marcelo Soto Fuentes',
+    cargo: 'Ejecutivo Comercial',
+    email: 'msoto@cfccapital.cl',
+  },
+  {
     name: 'Laura Ferrada Martínez',
     cargo: 'Ejecutiva Comercial',
     email: 'lferrada@cfccapital.cl',
   },
   {
-    name: 'Ema Jara Colipi',
+    name: 'Laura Ferrada Martínez',
     cargo: 'Ejecutiva Comercial',
-    email: 'ejara@cfccapital.cl',
+    email: 'lferrada@cfccapital.cl',
   },
   {
     name: 'Evelin Santander Gallardo',
