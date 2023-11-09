@@ -13,7 +13,7 @@ const Carousel = ({ settings, banners }) => (
                 <div key={item.id} className="position-relative">
                   <div className="d-none d-lg-block">
                     <Image
-                      src={`${item.item_image.url}`}
+                      src={item.item_image.url}
                       alt={`${item.title} | CFC Capital`}
                       layout="responsive"
                       objectFit="cover"
@@ -26,7 +26,7 @@ const Carousel = ({ settings, banners }) => (
                   </div>
                   <div className="d-lg-none">
                     <Image
-                      src={`${item.item_image_mobile.url}`}
+                      src={item.item_image_mobile.url}
                       alt={`${item.title} | CFC Capital`}
                       layout="responsive"
                       objectFit="cover"

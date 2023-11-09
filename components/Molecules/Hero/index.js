@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import { shimmer, toBase64 } from '@helpers/index';
 
-const Hero = ({ image, alt }) => (
+const Hero = ({ image, alt, heroImages }) => (
   <section>
     <div className="d-none d-lg-block">
       <Image
-        src={`/hero-${image}.jpg`}
+        src={heroImages ? heroImages?.desktop : `/hero-${image}.jpg`}
         alt="Servicios | CFC Capital"
         layout="responsive"
         objectFit="cover"
@@ -18,7 +18,7 @@ const Hero = ({ image, alt }) => (
     </div>
     <div className="d-lg-none">
       <Image
-        src={`/m-${image}.jpg`}
+        src={heroImages ? heroImages.mobile : `/m-${image}.jpg`}
         alt={`${alt} | CFC Capital`}
         layout="responsive"
         objectFit="cover"

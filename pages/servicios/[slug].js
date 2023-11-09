@@ -35,7 +35,7 @@ export default function Service({ data }) {
         </div>
       ) : (
         <>
-          <Hero image={data.title} alt={data.title} />
+          <Hero heroImages={{desktop: data.heroImage.url, mobile: data.heroImageMobile.url}} image={data.title} alt={data.title} />
 
           <ServicesInfo
             services={data.serviceContent}
@@ -84,6 +84,9 @@ export async function getStaticProps({ params }) {
           service(where: {slug: $slug}) {
             description
             heroImage {
+              url
+            }
+            heroImageMobile {
               url
             }
             review {
@@ -145,6 +148,7 @@ export async function getStaticPaths() {
   });
 
   const services = await data.services;
+
   return {
     paths: services?.map((item) => servicesPath + item.slug) || ['/servicios/factoring'],
     fallback: true,
