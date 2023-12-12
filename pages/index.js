@@ -31,10 +31,10 @@ const setBanners = (data) => {
     .map((item) => ({
       id: item.id,
       item_image: {
-        url: item.heroImage.url,
+        url: item.desktop.url,
       },
       item_image_mobile: {
-        url: item.heroImageMobile.url,
+        url: item.mobile.url,
       },
       title: item.title,
       subtitulo: item.description,
@@ -72,7 +72,7 @@ export default function Home({ data }) {
 
       <Carousel
         settings={settings}
-        banners={setBanners(data)}
+        banners={setBanners(data.pages.hero)}
       />
 
       <section className="container py-5">
@@ -112,7 +112,7 @@ export default function Home({ data }) {
         </div>
       </section>
 
-      <ServicesInfo services={data} />
+      <ServicesInfo services={data.services} />
 
       <section>
         <div className="container py-5">
@@ -131,7 +131,7 @@ export default function Home({ data }) {
             </div>
           </div>
           <div className="row align-items-stretch py-5 my-lg-5">
-            {data && data.filter((item) => item.review).map((item) => (
+            {data && data.services.filter((item) => item.review).map((item) => (
               <div className="col-lg-4 mb-5 mb-lg-0" key={item.slug}>
                 <div className="d-flex" style={{ height: '80%' }}>
                   <div className="px-3 px-sm-4 px-md-5 py-5 text-dark-blue bg-grey position-relative">
@@ -187,7 +187,7 @@ export async function getStaticProps() {
     const { data } = await getServicesForHome();
     return {
       props: {
-        data: data.services,
+        data,
       },
       revalidate: 100,
     };
