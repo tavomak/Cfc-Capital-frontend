@@ -29,6 +29,7 @@ const setBanners = (data) => {
 
   const banners = data
     .map((item) => ({
+      endTime: item.endTime,
       id: item.id,
       item_image: {
         url: item.desktop.url,

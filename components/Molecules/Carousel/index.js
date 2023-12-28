@@ -1,15 +1,22 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import { shimmer, toBase64 } from '@helpers/index';
 
-const Carousel = ({ settings, banners }) => (
-  <section className="container-fluid">
-    <div className="row">
-      <div className="col p-0">
-        {banners && banners.length && (
+const Carousel = ({ settings, banners }) => {
+  const bannersToShow = (items) => {
+    const now = new Date();
+    return items.filter((item) => !item.endTime || now < new Date(item.endTime));
+  };
+  const [filteredBanners] = useState(bannersToShow(banners));
+  return (
+    <section className="container-fluid">
+      <div className="row">
+        <div className="col p-0">
+          {filteredBanners && filteredBanners.length && (
           <Slider {...settings}>
             {
-              banners.map((item) => (
+              filteredBanners.map((item) => (
                 <div key={item.id} className="position-relative">
                   <div className="d-none d-lg-block">
                     <Image
@@ -40,10 +47,11 @@ const Carousel = ({ settings, banners }) => (
               ))
             }
           </Slider>
-        )}
+          )}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Carousel;
