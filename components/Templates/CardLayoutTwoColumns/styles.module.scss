@@ -1,6 +1,9 @@
 @import "/styles/utils/variables";
 @import "/styles/utils/media";
 
-.subscribeContainer {
-  background: $complementary-gradient;
+.column {
+  width: 100%;
+  @include MQ(M) {
+    width: 50%;
+  }
 }

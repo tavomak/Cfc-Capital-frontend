@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import { navItems } from '@data/index';
+import { navItems } from '@constants/index';
 import Modal from '@components/Templates/Modal';
 import FormAccess from '@components/Molecules/FromAccess';
 import styles from './styles.module.scss';
@@ -119,7 +119,7 @@ const Navbar = () => {
                         classNames="alert"
                         unmountOnExit
                       >
-                        <ul className={`${styles.submenu}`}>
+                        <ul className={styles.submenu}>
                           {item.children.map((subItem) => (
                             <li className="py-2" key={subItem.path}>
                               <a

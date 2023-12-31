@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { gerencia, team, directory } from '@data/index';
+import { gerencia, team, directory } from '@constants/index';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { shimmer, toBase64 } from '@helpers/index';
+import { shimmer, toBase64 } from '@utils/index';
 
 import Layout from '@components/Templates/Layout';
 import VisibilitySensor from 'react-visibility-sensor';

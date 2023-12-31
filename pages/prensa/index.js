@@ -1,94 +1,103 @@
-import { shimmer, toBase64 } from '@helpers/index';
-import {
-  ApolloClient,
-  InMemoryCache,
-  gql,
-} from '@apollo/client';
+import { useState } from 'react';
+import { getPageBySlugAndCategories } from '@lib/api';
 import Image from 'next/image';
-import Link from 'next/link';
 import Layout from '@components/Templates/Layout';
-import Hero from '@components/Molecules/Hero';
+import CardLayout from '@components/Templates/CardLayout';
+import CardLayoutTwoColumns from '@components/Templates/CardLayoutTwoColumns';
+import BannerRow from '@components/Molecules/BannerRow';
+import CategoryNavBar from '@components/Molecules/CategoryNavBar';
+import BannerSubscribe from '@components/Molecules/BannerSubscribe';
+import { mediaLogos } from '@constants/index';
+// import styles from './styles.module.scss';
 
-export default function News({ posts }) {
+const filterPosts = (posts, category) => posts
+  .filter((item) => item.categories[0].name === category);
+const News = ({ banner, posts, categories }) => {
+  const [factoringPosts] = useState(filterPosts(posts, 'Factoring'));
+  const [prensaPosts] = useState(filterPosts(posts, 'Prensa'));
+  const [consejosPosts] = useState(filterPosts(posts, 'Consejos'));
+
   return (
     <Layout
-      title="Servicios"
+      title="Blog y prensa"
       description="Noticias de actualidad que ayudan a tus finanzas"
     >
-      <Hero image="blog" alt="Prensa" />
+      {banner?.image && (
+        <BannerRow banner={banner} />
+      )}
 
-      <section className="container my-5">
-        <div className="row py-5">
-          <h1 className="display-font text-dark-blue text-center">Prensa especializada</h1>
-        </div>
-        <div className="row justify-content-stretch">
-          {posts?.length > 0 && posts.map((item) => (
-            <div className="col-md-4 pb-5" key={item.id}>
-              <div className="card d-flex flex-column" style={{ height: '100%' }}>
-                <div className="card-header p-0">
-                  <Link href={`/prensa/${item.slug}`}>
-                    <a href={`/prensa/${item.slug}`} className="noticeImg d-block">
-                      <Image
-                        src={item.coverImage?.url ? item.coverImage.url : '/leasing-card.png'}
-                        alt="Cfc Capital Logo"
-                        width={160}
-                        height={90}
-                        layout="responsive"
-                        objectFit="cover"
-                        objectPosition="top left"
-                        placeholder="blur"
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                      />
-                    </a>
-                  </Link>
-                </div>
-                <div className="mb-4 p-4 card-body bg-grey">
-                  <p className="display-font">
-                    {item.title}
-                  </p>
-                </div>
-                <div className="footer p-3 text-center">
-                  <Link href={`/prensa/${item.slug}`}>
-                    <a href={`/prensa/${item.slug}`} className="btn btn-complementary display-font px-4">
-                      Ver más
-                    </a>
-                  </Link>
-                </div>
+      <CategoryNavBar categories={categories} />
+
+      <CardLayout posts={factoringPosts} title="Factoring" col="col-12 col-md-4" />
+
+      <BannerSubscribe />
+
+      <CardLayoutTwoColumns
+        posts={prensaPosts}
+        title="Prensa"
+        btnClassName="btn-primary"
+      />
+
+      <CardLayoutTwoColumns
+        posts={consejosPosts}
+        title="Consejos PYMes"
+        className="bg-soft-blue text-white"
+        btnClassName="btn-secondary"
+      />
+
+      <section className="container-fluid py-5 bg-dark-blue">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-12">
+              <div className="text-center text-white">
+                <h2 className="fs-1 py-4 fw-bold">
+                  ¡Descubre los medios
+                  {' '}
+                  <br />
+                  que nos han destacado!
+                </h2>
+                <ul className="d-flex flex-wrap justify-content-center">
+                  {mediaLogos.map((item) => (
+                    <li key={item} className="p-3">
+                      <Image src={`/${item}.png`} alt={item} width={180} height={106} />
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </section>
+
     </Layout>
   );
-}
+};
 
-export async function getStaticProps({ preview = null }) {
-  const client = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
-    cache: new InMemoryCache(),
-  });
+export default News;
 
-  const allPosts = (await client.query({
-    query: gql`
-      query getAllPostsForHome {
-      posts(orderBy: createdAt_DESC) {
-        id
-        slug
-        title
-        coverImage {
-          url
-        }
-        createdAt
-      }
-    }
-    `,
-  })) || [];
+export async function getStaticProps() {
+  try {
+    const {
+      data: {
+        pages: {
+          banner,
+          posts,
+        },
+        categories,
+      },
+    } = await getPageBySlugAndCategories('blog');
 
-  const posts = await allPosts.data.posts;
-
-  return {
-    props: { posts, preview },
-    revalidate: 10,
-  };
+    return {
+      props: {
+        banner,
+        posts,
+        categories,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }

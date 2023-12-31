@@ -55,7 +55,7 @@ export default async function handler(req, res) {
         message: 'Unproccesable request, Invalid captcha code',
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return res.status(422).json({ message: 'Something went wrong' });
     }
   }

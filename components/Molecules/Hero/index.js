@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { shimmer, toBase64 } from '@helpers/index';
+import { shimmer, toBase64 } from '@utils/index';
 
 const Hero = ({ image, alt, heroImages }) => (
   <section>

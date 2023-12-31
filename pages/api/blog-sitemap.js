@@ -1,10 +1,10 @@
-import { getAllPostsForHome } from '@lib/api';
+import { getAllPosts } from '@lib/api';
 
 const { SitemapStream, streamToPromise } = require('sitemap');
 const { Readable } = require('stream');
 
 const sitemapBlog = async (req, res) => {
-  const allPosts = await getAllPostsForHome();
+  const { data: { posts: allPosts } } = await getAllPosts();
 
   const baseUrl = 'https://www.cfccapital.cl';
 
