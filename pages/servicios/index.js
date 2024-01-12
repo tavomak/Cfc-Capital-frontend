@@ -1,4 +1,4 @@
-import { getServices } from '@lib/api';
+import { getServices } from '@utils/lib/api';
 
 import Layout from '@components/Templates/Layout';
 import ServicesInfo from '@components/Molecules/ServicesInfo';

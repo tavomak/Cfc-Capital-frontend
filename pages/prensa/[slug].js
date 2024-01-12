@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import { shimmer, toBase64 } from '@utils/index';
-import { getAllPosts, getPostAndMorePosts } from '@lib/api';
+import { getAllPosts, getPostAndMorePosts } from '@utils/lib/api';
 import Head from 'next/head';
 import Image from 'next/image';
 
 import Layout from '@components/Templates/Layout';
 import MoreStories from '@components/Molecules/MorePosts';
-import markdownToHtml from '@lib/markdownToHtml';
+import markdownToHtml from '@utils/lib/markdownToHtml';
 
 export default function Post({ post, morePosts }) {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import { memorial } from '@constants/index';
+import { memorial } from '@utils/constants/index';
 import Layout from '@components/Templates/Layout';
 import Hero from '@components/Molecules/Hero';
 import styles from './styles.module.scss';

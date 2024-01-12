@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPageBySlugAndServices } from '@lib/api';
+import { getPageBySlugAndServices } from '@utils/lib/api';
 import { shimmer, toBase64 } from '@utils/index';
 
 import Layout from '@components/Templates/Layout';

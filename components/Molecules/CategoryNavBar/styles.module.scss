@@ -1,0 +1,19 @@
+@import "styles/utils/mixins";
+@import "styles/utils/variables";
+@import "styles/utils/media";
+
+.categoryFilter {
+  position: relative;
+  transition: all ease-in-out .2s;
+  z-index: 2;
+  &.active {
+    background: $light-grey;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid lightgrey;
+  }
+}
+
+.hideTitle {
+  display: none;
+}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { getServices, getServiceBySlug } from '@lib/api';
+import { getServices, getServiceBySlug } from '@utils/lib/api';
 
 import Hero from '@components/Molecules/Hero';
 import Layout from '@components/Templates/Layout';

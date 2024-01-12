@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getPostsByCategoryAndProcess, getAllCategories } from '@lib/api';
+import { getPostsByCategoryAndProcess, getAllCategories } from '@utils/lib/api';
 import Layout from '@components/Templates/Layout';
 import BannerRow from '@components/Molecules/BannerRow';
 import CardLayout from '@components/Templates/CardLayout';

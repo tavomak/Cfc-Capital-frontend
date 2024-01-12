@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { gerencia, team, directory } from '@constants/index';
+import { gerencia, team, directory } from '@utils/constants/index';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { shimmer, toBase64 } from '@utils/index';

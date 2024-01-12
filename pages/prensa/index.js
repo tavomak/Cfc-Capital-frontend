@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getPageBySlugAndCategories } from '@lib/api';
+import { getPageBySlugAndCategories } from '@utils/lib/api';
 import Image from 'next/image';
 import Layout from '@components/Templates/Layout';
 import CardLayout from '@components/Templates/CardLayout';
@@ -7,7 +7,7 @@ import CardLayoutTwoColumns from '@components/Templates/CardLayoutTwoColumns';
 import BannerRow from '@components/Molecules/BannerRow';
 import CategoryNavBar from '@components/Molecules/CategoryNavBar';
 import BannerSubscribe from '@components/Molecules/BannerSubscribe';
-import { mediaLogos } from '@constants/index';
+import { mediaLogos } from '@utils/constants/index';
 // import styles from './styles.module.scss';
 
 const filterPosts = (posts, category) => posts

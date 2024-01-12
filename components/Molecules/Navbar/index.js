@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import { navItems } from '@constants/index';
+import { navItems } from '@utils/constants/index';
 import Modal from '@components/Templates/Modal';
 import FormAccess from '@components/Molecules/FromAccess';
 import styles from './styles.module.scss';
