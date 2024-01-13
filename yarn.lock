@@ -6055,6 +6055,13 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-number-format@^5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.3.1.tgz#840c257da9cb4b248990d8db46e4d23e8bac67ff"
+  integrity sha512-qpYcQLauIeEhCZUZY9jXZnnroOtdy3jYaS1zQ3M1Sr6r/KMOBEIGNIb7eKT19g2N1wbYgFgvDzs19hw5TrB8XQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-onclickoutside@^6.12.2:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.13.0.tgz#e165ea4e5157f3da94f4376a3ab3e22a565f4ffc"
@@ -6347,6 +6354,11 @@ run-parallel@^1.1.9:
   integrity sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
   dependencies:
     queue-microtask "^1.2.2"
+
+rut.js@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/rut.js/-/rut.js-2.1.0.tgz#6383282513a7983d29ba2ae4810e0dc9c168a2ec"
+  integrity sha512-v8tXUbqycX2frkeZBcCJgn2dbZE29S21bOF+tRmow58m2qEVz5lGLmNaJ9ahTRfj3WEfwl55mTZi8qqE91w81g==
 
 sade@^1.7.3:
   version "1.8.1"
