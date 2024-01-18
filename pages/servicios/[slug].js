@@ -9,7 +9,7 @@ import ServiceFaq from '@components/Molecules/ServiceFaq';
 import ServiceProcess from '@components/Molecules/ServiceProcess';
 import Modal from '@components/Templates/Modal';
 import FormGetInfo from '@components/Molecules/FormContact';
-import FormFactoringActiveCampaign from '@components/Molecules/FormFactoringActiveCampain';
+import FormFactoringActiveCampaign from '@components/Molecules/FormFactoringActiveCampaign';
 
 export default function Service({ data }) {
   const [modal, setModal] = useState(false);
@@ -68,7 +68,7 @@ export default function Service({ data }) {
                 title={data.title}
               />
             ) : (
-              <FormFactoringActiveCampaign />
+              <FormFactoringActiveCampaign setModal={setModal} />
             )}
           </Modal>
         </>
