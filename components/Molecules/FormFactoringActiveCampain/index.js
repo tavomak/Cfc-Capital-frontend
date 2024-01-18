@@ -262,7 +262,7 @@ const FormContact = () => {
         <div className="row">
           <div className="col-12 text-center py-4">
             <Button
-              className={`btn btn-secondary ${btnDisabled ? 'disabled' : ''} px-md-5`}
+              className={`btn btn-primary ${btnDisabled ? 'disabled' : ''} px-md-5`}
               text="Enviar"
               submit
               loading={loading}

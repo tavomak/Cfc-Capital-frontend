@@ -40,6 +40,7 @@ export default function Service({ data }) {
           <ServicesInfo
             services={data.serviceContent}
             name={data.title}
+            onClick={() => handleClick()}
           />
 
           <ServiceFaq
@@ -54,7 +55,7 @@ export default function Service({ data }) {
           />
 
           <Modal
-            bgColor="bg-dark-blue"
+            bgColor="bg-grey"
             onClick={handleClick}
             showModal={modal}
             size="lg"

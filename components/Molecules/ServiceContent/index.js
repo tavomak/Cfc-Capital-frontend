@@ -1,10 +1,10 @@
 import Image from 'next/image';
 // import markdownToHtml from '@lib/markdownToHtml';
 import { shimmer, toBase64 } from '@helpers/index';
-
+import Button from '@components/Atoms/Button';
 import Divider from '@components/Atoms/Divider';
 
-const Service = ({ services, name }) => (
+const Service = ({ services, name, onClick }) => (
   <section className="container" id={`que-es-${name?.toLowerCase()}`}>
     {services && services.map((item, index) => (
       <div className="row" key={item.title}>
@@ -31,6 +31,15 @@ const Service = ({ services, name }) => (
               >
                 {item.content.markdown}
               </p>
+              {onClick && (
+                <div className="tex-center">
+                  <Button
+                    text="Solicitar Información"
+                    className="btn btn-secondary px-5 py-3"
+                    onClick={onClick}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

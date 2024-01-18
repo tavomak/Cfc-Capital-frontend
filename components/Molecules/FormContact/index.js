@@ -223,9 +223,9 @@ const FormGetInfo = ({
           />
         </label>
       </div>
-      <div className="form-group">
+      <div className="form-group text-center">
         <Button
-          className={`btn ${service ? 'btn-secondary' : 'btn-primary'} mt-4 text-uppercase py-2 px-4`}
+          className="btn btn-primary mt-4 text-uppercase py-2 px-4"
           text="Enviar"
           loading={loading}
           submit
