@@ -78,7 +78,7 @@ const Footer = () => {
       <section className="container">
         <div className="row justify-content-between">
           <div className="col-md-3 text-white">
-            <ul className={`${styles.footerFs}`}>
+            <ul className={styles.footerFs}>
               <li>
                 <Image src="/footer-logos.png" alt="Cfc Capital Logo" width={332} height={100} />
               </li>

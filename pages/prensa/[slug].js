@@ -1,17 +1,12 @@
 import { useRouter } from 'next/router';
-import { shimmer, toBase64 } from '@helpers/index';
-
-import {
-  ApolloClient,
-  InMemoryCache,
-  gql,
-} from '@apollo/client';
+import { shimmer, toBase64 } from '@utils/index';
+import { getAllPosts, getPostAndMorePosts } from '@utils/lib/api';
 import Head from 'next/head';
 import Image from 'next/image';
 
 import Layout from '@components/Templates/Layout';
 import MoreStories from '@components/Molecules/MorePosts';
-import markdownToHtml from '@lib/markdownToHtml';
+import markdownToHtml from '@utils/lib/markdownToHtml';
 
 export default function Post({ post, morePosts }) {
   const router = useRouter();
@@ -106,44 +101,10 @@ export default function Post({ post, morePosts }) {
 }
 
 export async function getStaticProps({ params, preview = null }) {
-  const client = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
-    cache: new InMemoryCache(),
-  });
+  const { slug } = params;
+  const data = await getPostAndMorePosts(slug);
 
-  const data = await client.query({
-    query: gql`
-      query Articles($slug: String!){
-        post(where: {slug: $slug}) {
-          id
-          content {
-            html
-          }
-          title
-          slug
-          video
-          coverImage {
-            url
-          }
-        }
-
-        morePosts: posts(orderBy: createdAt_DESC, first: 3, where: {NOT: {slug: $slug}}) {
-          id
-          title
-          slug
-          coverImage {
-            url
-          }
-        }
-
-      }
-    `,
-    variables: {
-      slug: params.slug,
-    },
-  });
-
-  if (data.data.post.length < 1) {
+  if (!data?.data?.post) {
     return {
       redirect: {
         destination: '/404',
@@ -168,28 +129,7 @@ export async function getStaticProps({ params, preview = null }) {
 }
 
 export async function getStaticPaths() {
-  const client = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_CMS_API_URL,
-    cache: new InMemoryCache(),
-  });
-
-  const allPosts = await client.query({
-    query: gql`
-      query getAllPostsForHome {
-      posts(orderBy: createdAt_DESC) {
-        id
-        slug
-        title
-        coverImage {
-          url
-        }
-        createdAt
-      }
-    }
-    `,
-  });
-
-  const posts = await allPosts.data.posts;
+  const { data: { posts } } = await getAllPosts();
 
   return {
     paths: posts?.map((post) => `/prensa/${post.slug}`) || [],

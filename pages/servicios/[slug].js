@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+import { getServices, getServiceBySlug } from '@utils/lib/api';
 
 import Hero from '@components/Molecules/Hero';
 import Layout from '@components/Templates/Layout';
@@ -10,11 +10,6 @@ import ServiceProcess from '@components/Molecules/ServiceProcess';
 import Modal from '@components/Templates/Modal';
 import FormGetInfo from '@components/Molecules/FormContact';
 import FormFactoringActiveCampaign from '@components/Molecules/FormFactoringActiveCampain';
-
-const client = new ApolloClient({
-  uri: process.env.NEXT_PUBLIC_CMS_API_URL,
-  cache: new InMemoryCache(),
-});
 
 export default function Service({ data }) {
   const [modal, setModal] = useState(false);
@@ -35,7 +30,14 @@ export default function Service({ data }) {
         </div>
       ) : (
         <>
-          <Hero heroImages={{desktop: data.heroImage.url, mobile: data.heroImageMobile.url}} image={data.title} alt={data.title} />
+          <Hero
+            heroImages={{
+              desktop: data.heroImage.url,
+              mobile: data.heroImageMobile.url,
+            }}
+            image={data.title}
+            alt={data.title}
+          />
 
           <ServicesInfo
             services={data.serviceContent}
@@ -77,78 +79,41 @@ export default function Service({ data }) {
 }
 
 export async function getStaticProps({ params }) {
-  const { slug } = params;
   try {
-    const { data } = await client.query({
-      query: gql`
-        query Service($slug: String!) {
-          service(where: {slug: $slug}) {
-            description
-            heroImage {
-              url
-            }
-            heroImageMobile {
-              url
-            }
-            review {
-              markdown
-            }
-            title
-            serviceContent {
-              color
-              title
-              image {
-                url
-              }
-              content {
-                markdown
-              }
-            }
-            cardImage {
-              url
-            }
-            serviceFaq {
-              text
-              title
-            }
-            serviceProcess {
-              description
-            }
-          }
-        }
-      `,
-      variables: {
-        slug,
-      },
-    });
+    const { slug } = params;
+    const { data: { service } } = await getServiceBySlug(slug);
+
+    if (!service) {
+      return {
+        redirect: {
+          destination: '/404',
+          permanent: false,
+        },
+      };
+    }
 
     return {
       props: {
-        data: data.service,
+        data: service,
       },
       revalidate: 10,
     };
   } catch (error) {
     console.error('Error fetching service data:', error);
     return {
-      notFound: true,
+      redirect: {
+        destination: '/404',
+        permanent: false,
+      },
     };
   }
 }
 
 export async function getStaticPaths() {
   const servicesPath = '/servicios/';
-  const { data } = await client.query({
-    query: gql`
-      query getAllServices {
-        services {
-        slug
-        }
-      }
-    `,
-  });
+  const { data } = getServices();
 
-  const services = await data.services;
+  const services = await data?.services;
 
   return {
     paths: services?.map((item) => servicesPath + item.slug) || ['/servicios/factoring'],

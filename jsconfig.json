@@ -4,10 +4,10 @@
     "paths": {
       "@context/*": ["context/*"],
       "@components/*": ["components/*"],
-      "@data/*": ["data/*"],
-      "@helpers/*": ["helpers/*"],
+      "@constants/*": ["utils/constants/*"],
+      "@utils/*": ["utils/*"],
       "@hooks/*": ["hooks/*"],
-      "@lib/*": ["lib/*"],
+      "@lib/*": ["utils/lib/*"],
       "@styles/*": ["styles/*"],
       "@util/*": ["util/*"],
     }

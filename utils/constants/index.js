@@ -1,3 +1,19 @@
+export const mediaLogos = [
+  'duna',
+  'emol',
+  'la-tercera',
+  'chocale',
+  'biobio',
+  'valparaiso',
+  '24-horas',
+  'el-sur',
+  'el-dia',
+  'la-clave',
+  'df',
+  'el-mercurio',
+  'adn',
+];
+
 export const regions = [
   'Arica y Parinacota',
   'Tarapacá',

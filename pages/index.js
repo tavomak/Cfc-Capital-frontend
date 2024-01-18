@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getServicesForHome } from '@lib/api';
-import { shimmer, toBase64 } from '@helpers/index';
+import { getPageBySlugAndServices } from '@utils/lib/api';
+import { shimmer, toBase64 } from '@utils/index';
 
 import Layout from '@components/Templates/Layout';
 import Divider from '@components/Atoms/Divider';
@@ -185,7 +185,7 @@ export default function Home({ data }) {
 
 export async function getStaticProps() {
   try {
-    const { data } = await getServicesForHome();
+    const { data } = await getPageBySlugAndServices('home');
     return {
       props: {
         data,

@@ -40,8 +40,8 @@
             "map": [
               ["@context", "./context"],
               ["@components", "./components"],
-              ["@data", "./data"],
-              ["@helpers", "./helpers"],
+              ["@constants", "./constants"],
+              ["@utils", "./utils"],
               ["@hooks", "./hooks"],
               ["@styles", "./styles"],
               ["@lib", "./lib"],

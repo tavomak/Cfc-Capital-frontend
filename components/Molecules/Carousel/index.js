@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Slider from 'react-slick';
-import { shimmer, toBase64 } from '@helpers/index';
+import { shimmer, toBase64 } from '@utils/index';
 
 const Carousel = ({ settings, banners }) => {
   const bannersToShow = (items) => {

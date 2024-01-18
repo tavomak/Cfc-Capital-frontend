@@ -1,6 +1,6 @@
 import Image from 'next/image';
 // import markdownToHtml from '@lib/markdownToHtml';
-import { shimmer, toBase64 } from '@helpers/index';
+import { shimmer, toBase64 } from '@utils/index';
 import Button from '@components/Atoms/Button';
 import Divider from '@components/Atoms/Divider';
 

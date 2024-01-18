@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import router from 'next/router';
 import Divider from '@components/Atoms/Divider';
-import { shimmer, toBase64 } from '@helpers/index';
+import { shimmer, toBase64 } from '@utils/index';
 
 const ServicesInfo = ({ services }) => {
   const handleClickService = (e, slug) => {
