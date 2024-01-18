@@ -9,7 +9,7 @@ import ServiceFaq from '@components/Molecules/ServiceFaq';
 import ServiceProcess from '@components/Molecules/ServiceProcess';
 import Modal from '@components/Templates/Modal';
 import FormGetInfo from '@components/Molecules/FormContact';
-import FormFactoringActiveCampaign from '@components/Molecules/FormFactoringActiveCampaign';
+import FormFactoringActiveCampaign from '@components/Molecules/FormFactoringActiveCampain';
 
 const client = new ApolloClient({
   uri: process.env.NEXT_PUBLIC_CMS_API_URL,
@@ -40,6 +40,7 @@ export default function Service({ data }) {
           <ServicesInfo
             services={data.serviceContent}
             name={data.title}
+            onClick={() => handleClick()}
           />
 
           <ServiceFaq
@@ -54,7 +55,7 @@ export default function Service({ data }) {
           />
 
           <Modal
-            bgColor="bg-dark-blue"
+            bgColor="bg-grey"
             onClick={handleClick}
             showModal={modal}
             size="lg"
