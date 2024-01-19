@@ -80,13 +80,11 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
           'Content-Type': 'application/json',
         },
       });
-      if (response.ok) {
-        const userCreated = sendToActiveCampaign();
-        if (userCreated) {
-          notification('success', '¡Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo!');
-          reset();
-          setModal(false);
-        }
+      const userCreated = sendToActiveCampaign();
+      if (response.ok && userCreated) {
+        notification('success', '¡Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo!');
+        reset();
+        setModal(false);
       } else {
         const error = await response.json();
         throw new Error(error.message);
