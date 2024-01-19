@@ -1,7 +1,8 @@
 import { useState, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { validate, format, clean } from 'rut.js';
+import { format } from 'rut.js';
 import { PatternFormat } from 'react-number-format';
+import { validateRut } from '@utils/index';
 import useNotify from '@hooks/useNotify';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Button from '@components/Atoms/Button';
@@ -22,9 +23,8 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
     formState: { errors },
   } = useForm();
 
-  const sendToActiveCampaign = async function request(data) {
-    const cleanRut = clean(data.rut.value);
-    const isRutValid = validate(cleanRut);
+  const sendToActiveCampaign = async () => {
+    const isRutValid = validateRut(form.current.rut.value);
 
     if (!isRutValid) {
       setError('rut', {
@@ -36,43 +36,38 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
       return;
     }
 
-    const requestData = {
-      u: '31',
-      f: '31',
-      s: '',
-      c: '0',
-      m: '0',
-      act: 'sub',
-      v: '2',
-      or: 'e8d640a2ac60191dfcefaff5e47a8bca',
-      firstname: data.firstname.value,
-      lastname: data.lastname.value,
-      email: data.email.value,
-      phone: data.phone.value,
-      'field[6]': data.mensaje.value,
-      'field[8]': data.rut.value,
-    };
+    const formData = new FormData();
 
-    try {
-      const response = await fetch('https://cfccapitalcl.activehosted.com/proc.php?id=31', {
-        method: 'POST',
-        body: JSON.stringify(requestData),
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    formData.append('u', '31');
+    formData.append('f', '31');
+    formData.append('s', '');
+    formData.append('c', '0');
+    formData.append('m', '0');
+    formData.append('act', 'sub');
+    formData.append('v', '2');
+    formData.append('or', 'e8d640a2ac60191dfcefaff5e47a8bca');
 
-      if (!response.type) {
-        const error = await response.json();
-        throw new Error(error.message);
-      }
-      return true;
-    } catch (err) {
-      throw new Error(err);
-    }
+    formData.append('firstname', form.current.firstname.value);
+    formData.append('lastname', form.current.lastname.value);
+    formData.append('email', form.current.email.value);
+    formData.append('phone', form.current.phone.value);
+    formData.append('field[6]', form.current.mensaje.value);
+    formData.append('field[8]', isRutValid);
+
+    await fetch('https://cfccapitalcl.activehosted.com/proc.php?id=31', {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => response.json()).catch(() => false);
   };
-
+  const onSubmit = () => {
+    setLoading(true);
+    setBtnDisabled(true);
+    recaptchaRef.current.execute();
+  };
   const onReCAPTCHAChange = async (captchaCode) => {
     if (!captchaCode) {
       return;
@@ -85,32 +80,25 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
           'Content-Type': 'application/json',
         },
       });
-      const acr = await sendToActiveCampaign(form.current);
-
-      if (response.ok && acr) {
-        notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
-        reset();
-        setModal(false);
+      if (response.ok) {
+        const userCreated = sendToActiveCampaign();
+        if (userCreated) {
+          notification('success', '¡Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo!');
+          reset();
+          setModal(false);
+        }
       } else {
         const error = await response.json();
         throw new Error(error.message);
       }
     } catch (error) {
+      console.log('error', error?.message);
       reset();
-      notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo más tarde! (ORC)');
+      notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo más tarde!');
     } finally {
-      setLoading(false);
-      setBtnDisabled(false);
       recaptchaRef.current.reset();
     }
   };
-
-  const onSubmit = () => {
-    setLoading(true);
-    setBtnDisabled(true);
-    recaptchaRef.current.execute();
-  };
-
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -232,18 +220,13 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
               control={control}
               name="phone"
               rules={{ required: true }}
-              render={({
-                field: {
-                  onChange, name, value, ref,
-                },
-              }) => (
+              render={({ field: { onChange, name, value } }) => (
                 <PatternFormat
                   format="+56 (#) #### ####"
                   name={name}
                   value={value}
                   onChange={onChange}
                   className="form-control"
-                  inputRef={ref}
                 />
               )}
             />
@@ -264,7 +247,7 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
               id="field[6]"
               name="mensaje"
               placeholder=""
-              data-name="quieres_dejarnos_algún_mensaje"
+              data-name="quieres_dejarnos_algun_mensaje"
               className="form-control"
               {...register('mensaje', {
                 required: false,
