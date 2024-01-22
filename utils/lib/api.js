@@ -116,7 +116,7 @@ export const getPostsByCategoryAndProcess = (slug) => {
           image {
             url
           }
-          posts {
+          posts(orderBy: date_DESC) {
             id
             slug
             title
