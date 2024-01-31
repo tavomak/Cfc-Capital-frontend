@@ -110,7 +110,7 @@ export async function getStaticProps({ params }) {
         categoryName: id,
         categories,
       },
-      revalidate: 100,
+      revalidate: 10,
     };
   } catch (error) {
     console.error('Error fetching service data:', error);
