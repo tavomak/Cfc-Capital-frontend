@@ -3,9 +3,19 @@ import { useForm, Controller } from 'react-hook-form';
 import { format } from 'rut.js';
 import { PatternFormat } from 'react-number-format';
 import { validateRut } from '@utils/index';
+import TagManager from 'react-gtm-module';
 import useNotify from '@hooks/useNotify';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Button from '@components/Atoms/Button';
+
+const tagManagerArgs = {
+  gtmId: process.env.NEXT_PUBLIC_GTM,
+  events: {
+    conversion: {
+      send_to: process.env.NEXT_PUBLIC_GADS_FACTORING_CONVERSION,
+    },
+  },
+};
 
 const FormFactoringActiveCampaign = ({ setModal }) => {
   const [loading, setLoading] = useState(false);
@@ -85,7 +95,7 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
         notification('success', '¡Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo!');
         reset();
         setModal(false);
-        window.gtag('event', 'conversion', { send_to: 'AW-10800512963/8VVOCMiYppUZEMP_ip4o' });
+        TagManager.initialize(tagManagerArgs);
       } else {
         const error = await response.json();
         throw new Error(error.message);
