@@ -9,11 +9,8 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import Button from '@components/Atoms/Button';
 
 const tagManagerArgs = {
-  gtmId: process.env.NEXT_PUBLIC_GTM,
-  events: {
-    conversion: {
-      send_to: process.env.NEXT_PUBLIC_GADS_FACTORING_CONVERSION,
-    },
+  dataLayer: {
+    event: 'factoringConversion',
   },
 };
 
@@ -95,7 +92,7 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
         notification('success', '¡Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo!');
         reset();
         setModal(false);
-        TagManager.initialize(tagManagerArgs);
+        TagManager.dataLayer(tagManagerArgs);
       } else {
         const error = await response.json();
         throw new Error(error.message);

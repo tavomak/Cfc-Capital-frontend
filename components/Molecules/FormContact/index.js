@@ -8,11 +8,8 @@ import Button from '@components/Atoms/Button';
 import styles from './styles.module.scss';
 
 const tagManagerArgs = {
-  gtmId: process.env.NEXT_PUBLIC_GTM,
-  events: {
-    conversion: {
-      send_to: process.env.NEXT_PUBLIC_GA_CONVERSION,
-    },
+  dataLayer: {
+    event: 'regularConversion',
   },
 };
 
@@ -64,7 +61,7 @@ const FormGetInfo = ({
           setLoading(false);
           notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
           reset();
-          TagManager.initialize(tagManagerArgs);
+          TagManager.dataLayer(tagManagerArgs);
         }, () => {
           setLoading(false);
           notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
