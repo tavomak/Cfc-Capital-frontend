@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { getPageBySlugAndServices } from '@utils/lib/api';
 import { shimmer, toBase64 } from '@utils/index';
@@ -165,7 +165,7 @@ export default function Home({ data }) {
         bgColor="bg-dark-blue"
         noPadding
       >
-        <Link href="/contacto">
+        <Link legacyBehavior href="/contacto">
           <a href="!#">
             <Image
               src="/primary-popup.jpg"

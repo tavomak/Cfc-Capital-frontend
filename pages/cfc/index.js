@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { gerencia, team, directory } from '@utils/constants/index';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
@@ -106,7 +106,7 @@ const Cfc = () => {
           </div>
           <div className="row pb-5">
             <div className="col text-center">
-              <Link
+              <Link legacyBehavior
                 href="/memorias"
               >
                 <a

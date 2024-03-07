@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Slider from 'react-slick';
 import { shimmer, toBase64 } from '@utils/index';
 

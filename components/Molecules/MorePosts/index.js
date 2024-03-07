@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 
 const MorePosts = ({ posts }) => (
@@ -7,7 +7,7 @@ const MorePosts = ({ posts }) => (
       <div className="col-md-4 pb-5" key={item.id}>
         <div className="card shadow" style={{ height: '100%' }}>
           <div className="card-header">
-            <Link
+            <Link legacyBehavior
               href={`/prensa/${item.slug}`}
             >
               <a href="!#" className="noticeImg d-block mb-4">
@@ -26,7 +26,7 @@ const MorePosts = ({ posts }) => (
             <p className="display-font">
               {item.title}
             </p>
-            <Link
+            <Link legacyBehavior
               href={`/prensa/${item.slug}`}
             >
               <a href="!#" className="btn btn-primary display-font mt-auto">

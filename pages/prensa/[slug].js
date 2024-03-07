@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { shimmer, toBase64 } from '@utils/index';
 import { getAllPosts, getPostAndMorePosts } from '@utils/lib/api';
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 import Layout from '@components/Templates/Layout';
 import MoreStories from '@components/Molecules/MorePosts';

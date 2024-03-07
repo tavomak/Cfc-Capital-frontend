@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { shimmer, toBase64 } from '@utils/index';
 
 const Hero = ({ image, alt, heroImages }) => (

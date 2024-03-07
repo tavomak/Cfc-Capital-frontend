@@ -1,5 +1,5 @@
 import { shimmer, toBase64 } from '@utils/index';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 
 const CardLayout = ({
@@ -28,7 +28,7 @@ const CardLayout = ({
                 }}
               >
                 <div className="card-header p-0">
-                  <Link href={`/prensa/${item.slug}`}>
+                  <Link legacyBehavior href={`/prensa/${item.slug}`}>
                     <a href={`/prensa/${item.slug}`} className="noticeImg d-block">
                       <Image
                         src={item.coverImage?.url ? item.coverImage.url : '/leasing-card.png'}
@@ -55,7 +55,7 @@ const CardLayout = ({
                   </p>
                 </div>
                 <div className="footer pb-3 text-center">
-                  <Link href={`/prensa/${item.slug}`}>
+                  <Link legacyBehavior href={`/prensa/${item.slug}`}>
                     <a href={`/prensa/${item.slug}`} className="btn btn-primary display-font px-4">
                       Ver más
                     </a>

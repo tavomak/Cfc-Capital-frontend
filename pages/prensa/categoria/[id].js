@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { getPostsByCategoryAndProcess, getAllCategories } from '@utils/lib/api';
 import Layout from '@components/Templates/Layout';
 import BannerRow from '@components/Molecules/BannerRow';

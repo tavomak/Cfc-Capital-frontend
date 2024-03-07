@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { navItems } from '@utils/constants/index';
 import Modal from '@components/Templates/Modal';
 import FormAccess from '@components/Molecules/FromAccess';
@@ -73,7 +73,7 @@ const Navbar = () => {
         <div className="container">
           <nav className={`navbar navbar-expand-lg navbar-light ${styles.nav}`}>
             <div className="container-fluid">
-              <Link
+              <Link legacyBehavior
                 href="/"
                 className={`navbar-brand ${styles.primaryNav}`}
               >
@@ -100,7 +100,7 @@ const Navbar = () => {
                       onMouseEnter={() => setShowSubMenu(item.label)}
                       onMouseLeave={() => setShowSubMenu(false)}
                     >
-                      <Link
+                      <Link legacyBehavior
                         href={item.path}
                       >
                         <a

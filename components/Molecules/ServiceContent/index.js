@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 // import markdownToHtml from '@lib/markdownToHtml';
 import { shimmer, toBase64 } from '@utils/index';
 import Button from '@components/Atoms/Button';

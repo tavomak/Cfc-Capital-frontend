@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getPageBySlugAndCategories } from '@utils/lib/api';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Layout from '@components/Templates/Layout';
 import CardLayout from '@components/Templates/CardLayout';
 import CardLayoutTwoColumns from '@components/Templates/CardLayoutTwoColumns';

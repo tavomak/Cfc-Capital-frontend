@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
@@ -103,7 +103,7 @@ const Footer = () => {
             <ul className={`d-flex w-100 justify-content-between px-md-5 ${styles.footerFs}`}>
               {navItems.length && navItems.map((item) => (
                 <li className="nav-item position-relative" key={item.label}>
-                  <Link href={item.path}>
+                  <Link legacyBehavior href={item.path}>
                     <a href={item.path} className="nav-link text-white">
                       <p className="mb-0 display-font fs-5">
                         {item.label}
@@ -163,7 +163,7 @@ const Footer = () => {
                   </li>
                   <li className="fw-lighter">
                     <p>
-                      <Link href="/formulario-denuncias">
+                      <Link legacyBehavior href="/formulario-denuncias">
                         <a href="!#" className="text-white">
                           <small>
                             Formulario de denuncias Ley Nº 20.393

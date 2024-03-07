@@ -1,5 +1,5 @@
 import { shimmer, toBase64 } from '@utils/index';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import styles from './styles.module.scss';
 
@@ -32,7 +32,7 @@ const CardLayoutTwoColumns = ({
                 }}
               >
                 <div className={styles.column}>
-                  <Link href={`/prensa/${item.slug}`}>
+                  <Link legacyBehavior href={`/prensa/${item.slug}`}>
                     <a
                       href={`/prensa/${item.slug}`}
                       className="d-block"
@@ -61,7 +61,7 @@ const CardLayoutTwoColumns = ({
                   <p className="display-font">
                     {item.title}
                   </p>
-                  <Link href={`/prensa/${item.slug}`}>
+                  <Link legacyBehavior href={`/prensa/${item.slug}`}>
                     <a href={`/prensa/${item.slug}`} className={`btn ${btnClassName} display-font px-4`}>
                       Ver más
                     </a>
