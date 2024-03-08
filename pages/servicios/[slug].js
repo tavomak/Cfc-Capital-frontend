@@ -104,7 +104,6 @@ export async function getStaticProps({ params }) {
         destination: '/404',
         permanent: false,
       },
-      error,
     };
   }
 }

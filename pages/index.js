@@ -198,7 +198,6 @@ export async function getStaticProps() {
   } catch (error) {
     return {
       notFound: true,
-      error,
     };
   }
 }
