@@ -31,9 +31,9 @@ export async function getStaticProps() {
       revalidate: 10,
     };
   } catch (error) {
-    console.error('Error fetching service data:', error);
     return {
       notFound: true,
+      error,
     };
   }
 }

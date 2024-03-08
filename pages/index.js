@@ -3,6 +3,7 @@ import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { getPageBySlugAndServices } from '@utils/lib/api';
 import { shimmer, toBase64 } from '@utils/index';
+import ReactHtmlParser from 'react-html-parser';
 
 import Layout from '@components/Templates/Layout';
 import Divider from '@components/Atoms/Divider';
@@ -137,7 +138,9 @@ export default function Home({ data }) {
                 <div className="d-flex" style={{ height: '80%' }}>
                   <div className="px-3 px-sm-4 px-md-5 py-5 text-dark-blue bg-grey position-relative">
                     <Icon bgColor="bg-dark-blue" icon={item.slug} absolute />
-                    <div className="mt-5" dangerouslySetInnerHTML={{ __html: item.review.html }} />
+                    <div className="mt-5">
+                      {ReactHtmlParser(item.review.html)}
+                    </div>
                   </div>
                 </div>
                 <div className="text-center my-4">
@@ -154,9 +157,9 @@ export default function Home({ data }) {
         showModal={modal}
         size="lg"
       >
-        <div
-          dangerouslySetInnerHTML={{ __html: modalText }}
-        />
+        <div>
+          {ReactHtmlParser(modalText)}
+        </div>
       </Modal>
 
       <Modal
@@ -193,9 +196,9 @@ export async function getStaticProps() {
       revalidate: 100,
     };
   } catch (error) {
-    console.error('Error fetching service data:', error);
     return {
       notFound: true,
+      error,
     };
   }
 }

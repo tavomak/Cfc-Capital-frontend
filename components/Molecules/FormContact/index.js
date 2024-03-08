@@ -68,11 +68,10 @@ const FormGetInfo = ({
         });
       } else {
         const error = await response.json();
-        console.log(error);
         throw new Error(error.message);
       }
     } catch (error) {
-      console.log('error', error?.message);
+      notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
     } finally {
       recaptchaRef.current.reset();
     }

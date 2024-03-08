@@ -113,12 +113,12 @@ export async function getStaticProps({ params }) {
       revalidate: 10,
     };
   } catch (error) {
-    console.error('Error fetching service data:', error);
     return {
       redirect: {
         destination: '/404',
         permanent: false,
       },
+      error,
     };
   }
 }

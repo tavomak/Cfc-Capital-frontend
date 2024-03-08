@@ -98,7 +98,6 @@ const FormFactoringActiveCampaign = ({ setModal }) => {
         throw new Error(error.message);
       }
     } catch (error) {
-      console.log('error', error?.message);
       reset();
       notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo más tarde!');
     } finally {

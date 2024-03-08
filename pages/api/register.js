@@ -55,8 +55,7 @@ export default async function handler(req, res) {
         message: 'Unproccesable request, Invalid captcha code',
       });
     } catch (error) {
-      console.error(error);
-      return res.status(422).json({ message: 'Something went wrong' });
+      return res.status(422).json({ message: 'Something went wrong', error });
     }
   }
   // Return 404 if someone pings the API with a method other than

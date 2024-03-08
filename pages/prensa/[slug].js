@@ -7,6 +7,7 @@ import Image from 'next/legacy/image';
 import Layout from '@components/Templates/Layout';
 import MoreStories from '@components/Molecules/MorePosts';
 import markdownToHtml from '@utils/lib/markdownToHtml';
+import ReactHtmlParser from 'react-html-parser';
 
 export default function Post({ post, morePosts }) {
   const router = useRouter();
@@ -38,7 +39,7 @@ export default function Post({ post, morePosts }) {
                   <div className="overlay" />
                   <div className="d-none d-lg-block">
                     <Image
-                      src={`${post.article.coverImage.url}`}
+                      src={post.article.coverImage.url}
                       alt={post.article.title}
                       layout="responsive"
                       objectFit="contain"
@@ -51,7 +52,7 @@ export default function Post({ post, morePosts }) {
                   </div>
                   <div className="d-lg-none">
                     <Image
-                      src={`${post.article.coverImage.url}`}
+                      src={post.article.coverImage.url}
                       alt={post.article.title}
                       layout="responsive"
                       objectFit="cover"
@@ -80,9 +81,9 @@ export default function Post({ post, morePosts }) {
                     </figure>
                   </div>
                   )}
-                  <div
-                    dangerouslySetInnerHTML={{ __html: post.article.content.html }}
-                  />
+                  <div>
+                    {ReactHtmlParser(post.article.content.html)}
+                  </div>
                 </div>
               </div>
             </article>

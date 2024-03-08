@@ -8,7 +8,6 @@ const CategoryNavBar = ({ categories }) => {
   const [scrollTop, setScrollTop] = useState(0);
   const handleSelect = (e) => {
     const { value } = e.target;
-    console.log({ value });
     if (!(value === 'no-selected')) {
       router.push(`/prensa/categoria/${value}`);
     }

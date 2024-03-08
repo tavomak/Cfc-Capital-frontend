@@ -73,7 +73,8 @@ const Navbar = () => {
         <div className="container">
           <nav className={`navbar navbar-expand-lg navbar-light ${styles.nav}`}>
             <div className="container-fluid">
-              <Link legacyBehavior
+              <Link
+                legacyBehavior
                 href="/"
                 className={`navbar-brand ${styles.primaryNav}`}
               >
@@ -100,7 +101,8 @@ const Navbar = () => {
                       onMouseEnter={() => setShowSubMenu(item.label)}
                       onMouseLeave={() => setShowSubMenu(false)}
                     >
-                      <Link legacyBehavior
+                      <Link
+                        legacyBehavior
                         href={item.path}
                       >
                         <a

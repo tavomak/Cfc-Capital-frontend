@@ -70,15 +70,15 @@ const FormContact = () => {
             notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
             reset();
           }, () => {
-            setLoading(false); notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
+            setLoading(false);
+            notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
           });
       } else {
         const error = await response.json();
-        console.log(error);
         throw new Error(error.message);
       }
     } catch (error) {
-      console.log('error', error?.message);
+      notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
     } finally {
       recaptchaRef.current.reset();
     }

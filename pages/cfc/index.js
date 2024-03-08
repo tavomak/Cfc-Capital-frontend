@@ -79,7 +79,7 @@ const Cfc = () => {
             {highlights.map((item) => (
               <div className="col-lg-4 text-center" key={item.name}>
                 <span className={`${styles.card} bg-dark-blue mx-5`}>
-                  <span className={`${styles.cardImage}`}>
+                  <span className={styles.cardImage}>
                     <Icon bgColor="bg-dark-blue" icon={item.image} />
                   </span>
                 </span>
@@ -106,7 +106,8 @@ const Cfc = () => {
           </div>
           <div className="row pb-5">
             <div className="col text-center">
-              <Link legacyBehavior
+              <Link
+                legacyBehavior
                 href="/memorias"
               >
                 <a

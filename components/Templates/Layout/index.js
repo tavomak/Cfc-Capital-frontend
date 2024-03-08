@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { CSSTransition } from 'react-transition-group';
 
 import Head from 'next/head';
 import Script from 'next/script';
@@ -35,7 +34,7 @@ const Layout = ({
         <meta charSet="UTF-8" />
         <meta
           name="description"
-          content={`${description || ' CFC Capital'}`}
+          content={description || ' CFC Capital'}
         />
         <link rel="canonical" href={hostname} />
         <meta property="og:locale" content="es_ES" />
