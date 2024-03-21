@@ -289,7 +289,8 @@ export const gerencia = [
     cargo: 'Gerente General',
     email: 'etenorio@cfccapital.cl',
     linkedin: 'https://www.linkedin.com/in/enrique-tenorio-0b439646/',
-    img: '/enrique-am.png',
+    img: '/enrique-ameba-2.png',
+    img_mobile: '/enrique-ameba-2-mobile.png',
     desc: 'Contamos con un subgerente de riesgo, un subgerente de operaciones y con equipo capacitado de primer nivel, lo cual permite que tengamos una posición financiera sólida y robusta en el mercado.',
   },
   {
@@ -297,46 +298,48 @@ export const gerencia = [
     cargo: 'Gerente Comercial',
     email: 'fgoycoolea@cfccapital.cl',
     linkedin: 'https://www.linkedin.com/in/francisco-javier-goycoolea-brucher-871707142/',
-    img: '/francisco-am.png',
+    img: '/francisco-ameba-2.png',
+    img_mobile: '/francisco-ameba-2-mobile.png',
     desc: 'En el año 2017 se incorpora como gerente comercial el señor Francisco Javier Goycoolea Brucher ingeniero con MBA en Dirección de empresas de la escuela de negocios española IEDE, después de trabajar 25 años en el Bci dando un nuevo ímpetu a toda la parte comercial de la empresa.',
   },
 ];
 
 export const team = [
   {
-    name: 'Victor Nario Mouat',
-    cargo: 'Agente Región Metropolitana',
-    email: 'vnario@cfccapital.cl',
-  },
-  {
     name: 'Mario Finschi Herrera',
     cargo: 'Agente Zona Norte',
     email: 'mfinschi@cfccapital.cl',
+    img: '/mario-finschi.jpg',
   },
   {
     name: 'Ema Jara Colipi',
     cargo: 'Sub Gerente Comercial',
     email: 'ejara@cfccapital.cl',
+    img: '/ema-jara.jpg',
   },
   {
-    name: 'Marcelo Soto Fuentes',
-    cargo: 'Ejecutivo Comercial',
-    email: 'msoto@cfccapital.cl',
-  },
-  {
-    name: 'Laura Ferrada Martínez',
-    cargo: 'Ejecutiva Comercial',
-    email: 'lferrada@cfccapital.cl',
+    name: 'Victor Nario Mouat',
+    cargo: 'Agente Región Metropolitana',
+    email: 'vnario@cfccapital.cl',
+    img: '/victor-nario.jpg',
   },
   {
     name: 'Evelin Santander Gallardo',
     cargo: 'Ejecutiva Comercial',
     email: 'esantander@cfccapital.cl',
+    img: '/evelin-santander.jpg',
   },
   {
-    name: 'Carmen Paz Olhaberry',
+    name: 'Marcelo Soto Fuentes',
+    cargo: 'Ejecutivo Comercial',
+    email: 'msoto@cfccapital.cl',
+    img: '/marcelo-soto.jpg',
+  },
+  {
+    name: 'Laura Ferrada Martínez',
     cargo: 'Ejecutiva Comercial',
-    email: 'colhaberry@cfccapital.cl',
+    email: 'lferrada@cfccapital.cl',
+    img: '/laura-ferrada.jpg',
   },
 ];
 
