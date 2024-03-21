@@ -79,7 +79,7 @@ const Cfc = () => {
             {highlights.map((item) => (
               <div className="col-lg-4 text-center" key={item.name}>
                 <span className={`${styles.card} bg-dark-blue mx-5`}>
-                  <span className={`${styles.cardImage}`}>
+                  <span className={styles.cardImage}>
                     <Icon bgColor="bg-dark-blue" icon={item.image} />
                   </span>
                 </span>
@@ -122,33 +122,49 @@ const Cfc = () => {
       </section>
 
       {gerencia && gerencia.map((item, index) => (
-        <section id="gerencia" className={`container py-5 ${((index + 1) % 2 === 0) ? 'bg-primary-gradient' : 'bg-secondary-gradient'}`} key={item.name}>
-          <div className="row align-items-center">
-            <div className={`col-md-6 ${((index + 1) % 2 === 0) ? 'order-md-2' : 'order-md-1'}`}>
-              <Image
-                src={item.img}
-                alt={item.name}
-                objectFit="contain"
-                width={1205}
-                height={740}
-                layout="responsive"
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-              />
-            </div>
-            <div className={`col-md-6 ${((index + 1) % 2 === 0) ? 'order-md-1' : 'order-md-2'}`}>
-              <div className={`${styles.itemText} ps-md-5`}>
-                <p className="display-font text-white mb-0 fs-1">
-                  <strong>
-                    {item.name}
-                  </strong>
-                </p>
-                <Divider theme="light" className="py-2" />
-                <p className="mb-0 text-white fs-3">
-                  <small>
-                    {item.cargo}
-                  </small>
-                </p>
+        <section id="gerencia" className={`container-fluid py-5 ${((index + 1) % 2 === 0) ? 'bg-primary-gradient-grey' : 'bg-secondary-gradient-grey'}`} key={item.name}>
+          <div className="container">
+            <div className="row align-items-center">
+              <div className={`col-md-6 ${((index + 1) % 2 === 0) ? 'order-md-2' : 'order-md-1'}`}>
+                <div className="d-none d-md-block">
+                  <Image
+                    src={item.img}
+                    alt={item.name}
+                    objectFit="contain"
+                    width={1205}
+                    height={740}
+                    layout="responsive"
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+                  />
+                </div>
+                <div className="d-md-none">
+                  <Image
+                    src={item.img_mobile}
+                    alt={item.name}
+                    objectFit="contain"
+                    width={1000}
+                    height={1371}
+                    layout="responsive"
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+                  />
+                </div>
+              </div>
+              <div className={`col-md-6 ${((index + 1) % 2 === 0) ? 'order-md-1' : 'order-md-2'}`}>
+                <div className={`${styles.itemText} ps-md-5`}>
+                  <p className="display-font text-dark-blue mb-0 fs-1">
+                    <strong>
+                      {item.name}
+                    </strong>
+                  </p>
+                  <Divider theme="dark" className="py-2" />
+                  <p className="mb-0 text-dark-blue fs-3">
+                    <small>
+                      {item.cargo}
+                    </small>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -161,8 +177,8 @@ const Cfc = () => {
             <div className="col-md-8">
               <div className="text-center">
                 <h2 className="text-dark-blue fw-bolder">Equipo Comercial</h2>
-                <p>
-                  <span className="text-dark-blue fw-bolder">Más que ejecutivos</span>
+                <p className="text-dark-blue">
+                  <span className="fw-bolder">Más que ejecutivos</span>
                   {' '}
                   somos un equipo humano dispuestos a ser
                   {' '}
@@ -175,32 +191,42 @@ const Cfc = () => {
             </div>
           </div>
           <div className="row justify-content-around">
-            {team && team.length && (
-              <Carousel breakPoints={newsBreakPoints}>
-                {team.map((item) => (
-                  <div key={item.name} className=" p-4 w-100 mx-3 bg-grey" style={{ height: '100%', borderRadius: 0 }}>
-                    <div className={`${styles.itemText} text-center`}>
-                      <p className="display-font text-soft-purple mb-0 fs-5">
-                        <strong>
-                          {item.name}
-                        </strong>
-                      </p>
-                      <span className={styles.divider} />
-                      <p className="text-dark-blue">
-                        <small>
-                          {item.cargo}
-                        </small>
-                      </p>
-                      <div className="text-center">
-                        <a href={`mailto:${item.email}`} className="text-soft-purple" target="_blanc">
-                          {item.email}
-                        </a>
-                      </div>
-                    </div>
+            {team && team.length && team.map((item) => (
+              <div key={item.name} className="col-lg-4 mb-4">
+                <div className="px-md-5 mb-3">
+                  <div className="team-img">
+                    <Image
+                      src={item.img}
+                      alt={item.name}
+                      objectFit="contain"
+                      width={1000}
+                      height={1361}
+                      layout="responsive"
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+                    />
                   </div>
-                ))}
-              </Carousel>
-            )}
+                </div>
+                <div className={`${styles.itemText} text-center`}>
+                  <p className="display-font text-soft-purple mb-0 fs-5">
+                    <strong>
+                      {item.name}
+                    </strong>
+                  </p>
+                  <span className={styles.divider} />
+                  <p className="text-dark-blue mb-0">
+                    <small>
+                      {item.cargo}
+                    </small>
+                  </p>
+                  <div className="text-center">
+                    <a href={`mailto:${item.email}`} className="text-soft-purple" target="_blanc">
+                      {item.email}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
