@@ -325,7 +325,7 @@ export const team = [
   },
   {
     name: 'Evelin Santander Gallardo',
-    cargo: 'Ejecutiva Comercial',
+    cargo: 'Ejecutiva Comercial Senior',
     email: 'esantander@cfccapital.cl',
     img: '/evelin-santander.jpg',
   },
@@ -337,7 +337,7 @@ export const team = [
   },
   {
     name: 'Laura Ferrada Martínez',
-    cargo: 'Ejecutiva Comercial',
+    cargo: 'Ejecutiva Comercial Senior',
     email: 'lferrada@cfccapital.cl',
     img: '/laura-ferrada.jpg',
   },
