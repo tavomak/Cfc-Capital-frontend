@@ -9,7 +9,13 @@ const BannerSubscribe = ({ className }) => (
         <div className="col-md-6 col-lg-4">
           <div className="content-block text-white text-center">
             <div className="p-4">
-              <Image src="/logo-white.png" alt="Cfc Capital Logo" width={326} height={64} />
+              <Image
+                src="/logo-white.png"
+                alt="Cfc Capital Logo"
+                width={326}
+                height={214}
+                style={{ width: '100%', height: 'auto' }}
+              />
             </div>
             <p>No te pierdas nuestros consejos financieros más valiosos</p>
             <p className="fs-3 fw-bold">¡Suscríbete a nuestro newsletter!</p>
@@ -21,7 +27,7 @@ const BannerSubscribe = ({ className }) => (
             alt="Subscribe"
             width={700}
             height={500}
-            layout="responsive"
+            style={{ width: '100%', height: 'auto' }}
           />
         </div>
         <div className="col-lg-4">

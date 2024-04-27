@@ -108,13 +108,9 @@ const Cfc = () => {
             <div className="col text-center">
               <Link
                 href="/memorias"
+                className="btn btn-primary"
               >
-                <a
-                  href="!#"
-                  className="btn btn-primary"
-                >
-                  Ver memorias
-                </a>
+                Ver memorias_fichas
               </Link>
             </div>
           </div>
@@ -130,10 +126,9 @@ const Cfc = () => {
                   <Image
                     src={item.img}
                     alt={item.name}
-                    objectFit="contain"
+                    style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                     width={1205}
                     height={740}
-                    layout="responsive"
                     placeholder="blur"
                     blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                   />
@@ -142,10 +137,9 @@ const Cfc = () => {
                   <Image
                     src={item.img_mobile}
                     alt={item.name}
-                    objectFit="contain"
+                    style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                     width={1000}
                     height={1371}
-                    layout="responsive"
                     placeholder="blur"
                     blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                   />
@@ -198,10 +192,9 @@ const Cfc = () => {
                     <Image
                       src={item.img}
                       alt={item.name}
-                      objectFit="contain"
+                      style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
                       width={1000}
                       height={1361}
-                      layout="responsive"
                       placeholder="blur"
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
                     />

@@ -25,8 +25,7 @@ const RowTextImage = ({
           <Image
             src={imageUrl}
             alt="Más que ejecutivos"
-            layout="responsive"
-            objectFit="contain"
+            style={{ objectFit: 'contain', width: '100%' }}
             width={imageWidth}
             height={imageHeight}
           />

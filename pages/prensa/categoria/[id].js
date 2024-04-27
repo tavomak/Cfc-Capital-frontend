@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { getPostsByCategoryAndProcess, getAllCategories } from '@utils/lib/api';
 import Layout from '@components/Templates/Layout';
 import BannerRow from '@components/Molecules/BannerRow';
@@ -24,7 +24,7 @@ const Category = ({
       <CategoryNavBar categories={categories} />
     )}
 
-    <CardLayout posts={posts} col="col-md-6 col-lg-3" title={categoryName} />
+    <CardLayout posts={posts} col="col-md-6 col-lg-3" title={categoryName} height="250" />
 
     {service && service.length > 0 && (
       <section className="container-fluid py-5 bg-dark-blue">

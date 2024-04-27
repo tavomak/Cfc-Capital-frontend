@@ -38,11 +38,9 @@ export default function Post({ post, morePosts }) {
                   <div className="overlay" />
                   <div className="d-none d-lg-block">
                     <Image
-                      src={`${post.article.coverImage.url}`}
+                      src={post.article.coverImage.url}
                       alt={post.article.title}
-                      layout="responsive"
-                      objectFit="contain"
-                      objectPosition="top"
+                      style={{ objectFit: 'contain', objectPosition: 'top', width: '100%' }}
                       width={700}
                       height={280}
                       placeholder="blur"
@@ -51,10 +49,9 @@ export default function Post({ post, morePosts }) {
                   </div>
                   <div className="d-lg-none">
                     <Image
-                      src={`${post.article.coverImage.url}`}
+                      src={post.article.coverImage.url}
                       alt={post.article.title}
-                      layout="responsive"
-                      objectFit="cover"
+                      style={{ objectFit: 'cover' }}
                       width={500}
                       height={400}
                       placeholder="blur"

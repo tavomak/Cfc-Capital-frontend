@@ -23,7 +23,7 @@ const Icon = ({ icon, bgColor, absolute }) => {
       star: <FaUniversity />,
       people: <FaUserCheck />,
       money: <FaHandHoldingUsd />,
-    }[service?.toLowerCase()] || icon;
+    }[service] || icon;
     return serviceIcon;
   };
   return (

@@ -9,17 +9,15 @@ const MorePosts = ({ posts }) => (
           <div className="card-header">
             <Link
               href={`/prensa/${item.slug}`}
+              className="noticeImg d-block mb-4"
             >
-              <a href="!#" className="noticeImg d-block mb-4">
-                <Image
-                  src={item.coverImage.url}
-                  alt="Cfc Capital Logo"
-                  width={16}
-                  height={9}
-                  layout="responsive"
-                  objectFit="contain"
-                />
-              </a>
+              <Image
+                src={item.coverImage.url}
+                alt="Cfc Capital Logo"
+                width={16}
+                height={9}
+                style={{ objectFit: 'contain', width: '100%' }}
+              />
             </Link>
           </div>
           <div className="card-body d-flex flex-column">
@@ -28,10 +26,9 @@ const MorePosts = ({ posts }) => (
             </p>
             <Link
               href={`/prensa/${item.slug}`}
+              className="btn btn-primary display-font mt-auto"
             >
-              <a href="!#" className="btn btn-primary display-font mt-auto">
-                Ver más
-              </a>
+              Ver más
             </Link>
           </div>
         </div>

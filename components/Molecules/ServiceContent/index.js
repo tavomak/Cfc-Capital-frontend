@@ -12,10 +12,13 @@ const Service = ({ services, name, onClick }) => (
           <Image
             src={item.image.url}
             alt={item.title}
-            layout="responsive"
-            objectFit="cover"
-            objectPosition="center"
-            width={160}
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center',
+              width: '100%',
+              height: 'auto',
+            }}
+            width={500}
             height={120}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}

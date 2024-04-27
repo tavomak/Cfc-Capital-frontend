@@ -101,11 +101,14 @@ export default function Home({ data }) {
             <Image
               src="/hombre-ameba-s.png"
               alt="CFC capital"
-              layout="responsive"
-              objectFit="contain"
-              objectPosition="top"
+              style={{
+                objectFit: 'contain',
+                objectPosition: 'top',
+                width: '100%',
+                height: 'auto',
+              }}
               width={1200}
-              height={1121}
+              height={600}
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
             />
@@ -166,16 +169,13 @@ export default function Home({ data }) {
         noPadding
       >
         <Link href="/contacto">
-          <a href="!#">
-            <Image
-              src="/primary-popup.jpg"
-              alt="Financiamos en 4 horas"
-              layout="responsive"
-              objectFit="contain"
-              width={160}
-              height={82}
-            />
-          </a>
+          <Image
+            src="/primary-popup.jpg"
+            alt="Financiamos en 4 horas"
+            style={{ objectFit: 'contain', width: '100%' }}
+            width={160}
+            height={82}
+          />
         </Link>
 
       </Modal>

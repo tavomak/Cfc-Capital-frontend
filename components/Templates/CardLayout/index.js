@@ -28,20 +28,23 @@ const CardLayout = ({
                 }}
               >
                 <div className="card-header p-0">
-                  <Link href={`/prensa/${item.slug}`}>
-                    <a href={`/prensa/${item.slug}`} className="noticeImg d-block">
-                      <Image
-                        src={item.coverImage?.url ? item.coverImage.url : '/leasing-card.png'}
-                        alt="Cfc Capital Logo"
-                        width={width || 90}
-                        height={height || 90}
-                        layout="responsive"
-                        objectFit="cover"
-                        objectPosition={objectPosition || 'top left'}
-                        placeholder="blur"
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                      />
-                    </a>
+                  <Link href={`/prensa/${item.slug}`} className="noticeImg d-block">
+                    <Image
+                      src={item.coverImage?.url ? item.coverImage.url : '/leasing-card.png'}
+                      alt="Cfc Capital Logo"
+                      width={width || 500}
+                      height={height || 300}
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: objectPosition || 'top left',
+                        width: '100%',
+                        height: 'auto',
+                        maxHeight: `${height || 250}px`,
+                        minHeight: `${height || 250}px`,
+                      }}
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+                    />
                   </Link>
                 </div>
                 <div className="p-4 card-body">
@@ -55,10 +58,11 @@ const CardLayout = ({
                   </p>
                 </div>
                 <div className="footer pb-3 text-center">
-                  <Link href={`/prensa/${item.slug}`}>
-                    <a href={`/prensa/${item.slug}`} className="btn btn-primary display-font px-4">
-                      Ver más
-                    </a>
+                  <Link
+                    href={`/prensa/${item.slug}`}
+                    className="btn btn-primary display-font px-4"
+                  >
+                    Ver más
                   </Link>
                 </div>
               </div>

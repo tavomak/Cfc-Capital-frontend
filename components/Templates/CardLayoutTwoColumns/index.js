@@ -32,39 +32,41 @@ const CardLayoutTwoColumns = ({
                 }}
               >
                 <div className={styles.column}>
-                  <Link href={`/prensa/${item.slug}`}>
-                    <a
-                      href={`/prensa/${item.slug}`}
-                      className="d-block"
+                  <Link
+                    href={`/prensa/${item.slug}`}
+                    className="d-block"
+                    style={{
+                      height: '100%',
+                      border: '1px solid lightgrey',
+                      borderRadius: 20,
+                      overflow: 'hidden',
+                    }}
+                  >
+                    <Image
+                      src={item.coverImage?.url ? item.coverImage.url : '/leasing-card.png'}
+                      alt="Cfc Capital Logo"
+                      width={width || 390}
+                      height={height || 390}
                       style={{
+                        objectFit: 'cover',
+                        objectPosition: objectPosition || 'top left',
+                        width: '100%',
                         height: '100%',
-                        border: '1px solid lightgrey',
-                        borderRadius: 20,
-                        overflow: 'hidden',
                       }}
-                    >
-                      <Image
-                        src={item.coverImage?.url ? item.coverImage.url : '/leasing-card.png'}
-                        alt="Cfc Capital Logo"
-                        width={width || 90}
-                        height={height || 90}
-                        layout="responsive"
-                        objectFit="cover"
-                        objectPosition={objectPosition || 'top left'}
-                        placeholder="blur"
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-                      />
-                    </a>
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+                    />
                   </Link>
                 </div>
-                <div className={`${styles.column} px-3`}>
+                <div className={`${styles.column} px-3 align-content-center`}>
                   <p className="display-font">
                     {item.title}
                   </p>
-                  <Link href={`/prensa/${item.slug}`}>
-                    <a href={`/prensa/${item.slug}`} className={`btn ${btnClassName} display-font px-4`}>
-                      Ver más
-                    </a>
+                  <Link
+                    href={`/prensa/${item.slug}`}
+                    className={`btn ${btnClassName} display-font px-4`}
+                  >
+                    Ver más
                   </Link>
                 </div>
               </div>

@@ -77,14 +77,12 @@ const Navbar = () => {
                 href="/"
                 className={`navbar-brand ${styles.primaryNav}`}
               >
-                <a href="!#" className={`navbar-brand ${styles.primaryNav}`}>
-                  <Image
-                    src="/logo-cfc.svg"
-                    alt="Cfc Capital Logo"
-                    width={208}
-                    height={41}
-                  />
-                </a>
+                <Image
+                  src="/logo-cfc.svg"
+                  alt="Cfc Capital Logo"
+                  width={208}
+                  height={41}
+                />
               </Link>
               <button className={`d-lg-none hamburger hamburger--emphatic ${menuOpen ? 'is-active' : ''}`} type="button" onClick={() => setMenuOpen(!menuOpen)}>
                 <span className="hamburger-box">
@@ -102,15 +100,11 @@ const Navbar = () => {
                     >
                       <Link
                         href={item.path}
+                        className={`nav-link text-dark-blue ${itemActive(item.path) ? styles.underline : styles.navLink}`}
                       >
-                        <a
-                          href="!#"
-                          className={`nav-link text-dark-blue ${itemActive(item.path) ? styles.underline : styles.navLink}`}
-                        >
-                          <p className="mb-0 display-font">
-                            {item.label}
-                          </p>
-                        </a>
+                        <p className="mb-0 display-font">
+                          {item.label}
+                        </p>
                       </Link>
                       {item.children?.length > 1 && (
                       <CSSTransition

@@ -17,10 +17,8 @@ const FourOhFour = () => (
           />
         </div>
         <div className="mt-5 text-center">
-          <Link href="/">
-            <a href="!#" className="btn btn-complementary btn-sm shadow px-5 py-2">
-              Volver al sitio
-            </a>
+          <Link href="/" className="btn btn-complementary btn-sm shadow px-5 py-2">
+            Volver al sitio
           </Link>
         </div>
       </div>

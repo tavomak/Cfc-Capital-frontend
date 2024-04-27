@@ -20,11 +20,14 @@ const ServicesInfo = ({ services }) => {
             <Image
               src={`/${item.slug}-services.png`}
               alt={item.title}
-              layout="responsive"
-              objectFit="cover"
-              objectPosition="center"
-              width={160}
+              width={500}
               height={120}
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+                width: '100%',
+                height: 'auto',
+              }}
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
             />

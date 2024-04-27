@@ -17,14 +17,17 @@ const Carousel = ({ settings, banners }) => {
           <Slider {...settings}>
             {
               filteredBanners.map((item) => (
-                <div key={item.id} className="position-relative">
+                <div key={item} className="position-relative">
                   <div className="d-none d-lg-block">
                     <Image
                       src={item.item_image.url}
                       alt={`${item.title} | CFC Capital`}
-                      layout="responsive"
-                      objectFit="cover"
-                      objectPosition="top"
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: 'top',
+                        width: '100%',
+                        height: 'auto',
+                      }}
                       width={1400}
                       height={635}
                       placeholder="blur"
@@ -35,8 +38,7 @@ const Carousel = ({ settings, banners }) => {
                     <Image
                       src={item.item_image_mobile.url}
                       alt={`${item.title} | CFC Capital`}
-                      layout="responsive"
-                      objectFit="cover"
+                      style={{ objectFit: 'cover', objectPosition: 'top', width: '100%' }}
                       width={700}
                       height={500}
                       placeholder="blur"

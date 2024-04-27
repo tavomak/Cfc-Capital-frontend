@@ -11,7 +11,7 @@ const Modal = ({
     classNames="alert"
     unmountOnExit
   >
-    <div className={`${styles.modal}`}>
+    <div className={styles.modal}>
       <div
         className={`${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-3'} shadow m-auto border-0 position-relative`}
         style={{ borderRadius: '16px' }}

@@ -103,12 +103,10 @@ const Footer = () => {
             <ul className={`d-flex w-100 justify-content-between px-md-5 ${styles.footerFs}`}>
               {navItems.length && navItems.map((item) => (
                 <li className="nav-item position-relative" key={item.label}>
-                  <Link href={item.path}>
-                    <a href={item.path} className="nav-link text-white">
-                      <p className="mb-0 display-font fs-5">
-                        {item.label}
-                      </p>
-                    </a>
+                  <Link href={item.path} className="nav-link text-white">
+                    <p className="mb-0 display-font fs-5">
+                      {item.label}
+                    </p>
                   </Link>
                   {item.children?.length > 1 && (
                     <ul className={`${styles.submenu} text-white`}>
@@ -163,12 +161,10 @@ const Footer = () => {
                   </li>
                   <li className="fw-lighter">
                     <p>
-                      <Link href="/formulario-denuncias">
-                        <a href="!#" className="text-white">
-                          <small>
-                            Formulario de denuncias Ley Nº 20.393
-                          </small>
-                        </a>
+                      <Link href="/formulario-denuncias" className="text-white">
+                        <small>
+                          Formulario de denuncias Ley Nº 20.393
+                        </small>
                       </Link>
                     </p>
                   </li>

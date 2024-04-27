@@ -7,9 +7,7 @@ const Hero = ({ image, alt, heroImages }) => (
       <Image
         src={heroImages ? heroImages?.desktop : `/hero-${image}.jpg`}
         alt="Servicios | CFC Capital"
-        layout="responsive"
-        objectFit="cover"
-        objectPosition="top"
+        style={{ objectFit: 'cover', objectPosition: 'top', width: '100%' }}
         width={1280}
         height={577}
         placeholder="blur"
@@ -20,8 +18,7 @@ const Hero = ({ image, alt, heroImages }) => (
       <Image
         src={heroImages ? heroImages.mobile : `/m-${image}.jpg`}
         alt={`${alt} | CFC Capital`}
-        layout="responsive"
-        objectFit="cover"
+        style={{ objectFit: 'cover', width: '100%' }}
         width={700}
         height={500}
         placeholder="blur"

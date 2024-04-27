@@ -9,10 +9,9 @@ const BannerRow = ({ banner }) => (
           <Image
             src={banner.image.url}
             alt="Servicios | CFC Capital"
-            layout="responsive"
-            objectFit="contain"
-            width={1.7}
-            height={1}
+            style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+            width={800}
+            height={500}
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
           />
