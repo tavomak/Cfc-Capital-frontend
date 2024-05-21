@@ -54,11 +54,6 @@ const FormGetInfo = ({
       if (response.ok) {
         const options = {
           method: 'POST',
-          headers: {
-            accept: 'application/json',
-            'content-type': 'application/json',
-            'Api-Token': process.env.NEXT_PUBLIC_ACTIVE_CAMPAIGN_API_KEY,
-          },
           body: JSON.stringify({
             contact: {
               email: form.current.email.value,
@@ -69,7 +64,7 @@ const FormGetInfo = ({
           }),
         };
 
-        fetch(`${process.env.NEXT_PUBLIC_ACTIVE_CAMPAIGN_API_URL}/contacts`, options)
+        fetch('/api/active-campaign', options)
           .then((activeResponse) => activeResponse.json())
           .then((activeResponse) => console.log(activeResponse))
           .catch((err) => console.error(err));
