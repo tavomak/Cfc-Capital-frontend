@@ -214,6 +214,14 @@ export const services = [
 
 export const memorial = [
   {
+    year: '2023 Memoria',
+    url: '/memorias_fichas/2023-memoria.pdf',
+  },
+  {
+    year: '2023 Estado Financiero',
+    url: '/memorias_fichas/2023-estado-financiero.pdf',
+  },
+  {
     year: '2022',
     url: '/memorias_fichas/memoria-2022.pdf',
   },
