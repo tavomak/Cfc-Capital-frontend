@@ -214,7 +214,7 @@ export const services = [
 
 export const memorial = [
   {
-    year: '2023 Memoria',
+    year: '2023',
     url: '/memorias_fichas/2023-memoria.pdf',
   },
   {
