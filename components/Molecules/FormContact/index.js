@@ -52,6 +52,28 @@ const FormGetInfo = ({
         },
       });
       if (response.ok) {
+        const options = {
+          method: 'POST',
+          headers: {
+            accept: 'application/json',
+            'content-type': 'application/json',
+            'Api-Token': process.env.NEXT_PUBLIC_ACTIVE_CAMPAIGN_API_KEY,
+          },
+          body: JSON.stringify({
+            contact: {
+              email: form.current.email.value,
+              firstName: form.current.username.value,
+              lastName: form.current.lastName.value,
+              phone: form.current.telefono.value,
+            },
+          }),
+        };
+
+        fetch(`${process.env.NEXT_PUBLIC_ACTIVE_CAMPAIGN_API_URL}/contacts`, options)
+          .then((activeResponse) => activeResponse.json())
+          .then((activeResponse) => console.log(activeResponse))
+          .catch((err) => console.error(err));
+
         emailjs.sendForm(
           process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
           process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_SERVICES_ID,
@@ -156,6 +178,25 @@ const FormGetInfo = ({
           />
           <span className={styles.formInputSpanError}>
             {errors.username ? 'Nombre requerido' : ''}
+          </span>
+        </label>
+      </div>
+      <div className="form-group">
+        <label htmlFor="lastName" className="form-label w-100">
+          <span className={styles.formLabel}>
+            Apellido
+          </span>
+          <input
+            type="text"
+            className={`${styles.formInput} ${errors.lastName ? styles.formInputError : ''} form-control mt-2`}
+            name="lastName"
+            placeholder="Introduce un Apellido"
+            {...register('lastName', {
+              required: true,
+            })}
+          />
+          <span className={styles.formInputSpanError}>
+            {errors.lastName ? 'Apellido requerido' : ''}
           </span>
         </label>
       </div>
