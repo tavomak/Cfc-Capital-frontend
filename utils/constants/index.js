@@ -436,3 +436,10 @@ export const navItems = [
     ],
   },
 ];
+
+export const serviceMap = {
+  factoring: '63',
+  leasing: '64',
+  leaseback: '65',
+  contacto: '66',
+};

@@ -1,20 +1,11 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import fetch from 'node-fetch';
 
-const sleep = () => new Promise((resolve) => {
-  setTimeout(() => {
-    resolve();
-  }, 350);
-});
-
 export default async function handler(req, res) {
   const { body, method } = req;
-
-  // Extract the email and captcha code from the request body
   const { captcha } = body;
 
   if (method === 'POST') {
-    // If email or captcha are missing return an error
     if (!captcha) {
       return res.status(422).json({
         message: 'Unproccesable request, please provide the required fields',
@@ -44,22 +35,16 @@ export default async function handler(req, res) {
         }
        */
       if (captchaValidation.success) {
-        // Replace this with the API that will save the data received
-        // to your backend
-        await sleep();
-        // Return 200 if everything is successful
-        return res.status(200).send('OK');
+        return res.status(200).json({ ok: true });
       }
 
       return res.status(422).json({
         message: 'Unproccesable request, Invalid captcha code',
+        captchaValidation,
       });
     } catch (error) {
-      console.error(error);
-      return res.status(422).json({ message: 'Something went wrong' });
+      return res.status(422).json({ message: 'Something went wrong', error });
     }
   }
-  // Return 404 if someone pings the API with a method other than
-  // POST
   return res.status(404).send('Not found');
 }

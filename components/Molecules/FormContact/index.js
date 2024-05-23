@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import emailjs from 'emailjs-com';
+// import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
 import TagManager from 'react-gtm-module';
 import useNotify from '@hooks/useNotify';
@@ -60,36 +60,29 @@ const FormGetInfo = ({
               firstName: form.current.username.value,
               lastName: form.current.lastName.value,
               phone: form.current.telefono.value,
+              tag: service?.toLowerCase() || 'contacto',
             },
           }),
         };
 
-        fetch('/api/active-campaign', options)
-          .then((activeResponse) => activeResponse.json())
-          .then((activeResponse) => console.log(activeResponse))
-          .catch((err) => console.error(err));
+        const activeResponse = await fetch('/api/active-campaign', options);
+        const data = await activeResponse.json();
 
-        emailjs.sendForm(
-          process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
-          process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_SERVICES_ID,
-          form.current,
-          process.env.NEXT_PUBLIC_EMAIL_JS_PUBlIC_KEY,
-        ).then(() => {
-          setLoading(false);
-          notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
-          reset();
-          TagManager.dataLayer(tagManagerArgs);
-        }, () => {
+        if (data.error) {
           setLoading(false);
           notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
-        });
+        }
+
+        setLoading(false);
+        notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
+        reset();
+        TagManager.dataLayer(tagManagerArgs);
       } else {
         const error = await response.json();
-        console.log(error);
         throw new Error(error.message);
       }
     } catch (error) {
-      console.log('error', error?.message);
+      console.log('error', error);
     } finally {
       recaptchaRef.current.reset();
     }
