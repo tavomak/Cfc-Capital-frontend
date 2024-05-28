@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { getPageBySlugAndCategories } from '@utils/lib/api';
+import { getPageBySlugAndCategories, getAllPosts } from '@utils/lib/api';
 import Image from 'next/image';
 import Layout from '@components/Templates/Layout';
 import CardLayout from '@components/Templates/CardLayout';
@@ -13,7 +13,7 @@ import { mediaLogos } from '@utils/constants/index';
 const filterPosts = (posts, category) => posts
   .filter((item) => item.categories[0].name === category);
 const News = ({ banner, posts, categories }) => {
-  const [factoringPosts] = useState(filterPosts(posts, 'Factoring'));
+  const [factoringPosts] = useState(filterPosts(posts, 'Factoring').filter((item, key) => key < 6));
   const [prensaPosts] = useState(filterPosts(posts, 'Prensa'));
   const [consejosPosts] = useState(filterPosts(posts, 'Consejos'));
 
@@ -81,11 +81,12 @@ export async function getStaticProps() {
       data: {
         pages: {
           banner,
-          posts,
         },
         categories,
       },
     } = await getPageBySlugAndCategories('blog');
+
+    const { data: { posts } } = await getAllPosts();
 
     return {
       props: {

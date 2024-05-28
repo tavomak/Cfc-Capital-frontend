@@ -83,6 +83,7 @@ const FormGetInfo = ({
       }
     } catch (error) {
       console.log('error', error);
+      notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
     } finally {
       recaptchaRef.current.reset();
     }

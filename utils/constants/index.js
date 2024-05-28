@@ -215,11 +215,11 @@ export const services = [
 export const memorial = [
   {
     year: '2023',
-    url: '/memorias_fichas/2023-memoria.pdf',
+    url: '/memorias_fichas/2023_memoria.pdf',
   },
   {
     year: '2023 Estado Financiero',
-    url: '/memorias_fichas/2023-estado-financiero.pdf',
+    url: '/memorias_fichas/2023_estado_financiero.pdf',
   },
   {
     year: '2022',
@@ -442,4 +442,5 @@ export const serviceMap = {
   leasing: '64',
   leaseback: '65',
   contacto: '66',
+  newsletter: '69',
 };

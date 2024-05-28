@@ -94,6 +94,10 @@ export const getAllPosts = () => {
           coverImage {
             url
           }
+          categories {
+            id
+            name
+          }
           createdAt
         }
       }

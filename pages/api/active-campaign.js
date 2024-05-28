@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     const contactData = await createContact.json();
 
     if (contactData.errors) {
-      return res.status(400).json({ ...contactData.errors[0] });
+      return res.status(400).json({ ...contactData.errors, origin: 'createContact' });
     }
 
     const { contact: { id } } = contactData;
@@ -63,7 +63,7 @@ export default async function handler(req, res) {
     const tagData = await addTag.json();
 
     if (tagData.errors) {
-      return res.status(400).json({ ...tagData.errors[0] });
+      return res.status(400).json({ ...tagData.errors, origin: 'addTag' });
     }
 
     const addToList = await fetch(
@@ -83,7 +83,7 @@ export default async function handler(req, res) {
     const listData = await addToList.json();
 
     if (listData.errors) {
-      return res.status(400).json({ ...listData.errors[0] });
+      return res.status(400).json({ ...listData.errors, origin: 'addToList' });
     }
 
     return res.status(200).json({
