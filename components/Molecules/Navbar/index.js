@@ -136,14 +136,27 @@ const Navbar = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="ms-lg-auto text-center">
-                  <a
-                    className={`display-font btn btn-primary ${styles.access}`}
-                    href="!#"
-                    onClick={handleClickModal}
-                  >
-                    Acceso Clientes
-                  </a>
+                <div className="ms-lg-auto">
+                  <ul className="d-flex m-0">
+                    <li className="me-2">
+                      <a
+                        className={`display-font btn btn-primary ${styles.access}`}
+                        href="!#"
+                        onClick={handleClickModal}
+                      >
+                        Acceso Clientes
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        className={`display-font btn btn-primary ${styles.access}`}
+                        href="http://cfc.fapro.app/"
+                        target="_blank"
+                      >
+                        Enrólate aquí
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
