@@ -32,7 +32,7 @@ const optionList = [
 
 const FormContact = () => {
   const [loading, setLoading] = useState(false);
-  const [anonymity, setAnonymity] = useState('no');
+  const [anonymity, setAnonymity] = useState('si');
   const [startDate] = useState(new Date());
   const recaptchaRef = useRef(null);
   const form = useRef();
