@@ -1,38 +1,38 @@
-import Link from "next/link";
-import Image from "next/image";
-import { gerencia, team, directory } from "@utils/constants/index";
-import { AdvancedVideo } from "@cloudinary/react";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { shimmer, toBase64 } from "@utils/index";
+import Link from 'next/link';
+import Image from 'next/image';
+import { gerencia, team, directory } from '@utils/constants/index';
+import { AdvancedVideo } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { shimmer, toBase64 } from '@utils/index';
 
-import Layout from "@components/Templates/Layout";
-import VisibilitySensor from "react-visibility-sensor";
-import Carousel from "react-elastic-carousel";
-import Divider from "@components/Atoms/Divider";
-import Icon from "@components/Atoms/Icon";
-import styles from "./styles.module.scss";
+import Layout from '@components/Templates/Layout';
+import VisibilitySensor from 'react-visibility-sensor';
+import Carousel from 'react-elastic-carousel';
+import Divider from '@components/Atoms/Divider';
+import Icon from '@components/Atoms/Icon';
+import styles from './styles.module.scss';
 
 const highlights = [
   {
-    name: "Fundada",
+    name: 'Fundada',
     number: 2003,
-    prev: "Fundada en ",
+    prev: 'Fundada en ',
     next: null,
-    image: "star",
+    image: 'star',
   },
   {
-    name: "Clientes",
+    name: 'Clientes',
     number: 4000,
-    prev: "+",
-    next: " Clientes",
-    image: "people",
+    prev: '+',
+    next: ' Clientes',
+    image: 'people',
   },
   {
-    name: "Operaciones",
+    name: 'Operaciones',
     number: 591,
-    prev: "US $",
-    next: "MM",
-    image: "money",
+    prev: 'US $',
+    next: 'MM',
+    image: 'money',
   },
 ];
 const newsBreakPoints = [
@@ -45,12 +45,12 @@ const newsBreakPoints = [
 const Cfc = () => {
   const cld = new Cloudinary({
     cloud: {
-      cloudName: "deevr9k54",
+      cloudName: 'deevr9k54',
     },
   });
 
   // Use the video with public ID, 'docs/walking_talking'.
-  const myVideo = cld.video("video-nosotros-CFC-hd_quu4iy_qdqwzy");
+  const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
 
   return (
     <Layout
@@ -94,7 +94,7 @@ const Cfc = () => {
                         <span>
                           {item.number}
                           <span className="text-white">
-                            {isVisible ? " " : "."}
+                            {isVisible ? ' ' : '.'}
                           </span>
                         </span>
                       )}
@@ -117,14 +117,14 @@ const Cfc = () => {
         </div>
       </section>
 
-      {gerencia &&
-        gerencia.map((item, index) => (
+      {gerencia
+        && gerencia.map((item, index) => (
           <section
             id="gerencia"
             className={`container-fluid py-5 ${
               (index + 1) % 2 === 0
-                ? "bg-primary-gradient-grey"
-                : "bg-secondary-gradient-grey"
+                ? 'bg-primary-gradient-grey'
+                : 'bg-secondary-gradient-grey'
             }`}
             key={item.name}
           >
@@ -132,7 +132,7 @@ const Cfc = () => {
               <div className="row align-items-center">
                 <div
                   className={`col-md-6 ${
-                    (index + 1) % 2 === 0 ? "order-md-2" : "order-md-1"
+                    (index + 1) % 2 === 0 ? 'order-md-2' : 'order-md-1'
                   }`}
                 >
                   <div className="d-none d-md-block">
@@ -145,7 +145,7 @@ const Cfc = () => {
                       layout="responsive"
                       placeholder="blur"
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                        shimmer(700, 475)
+                        shimmer(700, 475),
                       )}`}
                     />
                   </div>
@@ -159,14 +159,14 @@ const Cfc = () => {
                       layout="responsive"
                       placeholder="blur"
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                        shimmer(700, 475)
+                        shimmer(700, 475),
                       )}`}
                     />
                   </div>
                 </div>
                 <div
                   className={`col-md-6 ${
-                    (index + 1) % 2 === 0 ? "order-md-1" : "order-md-2"
+                    (index + 1) % 2 === 0 ? 'order-md-1' : 'order-md-2'
                   }`}
                 >
                   <div className={`${styles.itemText} ps-md-5`}>
@@ -191,17 +191,21 @@ const Cfc = () => {
               <div className="text-center">
                 <h2 className="text-dark-blue fw-bolder">Equipo Comercial</h2>
                 <p className="text-dark-blue">
-                  <span className="fw-bolder">Más que ejecutivos</span> somos un
+                  <span className="fw-bolder">Más que ejecutivos</span>
+                  {' '}
+                  somos un
                   equipo humano dispuestos a ser parte de tu empresa.
-                  <br /> Porque sabemos que eres el motor de la economía.
+                  <br />
+                  {' '}
+                  Porque sabemos que eres el motor de la economía.
                 </p>
               </div>
             </div>
           </div>
           <div className="row justify-content-around">
-            {team &&
-              team.length &&
-              team.map((item) => (
+            {team
+              && team.length
+              && team.map((item) => (
                 <div key={item.name} className="col-lg-4 mb-4">
                   <div className="px-md-5 mb-3">
                     <div className="team-img">
@@ -214,7 +218,7 @@ const Cfc = () => {
                         layout="responsive"
                         placeholder="blur"
                         blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                          shimmer(700, 475)
+                          shimmer(700, 475),
                         )}`}
                       />
                     </div>
@@ -259,7 +263,7 @@ const Cfc = () => {
                 <div
                   key={item.name}
                   className="p-md-4 w-100 mx-md-3 bg-soft-blue"
-                  style={{ height: "100%", borderRadius: 0 }}
+                  style={{ height: '100%', borderRadius: 0 }}
                 >
                   <div className={`${styles.itemText} text-center`}>
                     <p className="display-font text-white mb-0 fs-4">

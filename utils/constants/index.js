@@ -349,6 +349,12 @@ export const team = [
     email: 'lferrada@cfccapital.cl',
     img: '/laura-ferrada.jpg',
   },
+  {
+    name: 'Henry Rodríguez Nizza',
+    cargo: 'Agente Zona Sur',
+    email: 'hrodriguez@cfccapital.cl',
+    img: '/henry-rodriguez.jpg',
+  },
 ];
 
 export const directory = [
