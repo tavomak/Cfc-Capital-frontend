@@ -76,7 +76,7 @@ const Stepper = () => {
         </a>
       )}
       {step === 'ley' && !error && <FormLaw />}
-      {step === 'karin' && !error && <FormComplaint target="tavomak@gmail.com" />}
+      {step === 'karin' && !error && <FormComplaint />}
     </section>
   );
 };
