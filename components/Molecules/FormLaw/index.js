@@ -70,7 +70,7 @@ const FormContact = () => {
             notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
             reset();
           }, () => {
-            setLoading(false); notification('error', '¡Mensaje no enviado, por favor intentalo de nuevo!');
+            setLoading(false); notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo!');
           });
       } else {
         const error = await response.json();

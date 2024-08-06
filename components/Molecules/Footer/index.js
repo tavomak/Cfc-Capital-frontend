@@ -163,10 +163,10 @@ const Footer = () => {
                   </li>
                   <li className="fw-lighter">
                     <p>
-                      <Link href="/formulario-denuncias">
+                      <Link href="/canal-de-denuncias">
                         <a href="!#" className="text-white">
                           <small>
-                            Formulario de denuncias Ley Nº 20.393
+                            Canal de Denuncias
                           </small>
                         </a>
                       </Link>

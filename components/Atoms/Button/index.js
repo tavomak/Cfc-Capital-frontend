@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ButtonSubmit = ({
+const Button = ({
   loading,
   text,
   className,
@@ -30,7 +30,7 @@ const ButtonSubmit = ({
   </button>
 );
 
-ButtonSubmit.defaultProps = {
+Button.defaultProps = {
   loading: false,
   className: '',
   submit: false,
@@ -39,7 +39,7 @@ ButtonSubmit.defaultProps = {
   imgNext: null,
 };
 
-ButtonSubmit.propTypes = {
+Button.propTypes = {
   text: PropTypes.string.isRequired,
   loading: PropTypes.bool,
   className: PropTypes.string,
@@ -49,4 +49,4 @@ ButtonSubmit.propTypes = {
   imgNext: PropTypes.node,
 };
 
-export default ButtonSubmit;
+export default Button;

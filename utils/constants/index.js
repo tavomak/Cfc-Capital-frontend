@@ -436,8 +436,8 @@ export const navItems = [
         path: '/contacto',
       },
       {
-        label: 'Formulario de Denuncias',
-        path: '/formulario-denuncias',
+        label: 'Canal de Denuncias',
+        path: '/canal-de-denuncias',
       },
     ],
   },
