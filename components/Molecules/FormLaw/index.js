@@ -242,7 +242,7 @@ const FormContact = () => {
           </span>
         </label>
       </div>
-      <div className="form-group">
+      <div className="form-group mb-5">
         <Button
           className="btn btn-complementary mt-4 text-uppercase py-2 px-4"
           text="Enviar Denuncia"
