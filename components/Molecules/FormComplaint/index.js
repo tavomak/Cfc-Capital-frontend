@@ -1,24 +1,23 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-// import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
 import TagManager from 'react-gtm-module';
+import emailjs from 'emailjs-com';
 import useNotify from '@hooks/useNotify';
 import Button from '@components/Atoms/Button';
 import styles from './styles.module.scss';
 
 const tagManagerArgs = {
   dataLayer: {
-    event: 'regularConversion',
+    event: 'denuncia',
   },
 };
 
-const FormGetInfo = ({
-  service, title, image, content,
+const FormComplaint = ({
+  target,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [isLeasing, setLeasing] = useState(false);
-  const [leasingHab, setLeasingHab] = useState({ name: 'seleccionar', errorMsg: false });
+  const [selectionMessage, setSelectionMessage] = useState({ name: 'seleccionar', errorMsg: false });
   const recaptchaRef = useRef(null);
   const form = useRef();
   const {
@@ -32,10 +31,6 @@ const FormGetInfo = ({
 
   const handleClick = () => {
     setLoading(true);
-    if (isLeasing && leasingHab.name !== 'no') {
-      setLoading(false);
-      return;
-    }
     recaptchaRef.current.execute();
   };
 
@@ -43,6 +38,25 @@ const FormGetInfo = ({
     if (!captchaCode) {
       return;
     }
+    if (form.current.selectLeasing === 'seleccionar') {
+      setSelectionMessage({
+        name: 'seleccionar',
+        errorMsg: 'Debe seleccionar una opción',
+      });
+      return;
+    }
+    const templateParams ={
+      service: 'Formulario de denuncia Ley Karin | Sitio web CFC',
+      username: form.current.lastName.value,
+      email: form.current.email.value,
+      telefono: form.current.telefono.value,
+      mensaje: `
+      Relación con CFC: ${form.current.selectLeasing.value}
+      Nombre del denunciado: ${form.current.lastName.value}
+      Mensaje: ${form.current.mensaje.value}`,
+      email_target: target,
+      reply_to: form.current.email.value,
+    };
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
@@ -52,33 +66,18 @@ const FormGetInfo = ({
         },
       });
       if (response.ok) {
-        const options = {
-          method: 'POST',
-          body: JSON.stringify({
-            contact: {
-              email: form.current.email.value,
-              firstName: form.current.username.value,
-              lastName: form.current.lastName.value,
-              phone: form.current.telefono.value,
-              tag: service?.toLowerCase() || 'contacto',
-            },
-          }),
-        };
-
-        const activeResponse = await fetch('/api/active-campaign', options);
-        const data = await activeResponse.json();
-
-        if (data.error) {
-          setLoading(false);
-          notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo!');
-        }
-
-        setLoading(false);
-        notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
-        reset();
-        TagManager.dataLayer(tagManagerArgs);
+        emailjs.send('service_8pof0qh', 'template_2rrh5ia', templateParams, '9cidPWVw6ZjMK7J4e')
+          .then(() => {
+            setLoading(false);
+            notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
+            TagManager.dataLayer(tagManagerArgs);
+            reset();
+          }, () => {
+            setLoading(false); notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo!');
+          });
       } else {
         const error = await response.json();
+        console.log(error);
         throw new Error(error.message);
       }
     } catch (error) {
@@ -90,33 +89,16 @@ const FormGetInfo = ({
   };
 
   const handleSelect = (e) => {
-    if (e.target.value === 'si') {
-      setLeasingHab({
-        name: 'si',
-        errorMsg: '😢 No trabajamos con Leasing Habitacional',
-      });
-    }
     if (e.target.value === 'seleccionar') {
-      setLeasingHab({
+      setSelectionMessage({
         name: 'seleccionar',
         errorMsg: 'Debe seleccionar una opción',
       });
     }
-    if (e.target.value === 'no') {
-      setLeasingHab({ name: 'no', errorMsg: null });
-    }
   };
 
-  useEffect(() => {
-    if (service === 'Leasing') {
-      setLeasing(true);
-    } else {
-      setLeasing(false);
-    }
-  }, [service]);
-
   return (
-    <form ref={form} className="form" onSubmit={handleSubmit(handleClick)}>
+    <form ref={form} className="form mb-5" onSubmit={handleSubmit(handleClick)}>
       <ReCAPTCHA
         ref={recaptchaRef}
         size="invisible"
@@ -124,43 +106,41 @@ const FormGetInfo = ({
         onChange={onReCAPTCHAChange}
       />
       <div className="d-none">
-        <input type="hidden" name="service" value={service} />
-        <input type="hidden" name="title" value={title} />
-        <input type="hidden" name="image" value={image} />
-        <input type="hidden" name="content" value={content} />
+        <input type="hidden" name="target_email" value={target} />
       </div>
-      {isLeasing && (
-        <label htmlFor="selectLeasing" className="form-label w-100">
-          <span className={styles.formLabel}>
-            ¿Deseas leasing habitacional?
+
+      <label htmlFor="selectLeasing" className="form-label w-100">
+        <span className={styles.formLabel}>
+          ¿Cual es tu relación con CFC Capital?
+        </span>
+        <select
+          className={`form-select ${styles.formInput} my-2`}
+          aria-label="¿Deseas leasing habitacional?"
+          name="selectLeasing"
+          onChange={(e) => handleSelect(e)}
+        >
+          <option defaultValue value="seleccionar">Seleccionar una opción</option>
+          <option value="cliente">Cliente</option>
+          <option value="colaborador">Colaborador</option>
+          <option value="proveedor">Proveedor</option>
+        </select>
+        {selectionMessage.errorMsg && (
+          <span className={styles.formInputSpanError}>
+            {selectionMessage.errorMsg}
           </span>
-          <select
-            className={`form-select ${styles.formInput} my-2`}
-            aria-label="¿Deseas leasing habitacional?"
-            name="selectLeasing"
-            onChange={(e) => handleSelect(e)}
-          >
-            <option defaultValue value="seleccionar">Seleccionar una opción</option>
-            <option value="si">Si</option>
-            <option value="no">No</option>
-          </select>
-          {leasingHab.errorMsg && (
-            <span className={styles.formInputSpanError}>
-              {leasingHab.errorMsg}
-            </span>
-          )}
-        </label>
-      )}
+        )}
+      </label>
+
       <div className="form-group">
         <label htmlFor="username" className="form-label w-100">
           <span className={styles.formLabel}>
-            Nombre
+            Nombre del denunciado
           </span>
           <input
             type="text"
             className={`${styles.formInput} ${errors.username ? styles.formInputError : ''} form-control mt-2`}
             name="username"
-            placeholder="Introduce un nombre"
+            placeholder="Introduce el Nombre de la persona que quieres denunciar"
             {...register('username', {
               required: true,
             })}
@@ -173,13 +153,13 @@ const FormGetInfo = ({
       <div className="form-group">
         <label htmlFor="lastName" className="form-label w-100">
           <span className={styles.formLabel}>
-            Apellido
+            Nombre del denunciante
           </span>
           <input
             type="text"
             className={`${styles.formInput} ${errors.lastName ? styles.formInputError : ''} form-control mt-2`}
             name="lastName"
-            placeholder="Introduce un Apellido"
+            placeholder="Introduce tu nombre y apellido"
             {...register('lastName', {
               required: true,
             })}
@@ -239,7 +219,7 @@ const FormGetInfo = ({
       <div className="form-group">
         <label htmlFor="mensaje" className="form-label w-100 position-relative">
           <span className={styles.formLabel}>
-            Mensaje
+            Describe la situación que quieres reportar
           </span>
           <textarea
             className={`${styles.formTextArea} form-control mt-2`}
@@ -256,11 +236,10 @@ const FormGetInfo = ({
           text="Enviar"
           loading={loading}
           submit
-          disabled={leasingHab.name === 'si'}
         />
       </div>
     </form>
   );
 };
 
-export default FormGetInfo;
+export default FormComplaint;

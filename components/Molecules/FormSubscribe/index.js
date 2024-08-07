@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import ButtonSubmit from '@components/Atoms/Button';
+import Button from '@components/Atoms/Button';
 import useNotify from '@hooks/useNotify';
 import styles from './styles.module.scss';
 
@@ -32,14 +32,14 @@ const FormSubscribe = () => {
 
       if (data.error) {
         setLoading(false);
-        notification('error', '¡Upps... No hemos podido enviar tu mensaje, por favor intentalo de nuevo!');
+        notification('error', '¡Upps... No hemos podido enviar tu mensaje, por favor inténtalo de nuevo!');
       }
 
       setLoading(false);
       notification('success', 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.');
       reset();
     } catch (error) {
-      notification('error', '¡Upps... No hemos podido enviar tu mensaje, por favor intentalo de nuevo!');
+      notification('error', '¡Upps... No hemos podido enviar tu mensaje, por favor inténtalo de nuevo!');
       setLoading(false);
     }
   };
@@ -59,7 +59,7 @@ const FormSubscribe = () => {
           />
         </label>
         <div className={styles.formButton}>
-          <ButtonSubmit className="btn btn-complementary" text="Enviar" submit loading={loading} />
+          <Button className="btn btn-complementary" text="Enviar" submit loading={loading} />
         </div>
       </div>
     </form>
