@@ -338,12 +338,6 @@ export const team = [
     img: '/evelin-santander.jpg',
   },
   {
-    name: 'Marcelo Soto Fuentes',
-    cargo: 'Ejecutivo Comercial',
-    email: 'msoto@cfccapital.cl',
-    img: '/marcelo-soto.jpg',
-  },
-  {
     name: 'Laura Ferrada Martínez',
     cargo: 'Ejecutiva Comercial Senior',
     email: 'lferrada@cfccapital.cl',
