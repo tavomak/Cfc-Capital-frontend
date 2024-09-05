@@ -12,7 +12,6 @@ const tagManagerArgs = {
     event: 'denuncia',
   },
 };
-
 const FormComplaint = ({
   target,
 }) => {
@@ -25,6 +24,7 @@ const FormComplaint = ({
     handleSubmit,
     formState: { errors },
     reset,
+    control,
   } = useForm();
 
   const [notification] = useNotify();
@@ -51,6 +51,7 @@ const FormComplaint = ({
       email: form.current.email.value,
       telefono: form.current.telefono.value,
       mensaje: `
+      Fecha de denuncia: ${new Date().toLocaleDateString("es-CL")}
       Relación con CFC: ${form.current.selectLeasing.value}
       Nombre del denunciado: ${form.current.lastName.value}
       Mensaje: ${form.current.mensaje.value}`,
@@ -108,6 +109,8 @@ const FormComplaint = ({
       <div className="d-none">
         <input type="hidden" name="target_email" value={target} />
       </div>
+
+      <h2 class="fs-5 mb-4 text-soft-blue">Fecha de denuncia: {new Date().toLocaleDateString("es-CL")}</h2>
 
       <label htmlFor="selectLeasing" className="form-label w-100">
         <span className={styles.formLabel}>
