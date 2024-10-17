@@ -71,6 +71,7 @@ const FormGetInfo = ({
         if (data.error) {
           setLoading(false);
           notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo!');
+          return;
         }
 
         const emailjsResponse = await emailjs.sendForm(
@@ -83,6 +84,7 @@ const FormGetInfo = ({
         if (emailjsResponse.status !== 200) {
           setLoading(false);
           notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo!');
+          return;
         }
 
         setLoading(false);
