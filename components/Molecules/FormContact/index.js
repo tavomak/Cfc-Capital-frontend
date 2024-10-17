@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-// import emailjs from 'emailjs-com';
+import emailjs from 'emailjs-com';
 import ReCAPTCHA from 'react-google-recaptcha';
 import TagManager from 'react-gtm-module';
 import useNotify from '@hooks/useNotify';
@@ -65,10 +65,22 @@ const FormGetInfo = ({
           }),
         };
 
-        const activeResponse = await fetch('/api/active-campaign', options);
-        const data = await activeResponse.json();
+        const CRM_RESPONSE = await fetch('/api/zoho', options);
+        const data = await CRM_RESPONSE.json();
 
         if (data.error) {
+          setLoading(false);
+          notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo!');
+        }
+
+        const emailjsResponse = await emailjs.sendForm(
+          process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
+          process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_SERVICES_ID,
+          form.current,
+          process.env.NEXT_PUBLIC_EMAIL_JS_PUBlIC_KEY,
+        );
+
+        if (emailjsResponse.status !== 200) {
           setLoading(false);
           notification('error', '¡Mensaje no enviado, por favor inténtalo de nuevo!');
         }

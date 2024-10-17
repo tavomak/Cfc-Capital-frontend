@@ -7,7 +7,7 @@ import { shimmer, toBase64 } from '@utils/index';
 import Layout from '@components/Templates/Layout';
 import Divider from '@components/Atoms/Divider';
 import Icon from '@components/Atoms/Icon';
-import Carousel from '@components/Molecules/Carousel';
+import HeroCarousel from '@components/Molecules/HeroCarousel';
 import ServicesInfo from '@components/Molecules/ServicesInfo';
 import Modal from '@components/Templates/Modal';
 
@@ -65,15 +65,20 @@ export default function Home({ data }) {
     e.preventDefault();
     setPrimaryModal(false);
   };
+
+  const bannersToShow = (items) => {
+    const now = new Date();
+    return items.filter((item) => !item.endTime || now < new Date(item.endTime));
+  };
   return (
     <Layout
       title="Financiamos al motor de la economía"
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
 
-      <Carousel
+      <HeroCarousel
         settings={settings}
-        banners={setBanners(data.pages.hero)}
+        banners={setBanners(bannersToShow(data.pages.hero))}
       />
 
       <section className="container py-5">

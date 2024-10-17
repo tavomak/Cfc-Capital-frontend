@@ -2,6 +2,16 @@
 
 .slick-dots {
   position: initial;
+  & .slick-active button {
+    position: relative;
+    &:before  {
+      content: "";
+      border-radius: 50rem;
+      height: 6px;
+      background: $dark-grey;
+      @include center(xy);
+    }
+  }
 }
 
 .slick-arrow {

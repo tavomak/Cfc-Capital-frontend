@@ -186,6 +186,7 @@ export const getPageBySlugAndServices = (slug) => {
       query Services($slug: String!) {
         pages(where: {slug: $slug}) {
           hero {
+            id
             desktop {
               id
               url
