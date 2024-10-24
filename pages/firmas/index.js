@@ -15,7 +15,7 @@ const Signature = () => {
   const handleChange = (event) => {
     setData({
       ...data,
-      [event.target.name]: event.target.value.trim(),
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -197,8 +197,8 @@ const Signature = () => {
                   <tr>
                     <td colSpan="2" align="left">
                       <p>
-                        <span style={{ fontSize: '12px', color: '#7f7f7f', textTransform: 'uppercase' }}>
-                          AV. El Bosque Central 92, piso 11, 7550248 Las Condes, Santiago, Chile
+                        <span style={{ fontSize: '12px', color: '#7f7f7f' }}>
+                          AV. El Bosque Central 92, piso 11, Las Condes, Santiago, Chile
                         </span>
                       </p>
                     </td>
