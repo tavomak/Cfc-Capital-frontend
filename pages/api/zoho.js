@@ -15,10 +15,10 @@ export default async function handler(req, res) {
     } = data;
 
     const contactData = {
-      "First+Name": firstName,
-      "Last+Name": lastName,
-      "Contact+Email":email,
-      "Phone": phone,
+      'First+Name': firstName,
+      'Last+Name': lastName,
+      'Contact+Email': email,
+      Phone: phone,
     };
 
     const authorization = await fetch(`${process.env.ZOHO_AUTH_URL}?client_id=${process.env.ZOHO_CLIENT_ID}&client_secret=${process.env.ZOHO_CLIENT_SECRET}&grant_type=${process.env.ZOHO_GRANT_TYPE}&scope=${process.env.ZOHO_SCOPE}&soid=${process.env.ZOHO_SOID}`, {
@@ -34,16 +34,15 @@ export default async function handler(req, res) {
 
     const create_contact = await fetch(`${process.env.ZOHO_CAMPAINS_URL}?resfmt=JSON&listkey=${process.env.ZOHO_LIST_KEY}&contactinfo=${encodeURI(JSON.stringify(contactData))}&source=${encodeURIComponent(`Sitio Web ${tag}`)}`, {
       method: 'POST',
-      redirect: "follow",
+      redirect: 'follow',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Authorization: `Zoho-oauthtoken ${access_token}`,
       },
     });
 
-    
     const { status, code, message } = await create_contact.json();
-    
+
     if (status === 'error') {
       return res.status(422).json({ error, message });
     }

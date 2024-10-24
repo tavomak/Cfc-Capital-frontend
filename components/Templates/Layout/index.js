@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { CSSTransition } from 'react-transition-group';
 
 import Head from 'next/head';
 import Script from 'next/script';
@@ -15,6 +14,7 @@ const Layout = ({
   title,
   bgImage,
   description,
+  noIndex,
 }) => {
   const hostname = typeof window !== 'undefined' ? window.location.href : '';
 
@@ -43,6 +43,7 @@ const Layout = ({
         <meta property="og:url" content="hostname" />
         <meta property="og:site_name" content="CFC Capital" />
         <meta name="twitter:card" content="summary_large_image" />
+        {noIndex && <meta name="robots" content="noindex, nofollow" /> }
         <link
           rel="stylesheet"
           type="text/css"

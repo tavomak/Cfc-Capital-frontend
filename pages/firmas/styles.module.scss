@@ -1,0 +1,26 @@
+@import "/styles/utils/variables";
+
+.skeleton {
+  display: block;
+  width: 100%;
+  animation: loading .5s infinite;
+  height: 20px;
+  &Container {
+    margin: 5px;
+    display: block;
+    background: $grey;
+    padding: 5px;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-color: $grey;
+  }
+  50% {
+    background-color: darken($grey, 5%);
+  }
+  100% {
+    background-color: $grey;
+  }
+}
