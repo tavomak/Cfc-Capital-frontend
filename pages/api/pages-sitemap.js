@@ -18,7 +18,7 @@ const sitemapBlog = async (req, res) => {
   });
 
   const xmlString = await streamToPromise(
-    Readable.from(staticPages).pipe(stream),
+    Readable.from(staticPages).pipe(stream)
   ).then((data) => data.toString());
 
   res.end(xmlString);

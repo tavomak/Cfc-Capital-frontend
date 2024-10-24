@@ -1,9 +1,0 @@
-@import "/styles/utils/variables";
-@import "/styles/utils/media";
-
-.column {
-  width: 100%;
-  @include MQ(M) {
-    width: 50%;
-  }
-}

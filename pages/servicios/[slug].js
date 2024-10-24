@@ -1,16 +1,15 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { getServices, getServiceBySlug } from '@utils/lib/api';
+import { getServices, getServiceBySlug, formatServices } from '@/utils';
 
-import Hero from '@components/Molecules/Hero';
-import Layout from '@components/Templates/Layout';
-import ServicesInfo from '@components/Molecules/ServiceContent';
-import ServiceFaq from '@components/Molecules/ServiceFaq';
-import ServiceProcess from '@components/Molecules/ServiceProcess';
-import Modal from '@components/Templates/Modal';
-import FormGetInfo from '@components/Molecules/FormContact';
+import StaticHero from '@/components/Molecules/StaticHero';
+import Layout from '@/components/Templates/Layout';
+import Modal from '@/components/Templates/Modal';
+import FormGetInfo from '@/components/Molecules/Forms/FormContact';
+import Spinner from '@/components/Atoms/Spinner';
+import ZigZagSection from '@/components/Templates/ZigZagSection';
 
-export default function Service({ data }) {
+const Service = ({ data }) => {
   const [modal, setModal] = useState(false);
   const router = useRouter();
   const handleClick = () => {
@@ -22,15 +21,21 @@ export default function Service({ data }) {
       description={!router.isFallback ? data.description : 'CFC Capital'}
     >
       {router.isFallback ? (
-        <div className="row content-wrapper align-items-center justify-content-center">
-          <div className="spinner-border text-secondary-color" style={{ width: '3rem', height: '3rem' }} role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
+        <div className="flex min-h-[calc(100vh-217px)] text-dark-blue justify-center items-center w-full">
+          <Spinner
+            width="50px"
+            height="50px"
+            type="dots"
+            style={{
+              '--spinner-color': 'var(--dark-blue)',
+              '--spinner-stroke': '7px',
+            }}
+          />
         </div>
       ) : (
         <>
-          <Hero
-            heroImages={{
+          <StaticHero
+            HeroImages={{
               desktop: data.heroImage.url,
               mobile: data.heroImageMobile.url,
             }}
@@ -38,45 +43,53 @@ export default function Service({ data }) {
             alt={data.title}
           />
 
-          <ServicesInfo
+          <ZigZagSection
+            itemList={formatServices(data.serviceContent, {
+              colorKey: 'color',
+              descriptionKey: 'content',
+            })}
+            sectionClassName="container md:px-4 mx-auto"
+            itemClassName="my-20 md:rounded-3xl shadow-lg overflow-hidden"
+            onClick={handleClick}
+            buttonText="Saber más"
+          />
+
+          {/* <ServicesInfo
             services={data.serviceContent}
             name={data.title}
             onClick={() => handleClick()}
           />
 
-          <ServiceFaq
-            services={data.serviceFaq}
-            name={data.title}
-          />
+          <ServiceFaq services={data.serviceFaq} name={data.title} />
 
           <ServiceProcess
             services={data.serviceProcess}
             name={data.title}
             onClick={() => handleClick()}
-          />
+          /> */}
 
           <Modal
-            bgColor="bg-grey"
+            bgColor="bg-white"
             onClick={handleClick}
             showModal={modal}
             size="lg"
           >
-            <FormGetInfo
-              service={data.title}
-              title={data.title}
-            />
+            <FormGetInfo service={data.title} title={data.title} />
           </Modal>
         </>
-
       )}
     </Layout>
   );
-}
+};
+
+export default Service;
 
 export async function getStaticProps({ params }) {
   try {
     const { slug } = params;
-    const { data: { service } } = await getServiceBySlug(slug);
+    const {
+      data: { service },
+    } = await getServiceBySlug(slug);
 
     if (!service) {
       return {
@@ -111,7 +124,9 @@ export async function getStaticPaths() {
   const services = await data?.services;
 
   return {
-    paths: services?.map((item) => servicesPath + item.slug) || ['/servicios/factoring'],
+    paths: services?.map((item) => servicesPath + item.slug) || [
+      '/servicios/factoring',
+    ],
     fallback: true,
   };
 }

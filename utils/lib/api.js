@@ -22,13 +22,13 @@ export const getServices = () => {
       }
     `,
   });
-}
+};
 
 export const getServiceBySlug = (slug) => {
   return client.query({
     query: gql`
-    query Service($slug: String!) {
-      service(where: {slug: $slug}) {
+      query Service($slug: String!) {
+        service(where: { slug: $slug }) {
           description
           heroImage {
             url
@@ -41,13 +41,14 @@ export const getServiceBySlug = (slug) => {
           }
           title
           serviceContent {
+            id
             color
             title
             image {
               url
             }
             content {
-              markdown
+              text
             }
           }
           cardImage {
@@ -67,7 +68,7 @@ export const getServiceBySlug = (slug) => {
       slug,
     },
   });
-}
+};
 
 export const getAllCategories = () => {
   return client.query({
@@ -81,7 +82,7 @@ export const getAllCategories = () => {
       }
     `,
   });
-}
+};
 
 export const getAllPosts = () => {
   return client.query({
@@ -103,14 +104,14 @@ export const getAllPosts = () => {
       }
     `,
   });
-}
+};
 
 export const getPostsByCategoryAndProcess = (slug) => {
   const name = slug.charAt(0).toUpperCase() + slug.slice(1);
   return client.query({
     query: gql`
       query getAllPosts($slug: String!, $name: String!) {
-        category(where: {name: $name}) {
+        category(where: { name: $name }) {
           buttonText
           buttonUrl
           name
@@ -132,7 +133,7 @@ export const getPostsByCategoryAndProcess = (slug) => {
             }
           }
         }
-        service(where: {slug: $slug}) {
+        service(where: { slug: $slug }) {
           serviceProcess {
             description
             id
@@ -145,13 +146,13 @@ export const getPostsByCategoryAndProcess = (slug) => {
       name,
     },
   });
-}
+};
 
 export const getPostAndMorePosts = (slug) => {
   return client.query({
-  query: gql`
-      query Articles($slug: String!){
-        post(where: {slug: $slug}) {
+    query: gql`
+      query Articles($slug: String!) {
+        post(where: { slug: $slug }) {
           id
           content {
             html
@@ -163,7 +164,11 @@ export const getPostAndMorePosts = (slug) => {
             url
           }
         }
-        morePosts: posts(orderBy: createdAt_DESC, first: 3, where: {NOT: {slug: $slug}}) {
+        morePosts: posts(
+          orderBy: createdAt_DESC
+          first: 3
+          where: { NOT: { slug: $slug } }
+        ) {
           id
           title
           slug
@@ -171,22 +176,20 @@ export const getPostAndMorePosts = (slug) => {
             url
           }
         }
-
       }
     `,
     variables: {
       slug,
     },
   });
-}
+};
 
 export const getPageBySlugAndServices = (slug) => {
   return client.query({
     query: gql`
       query Services($slug: String!) {
-        pages(where: {slug: $slug}) {
+        pages(where: { slug: $slug }) {
           hero {
-            id
             desktop {
               id
               url
@@ -196,23 +199,23 @@ export const getPageBySlugAndServices = (slug) => {
               url
             }
             endTime
+            id
+            rtl
+            subtitle
+            title
+            backgroundColor {
+              hex
+            }
+            backgroundImage {
+              id
+              url
+            }
           }
         }
         services {
           id
           slug
           description
-          review {
-            html
-          }
-          heroImage {
-            url
-            id
-          }
-          heroImageMobile {
-            url
-            id
-          }
           title
           cardImage {
             url
@@ -220,18 +223,18 @@ export const getPageBySlugAndServices = (slug) => {
           }
         }
       }
-      `,
+    `,
     variables: {
       slug,
     },
   });
-}
+};
 
 export const getPageBySlugAndCategories = (slug) => {
   return client.query({
-  query: gql`
-      query Articles($slug: String!){
-        pages(where: {slug: $slug}) {
+    query: gql`
+      query Articles($slug: String!) {
+        pages(where: { slug: $slug }) {
           banner {
             backgroundColor {
               hex
@@ -268,4 +271,46 @@ export const getPageBySlugAndCategories = (slug) => {
       slug,
     },
   });
-}
+};
+
+export const getTeamMembers = () => {
+  return client.query({
+    query: gql`
+      query Teams {
+        teams {
+          team {
+            description
+            email
+            id
+            linkedinUrl
+            name
+            photo {
+              url
+            }
+            position
+          }
+          directors {
+            id
+            linkedinUrl
+            name
+            photo {
+              url
+            }
+            position
+          }
+          managers {
+            description
+            email
+            id
+            linkedinUrl
+            name
+            photo {
+              url
+            }
+            position
+          }
+        }
+      }
+    `,
+  });
+};

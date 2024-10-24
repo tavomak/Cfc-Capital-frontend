@@ -1,0 +1,61 @@
+.btn {
+  @apply px-4 py-1 rounded-full border font-semibold;
+  transition-duration: var(--default-timing-duration);
+  transition-timing-function: var(--default-timing-function);
+  transition-property: all;
+  background: var(--btn-background-color);
+  border-color: var(--btn-border-color);
+  color: var(--btn-color);
+}
+
+.btn:hover {
+  transform: var(--btn-hover-transform);
+  box-shadow: var(--default-box-shadow);
+}
+
+.btn-primary {
+  --btn-color: var(--white);
+  --btn-background-color: var(--medium-blue);
+  --btn-border-color: none;
+}
+.btn-primary:hover,
+.btn-primary.active {
+  --btn-color: var(--dark-blue);
+  --btn-background-color: var(--light-purple);
+  --btn-border-color: none;
+}
+
+.btn-secondary {
+  --btn-color: var(--white);
+  --btn-background-color: var(--light-blue);
+  --btn-border-color: none;
+}
+.btn-secondary:hover,
+.btn-secondary.active {
+  --btn-color: var(--dark-blue);
+  --btn-background-color: var(--light-purple);
+  --btn-border-color: none;
+}
+
+.btn-gray {
+  --btn-color: var(--dark-blue);
+  --btn-background-color: var(--light-grey);
+  --btn-border-color: var(--dark-blue);
+}
+.btn-gray:hover,
+.btn-gray.active {
+  --btn-color: var(--light-grey);
+  --btn-background-color: var(--dark-blue);
+  --btn-border-color: var(--dark-blue);
+}
+
+.btn-outline {
+  --btn-border-color: var(--white);
+}
+.btn-outline:hover,
+.btn-outline.active {
+  transform: var(--btn-hover-transform);
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--dark-blue);
+}

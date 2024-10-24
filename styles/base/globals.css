@@ -1,0 +1,48 @@
+body {
+  font-family: var(--primary-font);
+}
+
+.display-font {
+  font-family: var(--display-font);
+}
+
+.bg-factoring {
+  background: var(--medium-blue);
+}
+
+.bg-factoring-web {
+  background: var(--dark-blue);
+}
+
+.bg-leasing {
+  background: var(--soft-blue);
+}
+
+.bg-leaseback,
+.bg-soft-purple {
+  background: var(--purple);
+}
+
+.text-factoring {
+  color: var(--medium-blue);
+}
+
+.text-factoring-web {
+  color: var(--dark-blue);
+}
+
+.text-leasing {
+  color: var(--soft-blue);
+}
+
+.text-leaseback {
+  color: var(--purple);
+}
+
+.bg-primary-gradient-grey {
+  background: linear-gradient(90deg, var(--grey) 0%, var(--white) 100%);
+}
+
+.bg-secondary-gradient-grey {
+  background: linear-gradient(90deg, var(--white) 0%, var(--grey) 100%);
+}

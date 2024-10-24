@@ -1,9 +1,0 @@
-@import "/styles/utils/media";
-.item {
-  text-align: center;
-  width: 100%;
-  @include MQ(M) {
-    text-align: left;
-    width: 50%;
-  }
-}

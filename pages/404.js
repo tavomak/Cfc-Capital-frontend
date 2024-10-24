@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import Layout from '@components/Templates/Layout';
+import Layout from '@/components/Templates/Layout';
 
 const FourOhFour = () => (
-  <Layout
-    title="Contenido no encontrado"
-  >
-    <div className="row justify-content-center align-items-center content-wrapper">
+  <Layout title="Contenido no encontrado">
+    <div className="flex justify-center">
       <div className="col-lg-5">
         <div className="text-center">
           <Image
@@ -17,10 +15,8 @@ const FourOhFour = () => (
           />
         </div>
         <div className="mt-5 text-center">
-          <Link href="/">
-            <a href="!#" className="btn btn-complementary btn-sm shadow px-5 py-2">
-              Volver al sitio
-            </a>
+          <Link href="/" className="btn btn-gray shadow px-5 py-2">
+            Volver al sitio
           </Link>
         </div>
       </div>

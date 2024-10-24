@@ -1,0 +1,12 @@
+.goToTop {
+  background: var(--soft-blue);
+  border: 1px solid var(--white);
+  @apply rounded-full w-10 h-10 fixed bottom-3 right-5;
+  transition: all 0.1s ease-in-out;
+  z-index: 3;
+}
+
+.icon {
+  @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white;
+  margin-top: -2px;
+}

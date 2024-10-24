@@ -1,0 +1,41 @@
+:root {
+  --white: #ffffff;
+
+  --light-grey: #f6f6f6;
+  --light-blue: #00abc8;
+  --light-purple: #ccd6e8;
+
+  --soft-grey: #dadada;
+  --soft-purple: #ded6e3;
+  --soft-blue: #00abc8;
+
+  --medium-grey: #777777;
+  --medium-blue: #003da6;
+  --medium-purple: #623482;
+
+  --grey: #e5e5e5;
+  --blue: #235092;
+  --purple: #503881;
+
+  --dark-grey: #232323;
+  --dark-blue: #002169;
+  --dark-purple: #1a122a;
+
+  --primary-font: 'Open Sans', sans-serif;
+  --display-font: 'Poppins', sans-serif;
+
+  --btn-color: '';
+  --btn-background-color: '';
+  --btn-border-color: '';
+  --btn-hover-transform: translateY(-2px);
+
+  --spinner-color: var(--white);
+  --spinner-width: 100%;
+  --spinner-height: 100%;
+  --spinner-stroke: 3px;
+
+  --default-box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%);
+
+  --default-timing-duration: 0.4s;
+  --default-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

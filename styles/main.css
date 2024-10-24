@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;600&display=swap');
+
+@import './base/variables.css';
+@import './base/globals.css';
+
+@import './components/buttons.css';
+@import './components/inputs.css';
+
+@import './components/slider.css';

@@ -4,12 +4,13 @@ const { SitemapStream, streamToPromise } = require('sitemap');
 const { Readable } = require('stream');
 
 const sitemapBlog = async (req, res) => {
-  const { data: { posts: allPosts } } = await getAllPosts();
+  const {
+    data: { posts: allPosts },
+  } = await getAllPosts();
 
   const baseUrl = 'https://www.cfccapital.cl';
 
-  const staticPages = allPosts
-    .map((item) => `${baseUrl}/prensa/${item.slug}`);
+  const staticPages = allPosts.map((item) => `${baseUrl}/prensa/${item.slug}`);
 
   const stream = new SitemapStream({ hostname: `https://${req.headers.host}` });
 
@@ -18,7 +19,7 @@ const sitemapBlog = async (req, res) => {
   });
 
   const xmlString = await streamToPromise(
-    Readable.from(staticPages).pipe(stream),
+    Readable.from(staticPages).pipe(stream)
   ).then((data) => data.toString());
 
   res.end(xmlString);

@@ -1,182 +1,73 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { gerencia, team, directory } from '@utils/constants/index';
-import { AdvancedVideo } from '@cloudinary/react';
-import { Cloudinary } from '@cloudinary/url-gen';
-import { shimmer, toBase64 } from '@utils/index';
+// import { AdvancedVideo } from '@cloudinary/react';
+// import { Cloudinary } from '@cloudinary/url-gen';
 
-import Layout from '@components/Templates/Layout';
-import VisibilitySensor from 'react-visibility-sensor';
-import Carousel from 'react-elastic-carousel';
-import Divider from '@components/Atoms/Divider';
-import Icon from '@components/Atoms/Icon';
-import styles from './styles.module.scss';
+import { getTeamMembers } from '@/utils';
+import Layout from '@/components/Templates/Layout';
 
-const highlights = [
-  {
-    name: 'Fundada',
-    number: 2003,
-    prev: 'Fundada en ',
-    next: null,
-    image: 'star',
-  },
-  {
-    name: 'Clientes',
-    number: 4000,
-    prev: '+',
-    next: ' Clientes',
-    image: 'people',
-  },
-  {
-    name: 'Operaciones',
-    number: 591,
-    prev: 'US $',
-    next: 'MM',
-    image: 'money',
-  },
-];
-const newsBreakPoints = [
-  { width: 1, itemsToShow: 1 },
-  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-  { width: 768, itemsToShow: 3 },
-  { width: 1200, itemsToShow: 3 },
-];
-
-const Cfc = () => {
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'deevr9k54',
-    },
-  });
-
-  // Use the video with public ID, 'docs/walking_talking'.
-  const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
-
+const cfc = ({ data }) => {
+  const { directors, managers, team } = data;
   return (
     <Layout
       title="Somos CFC"
       description="Somos una empresa de servicios financieros, presente en el mercado desde el año 2003"
     >
-      <section className="container">
-        <div className="row">
-          <div className={`col-12 ${styles.video}`}>
-            <AdvancedVideo
-              cldVid={myVideo}
-              autoPlay
-              controls
-              loop
-              muted
-              playsInline
-              poster="/hero-servicios.jpg"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className="container py-5">
-          <div className="row justify-content-center py-5">
-            {highlights.map((item) => (
-              <div className="col-lg-4 text-center" key={item.name}>
-                <span className={`${styles.card} bg-dark-blue mx-5`}>
-                  <span className={styles.cardImage}>
-                    <Icon bgColor="bg-dark-blue" icon={item.image} />
-                  </span>
-                </span>
-                <h2 className="display-font py-4 text-dark-blue text-center fs-3">
-                  {item.prev && <span>{item.prev}</span>}
-                  {item.number && (
-                    <VisibilitySensor
-                      partialVisibility
-                      offset={{ bottom: 200 }}
-                    >
-                      {({ isVisible }) => (
-                        <span>
-                          {item.number}
-                          <span className="text-white">
-                            {isVisible ? ' ' : '.'}
-                          </span>
-                        </span>
-                      )}
-                    </VisibilitySensor>
-                  )}
-                  {item.next && <span>{item.next}</span>}
-                </h2>
-              </div>
-            ))}
-          </div>
-          <div className="row pb-5">
-            <div className="col text-center">
-              <Link href="/memorias">
-                <a href="!#" className="btn btn-primary">
-                  Ver memorias
-                </a>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {gerencia
-        && gerencia.map((item, index) => (
+      {managers?.length > 0 &&
+        managers.map((item, index) => (
           <section
             id="gerencia"
-            className={`container-fluid py-5 ${
+            className={`md:py-12 ${
               (index + 1) % 2 === 0
                 ? 'bg-primary-gradient-grey'
                 : 'bg-secondary-gradient-grey'
             }`}
             key={item.name}
           >
-            <div className="container">
-              <div className="row align-items-center">
+            <div className="container md:px-4 mx-auto">
+              <div className="md:flex items-center">
                 <div
-                  className={`col-md-6 ${
-                    (index + 1) % 2 === 0 ? 'order-md-2' : 'order-md-1'
+                  className={`md:w-1/2 ${
+                    (index + 1) % 2 === 0 ? 'order-last' : 'order-first'
                   }`}
                 >
-                  <div className="d-none d-md-block">
+                  <div className="hidden md:block">
                     <Image
-                      src={item.img}
+                      src={item.photo[0].url}
                       alt={item.name}
-                      objectFit="contain"
-                      width={1205}
-                      height={740}
-                      layout="responsive"
-                      placeholder="blur"
-                      blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                        shimmer(700, 475),
-                      )}`}
+                      width={640}
+                      height={390}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                      }}
                     />
                   </div>
-                  <div className="d-md-none">
+                  <div className="md:hidden">
                     <Image
-                      src={item.img_mobile}
+                      src={item.photo[1].url}
                       alt={item.name}
-                      objectFit="contain"
-                      width={1000}
-                      height={1371}
-                      layout="responsive"
-                      placeholder="blur"
-                      blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                        shimmer(700, 475),
-                      )}`}
+                      width={640}
+                      height={390}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                      }}
                     />
                   </div>
                 </div>
                 <div
-                  className={`col-md-6 ${
-                    (index + 1) % 2 === 0 ? 'order-md-1' : 'order-md-2'
+                  className={`md:w-1/2 ${
+                    (index + 1) % 2 === 0 ? 'order-first' : 'order-last'
                   }`}
                 >
-                  <div className={`${styles.itemText} ps-md-5`}>
-                    <p className="display-font text-dark-blue mb-0 fs-1">
-                      <strong>{item.name}</strong>
-                    </p>
-                    <Divider theme="dark" className="py-2" />
-                    <p className="mb-0 text-dark-blue fs-3">
-                      <small>{item.cargo}</small>
-                    </p>
+                  <div className="md:px-12 py-6 text-center md:text-left">
+                    <h1 className="font-bold text-dark-blue text-2xl md:text-4xl">
+                      {item.name}
+                    </h1>
+                    <span className="inline-block h-0.5 w-20 bg-dark-blue my-2 md:my-4" />
+                    <h2 className="mb-0 text-dark-blue md:text-lg">
+                      {item.position}
+                    </h2>
                   </div>
                 </div>
               </div>
@@ -184,104 +75,106 @@ const Cfc = () => {
           </section>
         ))}
 
-      <section className="py-5">
-        <div className="container">
-          <div className="row justify-content-center py-5">
-            <div className="col-md-8">
-              <div className="text-center">
-                <h2 className="text-dark-blue fw-bolder">Equipo Comercial</h2>
-                <p className="text-dark-blue">
-                  <span className="fw-bolder">Más que ejecutivos</span>
-                  {' '}
-                  somos un
-                  equipo humano dispuestos a ser parte de tu empresa.
-                  <br />
-                  {' '}
-                  Porque sabemos que eres el motor de la economía.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-around">
-            {team
-              && team.length
-              && team.map((item) => (
-                <div key={item.name} className="col-lg-4 mb-4">
-                  <div className="px-md-5 mb-3">
-                    <div className="team-img">
-                      <Image
-                        src={item.img}
-                        alt={item.name}
-                        objectFit="contain"
-                        width={1000}
-                        height={1361}
-                        layout="responsive"
-                        placeholder="blur"
-                        blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                          shimmer(700, 475),
-                        )}`}
-                      />
-                    </div>
-                  </div>
-                  <div className={`${styles.itemText} text-center`}>
-                    <p className="display-font text-soft-purple mb-0 fs-5">
-                      <strong>{item.name}</strong>
-                    </p>
-                    <span className={styles.divider} />
-                    <p className="text-dark-blue mb-0">
-                      <small>{item.cargo}</small>
-                    </p>
-                    <div className="text-center">
-                      <a
-                        href={`mailto:${item.email}`}
-                        className="text-soft-purple"
-                        target="_blanc"
-                      >
-                        {item.email}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
+      <section className="flex justify-center mt-6 md:py-12 md:mt-12">
+        <div className="text-center text-dark-blue">
+          <h2 className="text-xl md:text-2xl font-bold">Equipo Comercial</h2>
+          <p className="px-2">
+            <span className="font-bold">Más que ejecutivos</span> somos un
+            equipo humano dispuestos a ser parte de tu empresa.
+          </p>
+          <p>Porque sabemos que eres el motor de la economía.</p>
         </div>
       </section>
 
-      <section className="container-fluid bg-soft-blue py-lg-5">
-        <div className="row justify-content-center py-5 my-lg-4">
-          <div className="col-md-8">
-            <div className="text-center">
-              <h2 className="text-white fw-bolder">Directorio</h2>
-            </div>
-          </div>
-        </div>
-
-        <article className="container mb-5">
-          {directory && directory.length && (
-            <Carousel breakPoints={newsBreakPoints}>
-              {directory.map((item) => (
-                <div
-                  key={item.name}
-                  className="p-md-4 w-100 mx-md-3 bg-soft-blue"
-                  style={{ height: '100%', borderRadius: 0 }}
+      <section className="container md:px-4 mx-auto flex flex-wrap">
+        {team?.length > 0 &&
+          team.map((item) => (
+            <div key={item.name} className="md:w-1/3 mb-4 px-2 md:px-12 py-6">
+              <div className="px-md-5 mb-3">
+                <div className="team-img rounded-3xl overflow-hidden">
+                  <Image
+                    src={item.photo[0].url}
+                    alt={item.name}
+                    width={1000}
+                    height={1361}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                    priority
+                  />
+                </div>
+              </div>
+              <div className="text-center">
+                <p className="display-font text-purple text-2xl md:text-xl font-bold">
+                  {item.name}
+                </p>
+                <p className="text-dark-blue font-bold">{item.position}</p>
+                <a
+                  href={`mailto:${item.email}`}
+                  className="text-purple"
+                  target="_blanc"
+                  rel="noreferrer"
                 >
-                  <div className={`${styles.itemText} text-center`}>
-                    <p className="display-font text-white mb-0 fs-4">
-                      <strong>{item.name}</strong>
-                    </p>
-                    <span className={styles.divider} />
-                    <p className="mb-0 text-dark-blue">
-                      <small>{item.cargo}</small>
-                    </p>
+                  {item.email}
+                </a>
+              </div>
+            </div>
+          ))}
+      </section>
+
+      <section className="bg-soft-blue py-12 mt-12">
+        <h2 className="text-center text-white font-bold text-2xl mb-12">
+          Directorio
+        </h2>
+        <article className="container md:px-4 mx-auto flex flex-wrap justify-center">
+          {directors?.length > 0 &&
+            directors.map((item) => (
+              <div key={item.name} className="md:w-1/3 mb-4 px-12 py-6">
+                <div className="px-md-5 mb-3">
+                  <div className="team-img rounded-3xl overflow-hidden">
+                    <Image
+                      src={item.photo[0].url}
+                      alt={item.name}
+                      width={1000}
+                      height={1361}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                      priority
+                    />
                   </div>
                 </div>
-              ))}
-            </Carousel>
-          )}
+                <div className="text-center">
+                  <p className="display-font text-white text-2xl md:text-xl font-bold">
+                    {item.name}
+                  </p>
+                  <p className="text-dark-blue font-bold">{item.position}</p>
+                </div>
+              </div>
+            ))}
         </article>
       </section>
     </Layout>
   );
 };
 
-export default Cfc;
+export default cfc;
+
+export async function getStaticProps() {
+  try {
+    const { data } = await getTeamMembers('home');
+    return {
+      props: {
+        data: data?.teams[0],
+      },
+      revalidate: 100,
+    };
+  } catch (error) {
+    console.error('Error fetching service data:', error);
+    return {
+      notFound: true,
+    };
+  }
+}

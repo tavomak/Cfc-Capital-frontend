@@ -1,0 +1,48 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
+import styles from './styles.module.css';
+
+const Modal = ({ children, onClick, showModal, size, bgColor, noPadding }) => (
+  <AnimatePresence>
+    {showModal && (
+      <motion.div
+        initial={{ opacity: 0, transform: 'scale(1.1)' }}
+        animate={{
+          opacity: 1,
+        }}
+        exit={{ opacity: 0, transform: 'scale(1.1)' }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        className="overflow-y-auto overflow-x-hidden fixed z-30 pt-24 left-0 top-0 w-screen h-full bg-black bg-opacity-50"
+      >
+        <div
+          className={`${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-3'} shadow m-auto border-0 position-relative overflow-auto`}
+          style={{ borderRadius: '16px' }}
+        >
+          <button
+            data-testid="printed-username"
+            className={`p-0 ${styles.close}`}
+            onClick={onClick}
+            type="button"
+          >
+            <span aria-hidden="true" className={`p-0 ${styles.closeIcon}`}>
+              &times;
+            </span>
+          </button>
+          <div className={`modal-body ${noPadding ? 'p-0' : ''}`}>
+            {children}
+          </div>
+        </div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+);
+
+Modal.propTypes = {
+  children: PropTypes.node,
+  onClick: PropTypes.func,
+  showModal: PropTypes.bool.isRequired,
+  size: PropTypes.string,
+  bgColor: PropTypes.string,
+};
+
+export default Modal;

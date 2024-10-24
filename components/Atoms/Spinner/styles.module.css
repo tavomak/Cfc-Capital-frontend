@@ -1,0 +1,102 @@
+.skChase {
+  display: inline-block;
+  position: relative;
+  animation: sk-chase 2.5s infinite linear both;
+}
+
+.skChaseDot {
+  width: var(--spinner-width);
+  height: var(--spinner-width);
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: sk-chase-dot 2s infinite ease-in-out both;
+}
+
+.skChaseDot:before {
+  content: '';
+  display: block;
+  width: 20%;
+  height: 20%;
+  background-color: var(--spinner-color);
+  border-radius: 100%;
+  animation: sk-chase-dot-before 2s infinite ease-in-out both;
+}
+
+.skChaseDot:nth-child(1) {
+  animation-delay: -1.8s;
+}
+.skChaseDot:nth-child(2) {
+  animation-delay: -1.7s;
+}
+.skChaseDot:nth-child(3) {
+  animation-delay: -1.6s;
+}
+.skChaseDot:nth-child(4) {
+  animation-delay: -1.5s;
+}
+.skChaseDot:nth-child(5) {
+  animation-delay: -1.4s;
+}
+.skChaseDot:nth-child(6) {
+  animation-delay: -1.3s;
+}
+.skChaseDot:nth-child(1):before {
+  animation-delay: -1.8s;
+}
+.skChaseDot:nth-child(2):before {
+  animation-delay: -1.7s;
+}
+.skChaseDot:nth-child(3):before {
+  animation-delay: -1.6s;
+}
+.skChaseDot:nth-child(4):before {
+  animation-delay: -1.5s;
+}
+.skChaseDot:nth-child(5):before {
+  animation-delay: -1.4s;
+}
+.skChaseDot:nth-child(6):before {
+  animation-delay: -1.3s;
+}
+
+@keyframes sk-chase {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot {
+  80%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-chase-dot-before {
+  50% {
+    transform: scale(0.5);
+  }
+  100%,
+  0% {
+    transform: scale(1);
+  }
+}
+
+.loader {
+  border: var(--spinner-stroke) dotted var(--spinner-color);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

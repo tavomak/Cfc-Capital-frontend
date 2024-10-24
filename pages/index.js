@@ -1,192 +1,67 @@
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { getPageBySlugAndServices } from '@utils/lib/api';
-import { shimmer, toBase64 } from '@utils/index';
+import { useRouter } from 'next/router';
+import Slider from 'react-slick';
 
-import Layout from '@components/Templates/Layout';
-import Divider from '@components/Atoms/Divider';
-import Icon from '@components/Atoms/Icon';
-import HeroCarousel from '@components/Molecules/HeroCarousel';
-import ServicesInfo from '@components/Molecules/ServicesInfo';
-import Modal from '@components/Templates/Modal';
+import {
+  formatServices,
+  sliderSettings,
+  bannersToShow,
+  getPageBySlugAndServices,
+} from '@/utils';
 
-const settings = {
-  dots: true,
-  infinite: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  autoplay: false,
-  arrows: false,
-  speed: 800,
-  autoplaySpeed: 5000,
-  cssEase: 'cubic-bezier(.8,0,0.5,1)',
-  lazyLoad: 'progressive',
-};
+import Layout from '@/components/Templates/Layout';
+import ZigZagSection from '@/components/Templates/ZigZagSection';
+import StaticHero from '@/components/Molecules/StaticHero';
 
-const setBanners = (data) => {
-  if (!data) return null;
-
-  const banners = data
-    .map((item) => ({
-      endTime: item.endTime,
-      id: item.id,
-      item_image: {
-        url: item.desktop.url,
-      },
-      item_image_mobile: {
-        url: item.mobile.url,
-      },
-      title: item.title,
-      subtitulo: item.description,
-      slug: item.slug,
-    }));
-  return banners;
-};
-
-export default function Home({ data }) {
-  const [modal, setModal] = useState(false);
-  const [primaryModal, setPrimaryModal] = useState(false);
-  const [modalText, setModalText] = useState(null);
-
-  const handleClick = (e, text) => {
+const Home = ({ data }) => {
+  const router = useRouter();
+  const handleSectionClick = (e, item) => {
     e.preventDefault();
-    setModalText(text);
-    setModal(true);
+    router.push(`/servicios/${item.slug}`);
   };
-  const handleClickClose = (e) => {
-    e.preventDefault();
-    setModal(false);
-    setTimeout(() => {
-      setModalText('');
-    }, 500);
-  };
-  const handleClickClosePrimaryModal = (e) => {
-    e.preventDefault();
-    setPrimaryModal(false);
-  };
-
-  const bannersToShow = (items) => {
-    const now = new Date();
-    return items.filter((item) => !item.endTime || now < new Date(item.endTime));
-  };
+  console.log({ data: bannersToShow(data.pages.hero) });
   return (
     <Layout
       title="Financiamos al motor de la economía"
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
+      <Slider {...sliderSettings}>
+        {bannersToShow(data.pages.hero).map((item) => (
+          <StaticHero
+            key={item.id}
+            heroImages={{
+              desktop: item.desktop.url,
+              mobile: item.mobile.url,
+            }}
+          />
+        ))}
+      </Slider>
 
-      <HeroCarousel
-        settings={settings}
-        banners={setBanners(bannersToShow(data.pages.hero))}
-      />
-
-      <section className="container py-5">
-        <div className="row justify-content-between">
-          <div className="col-md-5 col-xl-4 py-5">
-            <h1 className="display-font fs-2 text-dark-blue">
-              Somos una
-              <br />
-              <span className="text-soft-purple">empresa de servicios financieros, </span>
-              presente en el mercado desde el año 2003
-            </h1>
-            <Divider theme="dark" className="py-5" />
-            <p className="text-dark-blue mb-5">
-              Estamos especializados en el segmento de empresas y pymes entregando soluciones a
-              {' '}
-              las necesidades de financiamiento de capital de trabajo y de inversión, transformando
-              {' '}
-              los flujos por cobrar a plazo, en dinero efectivo de inmediato o bien haciendo posible
-              {' '}
-              adquirir activos productivos a las empresas
-            </p>
-            <a href="!#" className="btn btn-primary d-none">Pide tu financiamiento</a>
-          </div>
-          <div className="col-md-7">
-            <Image
-              src="/hombre-ameba-s.png"
-              alt="CFC capital"
-              layout="responsive"
-              objectFit="contain"
-              objectPosition="top"
-              width={1200}
-              height={1121}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-            />
-          </div>
+      <section className=" mt-20 py-20 bg-ameba-pattern bg-no-repeat bg-cover">
+        <div className="container md:px-4 flex items-center mx-auto text-center max-w-lg min-h-64">
+          <p className="display-font text-white text-lg">
+            Ofrecemos a las empresas y pymes soluciones para transformar las
+            cuentas por cobrar en efectivo inmediato o para la adquisición de
+            activos productivos
+          </p>
         </div>
       </section>
 
-      <ServicesInfo services={data.services} />
-
-      <section>
-        <div className="container py-5">
-          <div className="row justify-content-center my-5">
-            <div className="col-md-6">
-              <h2 className="display-font text-center text-dark-blue fs-2">
-                Creando capacidad de
-                {' '}
-                <span className="text-soft-blue-not">crecer</span>
-              </h2>
-            </div>
-          </div>
-          <div className="row justify-content-center">
-            <div className="col-md-6">
-              <p className="fs-5 text-center text-soft-purple">Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país</p>
-            </div>
-          </div>
-          <div className="row align-items-stretch py-5 my-lg-5">
-            {data && data.services.filter((item) => item.review).map((item) => (
-              <div className="col-lg-4 mb-5 mb-lg-0" key={item.slug}>
-                <div className="d-flex" style={{ height: '80%' }}>
-                  <div className="px-3 px-sm-4 px-md-5 py-5 text-dark-blue bg-grey position-relative">
-                    <Icon bgColor="bg-dark-blue" icon={item.slug} absolute />
-                    <div className="mt-5" dangerouslySetInnerHTML={{ __html: item.review.html }} />
-                  </div>
-                </div>
-                <div className="text-center my-4">
-                  <a href="#!" onClick={(e) => handleClick(e, item.description)} className="btn btn-complementary px-4">Ver más</a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Modal
-        onClick={handleClickClose}
-        showModal={modal}
-        size="lg"
-      >
-        <div
-          dangerouslySetInnerHTML={{ __html: modalText }}
+      <article className="pt-12 bg-ameba-pattern-light bg-no-repeat bg-cover">
+        <ZigZagSection
+          itemList={formatServices(data.services, {
+            imageKey: 'cardImage',
+            colorPrefix: 'bg-',
+          })}
+          sectionClassName="container md:px-4 mx-auto"
+          itemClassName="my-20 md:rounded-3xl shadow-lg hover:shadow-xl overflow-hidden"
+          onClick={handleSectionClick}
         />
-      </Modal>
-
-      <Modal
-        onClick={handleClickClosePrimaryModal}
-        showModal={primaryModal}
-        bgColor="bg-dark-blue"
-        noPadding
-      >
-        <Link href="/contacto">
-          <a href="!#">
-            <Image
-              src="/primary-popup.jpg"
-              alt="Financiamos en 4 horas"
-              layout="responsive"
-              objectFit="contain"
-              width={160}
-              height={82}
-            />
-          </a>
-        </Link>
-
-      </Modal>
+      </article>
     </Layout>
   );
-}
+};
+
+export default Home;
 
 export async function getStaticProps() {
   try {

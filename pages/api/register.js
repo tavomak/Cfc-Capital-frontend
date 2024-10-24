@@ -21,7 +21,7 @@ export default async function handler(req, res) {
             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
           },
           method: 'POST',
-        },
+        }
       );
       const captchaValidation = await response.json();
       /**
