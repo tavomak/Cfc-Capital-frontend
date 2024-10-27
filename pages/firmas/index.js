@@ -23,21 +23,39 @@ const Signature = () => {
     setPhoneError(false);
     setLoading(true);
 
-    if (data?.phone?.lenght > 0 && data?.phone?.lenght < 9) {
-      setPhoneError(true);
-      return;
-    }
+    try {
+      // Validación del teléfono
+      if (data?.phone?.length > 0 && data?.phone?.length < 9) {
+        setPhoneError(true);
+        setLoading(false);
+        return;
+      }
 
-    const tableElement = document.getElementById('signatureTable');
-    const tableHtml = tableElement.outerHTML;
-    navigator.clipboard.writeText(tableHtml).then(() => {
+      const tableElement = document.getElementById('signatureTable');
+      const tableHtml = tableElement.outerHTML;
+
+      // Crear el objeto ClipboardItem con el formato correcto
+      const clipboardItem = new ClipboardItem({
+        'text/html': new Blob([tableHtml], { type: 'text/html' }),
+        // También incluimos el texto plano como fallback
+        'text/plain': new Blob([tableElement.innerText], { type: 'text/plain' }),
+      });
+
+      // Usar writeText para navegadores que no soportan write
+      if (!navigator.clipboard.write) {
+        await navigator.clipboard.writeText(tableHtml);
+      } else {
+        // Usar el método write para copiar el HTML formateado
+        await navigator.clipboard.write([clipboardItem]);
+      }
+
       setLoading(false);
       notification('success', 'Firma de correo copiada en el portapapeles');
-    }).catch((error) => {
-      console.log(error);
+    } catch (error) {
+      console.error(error);
       setLoading(false);
       notification('error', '¡Oh! algo salió mal, inténtalo de nuevo');
-    });
+    }
   };
   return (
     <Layout noindex>
@@ -51,7 +69,12 @@ const Signature = () => {
               <input type="text" className="form-control" placeholder="Cargo" name="position" value={data?.position} onChange={handleChange} />
             </div>
             <div className="my-3">
-              <input type="text" className="form-control" placeholder="Teléfono contacto corporativo" name="phone" value={data?.phone} onChange={handleChange} maxLength={9} />
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text border-0">+56</span>
+                </div>
+                <input type="text" className="form-control" placeholder="Teléfono contacto corporativo" name="phone" value={data?.phone} onChange={handleChange} maxLength={9} />
+              </div>
             </div>
             <div className="text-center" style={{ minHeight: '50px' }}>
               {data.name && data.position ? (
@@ -102,32 +125,32 @@ const Signature = () => {
                       >
                         <tbody>
                           <tr>
-                              <td align="left" width="300" style={{ verticalAlign: 'middle' }}>
-                                <img src="./cfc-logo.jpg" role="presentation" width="200" style={{ display: 'block', maxWidth: '200px' }} />
-                              </td>
-                              <td align="left" width="300" style={{ verticalAlign: 'middle' }}>
-                                <p style={{ margin: 0 }}>
-                                  <b>
-                                    <span style={{ color: '#623482', fontSize: '24px' }}>
-                                      {data.name ? data.name : (
-                                        <span className={styles.skeletonContainer}>
-                                          <span className={styles.skeleton} style={{ height: '35px' }} />
-                                        </span>
-                                      )}
-                                    </span>
-                                  </b>
-                                </p>
-                                <p style={{ margin: 0 }}>
-                                  <span style={{ fontSize: '18px', color: '#00ABC8' }}>
-                                    {data.position ? data.position : (
+                            <td align="left" width="300" style={{ verticalAlign: 'middle' }}>
+                              <img src="./cfc-logo.jpg" role="presentation" width="200" style={{ display: 'block', maxWidth: '200px' }} />
+                            </td>
+                            <td align="left" width="300" style={{ verticalAlign: 'middle' }}>
+                              <p style={{ margin: 0 }}>
+                                <b>
+                                  <span style={{ color: '#623482', fontSize: '24px' }}>
+                                    {data.name ? data.name : (
                                       <span className={styles.skeletonContainer}>
-                                        <span className={styles.skeleton} style={{ animationDelay: '0.1s', height: '20px' }} />
+                                        <span className={styles.skeleton} style={{ height: '35px' }} />
                                       </span>
                                     )}
                                   </span>
-                                </p>
-                              </td>
-                            </tr>
+                                </b>
+                              </p>
+                              <p style={{ margin: 0 }}>
+                                <span style={{ fontSize: '18px', color: '#00ABC8' }}>
+                                  {data.position ? data.position : (
+                                    <span className={styles.skeletonContainer}>
+                                      <span className={styles.skeleton} style={{ animationDelay: '0.1s', height: '20px' }} />
+                                    </span>
+                                  )}
+                                </span>
+                              </p>
+                            </td>
+                          </tr>
                         </tbody>
                       </table>
                     </td>
@@ -155,30 +178,30 @@ const Signature = () => {
                       >
                         <tbody>
                           <tr>
-                              <td align="left" width="300" style={{ verticalAlign: 'middle' }}>
-                                <img src="icon20.png" alt="20 años" style={{ width: 'auto', height: '40px' }} />
-                                <img
-                                  src="icon40.png"
-                                  alt="40 horas"
-                                  style={{
-                                    width: 'auto', height: '40px', marginLeft: '10px', marginRight: '10px',
-                                  }}
-                                />
-                                <img src="icon_efa.png" alt="EFA" style={{ width: 'auto', height: '40px' }} />
-                              </td>
-                              <td align="left" width="300">
-                                <p style={{ margin: 0, color: '#00ABC8', fontSize: '18px' }}>
-                                  +56 2 2820 1190
-                                </p>
-                                {data.phone && (
+                            <td align="left" width="300" style={{ verticalAlign: 'middle' }}>
+                              <img src="icon20.png" alt="20 años" style={{ width: 'auto', height: '40px' }} />
+                              <img
+                                src="icon40.png"
+                                alt="40 horas"
+                                style={{
+                                  width: 'auto', height: '40px', marginLeft: '10px', marginRight: '10px',
+                                }}
+                              />
+                              <img src="icon_efa.png" alt="EFA" style={{ width: 'auto', height: '40px' }} />
+                            </td>
+                            <td align="left" width="300">
+                              <p style={{ margin: 0, color: '#00ABC8', fontSize: '18px' }}>
+                                +56 2 2820 1190
+                              </p>
+                              {data.phone && (
                                 <p style={{ margin: 0, color: '#00ABC8', fontSize: '18px' }}>
                                   +56
                                   {' '}
                                   {formatPhoneNumberString(data.phone)}
                                 </p>
-                                )}
-                              </td>
-                            </tr>
+                              )}
+                            </td>
+                          </tr>
                         </tbody>
                       </table>
                     </td>
