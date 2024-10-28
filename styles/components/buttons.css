@@ -1,3 +1,10 @@
+article.main a {
+  @apply text-dark-blue hover:text-medium-blue font-semibold;
+  transition-duration: var(--default-timing-duration);
+  transition-timing-function: var(--default-timing-function);
+  transition-property: all;
+}
+
 .btn {
   @apply px-4 py-1 rounded-full border font-semibold;
   transition-duration: var(--default-timing-duration);
@@ -27,7 +34,7 @@
 
 .btn-secondary {
   --btn-color: var(--white);
-  --btn-background-color: var(--light-blue);
+  --btn-background-color: var(--soft-blue);
   --btn-border-color: none;
 }
 .btn-secondary:hover,

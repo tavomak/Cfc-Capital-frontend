@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Image from 'next/image';
 import { getPageBySlugAndCategories, getAllPosts, mediaLogos } from '@/utils';
 import Layout from '@/components/Templates/Layout';
-// import CardLayout from '@/components/Templates/CardLayout';
+import MediaSection from '@/components/Templates/MediaSection';
 import CardLayoutTwoColumns from '@/components/Templates/CardLayoutTwoColumns';
+import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
+// import CardLayout from '@/components/Templates/CardLayout';
 // import BannerRow from '@/components/Molecules/BannerRow';
-// import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
 // import BannerSubscribe from '@/components/Molecules/BannerSubscribe';
 // import styles from './styles.module.scss';
 
@@ -25,9 +25,9 @@ const News = ({ banner, posts, categories }) => {
       title="Blog y prensa"
       description="Noticias de actualidad que ayudan a tus finanzas"
     >
+      <CategoryNavBar categories={categories} />
       {/* {banner?.image && <BannerRow banner={banner} />}
 
-      <CategoryNavBar categories={categories} />
 
       <CardLayout
         posts={factoringPosts}
@@ -51,28 +51,7 @@ const News = ({ banner, posts, categories }) => {
         btnClassName="btn-secondary"
       />
 
-      <section className="py-5 bg-dark-blue">
-        <div className="container mx-auto md:px-4">
-          <div className="text-center text-white">
-            <h2 className="fs-1 py-4 fw-bold">
-              ¡Descubre los medios <br />
-              que nos han destacado!
-            </h2>
-            <ul className="flex flex-wrap justify-center">
-              {mediaLogos.map((item) => (
-                <li key={item} className="p-3">
-                  <Image
-                    src={`/${item}.png`}
-                    alt={item}
-                    width={180}
-                    height={106}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+      <MediaSection mediaSet={mediaLogos} />
     </Layout>
   );
 };

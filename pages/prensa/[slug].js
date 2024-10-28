@@ -5,7 +5,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import Layout from '@/components/Templates/Layout';
-import CardColumns from '@/components/Templates/CardColumns';
+import Card from '@/components/Atoms/Card';
+import Button from '@/components/Atoms/Button';
 
 export default function Post({ post, morePosts }) {
   const router = useRouter();
@@ -14,81 +15,121 @@ export default function Post({ post, morePosts }) {
       title="Servicios"
       description={!router.isFallback ? post.article.title : ''}
     >
-      <section className="container md:px-4">
-        {router.isFallback ? (
-          <div className="min-h-[calc(100vh-217px)] text-dark-blue">
-            <Spinner type="dots" />
-          </div>
-        ) : (
-          <>
-            <Head>
-              <title>{post.article.title} | CFC Capital</title>
-              <meta property="og:image" content={post.article.coverImage.url} />
-            </Head>
-            <article className="row">
-              <div className="col-12 pt-5">
-                <div className="position-relative">
-                  <div className="overlay" />
-                  <div className="d-none d-lg-block">
+      {router.isFallback ? (
+        <div className="min-h-[calc(100vh-217px)] text-dark-blue">
+          <Spinner type="dots" />
+        </div>
+      ) : (
+        <>
+          <Head>
+            <title>{post.article.title} | CFC Capital</title>
+            <meta property="og:image" content={post.article.coverImage.url} />
+          </Head>
+
+          <article className="main">
+            <section className="bg-light-blue py-10">
+              <div className="container max-w-screen-xl mx-auto md:px-4 flex flex-wrap items-center">
+                <div className="md:w-1/2">
+                  <div className="h-96 overflow-hidden">
                     <Image
                       src={`${post.article.coverImage.url}`}
                       alt={post.article.title}
-                      layout="responsive"
-                      objectFit="contain"
-                      objectPosition="top"
-                      width={700}
-                      height={280}
-                    />
-                  </div>
-                  <div className="d-lg-none">
-                    <Image
-                      src={`${post.article.coverImage.url}`}
-                      alt={post.article.title}
-                      layout="responsive"
-                      objectFit="cover"
                       width={500}
-                      height={400}
+                      height={380}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'contain',
+                      }}
                     />
                   </div>
                 </div>
-                <div className="pt-5 pb-3">
-                  <h1 className="display-font text-purple pb-4 fs-4">
+                <div className="p-4 md:w-1/2">
+                  <h1 className="display-font text-purple pb-4 text-2xl font-bold">
                     {post.article.title}
                   </h1>
-                  {post.article.video && (
-                    <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-                      <figure className="video-container md:px-4">
-                        <iframe
-                          className="video-iframe"
-                          title="Embed video"
-                          src={`https://www.youtube.com/embed/${post.article.video}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                        />
-                      </figure>
-                    </div>
-                  )}
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: post.article.content.html,
-                    }}
-                  />
                 </div>
               </div>
-            </article>
-            <aside className="row mb-5">
-              <div className="col-12">
-                <hr />
-                <h2 className="display-font text-purple py-4 fs-5">
-                  Más noticias
-                </h2>
+            </section>
+            <section className="container mx-auto max-w-screen-xl my-10">
+              {post.article.video && (
+                <figure className="video-container max-w-screen-lg mx-auto">
+                  <iframe
+                    className="w-full aspect-video"
+                    title="Embed video"
+                    src={`https://www.youtube.com/embed/${post.article.video}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </figure>
+              )}
+              <div className="py-10 my-10">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.article.content.html,
+                  }}
+                />
               </div>
-              {morePosts.length > 0 && <CardColumns posts={morePosts} />}
-            </aside>
-          </>
-        )}
-      </section>
+            </section>
+          </article>
+
+          <aside className="container max-w-screen-xl mx-auto">
+            <div className="col-12">
+              <hr />
+              <h2 className="display-font text-purple py-4 fs-5">
+                Más noticias
+              </h2>
+            </div>
+            <section className="container mx-auto flex flex-wrap justify-center items-stretch">
+              {morePosts?.length > 0 &&
+                morePosts.map((item) => (
+                  <Card
+                    key={item.id}
+                    containerClassName="p-4 md:w-1/2 lg:w-1/3 mb-10"
+                    cardClassName="flex flex-col justify-between group"
+                    header={
+                      <a
+                        href={`/prensa/${item.slug}`}
+                        className="min-h-64 overflow-hidden"
+                      >
+                        <Image
+                          className="scale-110 group-hover:scale-100 transition"
+                          src={item.coverImage.url}
+                          alt={item.title}
+                          width={500}
+                          height={500}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            maxHeight: '16rem',
+                            objectFit: 'cover',
+                            objectPosition: 'top',
+                          }}
+                        />
+                      </a>
+                    }
+                    footer={
+                      <a
+                        className="w-full ps-10 py-2"
+                        href={`/prensa/${item.slug}`}
+                      >
+                        <Button className="btn btn-gray" text="Leer más" />
+                      </a>
+                    }
+                  >
+                    <a href={`/prensa/${item.slug}`}>
+                      <p className="px-6 py-8 text-blue text-xl">
+                        {item.title.slice(0, 100)}
+                        {item.title.length > 100 && '...'}
+                      </p>
+                    </a>
+                  </Card>
+                ))}
+            </section>
+          </aside>
+        </>
+      )}
     </Layout>
   );
 }

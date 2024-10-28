@@ -37,7 +37,7 @@ const ZigZagSection = ({
                 transitionDuration: 'var(--default-timing-duration)',
                 transitionProperty: 'all',
               }}
-              className="group-hover:scale-110"
+              className="scale-110 group-hover:scale-100"
             />
           </div>
           <div

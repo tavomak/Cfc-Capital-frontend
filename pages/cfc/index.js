@@ -1,17 +1,76 @@
 import Image from 'next/image';
-// import { AdvancedVideo } from '@cloudinary/react';
-// import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedVideo } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { FaStar, FaPeopleGroup, FaDollarSign } from 'react-icons/fa6';
 
-import { getTeamMembers } from '@/utils';
+import { getTeamMembers, highlights } from '@/utils';
 import Layout from '@/components/Templates/Layout';
+import Card from '@/components/Atoms/Card';
+import Link from 'next/link';
+
+const iconsMapping = {
+  star: <FaStar />,
+  people: <FaPeopleGroup />,
+  money: <FaDollarSign />,
+};
 
 const cfc = ({ data }) => {
   const { directors, managers, team } = data;
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'deevr9k54',
+    },
+  });
+
+  // Use the video with public ID, 'docs/walking_talking'.
+  const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
   return (
     <Layout
       title="Somos CFC"
       description="Somos una empresa de servicios financieros, presente en el mercado desde el año 2003"
     >
+      <section className="container md:px-4 mx-auto flex flex-wrap">
+        <AdvancedVideo
+          cldVid={myVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/hero-servicios.jpg"
+        />
+      </section>
+      <section className="container md:px-4 mx-auto py-10 my-10 flex flex-wrap">
+        {highlights.map((item) => (
+          <Card
+            key={item.name}
+            containerClassName="md:w-1/3 px-4"
+            cardClassName="p-4"
+          >
+            {item.icon && (
+              <div
+                className={`p-4 text-4xl text-${item.color} flex justify-center`}
+              >
+                {iconsMapping[item.icon]}
+              </div>
+            )}
+            {item.prev && (
+              <p className="text-center display-font font-semibold text-xl text-blue">
+                {item.title}
+              </p>
+            )}
+            {item.description && (
+              <p className="text-center mt-5 text-sm text-blue">
+                {item.description}
+              </p>
+            )}
+          </Card>
+        ))}
+        <div className="text-center py-10 w-full">
+          <Link href="/memorias" className="btn btn-gray">
+            Ver memorias
+          </Link>
+        </div>
+      </section>
       {managers?.length > 0 &&
         managers.map((item, index) => (
           <section

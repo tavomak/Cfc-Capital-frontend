@@ -6,11 +6,13 @@ import {
   sliderSettings,
   bannersToShow,
   getPageBySlugAndServices,
+  mediaLogos,
 } from '@/utils';
 
 import Layout from '@/components/Templates/Layout';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StaticHero from '@/components/Molecules/StaticHero';
+import MediaSection from '@/components/Templates/MediaSection';
 
 const Home = ({ data }) => {
   const router = useRouter();
@@ -57,6 +59,8 @@ const Home = ({ data }) => {
           onClick={handleSectionClick}
         />
       </article>
+
+      <MediaSection mediaSet={mediaLogos} />
     </Layout>
   );
 };

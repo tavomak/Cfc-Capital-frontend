@@ -1,3 +1,5 @@
+import { color } from 'framer-motion';
+
 export const mediaLogos = [
   'duna',
   'emol',
@@ -191,3 +193,37 @@ export const sliderSettings = {
   ),
   customPaging: () => <span className="cfc-dots-list-item" />,
 };
+
+export const highlights = [
+  {
+    name: 'Fundada',
+    title: 'Fundada en 2003',
+    description: 'Especializados en el segmento de empresas y pymes.',
+    number: 2003,
+    prev: 'Fundada en ',
+    next: null,
+    icon: 'star',
+    color: 'blue',
+  },
+  {
+    name: 'Clientes',
+    title: '+4000 Clientes',
+    description:
+      'Detrás de cada financiamiento, hay sueños que ayudamos a convertir en realidad.',
+    number: 4000,
+    prev: '+',
+    next: ' Clientes',
+    icon: 'people',
+    color: 'purple',
+  },
+  {
+    name: 'Operaciones',
+    title: 'US $591 MM',
+    description: 'Contribuyendo al desarrollo del país.',
+    number: 591,
+    prev: 'US $',
+    next: 'MM',
+    icon: 'money',
+    color: 'soft-blue',
+  },
+];

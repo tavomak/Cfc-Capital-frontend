@@ -46,10 +46,14 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                 <Card
                   key={item.id}
                   containerClassName="p-4 md:w-1/2 lg:w-1/3 mb-10"
-                  cardClassName="flex flex-col justify-between"
+                  cardClassName="flex flex-col justify-between group"
                   header={
-                    <a href={`/prensa/${item.slug}`} className="min-h-64">
+                    <a
+                      href={`/prensa/${item.slug}`}
+                      className="min-h-64 overflow-hidden"
+                    >
                       <Image
+                        className="scale-110 group-hover:scale-100 transition"
                         src={item.coverImage.url}
                         alt={item.title}
                         width={500}
@@ -66,10 +70,10 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                   }
                   footer={
                     <a
-                      className="w-full flex justify-center py-2"
+                      className="w-full ps-10 py-2"
                       href={`/prensa/${item.slug}`}
                     >
-                      <Button className="btn btn-primary" text="Leer más" />
+                      <Button className="btn btn-gray" text="Leer más" />
                     </a>
                   }
                 >

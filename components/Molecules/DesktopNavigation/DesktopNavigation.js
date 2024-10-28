@@ -44,7 +44,7 @@ const DesktopNavigation = ({
           priority
         />
       </Link>
-      <ul className="flex gap-4">
+      <ul className="flex gap-4 xl:gap-8">
         {navItems &&
           navItems.length &&
           navItems.map((item) => (

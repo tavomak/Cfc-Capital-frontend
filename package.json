@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
+    "@cloudinary/react": "^1.13.0",
+    "@cloudinary/url-gen": "^1.21.0",
     "date-fns": "^4.1.0",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^11.5.6",
