@@ -1,5 +1,3 @@
-import { color } from 'framer-motion';
-
 export const mediaLogos = [
   'duna',
   'emol',

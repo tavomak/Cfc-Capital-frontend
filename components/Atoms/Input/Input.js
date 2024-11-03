@@ -43,8 +43,9 @@ const Input = ({
             className="peer w-full border-none bg-transparent p-2 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
             type={type || 'text'}
             id={name}
+            name={name}
             placeholder={placeholder}
-            value={value.trim()}
+            value={value?.trim()}
             onChange={onChange}
             disabled={disabled}
           />
@@ -52,7 +53,7 @@ const Input = ({
 
         {type === 'password' && (
           <button
-            className="absolute inset-y-0 end-0 grid w-10 cursor-pointer place-content-center text-gray-500"
+            className="absolute inset-y-0 end-0 grid w-10 cursor-pointer place-content-center"
             onClick={() => setShowPassword(!showPassword)}
             type="button"
           >
@@ -60,12 +61,12 @@ const Input = ({
           </button>
         )}
 
-        <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+        <span className="absolute start-2.5 top-0 -translate-y-1/2 peer-focus:bg-white peer-focus:text-dark-blue px-2 text-xs transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs rounded-full">
           {placeholder}
         </span>
 
         {errors && (
-          <span className="pointer-events-none absolute bottom-0 end-2.5 -translate-y-1/2 bg-white p-0.5 text-xs text-red-600 transition-all">
+          <span className="absolute bottom-0 end-2.5 -translate-y-1/2 bg-white p-0.5 text-xs text-red-600 transition-all">
             {errors.message}
           </span>
         )}

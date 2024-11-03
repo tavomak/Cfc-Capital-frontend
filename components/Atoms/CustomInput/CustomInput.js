@@ -8,15 +8,9 @@ const CustomInput = forwardRef(({ value, onClick, txt }, ref) => {
     setCurrentValue(value);
   }, [value]);
   return (
-    <div className="input-group flex-nowrap">
-      <span
-        className="input-group-text rounded-0"
-        style={{
-          borderColor: '#5a377f',
-          padding: '2px 10px',
-        }}
-      >
-        <span className="fs-5">
+    <div className="flex flex-nowrap border border-gray-200 rounded-md px-10 py-2">
+      <span className="mt-1 mx-2">
+        <span className="text-xl">
           <BiCalendar />
         </span>
       </span>

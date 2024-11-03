@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const styles = {};
-
 const CardLayoutTwoColumns = ({
   posts,
   title,
@@ -11,48 +9,56 @@ const CardLayoutTwoColumns = ({
   className,
   btnClassName,
 }) => (
-  <section className={`${className} py-5`}>
+  <section className={`${className} py-12`}>
     {posts?.length > 0 && (
-      <div className="container md:px-4">
-        <div className="row py-5">
-          {title && <h1 className="display-font">{title}</h1>}
+      <div className="container md:px-4 mx-auto">
+        <div className="py-5">
+          {title && (
+            <h1 className="display-font text-2xl font-bold">{title}</h1>
+          )}
         </div>
-        <div className="row justify-content-center">
+        <div className="flex justify-center">
           {posts.map(
             (item, key) =>
               key < 2 && (
-                <div className="col-12 col-lg pb-5" key={item.id}>
-                  <div
-                    className="d-md-flex flex-wrap justify-content-center align-items-center"
-                    style={{
-                      height: '100%',
-                    }}
-                  >
-                    <div className={styles.column}>
-                      <Link
-                        href={`/prensa/${item.slug}`}
-                        className="d-block"
+                <div
+                  key={item.id}
+                  className="flex flex-wrap"
+                  // style={{
+                  //   height: '100%',
+                  // }}
+                >
+                  <div className="px-3 w-1/2">
+                    <Link
+                      href={`/prensa/${item.slug}`}
+                      className="block"
+                      style={{
+                        height: '100%',
+                        border: '1px solid lightgrey',
+                        borderRadius: 20,
+                        overflow: 'hidden',
+                      }}
+                    >
+                      <Image
+                        src={
+                          item.coverImage?.url
+                            ? item.coverImage.url
+                            : '/leasing-card.png'
+                        }
+                        alt="Cfc Capital"
+                        width={width || 220}
+                        height={height || 220}
                         style={{
+                          width: '100%',
                           height: '100%',
-                          border: '1px solid lightgrey',
-                          borderRadius: 20,
-                          overflow: 'hidden',
+                          objectFit: 'cover',
                         }}
-                      >
-                        <Image
-                          src={
-                            item.coverImage?.url
-                              ? item.coverImage.url
-                              : '/leasing-card.png'
-                          }
-                          alt="Cfc Capital Logo"
-                          width={width || 90}
-                          height={height || 90}
-                        />
-                      </Link>
-                    </div>
-                    <div className={`${styles.column} px-3`}>
-                      <p className="display-font">{item.title}</p>
+                      />
+                    </Link>
+                  </div>
+                  <div className="px-3 w-1/2 flex flex-col justify-center">
+                    <p className="display-font mb-4">{item.title}</p>
+                    <div>
                       <Link
                         href={`/prensa/${item.slug}`}
                         className={`btn ${btnClassName} display-font px-4`}

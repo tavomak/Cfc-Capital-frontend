@@ -8,18 +8,44 @@ import {
 import { getServices, getServiceBySlug, formatServices } from '@/utils';
 
 import StaticHero from '@/components/Molecules/StaticHero';
+import LayerHero from '@/components/Molecules/LayerHero';
 import Layout from '@/components/Templates/Layout';
 import Card from '@/components/Atoms/Card';
 import Modal from '@/components/Templates/Modal';
 import FormGetInfo from '@/components/Molecules/Forms/FormContact';
+import SubscribeSection from '@/components/Templates/SubscribeSection';
+import Accordion from '@/components/Molecules/Accordion';
 import Spinner from '@/components/Atoms/Spinner';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 
 const iconsMapping = {
-  1: <FaClipboardList />,
-  2: <FaCircleCheck />,
-  3: <FaCircleDollarToSlot />,
+  1: {
+    icon: <FaClipboardList />,
+    color: 'light-purple',
+  },
+  2: {
+    icon: <FaCircleCheck />,
+    color: 'light-blue',
+  },
+  3: {
+    icon: <FaCircleDollarToSlot />,
+    color: 'soft-purple',
+  },
 };
+
+const Content = () => (
+  <div className="text-left px-4">
+    <h1 className="text-2xl font-bold text-purple display-font mb-6">
+      Factoring
+    </h1>
+    <h2 className="lg:text-3xl text-2xl font-bold text-purple mb-4">
+      ¡Que el crecimiento no tarde en llegar!
+    </h2>
+    <p className="lg:text-2xl text-2xl font-semibold text-blue">
+      Obtén liquidez inmediata cediéndonos tus facturas.
+    </p>
+  </div>
+);
 
 const Service = ({ data }) => {
   const [modal, setModal] = useState(false);
@@ -47,14 +73,31 @@ const Service = ({ data }) => {
         </div>
       ) : (
         <>
-          <StaticHero
-            HeroImages={{
-              desktop: data.heroImage.url,
-              mobile: data.heroImageMobile.url,
-            }}
-            image={data.title}
-            alt={data.title}
-          />
+          {data?.title === 'Factoring' ? (
+            <LayerHero
+              title={data.title}
+              columnContent={<Content />}
+              subtitle={data.subTitle}
+              backgroundImage="/elipse.png"
+              ltr
+            >
+              <Card
+                containerClassName="px-4"
+                cardClassName="p-4 lg:p-10 lg:mx-10 bg-white"
+              >
+                <FormGetInfo service={data.title} title={data.title} />
+              </Card>
+            </LayerHero>
+          ) : (
+            <StaticHero
+              HeroImages={{
+                desktop: data.heroImage.url,
+                mobile: data.heroImageMobile.url,
+              }}
+              image={data.title}
+              alt={data.title}
+            />
+          )}
 
           <ZigZagSection
             itemList={formatServices(data.serviceContent, {
@@ -68,60 +111,48 @@ const Service = ({ data }) => {
           />
 
           <section className="container md:px-4 mx-auto">
-            <h2 className="text-dark-blue text-4xl font-semibold text-center">
+            <h2 className="text-dark-blue text-4xl font-black text-center my-12">
               Preguntas Frecuentes
             </h2>
-            <div className="py-10 flex flex-wrap justify-center">
-              {data.serviceFaq.map((item, key) => (
-                <Card
-                  key={item.description}
-                  containerClassName="md:w-1/3 px-4"
-                  cardClassName="p-4"
-                >
-                  <div className="p-4 text-4xl text-blue flex justify-center">
-                    {iconsMapping[key + 1]}
-                  </div>
-
-                  <p className="text-center display-font font-semibold text-xl text-blue">
-                    {item.title}
-                  </p>
-                  {item.text && (
-                    <p className="text-center mt-5 text-sm text-blue">
-                      {item.text}
-                    </p>
-                  )}
-                </Card>
-              ))}
-            </div>
+            <Accordion list={data.serviceFaq} />
           </section>
 
-          <section className="container md:px-4 mx-auto">
-            <h2 className="text-dark-blue text-4xl font-semibold text-center">
+          <section className="container md:px-4 mx-auto pt-12">
+            <h2 className="text-dark-blue text-4xl font-black text-center my-12">
               Proceso de {data.title}
             </h2>
             <div className="py-10 flex flex-wrap">
               {data.serviceProcess.map((item, key) => (
                 <Card
                   key={item.description}
-                  containerClassName="md:w-1/3 px-4"
-                  cardClassName="p-4"
+                  containerClassName="md:w-1/3 px-4 "
+                  cardClassName="p-4 lg:px-12"
                 >
-                  <div className="p-4 text-4xl text-blue flex justify-center">
-                    {iconsMapping[key + 1]}
+                  <div className="text-4xl flex">
+                    <div
+                      className="display-font font-black p-12 relative text-blue rounded-full my-5"
+                      style={{
+                        backgroundColor: `var(--${iconsMapping[key + 1]?.color})`,
+                      }}
+                    >
+                      <span className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                        {key + 1}
+                      </span>
+                    </div>
                   </div>
 
-                  <p className="text-center display-font font-semibold text-xl text-blue">
-                    Paso {key + 1}
+                  <p className="display-font font-semibold text-xl text-blue">
+                    {item.subtitle}
                   </p>
                   {item.description && (
-                    <p className="text-center mt-5 text-sm text-blue">
-                      {item.description}
-                    </p>
+                    <p className="my-5 text-sm text-blue">{item.description}</p>
                   )}
                 </Card>
               ))}
             </div>
           </section>
+
+          <SubscribeSection />
 
           <Modal
             bgColor="bg-white"

@@ -15,7 +15,7 @@ const Modal = ({ children, onClick, showModal, size, bgColor, noPadding }) => (
         className="overflow-y-auto overflow-x-hidden fixed z-30 pt-24 left-0 top-0 w-screen h-full bg-black bg-opacity-50"
       >
         <div
-          className={`${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-3'} shadow m-auto border-0 position-relative overflow-auto`}
+          className={`${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-3'} shadow m-auto border-0 position-relative overflow-auto px-6`}
           style={{ borderRadius: '16px' }}
         >
           <button
@@ -24,7 +24,10 @@ const Modal = ({ children, onClick, showModal, size, bgColor, noPadding }) => (
             onClick={onClick}
             type="button"
           >
-            <span aria-hidden="true" className={`p-0 ${styles.closeIcon}`}>
+            <span
+              aria-hidden="true"
+              className={`p-0 text-xl ${styles.closeIcon}`}
+            >
               &times;
             </span>
           </button>

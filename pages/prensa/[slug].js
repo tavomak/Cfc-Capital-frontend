@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router';
+import DOMPurify from 'isomorphic-dompurify';
+
 import { getAllPosts, getPostAndMorePosts, markdownToHtml } from '@/utils';
 import Spinner from '@/components/Atoms/Spinner';
 import Head from 'next/head';
@@ -66,8 +68,9 @@ export default function Post({ post, morePosts }) {
               )}
               <div className="py-10 my-10">
                 <div
+                  // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{
-                    __html: post.article.content.html,
+                    __html: DOMPurify.sanitize(post.article.content.html),
                   }}
                 />
               </div>

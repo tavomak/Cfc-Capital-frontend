@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Button from '@/components/Atoms/Button';
+import Input from '@/components/Atoms/Input';
 import useNotify from '@/hooks/useNotify';
-
-const styles = {};
 
 const FormSubscribe = () => {
   const [loading, setLoading] = useState(false);
@@ -55,22 +54,24 @@ const FormSubscribe = () => {
   };
 
   return (
-    <form className="form row" onSubmit={handleSubmit(handleClick)}>
-      <div className="form-group d-flex align-items-center">
-        <label htmlFor="email" className="form-label w-100 position-relative">
-          <input
-            type="email"
-            className={`${styles.formInput} ${errors.email ? styles.formInputError : ''} form-control mt-2`}
-            name="email"
-            placeholder="Introduce tu email"
-            {...register('email', {
-              required: true,
-            })}
-          />
-        </label>
-        <div className={styles.formButton}>
+    <form className="px-4" onSubmit={handleSubmit(handleClick)}>
+      <div className="form-group flex flex-col">
+        <p className="text-sm font-semibold">
+          Introduce tu email para recibir nuestras noticias.
+        </p>
+        <Input
+          type="email"
+          name="email"
+          placeholder="Introduce tu email"
+          rules={{
+            required: 'Email Requerido',
+          }}
+          errors={errors.email}
+          register={register}
+        />
+        <div className="ms-auto">
           <Button
-            className="btn btn-complementary"
+            className="btn btn-gray"
             text="Enviar"
             submit
             loading={loading}

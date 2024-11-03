@@ -13,6 +13,7 @@ import Layout from '@/components/Templates/Layout';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StaticHero from '@/components/Molecules/StaticHero';
 import MediaSection from '@/components/Templates/MediaSection';
+import SubscribeSection from '@/components/Templates/SubscribeSection';
 
 const Home = ({ data }) => {
   const router = useRouter();
@@ -59,6 +60,8 @@ const Home = ({ data }) => {
           onClick={handleSectionClick}
         />
       </article>
+
+      <SubscribeSection />
 
       <MediaSection mediaSet={mediaLogos} />
     </Layout>

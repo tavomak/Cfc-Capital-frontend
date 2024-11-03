@@ -2,9 +2,10 @@ import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import ReCAPTCHA from 'react-google-recaptcha';
 import TagManager from 'react-gtm-module';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import useNotify from '@/hooks/useNotify';
 import Button from '@/components/Atoms/Button';
+import Input from '@/components/Atoms/Input';
 
 const styles = {};
 
@@ -55,7 +56,7 @@ const FormComplaint = ({ target }) => {
       Fecha de denuncia: ${new Date().toLocaleDateString('es-CL')}
       Relación con CFC: ${form.current.selectLeasing.value}
       Nombre del denunciado: ${form.current.lastName.value}
-      Mensaje: ${form.current.mensaje.value}`,
+      Mensaje: ${form.current.message.value}`,
       email_target: target,
       reply_to: form.current.email.value,
     };
@@ -70,10 +71,10 @@ const FormComplaint = ({ target }) => {
       if (response.ok) {
         emailjs
           .send(
-            'service_8pof0qh',
-            'template_2rrh5ia',
+            process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
+            process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_SERVICES_ID,
             templateParams,
-            '9cidPWVw6ZjMK7J4e'
+            process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY
           )
           .then(
             () => {
@@ -126,20 +127,23 @@ const FormComplaint = ({ target }) => {
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
         onChange={onReCAPTCHAChange}
       />
-      <div className="d-none">
+      <div className="hidden">
         <input type="hidden" name="target_email" value={target} />
       </div>
 
-      <h2 class="fs-5 mb-4 text-soft-blue">
+      <h2 className="text-xl mb-4 text-soft-blue font-semibold">
         Fecha de denuncia: {new Date().toLocaleDateString('es-CL')}
       </h2>
 
-      <label htmlFor="selectLeasing" className="form-label w-100">
+      <label
+        htmlFor="selectLeasing"
+        className="flex items-center justify-between w-full"
+      >
         <span className={styles.formLabel}>
           ¿Cual es tu relación con CFC Capital?
         </span>
         <select
-          className={`form-select ${styles.formInput} my-2`}
+          className="border border-gray-200 rounded-md px-4 py-2"
           aria-label="¿Deseas leasing habitacional?"
           name="selectLeasing"
           onChange={(e) => handleSelect(e)}
@@ -159,97 +163,67 @@ const FormComplaint = ({ target }) => {
       </label>
 
       <div className="form-group">
-        <label htmlFor="username" className="form-label w-100">
-          <span className={styles.formLabel}>Nombre del denunciado</span>
-          <input
-            type="text"
-            className={`${styles.formInput} ${errors.username ? styles.formInputError : ''} form-control mt-2`}
-            name="username"
-            placeholder="Introduce el Nombre de la persona que quieres denunciar"
-            {...register('username', {
-              required: true,
-            })}
-          />
-          <span className={styles.formInputSpanError}>
-            {errors.username ? 'Nombre requerido' : ''}
-          </span>
-        </label>
+        <Input
+          type="text"
+          className={`${styles.formInput} ${errors.username ? styles.formInputError : ''} form-control mt-2`}
+          name="username"
+          placeholder="Introduce el Nombre de la persona que quieres denunciar"
+          errors={errors.username}
+          register={register}
+        />
       </div>
       <div className="form-group">
-        <label htmlFor="lastName" className="form-label w-100">
-          <span className={styles.formLabel}>Nombre del denunciante</span>
-          <input
-            type="text"
-            className={`${styles.formInput} ${errors.lastName ? styles.formInputError : ''} form-control mt-2`}
-            name="lastName"
-            placeholder="Introduce tu nombre y apellido"
-            {...register('lastName', {
-              required: true,
-            })}
-          />
-          <span className={styles.formInputSpanError}>
-            {errors.lastName ? 'Apellido requerido' : ''}
-          </span>
-        </label>
+        <Input
+          type="text"
+          className={`${styles.formInput} ${errors.lastName ? styles.formInputError : ''} form-control mt-2`}
+          name="lastName"
+          placeholder="Introduce tu nombre y apellido"
+          errors={errors.lastName}
+          register={register}
+        />
       </div>
       <div className="form-group">
-        <label htmlFor="email" className="form-label w-100 position-relative">
-          <span className={styles.formLabel}>Email</span>
-          <input
-            type="email"
-            className={`${styles.formInput} ${errors.email ? styles.formInputError : ''} form-control mt-2`}
-            name="email"
-            placeholder="Introduce tu email"
-            {...register('email', {
-              required: true,
-            })}
-          />
-          <span className={styles.formInputSpanError}>
-            {errors.email ? 'Email Requerido' : ''}
-          </span>
-        </label>
+        <Input
+          type="email"
+          className={`${styles.formInput} ${errors.email ? styles.formInputError : ''} form-control mt-2`}
+          name="email"
+          placeholder="Introduce tu email"
+          errors={errors.email}
+          register={register}
+        />
       </div>
+
+      <div className="form-group">
+        <Input
+          type="text"
+          phone
+          className={`${styles.formInput} ${errors.telefono ? styles.formInputError : ''} form-control`}
+          name="telefono"
+          placeholder="Introduce tu teléfono"
+          errors={errors.telefono}
+          register={register}
+          rules={{
+            required: 'Teléfono Requerido',
+            maxLength: 9,
+            minLength: 9,
+          }}
+        />
+      </div>
+
       <div className="form-group">
         <label
-          htmlFor="telefono"
-          className="form-label w-100 position-relative"
+          htmlFor="message"
+          className="rounded relative my-4 block border border-gray-200 shadow-sm pt-4 px-4"
         >
-          <span className={styles.formLabel}>Teléfono</span>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">+56</span>
-            </div>
-            <input
-              type="text"
-              className={`${styles.formInput} ${errors.telefono ? styles.formInputError : ''} form-control`}
-              name="telefono"
-              placeholder="Introduce tu teléfono"
-              {...register('telefono', {
-                required: true,
-                maxLength: 9,
-                minLength: 9,
-              })}
-            />
-          </div>
-          <span className={styles.formInputSpanError}>
-            {errors?.telefono?.type === 'required' && 'Teléfono Requerido'}
-            {errors?.telefono?.type === 'minLength' && 'Debe tener 9 digitos'}
-            {errors?.telefono?.type === 'maxLength' && 'Debe tener 9 digitos'}
-          </span>
-        </label>
-      </div>
-      <div className="form-group">
-        <label htmlFor="mensaje" className="form-label w-100 position-relative">
-          <span className={styles.formLabel}>
+          <textarea
+            className="w-full text-sm focus:outline-none focus-visible:outline-none"
+            rows="8"
+            id="message"
+            {...register('message')}
+          />
+          <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
             Describe la situación que quieres reportar
           </span>
-          <textarea
-            className={`${styles.formTextArea} form-control mt-2`}
-            name="mensaje"
-            rows="4"
-            placeholder="Introduce tu mensaje"
-            {...register('mensaje')}
-          />
         </label>
       </div>
       <div className="form-group text-center">

@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { getPostsByCategoryAndProcess, getAllCategories } from '@/utils';
 
 import Layout from '@/components/Templates/Layout';
-// import BannerRow from '@/components/Molecules/BannerRow';
+import LayerHero from '@/components/Molecules/LayerHero';
 import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
@@ -36,9 +36,20 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
             <title>{banner.title} | CFC Capital</title>
           </Head>
 
-          {/* {banner?.image && <BannerRow banner={banner} />} */}
+          {banner?.image && (
+            <LayerHero
+              title={banner.title}
+              subtitle={banner.subTitle}
+              imageUrl={banner.image.url}
+              content={banner.content?.html}
+            />
+          )}
 
-          {categories?.length > 0 && <CategoryNavBar categories={categories} />}
+          {categories?.length > 0 && (
+            <div className="min-h-24">
+              <CategoryNavBar categories={categories} />
+            </div>
+          )}
 
           <section className="container mx-auto flex flex-wrap justify-center items-stretch">
             {posts?.length > 0 &&
@@ -88,30 +99,27 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
           </section>
 
           {service && service.length > 0 && (
-            <section className="container md:px-4-fluid py-5 bg-dark-blue">
-              <div className="container md:px-4 text-white">
-                <div className="row">
-                  <div className="col">
-                    <h2 className="display-font fs-1 font-weight-bold py-4">
-                      {'El proceso de '}
-                      <span className="text-capitalize">{categoryName}</span>
-                    </h2>
-                  </div>
-                </div>
-                <div className="row">
-                  {service.map((item, index) => (
-                    <div key={item.id} className="col-md-4">
-                      <div className="px-lg-4">
-                        <div className="p-4 text-center">
-                          <Image
-                            src={`/process-icon-${index + 1}.png`}
-                            alt={`process-icon-${index + 1}`}
-                            width={222}
-                            height={187}
-                          />
+            <section className="py-5 bg-dark-blue">
+              <div className="container md:px-4 mx-auto text-white">
+                <h2 className="display-font text-2xl font-bold py-4">
+                  {'El proceso de '}
+                  <span className="text-capitalize">{categoryName}</span>
+                </h2>
+                <div className="flex flex-wrap">
+                  {service.map((item, key) => (
+                    <div className="text-4xl w-1/3 px-4" key={item.description}>
+                      <div className="display-font font-black p-12 relative text-white rounded-full my-5 bg-light-blue">
+                        <div className="relative">
+                          <span className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                            {key + 1}
+                          </span>
                         </div>
                       </div>
-                      <p>{item.description}</p>
+                      {item.description && (
+                        <p className="my-5 text-sm text-wite">
+                          {item.description}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>

@@ -28,33 +28,37 @@ const Stepper = () => {
     setActive({ karin: false, ley: false });
   };
   return (
-    <section className="d-flex flex-column justify-content-center shadow px-5">
+    <section className="flex flex-col justify-center shadow px-5">
       {!step && (
-        <aside className="d-flex flex-column py-5 my-5 gap-4">
-          <p className="display-font fs-5 text-center">
+        <aside className="flex flex-col py-5 my-5 gap-4 items-center">
+          <p className="display-font text-xl text-center">
             Selecciona el tipo de denuncia que quieres realizar
           </p>
-          <Button
-            text="Ley 20.393"
-            className={`btn btn-${active.ley ? 'complementary' : 'primary'} btn-no--focused`}
-            onClick={() =>
-              setActive({ ...active, ley: !active.ley, karin: false })
-            }
-          />
-          <Button
-            text="Ley Karin"
-            className={`btn btn-${active.karin ? 'complementary' : 'primary'} btn-no--focused`}
-            onClick={() =>
-              setActive({ ...active, karin: !active.karin, ley: false })
-            }
-          />
+          <div>
+            <Button
+              text="Ley 20.393"
+              className={`btn btn-${active.ley ? 'complementary' : 'primary'} btn-no--focused`}
+              onClick={() =>
+                setActive({ ...active, ley: !active.ley, karin: false })
+              }
+            />
+            <Button
+              text="Ley Karin"
+              className={`btn btn-${active.karin ? 'complementary' : 'primary'} btn-no--focused`}
+              onClick={() =>
+                setActive({ ...active, karin: !active.karin, ley: false })
+              }
+            />
+          </div>
           <a className="mb-0 mt-4" href="!#" onClick={(e) => handleStep(e)}>
-            <p className="mb-0 fs-5 text-center">
-              <FaArrowAltCircleRight />
-              <span className="ps-2">
-                <u>Continuar</u>
-              </span>
-            </p>
+            <div className="mb-0 text-xl text-center">
+              <div className="flex justify-center items-center">
+                <FaArrowAltCircleRight />
+                <span className="ps-2">
+                  <u>Continuar</u>
+                </span>
+              </div>
+            </div>
             <p className={`${error ? 'text-danger' : ''} text-center`}>
               <small>
                 Debes seleccionar el tipo de denuncia para poder continuar.
@@ -65,9 +69,9 @@ const Stepper = () => {
       )}
       {step && (
         <a className="py-4" href="!#" onClick={(e) => handleBack(e)}>
-          <p className="mb-0 fs-5">
+          <p className="text-center">
             <FaArrowAltCircleLeft />
-            <span className="ps-2">
+            <span className="ps-2 text-sm">
               <u>Volver</u>
             </span>
           </p>

@@ -60,6 +60,7 @@ export const getServiceBySlug = (slug) => {
           }
           serviceProcess {
             description
+            subtitle
           }
         }
       }
@@ -243,6 +244,9 @@ export const getPageBySlugAndCategories = (slug) => {
             buttonUrl
             subTitle
             title
+            content {
+              html
+            }
             image {
               url
             }
