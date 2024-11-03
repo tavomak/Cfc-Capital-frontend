@@ -1,4 +1,4 @@
-import { getAllPosts } from '@utils/lib/api';
+import { getAllPosts } from '@/utils/lib/api';
 
 const { SitemapStream, streamToPromise } = require('sitemap');
 const { Readable } = require('stream');
