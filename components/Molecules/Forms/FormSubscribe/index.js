@@ -54,7 +54,7 @@ const FormSubscribe = () => {
   };
 
   return (
-    <form className="px-4" onSubmit={handleSubmit(handleClick)}>
+    <form className="lg:px-4 mt-8 lg:mt-0" onSubmit={handleSubmit(handleClick)}>
       <div className="form-group flex flex-col">
         <p className="text-sm font-semibold">
           Introduce tu email para recibir nuestras noticias.

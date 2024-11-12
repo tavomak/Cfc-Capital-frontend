@@ -13,7 +13,7 @@ const Contacto = () => (
         Contacto
       </h2>
       <div className="flex justify-center">
-        <div className="lg:w-6/12 p-5">
+        <div className="w-full lg:w-6/12 p-5">
           <FormContact type="Contacto" />
         </div>
       </div>

@@ -16,16 +16,17 @@ const iconsMapping = {
   money: <DolarIcon />,
 };
 
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'deevr9k54',
+  },
+});
+
+// Use the video with public ID, 'docs/walking_talking'.
+const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
+
 const cfc = ({ data }) => {
   const { directors, managers, team } = data;
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'deevr9k54',
-    },
-  });
-
-  // Use the video with public ID, 'docs/walking_talking'.
-  const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
   return (
     <Layout
       title="Somos CFC"
@@ -45,7 +46,7 @@ const cfc = ({ data }) => {
         {highlights.map((item) => (
           <Card
             key={item.name}
-            containerClassName="md:w-1/3 px-4"
+            containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
             cardClassName="p-4"
           >
             {item.icon && (

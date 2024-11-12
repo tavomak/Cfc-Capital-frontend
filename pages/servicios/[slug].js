@@ -124,7 +124,7 @@ const Service = ({ data }) => {
               {data.serviceProcess.map((item, key) => (
                 <Card
                   key={item.description}
-                  containerClassName="md:w-1/3 px-4 "
+                  containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
                   cardClassName="p-4 lg:px-12"
                 >
                   <div className="text-4xl flex">

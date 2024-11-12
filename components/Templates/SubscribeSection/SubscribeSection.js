@@ -4,10 +4,10 @@ import FormSubscribe from '@/components/Molecules/Forms/FormSubscribe';
 const SubscribeSection = () => {
   return (
     <section className="py-12 bg-gradient-to-r from-medium-blue to-soft-blue text-white">
-      <div className="container md:px-4 py-12 mx-auto md:flex flex-wrap items-center justify-around">
+      <div className="container px-4 py-12 mx-auto md:flex flex-wrap items-center justify-around">
         <div className="md:w-1/2">
-          <div className="flex flex-wrap items-center">
-            <div className="w-1/3 p-5">
+          <div className="flex flex-col md:flex-row items-start lg:items-center">
+            <div className="lg:w-1/3 p-5">
               <Image
                 src="/newsletter-icon.svg"
                 alt="newsletter"
@@ -20,7 +20,7 @@ const SubscribeSection = () => {
                 }}
               />
             </div>
-            <div className="w-2/3 ">
+            <div className="lg:w-2/3 ">
               <p className="text-lg font-bold">Suscríbete a nuestro</p>
               <h3 className="text-2xl font-bold">Boletín de noticias</h3>
               <p className="mt-4">

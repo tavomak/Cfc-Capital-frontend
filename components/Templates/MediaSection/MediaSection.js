@@ -1,20 +1,66 @@
+import Slider from 'react-slick';
 import Image from 'next/image';
 
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  autoplay: true,
+  arrows: false,
+  speed: 1500,
+  cssEase: 'cubic-bezier(.8,0,0.5,1)',
+  lazyLoad: 'progressive',
+  appendDots: (dots) => (
+    <div className="cfc-dots-container">
+      <ul className="cfc-dots-list"> {dots} </ul>
+    </div>
+  ),
+  customPaging: () => <span className="cfc-dots-list-item" />,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
 const MediaSection = ({ mediaSet = [] }) => (
-  <section className="py-5 bg-dark-blue">
+  <section className="pt-5 pb-12 bg-dark-blue">
     <div className="container mx-auto md:px-4">
-      <div className="text-center text-white">
-        <h2 className="fs-1 py-4 fw-bold">
+      <div className="text-center text-white py-12">
+        <h2 className="display-font text-2xl py-4 font-semibold">
           ¡Descubre los medios <br />
           que nos han destacado!
         </h2>
-        <ul className="flex flex-wrap justify-center">
+        <Slider {...sliderSettings} slidesToShow={3}>
           {mediaSet.map((item) => (
-            <li key={item} className="p-3">
-              <Image src={`/${item}.png`} alt={item} width={180} height={106} />
-            </li>
+            <div className="lg:p-4 !flex justify-center" key={item}>
+              <Image src={`/${item}.png`} alt={item} width={272} height={160} />
+            </div>
           ))}
-        </ul>
+        </Slider>
       </div>
     </div>
   </section>

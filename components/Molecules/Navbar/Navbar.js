@@ -14,8 +14,13 @@ const Navbar = () => {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   const router = useRouter();
-  const handleClick = (path) => {
-    router.push(`${path}`);
+  const handleClick = (e, label, path) => {
+    e.preventDefault();
+    if (path === '/servicios/factoring-web' || label === 'Factoring web') {
+      window.open('/cfc_paso_a_paso.pdf', '_ blank');
+    } else {
+      router.push(`${path}`);
+    }
   };
   const handleClickModal = (e) => {
     e.preventDefault();
@@ -84,6 +89,7 @@ const Navbar = () => {
             setMenuOpen={setMenuOpen}
             navItems={navItems}
             itemActive={itemActive}
+            handleClick={handleClick}
           />
         ) : (
           <DesktopNavigation

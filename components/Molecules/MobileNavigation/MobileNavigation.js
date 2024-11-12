@@ -2,7 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Hamburger from '@/components/Molecules/Hamburger';
 
-const MobileNavigation = ({ menuOpen = false, setMenuOpen, navItems }) => {
+const MobileNavigation = ({
+  menuOpen = false,
+  setMenuOpen,
+  navItems,
+  handleClick,
+}) => {
   return (
     <nav
       className="relative container md:px-4 flex mx-auto items-center justify-between"
@@ -32,9 +37,15 @@ const MobileNavigation = ({ menuOpen = false, setMenuOpen, navItems }) => {
               {item.children?.length > 1 ? (
                 <>
                   {item.children.map((subItem) => (
-                    <Link key={subItem.path} href={subItem.path}>
+                    <a
+                      key={subItem.path}
+                      href={subItem.path}
+                      onClick={(e) =>
+                        handleClick(e, subItem.label, subItem.path)
+                      }
+                    >
                       <p className="mb-1">{subItem.label}</p>
-                    </Link>
+                    </a>
                   ))}
                 </>
               ) : (

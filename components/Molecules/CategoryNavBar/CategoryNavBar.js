@@ -27,12 +27,15 @@ const CategoryNavBar = ({ categories }) => {
     <section
       className={`${styles.categoryFilter} ${scrollTop > 350 ? styles.active : ''} ${scrollTop > 350 ? 'shadow' : ''}`}
     >
-      <div className="container md:px-4 mx-auto">
+      <div className="container px-4 mx-auto">
         <div className="md:hidden">
           <h2 className={`text-center ${scrollTop > 350 && styles.hideTitle}`}>
             Explorar por categoría
           </h2>
-          <select className="form-select" onChange={(e) => handleSelect(e)}>
+          <select
+            className="border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+            onChange={(e) => handleSelect(e)}
+          >
             <option value="no-selected">Seleccionar</option>
             {categories.map((item) => (
               <option key={item.slug} value={item.slug}>
