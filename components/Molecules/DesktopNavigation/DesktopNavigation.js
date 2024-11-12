@@ -59,7 +59,7 @@ const DesktopNavigation = ({
               </Link>
               {item.children?.length > 1 && (
                 <AnimatePresence>
-                  {item.label && (
+                  {item.label === showSubMenu && (
                     <motion.div
                       initial={{ opacity: 1, transform: 'translateY(-5px)' }}
                       animate={{
