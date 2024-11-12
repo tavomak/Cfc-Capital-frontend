@@ -12,8 +12,6 @@ import Button from '@/components/Atoms/Button';
 // import CardLayout from '@/components/Templates/CardLayout';
 
 const Category = ({ posts, banner, service, categoryName, categories }) => {
-  console.log({ posts, banner });
-
   const router = useRouter();
   return (
     <Layout

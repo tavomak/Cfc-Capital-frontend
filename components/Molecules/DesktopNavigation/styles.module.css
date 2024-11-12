@@ -1,3 +1,15 @@
 .underline {
   border-bottom: 1px solid var(--grey);
 }
+
+.nav-icon {
+  filter: invert(23%) sepia(69%) saturate(1095%) hue-rotate(182deg)
+    brightness(94%) contrast(103%); /* Esto hará el SVG azul */
+  transition: filter var(--default-transition-duration)
+    var(--default-transition-timing-function);
+}
+
+.nav-icon-active,
+:global(.group:hover) .nav-icon {
+  filter: brightness(0) invert(1); /* Esto hará el SVG blanco */
+}

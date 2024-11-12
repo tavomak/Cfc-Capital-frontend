@@ -8,6 +8,7 @@ import StaticHero from '@/components/Molecules/StaticHero';
 const Services = ({ data }) => {
   const router = useRouter();
   const handleClick = (e, item) => {
+    e.preventDefault();
     router.push(`/servicios/${item.slug}`);
   };
   return (

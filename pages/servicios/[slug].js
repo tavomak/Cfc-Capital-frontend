@@ -53,7 +53,6 @@ const Service = ({ data }) => {
   const handleClick = () => {
     setModal(!modal);
   };
-  console.log({ data });
   return (
     <Layout
       title={!router.isFallback ? data.title : 'CFC Capital'}

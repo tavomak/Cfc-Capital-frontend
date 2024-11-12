@@ -19,8 +19,6 @@ const News = ({ banner, posts, categories }) => {
   const [prensaPosts] = useState(filterPosts(posts, 'Prensa'));
   const [consejosPosts] = useState(filterPosts(posts, 'Consejos'));
 
-  console.log({ banner, posts, categories });
-
   return (
     <Layout
       title="Blog y prensa"

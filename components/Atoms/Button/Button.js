@@ -26,7 +26,7 @@ const Button = ({
 };
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   loading: PropTypes.bool,
   className: PropTypes.string,
   submit: PropTypes.bool,

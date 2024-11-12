@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import {
-  FaFileInvoiceDollar,
-  FaDesktop,
-  FaCarRear,
-  FaBuildingShield,
-} from 'react-icons/fa6';
+import FactoringIcon from '@/components/Atoms/FactoringIcon';
+import LeasebackIcon from '@/components/Atoms/LeasebackIcon';
+import FactoringWebIcon from '@/components/Atoms/FactoringWebIcon';
+import LeasingIcon from '@/components/Atoms/LeasingIcon';
 import Link from 'next/link';
 import Image from 'next/image';
 import Card from '@/components/Atoms/Card';
@@ -21,10 +19,10 @@ const DesktopNavigation = ({
 }) => {
   const [subItemActive, setSubItemActive] = useState(null);
   const iconsMapping = {
-    factoring: <FaFileInvoiceDollar />,
-    leasing: <FaCarRear />,
-    'factoring-web': <FaDesktop />,
-    leaseback: <FaBuildingShield />,
+    factoring: <FactoringIcon />,
+    leasing: <LeasingIcon />,
+    'factoring-web': <FactoringWebIcon />,
+    leaseback: <LeasebackIcon />,
   };
   return (
     <nav
@@ -98,7 +96,7 @@ const DesktopNavigation = ({
                                 }`}
                               >
                                 <span
-                                  className={`text-3xl text-${subItem.label.replace(' ', '-').toLowerCase()} group-hover:text-white`}
+                                  className={`text-3xl text-${subItem.label.replace(' ', '-').toLowerCase()} group-hover:text-white w-12 h-12 block`}
                                   style={{
                                     transitionDuration:
                                       'var(--default-transition-duration)',

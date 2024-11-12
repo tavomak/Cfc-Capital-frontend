@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { FaStar, FaPeopleGroup, FaDollarSign } from 'react-icons/fa6';
+import ClientsIcon from '@/components/Atoms/ClientsIcon';
+import StarIcon from '@/components/Atoms/StarIcon';
+import DolarIcon from '@/components/Atoms/DolarIcon';
 
 import { getTeamMembers, highlights } from '@/utils';
 import Layout from '@/components/Templates/Layout';
@@ -9,9 +11,9 @@ import Card from '@/components/Atoms/Card';
 import Link from 'next/link';
 
 const iconsMapping = {
-  star: <FaStar />,
-  people: <FaPeopleGroup />,
-  money: <FaDollarSign />,
+  star: <StarIcon />,
+  people: <ClientsIcon />,
+  money: <DolarIcon />,
 };
 
 const cfc = ({ data }) => {
@@ -50,7 +52,7 @@ const cfc = ({ data }) => {
               <div
                 className={`p-4 text-4xl text-${item.color} flex justify-center`}
               >
-                {iconsMapping[item.icon]}
+                <span className="w-28 h-28">{iconsMapping[item.icon]}</span>
               </div>
             )}
             {item.prev && (

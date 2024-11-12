@@ -85,21 +85,30 @@ const Footer = () => {
       <div className="mx-auto container px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <div className="w-60">
-              <a href="https://efa.cl/" target="_blank">
-                <Image
-                  src="/footer-logo.svg"
-                  alt="Cfc Capital Logo"
-                  width={332}
-                  height={100}
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                  }}
-                  priority
-                />
-              </a>
-            </div>
+            <ul className="w-full flex gap-2">
+              <li>
+                <Link href="/">
+                  <Image
+                    src="/cfc-footer-logo.svg"
+                    alt="Cfc Capital Logo"
+                    width={100}
+                    height={100}
+                    priority
+                  />
+                </Link>
+              </li>
+              <li>
+                <a href="https://efa.cl/" target="_blank">
+                  <Image
+                    src="/efa-logo.svg"
+                    alt="Efa Logo"
+                    width={100}
+                    height={100}
+                    priority
+                  />
+                </a>
+              </li>
+            </ul>
             <a
               className="mt-4 flex gap-2 transition hover:opacity-75"
               href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
@@ -227,10 +236,10 @@ const Footer = () => {
         <div className="border-t border-white pt-4">
           <div className="sm:flex sm:justify-between">
             <p className="text-xs text-white">
-              &copy; 2022. Company Name. All rights reserved.
+              &copy; 2024. CFC Capital. Todos los derechos reservados.
             </p>
 
-            <ul className="mt-8 flex flex-wrap justify-start gap-4 text-xs sm:mt-0 lg:justify-end">
+            <ul className="mt-8 flex flex-wrap justify-start gap-4 text-xs sm:mt-0 lg:justify-end hidden">
               <li>
                 <Link
                   href="/terminos-y-condiciones"

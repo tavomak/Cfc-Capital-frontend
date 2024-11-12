@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Slider from 'react-slick';
-
+import Image from 'next/image';
 import {
   formatServices,
   sliderSettings,
@@ -21,7 +21,7 @@ const Home = ({ data }) => {
     e.preventDefault();
     router.push(`/servicios/${item.slug}`);
   };
-  console.log({ data: bannersToShow(data.pages.hero) });
+
   return (
     <Layout
       title="Financiamos al motor de la economía"
@@ -39,13 +39,32 @@ const Home = ({ data }) => {
         ))}
       </Slider>
 
-      <section className=" mt-20 py-20 bg-ameba-pattern bg-no-repeat bg-cover">
-        <div className="container md:px-4 flex items-center mx-auto text-center max-w-lg min-h-64">
-          <p className="display-font text-white text-lg">
-            Ofrecemos a las empresas y pymes soluciones para transformar las
-            cuentas por cobrar en efectivo inmediato o para la adquisición de
-            activos productivos
+      <section className="container md:px-4 mx-auto mt-20 py-20 flex flex-col lg:flex-row justify-between items-center">
+        <div className="lg:w-1/2 xl:w-2/6 order-2 lg:order-1">
+          <h1 className="display-font font-semibold text-3xl text-blue">
+            Somos una empresa de servicios financieros, presente en el mercado
+            desde el año 2003
+          </h1>
+          <p className="my-5">
+            Estamos especializados en el segmento de empresas y pymes entregando
+            soluciones a las necesidades de financiamiento de capital de trabajo
+            y de inversión, transformando los flujos por cobrar a plazo, en
+            dinero efectivo de inmediato o bien haciendo posible adquirir
+            activos productivos a las empresas
           </p>
+        </div>
+        <div className="lg:w-1/2 xl:w-3/6 order-1 lg:order-2">
+          <Image
+            src="/hombre-ameba.png"
+            alt="Home image"
+            width={500}
+            height={500}
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+            }}
+          />
         </div>
       </section>
 

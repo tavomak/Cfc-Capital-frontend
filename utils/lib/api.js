@@ -318,3 +318,47 @@ export const getTeamMembers = () => {
     `,
   });
 };
+
+export const getUserByEmail = (email) => {
+  return client.query({
+    query: gql`
+      query getUserByEmail($email: String) {
+        teams {
+          directors(where: { email: $email }) {
+            email
+            id
+            mobile
+            name
+            phone
+            position
+          }
+          managers(where: { email: $email }) {
+            email
+            id
+            mobile
+            name
+            phone
+            position
+          }
+          team(where: { email: $email }) {
+            email
+            id
+            mobile
+            name
+            phone
+            position
+          }
+          workers(where: { email: $email }) {
+            email
+            id
+            mobile
+            name
+            phone
+            position
+          }
+        }
+      }
+    `,
+    variables: { email },
+  });
+};
