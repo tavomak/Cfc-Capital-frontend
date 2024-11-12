@@ -59,7 +59,7 @@ const DesktopNavigation = ({
               </Link>
               {item.children?.length > 1 && (
                 <AnimatePresence>
-                  {item.label === showSubMenu && (
+                  {item.label && (
                     <motion.div
                       initial={{ opacity: 1, transform: 'translateY(-5px)' }}
                       animate={{
@@ -70,9 +70,9 @@ const DesktopNavigation = ({
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
                       className="absolute border left-0 w-screen mt-1 p-5 bg-white shadow-xl"
                     >
-                      <ul className="container md:px-4 m-auto flex w-full">
+                      <ul className="container md:px-4 m-auto flex flex-row w-full">
                         {item.children.map((subItem) => (
-                          <li key={subItem.path} className="w-1/3 h-full">
+                          <li key={subItem.path} className="w-1/4">
                             <a
                               href={subItem.path}
                               onClick={(e) =>
@@ -87,7 +87,7 @@ const DesktopNavigation = ({
                               onMouseLeave={() => setSubItemActive(null)}
                             >
                               <Card
-                                containerClassName="w-full text-dark-blue group-hover:bg-white group-hover:text-white min-h-44"
+                                containerClassName="w-full h-full text-dark-blue group-hover:bg-white group-hover:text-white min-h-44"
                                 cardClassName={`p-6 ${
                                   subItemActive ===
                                   subItem.label.replace(' ', '-').toLowerCase()

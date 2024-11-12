@@ -20,7 +20,7 @@ const FormContact = ({ service, title, image, content }) => {
     errorMsg: false,
   });
   const recaptchaRef = useRef(null);
-  const form = useRef();
+  const form = useRef(null);
   const {
     register,
     handleSubmit,
@@ -52,12 +52,13 @@ const FormContact = ({ service, title, image, content }) => {
         },
       });
       if (response.ok) {
+        console.log(form.current);
         const options = {
           method: 'POST',
           body: JSON.stringify({
             contact: {
               email: form.current.email.value,
-              firstName: form.current.username.value,
+              firstName: form.current.name.value,
               lastName: form.current.lastName.value,
               phone: form.current.telefono.value,
               tag: service?.toLowerCase() || 'contacto',
@@ -140,9 +141,9 @@ const FormContact = ({ service, title, image, content }) => {
       </div>
       {isLeasing && (
         <label htmlFor="selectLeasing" className="form-label w-100">
-          <span>¿Deseas leasing habitacional?</span>
+          <span className="pe-4">¿Deseas leasing habitacional?</span>
           <select
-            className="form-select my-2"
+            className="border border-gray-200 rounded-md px-4 py-1"
             aria-label="¿Deseas leasing habitacional?"
             name="selectLeasing"
             onChange={(e) => handleSelect(e)}
