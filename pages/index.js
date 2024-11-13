@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import { AdvancedVideo } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
@@ -29,6 +30,23 @@ function getVideoTransformationsWithReactVideo() {
   return myVideo;
 }
 
+const Content = ({ content }) => {
+  const { title, subtitle, description } = content;
+  return (
+    <div className="text-left px-4">
+      <h1 className="text-2xl font-bold text-purple display-font mb-6">
+        {title}
+      </h1>
+      <h2 className="lg:text-3xl text-2xl font-bold text-purple mb-4">
+        {subtitle}
+      </h2>
+      <p className="lg:text-2xl text-2xl font-semibold text-blue">
+        {description}
+      </p>
+    </div>
+  );
+};
+
 const Home = ({ data }) => {
   const router = useRouter();
   const handleSectionClick = (e, item) => {
@@ -43,15 +61,28 @@ const Home = ({ data }) => {
     >
       <Slider {...sliderSettings}>
         {bannersToShow(data.pages.hero).map((item) => {
-          return item?.title ? (
+          return item?.subtitle ? (
             <LayerHero
-              key={item.id}
               title={item.title}
-              subtitle={item.subTitle}
-              backgroundImage="/elipse.png"
-              ltr
+              columnContent={<Content content={item} />}
+              subtitle={item.subtitle}
+              backgroundImage={item.backgroundImage.url}
+              rtl={item.rtl}
             >
-              {item.title}
+              <div className="h-5/6 w-full">
+                <Image
+                  src={item.frontImage.url}
+                  width={500}
+                  height={500}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    maxHeight: '600px',
+                  }}
+                  alt={item.title || item.subtitle}
+                />
+              </div>
             </LayerHero>
           ) : (
             <StaticHero
@@ -86,7 +117,7 @@ const Home = ({ data }) => {
             loop
             muted
             playsInline
-            poster="/hombre-ameba.jpg"
+            poster="/hombre-ameba.png"
           />
         </div>
       </section>

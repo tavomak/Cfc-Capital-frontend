@@ -1,5 +1,8 @@
 .layerHero {
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: top right;
+  background-position: var(--rtl) top;
+  @media (min-width: 768px) {
+    background-position: var(--rtl) -10% bottom;
+  }
 }

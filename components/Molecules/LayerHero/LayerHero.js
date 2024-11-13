@@ -9,21 +9,24 @@ const LayerHero = ({
   content,
   children,
   imageUrl,
-  ltr = false,
+  rtl = true,
   type,
   backgroundImage,
   backgroundColor,
 }) => (
   <section
-    className={`relative py-4 lg:py-12 ${type === 'circle' ? 'bg-gradient-circle' : ''} ${styles.layerHero}`}
+    className={`relative pt-4 lg:pt-12 ${type === 'circle' ? 'bg-gradient-circle' : ''} ${styles.layerHero}`}
     style={{
+      '--rtl': `${rtl ? 'right' : 'left'}`,
       backgroundColor: `${backgroundColor || ''}`,
       backgroundImage: `${backgroundImage ? `url(${backgroundImage})` : 'none'}`,
     }}
   >
     <div className="container md:px-4 mx-auto">
-      <div className="lg:flex justify-center items-center text-center text-lg-start">
-        <div className={`lg:my-0 md:w-1/2 ${ltr ? 'order-2' : 'order-1'}`}>
+      <div className="md:flex justify-around items-center text-center text-lg-start">
+        <div
+          className={`lg:my-0 w-full md:w-1/2 2xl:w-3/6 ${rtl ? 'order-2' : 'order-1'}`}
+        >
           {children || (
             <Image
               src={imageUrl}
@@ -40,7 +43,7 @@ const LayerHero = ({
           )}
         </div>
         <div
-          className={`my-12 lg:my-0 md:w-1/2 ${ltr ? 'order-1' : 'order-2'}`}
+          className={`my-12 w-full lg:my-0 md:w-1/2 2xl:w-2/6 ${rtl ? 'order-1' : 'order-2'}`}
         >
           {title && !columnContent && !content && (
             <div

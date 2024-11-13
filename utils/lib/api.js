@@ -191,6 +191,12 @@ export const getPageBySlugAndServices = (slug) => {
       query Services($slug: String!) {
         pages(where: { slug: $slug }) {
           hero {
+            id
+            title
+            subtitle
+            description
+            rtl
+            endTime
             desktop {
               id
               url
@@ -199,15 +205,14 @@ export const getPageBySlugAndServices = (slug) => {
               id
               url
             }
-            endTime
-            id
-            rtl
-            subtitle
-            title
             backgroundColor {
               hex
             }
             backgroundImage {
+              id
+              url
+            }
+            frontImage {
               id
               url
             }

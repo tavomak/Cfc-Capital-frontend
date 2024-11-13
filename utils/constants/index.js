@@ -180,7 +180,7 @@ export const sliderSettings = {
   infinite: true,
   slidesToShow: 1,
   slidesToScroll: 1,
-  autoplay: true,
+  // autoplay: true,
   arrows: false,
   cssEase: 'cubic-bezier(.8,0,0.5,1)',
   lazyLoad: 'progressive',
