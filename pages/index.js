@@ -34,13 +34,13 @@ const Content = ({ content }) => {
   const { title, subtitle, description } = content;
   return (
     <div className="text-left px-4">
-      <h1 className="text-2xl font-bold text-purple display-font mb-6">
+      <h2 className="text-2xl font-bold text-purple display-font mb-6">
         {title}
-      </h1>
-      <h2 className="lg:text-3xl text-2xl font-bold text-purple mb-4">
-        {subtitle}
       </h2>
-      <p className="lg:text-2xl text-2xl font-semibold text-blue">
+      <h3 className="lg:text-4xl text-2xl font-bold display-semibold text-purple mb-4">
+        {subtitle}
+      </h3>
+      <p className="lg:text-2xl text-2xl font-semibold text-dark-grey">
         {description}
       </p>
     </div>
@@ -81,6 +81,7 @@ const Home = ({ data }) => {
                     maxHeight: '600px',
                   }}
                   alt={item.title || item.subtitle}
+                  priority
                 />
               </div>
             </LayerHero>
