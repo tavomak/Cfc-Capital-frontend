@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Slider from 'react-slick';
-import { AdvancedVideo } from '@cloudinary/react';
-import { Cloudinary } from '@cloudinary/url-gen';
+// import { AdvancedVideo } from '@cloudinary/react';
+// import { Cloudinary } from '@cloudinary/url-gen';
 import {
   formatServices,
   sliderSettings,
@@ -18,17 +18,17 @@ import LayerHero from '@/components/Molecules/LayerHero';
 import MediaSection from '@/components/Templates/MediaSection';
 import SubscribeSection from '@/components/Templates/SubscribeSection';
 
-function getVideoTransformationsWithReactVideo() {
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'deevr9k54',
-    },
-  });
+// function getVideoTransformationsWithReactVideo() {
+//   const cld = new Cloudinary({
+//     cloud: {
+//       cloudName: 'deevr9k54',
+//     },
+//   });
 
-  const myVideo = cld.video('1112_s1nvpc');
+//   const myVideo = cld.video('1112_s1nvpc');
 
-  return myVideo;
-}
+//   return myVideo;
+// }
 
 const Content = ({ content }) => {
   const { title, subtitle, description } = content;
@@ -37,7 +37,7 @@ const Content = ({ content }) => {
       <h2 className="text-2xl font-bold text-purple display-font mb-6">
         {title}
       </h2>
-      <h3 className="lg:text-4xl text-2xl font-bold display-semibold text-purple mb-4">
+      <h3 className="lg:text-[40px] leading-tight text-2xl font-bold display-font text-purple mb-4">
         {subtitle}
       </h3>
       <p className="lg:text-2xl text-2xl font-semibold text-dark-grey">
@@ -61,7 +61,7 @@ const Home = ({ data }) => {
     >
       <Slider {...sliderSettings}>
         {bannersToShow(data.pages.hero).map((item) => {
-          return item?.subtitle ? (
+          return !item?.desktop?.url ? (
             <LayerHero
               title={item.title}
               columnContent={<Content content={item} />}
@@ -112,13 +112,24 @@ const Home = ({ data }) => {
           </p>
         </div>
         <div className="lg:w-1/2 xl:w-3/6 order-1 lg:order-2">
-          <AdvancedVideo
+          {/* <AdvancedVideo
             cldVid={getVideoTransformationsWithReactVideo()}
             autoPlay
             loop
             muted
             playsInline
             poster="/hombre-ameba.png"
+          /> */}
+          <Image
+            src="/hombre-ameba.png"
+            alt="Home image"
+            width={500}
+            height={500}
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+            }}
           />
         </div>
       </section>

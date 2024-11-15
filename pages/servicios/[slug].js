@@ -35,13 +35,13 @@ const iconsMapping = {
 
 const Content = () => (
   <div className="text-left px-4">
-    <h1 className="text-2xl font-bold text-purple display-font mb-6">
+    <h1 className="text-3xl font-bold text-purple display-font mb-6">
       Factoring
     </h1>
-    <h2 className="lg:text-3xl text-2xl font-bold text-purple mb-4">
+    <h3 className="lg:text-5xl text-2xl font-bold display-font text-purple mb-4">
       ¡Que el crecimiento no tarde en llegar!
-    </h2>
-    <p className="lg:text-2xl text-2xl font-semibold text-blue">
+    </h3>
+    <p className="lg:text-2xl text-2xl font-semibold text-dark-grey">
       Obtén liquidez inmediata cediéndonos tus facturas.
     </p>
   </div>

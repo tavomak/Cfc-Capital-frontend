@@ -89,7 +89,7 @@ export default function Post({ post, morePosts }) {
                 morePosts.map((item) => (
                   <Card
                     key={item.id}
-                    containerClassName="p-4 md:w-1/2 lg:w-1/3 mb-10"
+                    containerClassName="p-2 md:w-1/2 lg:w-1/3 xl:w-1/4 mb-10"
                     cardClassName="flex flex-col justify-between group"
                     header={
                       <a
@@ -97,7 +97,7 @@ export default function Post({ post, morePosts }) {
                         className="min-h-64 overflow-hidden"
                       >
                         <Image
-                          className="scale-110 group-hover:scale-100 transition"
+                          className="scale-100 group-hover:scale-110 transition"
                           src={item.coverImage.url}
                           alt={item.title}
                           width={500}
@@ -113,16 +113,16 @@ export default function Post({ post, morePosts }) {
                       </a>
                     }
                     footer={
-                      <a
-                        className="w-full ps-10 py-2"
-                        href={`/prensa/${item.slug}`}
-                      >
-                        <Button className="btn btn-gray" text="Leer más" />
+                      <a className="w-full p-2" href={`/prensa/${item.slug}`}>
+                        <Button
+                          className="font-semibold text-sm text-blue"
+                          text="Leer más"
+                        />
                       </a>
                     }
                   >
                     <a href={`/prensa/${item.slug}`}>
-                      <p className="px-6 py-8 text-blue text-xl">
+                      <p className="px-2 py-4 text-blue font-semibold">
                         {item.title.slice(0, 100)}
                         {item.title.length > 100 && '...'}
                       </p>
