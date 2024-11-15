@@ -18,19 +18,21 @@ const Modal = ({ children, onClick, showModal, size, bgColor, noPadding }) => (
           className={`${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-3'} shadow m-auto border-0 position-relative overflow-auto px-6`}
           style={{ borderRadius: '16px' }}
         >
-          <button
-            data-testid="printed-username"
-            className={`p-0 ${styles.close}`}
-            onClick={onClick}
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              className={`p-0 text-xl ${styles.closeIcon}`}
+          <div className="flex justify-end">
+            <button
+              data-testid="printed-username"
+              className={`p-0 ${styles.close}`}
+              onClick={onClick}
+              type="button"
             >
-              &times;
-            </span>
-          </button>
+              <span
+                aria-hidden="true"
+                className={`p-0 text-3xl font-bold ${styles.closeIcon}`}
+              >
+                &times;
+              </span>
+            </button>
+          </div>
           <div className={`modal-body ${noPadding ? 'p-0' : ''}`}>
             {children}
           </div>

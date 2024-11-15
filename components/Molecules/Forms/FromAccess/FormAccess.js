@@ -1,3 +1,4 @@
+import Input from '@/components/Atoms/Input';
 /* eslint-disable jsx-a11y/tabindex-no-positive */
 const FormAccess = () => (
   <div className="container md:px-4">
@@ -10,6 +11,7 @@ const FormAccess = () => (
           encType="multipart/form-data"
           action="https://www.cfccapital.cl/informacion-envio.php"
           noValidate="novalidate"
+          className="hidden"
         >
           <p>
             Para más información, ingrese sus datos y un ejecutivo de CFC
@@ -34,9 +36,8 @@ const FormAccess = () => (
             value="Solicitar Información"
             className="form-control btn btn-primary mt-3"
           />
+          <hr className="my-4" />
         </form>
-
-        <hr className="my-4" />
 
         <form
           name="frmIngreso"
@@ -46,17 +47,20 @@ const FormAccess = () => (
           action="https://prosystem-fe.cl/Inicio/LoginProd"
           target="_blank"
         >
-          <p>
+          <h2 className="text-xl font-semibold mb-4">
+            Formulario de ingreso clientes
+          </h2>
+          <p className="text-sm font-semibold mb-4">
             Si ya está registrado, ingrese rut sin puntos ni dígito verificador.
           </p>
-          <input
+          <Input
             name="txtRut"
             type="text"
             tabIndex="1"
             placeholder="Rut"
             className="form-control mt-2"
           />
-          <input
+          <Input
             name="txtPass"
             type="password"
             tabIndex="2"
@@ -71,51 +75,35 @@ const FormAccess = () => (
           />
         </form>
 
-        <hr className="my-4" />
-
-        <form
-          name="frmOlvido"
-          id="frmOlvido"
-          method="POST"
-          encType="multipart/form-data"
-          target="_blank"
-          action="https://prosystem-fe.cl/Inicio/LoginProd"
-        >
-          <input type="hidden" name="Tipo" value="0" className="form-control" />
-          <input
-            type="hidden"
-            name="FactID"
-            value="26"
-            className="form-control"
-          />
-          <input
-            type="submit"
-            value="¿Olvidó su clave?"
-            className="form-control btn btn-secondary bg-dark-blue text-white mb-2"
-          />
-        </form>
-
-        <form
-          name="frmSolic"
-          id="frmSolic"
-          method="POST"
-          encType="multipart/form-data"
-          target="_blank"
-          action="https://prosystem-fe.cl/Inicio/LoginProd"
-        >
-          <input type="hidden" name="Tipo" value="1" className="form-control" />
-          <input
-            type="hidden"
-            name="FactID"
-            value="26"
-            className="form-control"
-          />
-          <input
-            type="submit"
-            value="Solicitar Clave"
-            className="form-control btn btn-secondary bg-dark-blue text-white mb-2"
-          />
-        </form>
+        <div className="md:flex">
+          <form
+            name="frmSolic"
+            id="frmSolic"
+            method="POST"
+            encType="multipart/form-data"
+            target="_blank"
+            action="https://prosystem-fe.cl/Inicio/LoginProd"
+            className="text-right w-full"
+          >
+            <input
+              type="hidden"
+              name="Tipo"
+              value="1"
+              className="form-control"
+            />
+            <input
+              type="hidden"
+              name="FactID"
+              value="26"
+              className="form-control"
+            />
+            <input
+              type="submit"
+              value="Olvidé mi contraseña"
+              className="mb-2 text-soft-blue font-semibold text-sm relative -top-6"
+            />
+          </form>
+        </div>
       </div>
     </div>
   </div>
