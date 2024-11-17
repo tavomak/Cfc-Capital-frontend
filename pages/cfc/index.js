@@ -185,8 +185,8 @@ const cfc = ({ data }) => {
           ))}
       </section>
 
-      <section className="bg-soft-blue py-12 mt-12">
-        <h2 className="text-center text-white font-bold text-2xl mb-12">
+      <section className="bg-primary-gradient-grey py-12 mt-12">
+        <h2 className="text-center text-blue font-bold text-2xl mb-12">
           Directorio
         </h2>
         <article className="container md:px-4 mx-auto flex flex-wrap justify-center">
@@ -209,7 +209,7 @@ const cfc = ({ data }) => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <p className="display-font text-white text-2xl md:text-xl font-bold">
+                  <p className="display-font text-blue text-2xl md:text-xl font-bold">
                     {item.name}
                   </p>
                   <p className="text-dark-blue font-bold">{item.position}</p>
