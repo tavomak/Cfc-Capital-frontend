@@ -7,6 +7,7 @@ const MobileNavigation = ({
   setMenuOpen,
   navItems,
   handleClick,
+  handleClickModal,
 }) => {
   return (
     <nav
@@ -40,9 +41,10 @@ const MobileNavigation = ({
                     <a
                       key={subItem.path}
                       href={subItem.path}
-                      onClick={(e) =>
-                        handleClick(e, subItem.label, subItem.path)
-                      }
+                      onClick={(e) => {
+                        setMenuOpen(false);
+                        handleClick(e, subItem.label, subItem.path);
+                      }}
                     >
                       <p className="mb-1">{subItem.label}</p>
                     </a>
@@ -57,10 +59,12 @@ const MobileNavigation = ({
           ))}
         <li>
           <a
-            href="https://prosystem-fe.cl/Inicio/"
+            onClick={(e) => {
+              setMenuOpen(false);
+              handleClickModal(e);
+            }}
             className=" font-bold text-xl text-dark-blue"
-            rel="noreferrer"
-            target="_blank"
+            href="!#"
           >
             Acceso Clientes
           </a>

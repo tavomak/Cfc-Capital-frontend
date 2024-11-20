@@ -90,6 +90,7 @@ const Navbar = () => {
             navItems={navItems}
             itemActive={itemActive}
             handleClick={handleClick}
+            handleClickModal={handleClickModal}
           />
         ) : (
           <DesktopNavigation
