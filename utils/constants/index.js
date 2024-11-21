@@ -225,3 +225,23 @@ export const highlights = [
     color: 'soft-blue',
   },
 ];
+
+export const steps = [
+  {
+    number: 1,
+    title: 'Solicita tu clave de acceso',
+    description:
+      'Llegará a tu correo luego de que tu ejecutivo valide tu solicitud.',
+  },
+  {
+    number: 2,
+    title: 'Registra tus datos',
+    description: 'Accede a la información sin costo adicional.',
+  },
+  {
+    number: 3,
+    title: 'Carga tus facturas',
+    description:
+      'Puedes ceder electrónicamente todas tus facturas en solo 3 clics.',
+  },
+];

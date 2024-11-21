@@ -8,7 +8,7 @@ const Card = ({
   return (
     <article className={`${containerClassName}`}>
       <div
-        className={`overflow-hidden rounded-3xl border shadow transition hover:shadow-lg h-full pb-4 ${cardClassName}`}
+        className={`overflow-hidden rounded-3xl border shadow transition hover:shadow-lg h-full ${cardClassName}`}
       >
         {header}
         {children}

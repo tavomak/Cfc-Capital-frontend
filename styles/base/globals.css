@@ -18,6 +18,10 @@ body {
   background: var(--soft-blue);
 }
 
+.bg-testimonial {
+  background: var(--soft-blue-light);
+}
+
 .bg-leaseback,
 .bg-soft-purple {
   background: var(--purple);

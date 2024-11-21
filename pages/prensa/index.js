@@ -49,7 +49,7 @@ const News = ({ banner, posts, categories }) => {
               <Card
                 key={item.id}
                 containerClassName="p-2 md:w-1/2 lg:w-1/3 xl:w-1/4 mb-10"
-                cardClassName="flex flex-col justify-between group"
+                cardClassName="flex flex-col justify-between group pb-4"
                 header={
                   <a
                     href={`/prensa/${item.slug}`}
