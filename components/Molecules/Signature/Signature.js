@@ -89,12 +89,19 @@ const Signature = ({ data, setData }) => {
                           width="200"
                           style={{ verticalAlign: 'middle' }}
                         >
-                          <img
-                            src="./cfc-logo.jpg"
-                            role="presentation"
-                            width="160"
-                            style={{ display: 'block', maxWidth: '160px' }}
-                          />
+                          <a
+                            href="https://www.cfccapital.cl/"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img
+                              src="./cfc-logo.jpg"
+                              role="presentation"
+                              width="160"
+                              style={{ display: 'block', maxWidth: '160px' }}
+                              alt="CFCCapital"
+                            />
+                          </a>
                         </td>
                         <td
                           align="left"
