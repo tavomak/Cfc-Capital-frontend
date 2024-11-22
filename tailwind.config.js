@@ -15,6 +15,8 @@ module.exports = {
         'soft-grey': 'var(--soft-grey)',
         'soft-purple': 'var(--soft-purple)',
         'soft-blue': 'var(--soft-blue)',
+        'soft-medium-blue': 'var(--soft-medium-blue)',
+        'soft-blue-light': 'var(--soft-blue-light)',
         'medium-grey': 'var(--medium-grey)',
         'medium-blue': 'var(--medium-blue)',
         'medium-purple': 'var(--medium-purple)',
