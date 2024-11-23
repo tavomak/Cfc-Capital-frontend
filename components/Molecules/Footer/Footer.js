@@ -81,11 +81,11 @@ const Footer = () => {
     }
   };
   return (
-    <footer className="bg-gradient-to-r from-dark-blue to-purple text-white">
-      <div className="mx-auto container px-4 py-16 sm:px-6 lg:px-8">
+    <footer className="text-white bg-gradient-to-r from-dark-blue to-purple">
+      <div className="container px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <ul className="w-full flex gap-2">
+            <ul className="flex w-full gap-2">
               <li>
                 <Link href="/">
                   <Image
@@ -110,7 +110,7 @@ const Footer = () => {
               </li>
             </ul>
             <a
-              className="mt-4 flex gap-2 transition hover:opacity-75"
+              className="flex gap-2 mt-4 transition hover:opacity-75"
               href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
               target="_blank"
             >
@@ -122,7 +122,7 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 border-t border-white lg:border-none pt-4">
+          <div className="grid grid-cols-2 gap-8 pt-4 border-t border-white sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 lg:border-none">
             {navItems.length &&
               navItems.map((item) => (
                 <div key={item.label}>
@@ -130,7 +130,7 @@ const Footer = () => {
                     href={item.path}
                     className="transition hover:opacity-75"
                   >
-                    <p className="font-bold mb-6">{item.label}</p>
+                    <p className="mb-6 font-bold">{item.label}</p>
                   </Link>
                   {item.children?.length > 1 && (
                     <ul className="space-y-4 text-sm">
@@ -153,7 +153,7 @@ const Footer = () => {
               ))}
             <div>
               <Link href="/contacto" className="transition hover:opacity-75">
-                <p className="font-bold mb-6">Contacto</p>
+                <p className="mb-6 font-bold">Contacto</p>
               </Link>
               <ul className="space-y-4 text-sm">
                 <li>
@@ -203,7 +203,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <ul className="flex space-x-8 lg:space-x-24 py-4 text-2xl border-t border-white lg:border-none pt-4 mt-4 lg:mt-0">
+        <ul className="flex py-4 pt-4 mt-4 space-x-8 text-2xl border-t border-white lg:space-x-24 lg:border-none lg:mt-0">
           <li>
             <a
               href="https://www.facebook.com/cfccapitalchile/"
@@ -233,13 +233,13 @@ const Footer = () => {
           </li>
         </ul>
 
-        <div className="border-t border-white pt-4">
+        <div className="pt-4 border-t border-white">
           <div className="sm:flex sm:justify-between">
             <p className="text-xs text-white">
               &copy; 2024. CFC Capital. Todos los derechos reservados.
             </p>
 
-            <ul className="mt-8 flex flex-wrap justify-start gap-4 text-xs sm:mt-0 lg:justify-end hidden">
+            <ul className="flex flex-wrap justify-start hidden gap-4 mt-8 text-xs sm:mt-0 lg:justify-end">
               <li>
                 <Link
                   href="/terminos-y-condiciones"

@@ -49,7 +49,7 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
             </div>
           )}
 
-          <section className="container mx-auto flex flex-wrap justify-center items-stretch">
+          <section className="container flex flex-wrap items-stretch justify-center mx-auto">
             {posts?.length > 0 &&
               posts.map((item) => (
                 <Card
@@ -59,10 +59,10 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                   header={
                     <a
                       href={`/prensa/${item.slug}`}
-                      className="min-h-64 overflow-hidden"
+                      className="overflow-hidden min-h-64"
                     >
                       <Image
-                        className="scale-100 group-hover:scale-110 transition"
+                        className="transition scale-100 group-hover:scale-110"
                         src={item.coverImage.url}
                         alt={item.title}
                         width={500}
@@ -80,14 +80,14 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                   footer={
                     <a className="w-full p-2" href={`/prensa/${item.slug}`}>
                       <Button
-                        className="font-semibold text-sm text-blue"
+                        className="text-sm font-semibold text-blue"
                         text="Leer más"
                       />
                     </a>
                   }
                 >
                   <a href={`/prensa/${item.slug}`}>
-                    <p className="px-2 py-4 text-blue font-semibold">
+                    <p className="px-2 py-4 font-semibold text-blue">
                       {item.title.slice(0, 100)}
                       {item.title.length > 100 && '...'}
                     </p>
@@ -98,17 +98,17 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
 
           {service && service.length > 0 && (
             <section className="py-5 bg-dark-blue">
-              <div className="container md:px-4 mx-auto text-white">
-                <h2 className="display-font text-2xl font-bold py-4">
+              <div className="container mx-auto text-white md:px-4">
+                <h2 className="py-4 text-2xl font-bold display-font">
                   {'El proceso de '}
                   <span className="text-capitalize">{categoryName}</span>
                 </h2>
                 <div className="flex flex-wrap">
                   {service.map((item, key) => (
-                    <div className="text-4xl w-1/3 px-4" key={item.description}>
-                      <div className="display-font font-black p-12 relative text-white rounded-full my-5 bg-light-blue">
+                    <div className="w-1/3 px-4 text-4xl" key={item.description}>
+                      <div className="relative p-12 my-5 font-black text-white rounded-full display-font bg-light-blue">
                         <div className="relative">
-                          <span className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                          <span className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
                             {key + 1}
                           </span>
                         </div>
@@ -135,6 +135,17 @@ export default Category;
 export async function getStaticProps({ params }) {
   try {
     const { id } = params;
+    const response = await getPostsByCategoryAndProcess(id);
+
+    if (!response?.data?.category) {
+      return {
+        redirect: {
+          destination: '/404',
+          permanent: false,
+        },
+      };
+    }
+
     const {
       data: {
         category: {
@@ -148,31 +159,21 @@ export async function getStaticProps({ params }) {
         },
         service,
       },
-    } = await getPostsByCategoryAndProcess(id);
+    } = response;
 
-    if (!posts) {
-      return {
-        redirect: {
-          destination: '/404',
-          permanent: false,
-        },
-      };
-    }
-
-    const {
-      data: { categories },
-    } = await getAllCategories();
+    const categoriesResponse = await getAllCategories();
+    const categories = categoriesResponse?.data?.categories || [];
 
     return {
       props: {
-        posts,
+        posts: posts || [],
         banner: {
-          title,
-          subTitle: subtite,
-          image,
+          title: title || '',
+          subTitle: subtite || '',
+          image: image || null,
           backgroundColor: { hex: backgroundColor || '#FFFFFF' },
-          buttonText,
-          buttonUrl,
+          buttonText: buttonText || '',
+          buttonUrl: buttonUrl || '',
         },
         service: service?.serviceProcess || [],
         categoryName: id,
@@ -181,7 +182,7 @@ export async function getStaticProps({ params }) {
       revalidate: 10,
     };
   } catch (error) {
-    console.error('Error fetching service data:', error);
+    console.log('Error fetching service data:', error);
     return {
       redirect: {
         destination: '/404',
@@ -192,13 +193,20 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const {
-    data: { categories },
-  } = await getAllCategories();
-  const path = '/prensa/categoria/';
+  try {
+    const response = await getAllCategories();
+    const categories = response?.data?.categories || [];
+    const path = '/prensa/categoria/';
 
-  return {
-    paths: categories?.map((item) => path + item.slug) || [],
-    fallback: true,
-  };
+    return {
+      paths: categories?.map((item) => path + item.slug) || [],
+      fallback: true,
+    };
+  } catch (error) {
+    console.log('Error en getStaticPaths:', error);
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
 }

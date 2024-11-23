@@ -11,10 +11,10 @@ const CardLayoutTwoColumns = ({
 }) => (
   <section className={`${className} py-12`}>
     {posts?.length > 0 && (
-      <div className="container md:px-4 mx-auto">
+      <div className="container mx-auto md:px-4">
         <div className="py-5">
           {title && (
-            <h1 className="display-font text-2xl font-bold">{title}</h1>
+            <h1 className="text-2xl font-bold display-font">{title}</h1>
           )}
         </div>
         <div className="flex justify-center">
@@ -28,7 +28,7 @@ const CardLayoutTwoColumns = ({
                   //   height: '100%',
                   // }}
                 >
-                  <div className="px-3 w-1/2">
+                  <div className="w-1/2 px-3">
                     <Link
                       href={`/prensa/${item.slug}`}
                       className="block"
@@ -56,8 +56,8 @@ const CardLayoutTwoColumns = ({
                       />
                     </Link>
                   </div>
-                  <div className="px-3 w-1/2 flex flex-col justify-center">
-                    <p className="display-font mb-4">{item.title}</p>
+                  <div className="flex flex-col justify-center w-1/2 px-3">
+                    <p className="mb-4 display-font">{item.title}</p>
                     <div>
                       <Link
                         href={`/prensa/${item.slug}`}

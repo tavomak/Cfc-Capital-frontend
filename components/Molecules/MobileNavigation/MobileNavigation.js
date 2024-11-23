@@ -62,7 +62,7 @@ const MobileNavigation = ({
             setMenuOpen(false);
             handleClickModal(e);
           }}
-          className="text-xl font-bold  text-dark-blue"
+          className="text-xl font-bold text-dark-blue"
           href="!#"
         >
           Acceso Clientes
@@ -72,7 +72,7 @@ const MobileNavigation = ({
         <a
           href="http://cfc.fapro.app/"
           target="_blank"
-          className="text-xl font-bold  text-dark-blue"
+          className="text-xl font-bold text-dark-blue"
           rel="noreferrer"
         >
           Enrólate aquí

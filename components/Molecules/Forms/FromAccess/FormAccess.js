@@ -29,12 +29,12 @@ const FormAccess = () => (
             type="email"
             tabIndex="1"
             placeholder="Email"
-            className="form-control mt-2"
+            className="mt-2 form-control"
           />
           <input
             type="submit"
             value="Solicitar Información"
-            className="form-control btn btn-primary mt-3"
+            className="mt-3 form-control btn btn-primary"
           />
           <hr className="my-4" />
         </form>
@@ -47,10 +47,10 @@ const FormAccess = () => (
           action="https://prosystem-fe.cl/Inicio/LoginProd"
           target="_blank"
         >
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="mb-4 text-xl font-semibold">
             Formulario de ingreso clientes
           </h2>
-          <p className="text-sm font-semibold mb-4">
+          <p className="mb-4 text-sm font-semibold">
             Si ya está registrado, ingrese rut sin puntos ni dígito verificador.
           </p>
           <Input
@@ -58,20 +58,20 @@ const FormAccess = () => (
             type="text"
             tabIndex="1"
             placeholder="Rut"
-            className="form-control mt-2"
+            className="mt-2 form-control"
           />
           <Input
             name="txtPass"
             type="password"
             tabIndex="2"
             placeholder="Clave"
-            className="form-control mt-2"
+            className="mt-2 form-control"
           />
           <input type="hidden" name="Factoring" value="26" />
           <input
             type="submit"
             value="Ingresar"
-            className="form-control mt-2 btn btn-primary "
+            className="mt-2 form-control btn btn-primary "
           />
         </form>
 
@@ -83,7 +83,7 @@ const FormAccess = () => (
             encType="multipart/form-data"
             target="_blank"
             action="https://prosystem-fe.cl/Inicio/LoginProd"
-            className="text-right w-full"
+            className="w-full text-right"
           >
             <input
               type="hidden"
@@ -100,7 +100,7 @@ const FormAccess = () => (
             <input
               type="submit"
               value="Olvidé mi contraseña"
-              className="mb-2 text-soft-blue font-semibold text-sm relative -top-6"
+              className="relative mb-2 text-sm font-semibold text-soft-blue -top-6"
             />
           </form>
         </div>

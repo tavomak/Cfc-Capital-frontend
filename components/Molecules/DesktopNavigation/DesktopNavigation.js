@@ -26,7 +26,7 @@ const DesktopNavigation = ({
   };
   return (
     <nav
-      className="container md:px-4 flex mx-auto items-center justify-between"
+      className="container flex items-center justify-between mx-auto md:px-4"
       aria-label="Global"
     >
       <Link href="/">
@@ -68,9 +68,9 @@ const DesktopNavigation = ({
                       }}
                       exit={{ opacity: 0, transform: 'translateY(-5px)' }}
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
-                      className="absolute border left-0 w-screen mt-1 p-5 bg-white shadow-xl"
+                      className="absolute left-0 w-screen p-5 mt-1 bg-white border shadow-xl"
                     >
-                      <ul className="container md:px-4 m-auto flex flex-row w-full">
+                      <ul className="container flex flex-row w-full m-auto md:px-4">
                         {item.children.map((subItem) => (
                           <li key={subItem.path} className="w-1/4">
                             <a
@@ -78,7 +78,7 @@ const DesktopNavigation = ({
                               onClick={(e) =>
                                 handleClick(e, subItem.label, subItem.path)
                               }
-                              className="flex min-h-44 w-full h-full p-2 group"
+                              className="flex w-full h-full p-2 min-h-44 group"
                               onMouseEnter={() =>
                                 setSubItemActive(
                                   subItem.label.replace(' ', '-').toLowerCase()
@@ -113,7 +113,7 @@ const DesktopNavigation = ({
                                     ]
                                   }
                                 </span>
-                                <p className="font-bold py-4">
+                                <p className="py-4 font-bold">
                                   {subItem.label}
                                 </p>
                                 <p>
@@ -135,7 +135,7 @@ const DesktopNavigation = ({
         <li>
           <a
             href="!#"
-            className="btn btn-primary inline-block"
+            className="inline-block btn btn-primary"
             onClick={handleClickModal}
           >
             Acceso Clientes
@@ -145,7 +145,7 @@ const DesktopNavigation = ({
           <a
             href="http://cfc.fapro.app/"
             target="_blank"
-            className="btn btn-secondary inline-block"
+            className="inline-block btn btn-secondary"
             rel="noreferrer"
           >
             Enrólate aquí

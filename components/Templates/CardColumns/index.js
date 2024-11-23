@@ -4,12 +4,12 @@ import Link from 'next/link';
 const CardColumns = ({ posts }) => (
   <>
     {posts.map((item) => (
-      <div className="col-md-4 pb-5" key={item.id}>
-        <div className="card shadow" style={{ height: '100%' }}>
+      <div className="pb-5 col-md-4" key={item.id}>
+        <div className="shadow card" style={{ height: '100%' }}>
           <div className="card-header">
             <Link
               href={`/prensa/${item.slug}`}
-              className="noticeImg d-block mb-4"
+              className="mb-4 noticeImg d-block"
             >
               <Image
                 src={item.coverImage.url}
@@ -25,7 +25,7 @@ const CardColumns = ({ posts }) => (
             <p className="display-font">{item.title}</p>
             <Link
               href={`/prensa/${item.slug}`}
-              className="btn btn-primary display-font mt-auto"
+              className="mt-auto btn btn-primary display-font"
             >
               Ver más
             </Link>

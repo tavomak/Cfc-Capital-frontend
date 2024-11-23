@@ -31,7 +31,7 @@ const Input = ({
       >
         {register ? (
           <input
-            className="peer w-full border-none bg-transparent p-2 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+            className="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
             type={showPassword ? 'text' : type || 'text'}
             id={name}
             placeholder={placeholder}
@@ -40,7 +40,7 @@ const Input = ({
           />
         ) : (
           <input
-            className="peer w-full border-none bg-transparent p-2 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0"
+            className="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
             type={type || 'text'}
             id={name}
             name={name}
@@ -53,7 +53,7 @@ const Input = ({
 
         {type === 'password' && (
           <button
-            className="absolute inset-y-0 end-0 grid w-10 cursor-pointer place-content-center"
+            className="absolute inset-y-0 grid w-10 cursor-pointer end-0 place-content-center"
             onClick={() => setShowPassword(!showPassword)}
             type="button"
           >

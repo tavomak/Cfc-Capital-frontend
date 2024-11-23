@@ -5,8 +5,8 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const getServices = () => {
-  return client.query({
+export const getServices = () =>
+  client.query({
     query: gql`
       query Services {
         services {
@@ -22,10 +22,9 @@ export const getServices = () => {
       }
     `,
   });
-};
 
-export const getServiceBySlug = (slug) => {
-  return client.query({
+export const getServiceBySlug = (slug) =>
+  client.query({
     query: gql`
       query Service($slug: String!) {
         service(where: { slug: $slug }) {
@@ -69,10 +68,9 @@ export const getServiceBySlug = (slug) => {
       slug,
     },
   });
-};
 
-export const getAllCategories = () => {
-  return client.query({
+export const getAllCategories = () =>
+  client.query({
     query: gql`
       query getAllPosts {
         categories {
@@ -83,10 +81,9 @@ export const getAllCategories = () => {
       }
     `,
   });
-};
 
-export const getAllPosts = () => {
-  return client.query({
+export const getAllPosts = () =>
+  client.query({
     query: gql`
       query getAllPosts {
         posts(orderBy: createdAt_DESC) {
@@ -105,7 +102,6 @@ export const getAllPosts = () => {
       }
     `,
   });
-};
 
 export const getPostsByCategoryAndProcess = (slug) => {
   const name = slug.charAt(0).toUpperCase() + slug.slice(1);
@@ -149,8 +145,8 @@ export const getPostsByCategoryAndProcess = (slug) => {
   });
 };
 
-export const getPostAndMorePosts = (slug) => {
-  return client.query({
+export const getPostAndMorePosts = (slug) =>
+  client.query({
     query: gql`
       query Articles($slug: String!) {
         post(where: { slug: $slug }) {
@@ -183,10 +179,9 @@ export const getPostAndMorePosts = (slug) => {
       slug,
     },
   });
-};
 
-export const getPageBySlugAndServices = (slug) => {
-  return client.query({
+export const getPageBySlugAndServices = (slug) =>
+  client.query({
     query: gql`
       query Services($slug: String!) {
         pages(where: { slug: $slug }) {
@@ -234,10 +229,9 @@ export const getPageBySlugAndServices = (slug) => {
       slug,
     },
   });
-};
 
-export const getPageBySlugAndCategories = (slug) => {
-  return client.query({
+export const getPageBySlugAndCategories = (slug) =>
+  client.query({
     query: gql`
       query Articles($slug: String!) {
         pages(where: { slug: $slug }) {
@@ -280,10 +274,9 @@ export const getPageBySlugAndCategories = (slug) => {
       slug,
     },
   });
-};
 
-export const getTeamMembers = () => {
-  return client.query({
+export const getTeamMembers = () =>
+  client.query({
     query: gql`
       query Teams {
         teams {
@@ -322,10 +315,9 @@ export const getTeamMembers = () => {
       }
     `,
   });
-};
 
-export const getUserByEmail = (email) => {
-  return client.query({
+export const getUserByEmail = (email) =>
+  client.query({
     query: gql`
       query getUserByEmail($email: String) {
         teams {
@@ -366,4 +358,3 @@ export const getUserByEmail = (email) => {
     `,
     variables: { email },
   });
-};

@@ -120,7 +120,7 @@ const FormComplaint = ({ target }) => {
   };
 
   return (
-    <form ref={form} className="form mb-5" onSubmit={handleSubmit(handleClick)}>
+    <form ref={form} className="mb-5 form" onSubmit={handleSubmit(handleClick)}>
       <ReCAPTCHA
         ref={recaptchaRef}
         size="invisible"
@@ -131,7 +131,7 @@ const FormComplaint = ({ target }) => {
         <input type="hidden" name="target_email" value={target} />
       </div>
 
-      <h2 className="text-xl mb-4 text-soft-blue font-semibold">
+      <h2 className="mb-4 text-xl font-semibold text-soft-blue">
         Fecha de denuncia: {new Date().toLocaleDateString('es-CL')}
       </h2>
 
@@ -143,7 +143,7 @@ const FormComplaint = ({ target }) => {
           ¿Cual es tu relación con CFC Capital?
         </span>
         <select
-          className="border border-gray-200 rounded-md px-4 py-2"
+          className="px-4 py-2 border border-gray-200 rounded-md"
           aria-label="¿Deseas leasing habitacional?"
           name="selectLeasing"
           onChange={(e) => handleSelect(e)}
@@ -213,7 +213,7 @@ const FormComplaint = ({ target }) => {
       <div className="form-group">
         <label
           htmlFor="message"
-          className="rounded relative my-4 block border border-gray-200 shadow-sm pt-4 px-4"
+          className="relative block px-4 pt-4 my-4 border border-gray-200 rounded shadow-sm"
         >
           <textarea
             className="w-full text-sm focus:outline-none focus-visible:outline-none"
@@ -226,9 +226,9 @@ const FormComplaint = ({ target }) => {
           </span>
         </label>
       </div>
-      <div className="form-group text-center">
+      <div className="text-center form-group">
         <Button
-          className="btn btn-primary mt-4 text-uppercase py-2 px-4"
+          className="px-4 py-2 mt-4 btn btn-primary text-uppercase"
           text="Enviar"
           loading={loading}
           submit
