@@ -29,10 +29,10 @@ export default function Post({ post, morePosts }) {
           </Head>
 
           <article className="main">
-            <section className="bg-light-blue py-10">
-              <div className="container max-w-screen-xl mx-auto md:px-4 flex flex-wrap items-center">
+            <section className="py-10 bg-light-blue">
+              <div className="container flex flex-wrap items-center max-w-screen-xl mx-auto md:px-4">
                 <div className="md:w-1/2">
-                  <div className="h-96 overflow-hidden">
+                  <div className="overflow-hidden h-96">
                     <Image
                       src={`${post.article.coverImage.url}`}
                       alt={post.article.title}
@@ -47,15 +47,15 @@ export default function Post({ post, morePosts }) {
                   </div>
                 </div>
                 <div className="p-4 md:w-1/2">
-                  <h1 className="display-font text-purple pb-4 text-2xl font-bold">
+                  <h1 className="pb-4 text-2xl font-bold display-font text-purple">
                     {post.article.title}
                   </h1>
                 </div>
               </div>
             </section>
-            <section className="container mx-auto max-w-screen-xl my-10">
+            <section className="container max-w-screen-xl mx-auto my-10">
               {post.article.video && (
-                <figure className="video-container max-w-screen-lg mx-auto">
+                <figure className="max-w-screen-lg mx-auto video-container">
                   <iframe
                     className="w-full aspect-video"
                     title="Embed video"
@@ -80,11 +80,11 @@ export default function Post({ post, morePosts }) {
           <aside className="container max-w-screen-xl mx-auto">
             <div className="col-12">
               <hr />
-              <h2 className="display-font text-purple py-4 fs-5">
+              <h2 className="py-4 display-font text-purple fs-5">
                 Más noticias
               </h2>
             </div>
-            <section className="container mx-auto flex flex-wrap justify-center items-stretch">
+            <section className="container flex flex-wrap items-stretch justify-center mx-auto">
               {morePosts?.length > 0 &&
                 morePosts.map((item) => (
                   <Card
@@ -94,10 +94,10 @@ export default function Post({ post, morePosts }) {
                     header={
                       <a
                         href={`/prensa/${item.slug}`}
-                        className="min-h-64 overflow-hidden"
+                        className="overflow-hidden min-h-64"
                       >
                         <Image
-                          className="scale-100 group-hover:scale-110 transition"
+                          className="transition scale-100 group-hover:scale-110"
                           src={item.coverImage.url}
                           alt={item.title}
                           width={500}
@@ -115,14 +115,14 @@ export default function Post({ post, morePosts }) {
                     footer={
                       <a className="w-full p-2" href={`/prensa/${item.slug}`}>
                         <Button
-                          className="font-semibold text-sm text-blue"
+                          className="text-sm font-semibold text-blue"
                           text="Leer más"
                         />
                       </a>
                     }
                   >
                     <a href={`/prensa/${item.slug}`}>
-                      <p className="px-2 py-4 text-blue font-semibold">
+                      <p className="px-2 py-4 font-semibold text-blue">
                         {item.title.slice(0, 100)}
                         {item.title.length > 100 && '...'}
                       </p>
@@ -166,12 +166,27 @@ export async function getStaticProps({ params, preview = null }) {
 }
 
 export async function getStaticPaths() {
-  const {
-    data: { posts },
-  } = await getAllPosts();
+  try {
+    const posts = await getAllPosts();
+    if (!posts?.data?.posts) {
+      console.warn(
+        'No se encontraron posts o la estructura de datos es incorrecta'
+      );
+      return {
+        paths: [],
+        fallback: true,
+      };
+    }
 
-  return {
-    paths: posts?.map((post) => `/prensa/${post.slug}`) || [],
-    fallback: true,
-  };
+    return {
+      paths: posts.data.posts.map((post) => `/prensa/${post.slug}`),
+      fallback: true,
+    };
+  } catch (error) {
+    console.warn('Error en getStaticPaths:', error);
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
 }
