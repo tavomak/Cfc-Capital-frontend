@@ -208,12 +208,18 @@ export async function getStaticPaths() {
     const services = response?.data?.services;
     const path = '/servicios/';
 
-    const uniquePaths = [
-      ...new Set(services?.map((item) => path + item.slug)),
-    ] || ['/servicios/factoring'];
+    if (!services) {
+      console.warn(
+        'No se encontraron services o la estructura de datos es incorrecta'
+      );
+      return {
+        paths: [],
+        fallback: true,
+      };
+    }
 
     return {
-      paths: uniquePaths,
+      paths: services?.map((item) => path + item.slug),
       fallback: true,
     };
   } catch (error) {
