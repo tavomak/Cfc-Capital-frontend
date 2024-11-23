@@ -219,7 +219,9 @@ export async function getStaticPaths() {
     }
 
     return {
-      paths: services?.map((item) => path + item.slug),
+      paths: services
+        ?.filter((item) => item.slug !== 'factoring-web')
+        .map((item) => path + item.slug),
       fallback: true,
     };
   } catch (error) {
