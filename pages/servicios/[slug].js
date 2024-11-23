@@ -208,10 +208,12 @@ export async function getStaticPaths() {
     const services = response?.data?.services;
     const path = '/servicios/';
 
+    const uniquePaths = [
+      ...new Set(services?.map((item) => path + item.slug)),
+    ] || ['/servicios/factoring'];
+
     return {
-      paths: services?.map((item) => path + item.slug) || [
-        '/servicios/factoring',
-      ],
+      paths: uniquePaths,
       fallback: true,
     };
   } catch (error) {
