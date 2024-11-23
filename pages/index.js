@@ -33,14 +33,14 @@ import SubscribeSection from '@/components/Templates/SubscribeSection';
 const Content = ({ content }) => {
   const { title, subtitle, description } = content;
   return (
-    <div className="text-left px-4">
-      <h2 className="text-2xl font-bold text-purple display-font mb-6">
+    <div className="px-4 text-left">
+      <h2 className="mb-6 text-2xl font-bold text-purple display-font">
         {title}
       </h2>
       <h3 className="lg:text-[40px] leading-tight text-2xl font-bold display-font text-purple mb-4">
         {subtitle}
       </h3>
-      <p className="lg:text-2xl text-2xl font-semibold text-dark-grey">
+      <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
         {description}
       </p>
     </div>
@@ -60,16 +60,17 @@ const Home = ({ data }) => {
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
     >
       <Slider {...sliderSettings}>
-        {bannersToShow(data.pages.hero).map((item) => {
-          return !item?.desktop?.url ? (
+        {bannersToShow(data.pages.hero).map((item) =>
+          !item?.desktop?.url ? (
             <LayerHero
+              key={item.id}
               title={item.title}
               columnContent={<Content content={item} />}
               subtitle={item.subtitle}
               backgroundImage={item.backgroundImage.url}
               rtl={item.rtl}
             >
-              <div className="h-5/6 w-full">
+              <div className="w-full h-5/6">
                 <Image
                   src={item.frontImage.url}
                   width={500}
@@ -93,13 +94,13 @@ const Home = ({ data }) => {
                 mobile: item.mobile.url,
               }}
             />
-          );
-        })}
+          )
+        )}
       </Slider>
 
-      <section className="container px-4 mx-auto mt-20 lg:py-20 flex flex-col lg:flex-row justify-between items-center">
-        <div className="lg:w-1/2 xl:w-2/6 order-2 lg:order-1">
-          <h1 className="display-font font-semibold text-3xl text-blue">
+      <section className="container flex flex-col items-center justify-between px-4 mx-auto mt-20 lg:py-20 lg:flex-row">
+        <div className="order-2 lg:w-1/2 xl:w-2/6 lg:order-1">
+          <h1 className="text-3xl font-semibold display-font text-blue">
             Somos una empresa de servicios financieros, presente en el mercado
             desde el año 2003
           </h1>
@@ -111,7 +112,7 @@ const Home = ({ data }) => {
             activos productivos a las empresas
           </p>
         </div>
-        <div className="lg:w-1/2 xl:w-3/6 order-1 lg:order-2">
+        <div className="order-1 lg:w-1/2 xl:w-3/6 lg:order-2">
           {/* <AdvancedVideo
             cldVid={getVideoTransformationsWithReactVideo()}
             autoPlay
@@ -134,7 +135,7 @@ const Home = ({ data }) => {
         </div>
       </section>
 
-      <article className="pt-12 bg-ameba-pattern-light bg-no-repeat bg-cover">
+      <article className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
         <ZigZagSection
           itemList={formatServices(data.services, {
             imageKey: 'cardImage',
