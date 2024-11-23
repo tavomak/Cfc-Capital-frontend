@@ -3,19 +3,14 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "airbnb",
-    "airbnb/hooks",
-    "plugin:prettier/recommended",
-    "next",
-    "next/core-web-vitals"
-  ],
+  "extends": ["airbnb", "airbnb/hooks", "next/core-web-vitals", "prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": ["error"],
     "camelcase": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-no-target-blank": "off",

@@ -44,9 +44,9 @@ const Signature = ({ data, setData }) => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full">
+    <div className="flex items-center justify-center w-full">
       <div className="w-1/2">
-        <h5 className="text-center font-bold mb-10 text-blue">
+        <h5 className="mb-10 font-bold text-center text-blue">
           Previsualización de firma de correo
         </h5>
         <Card cardClassName="shadow py-14 pb-20 mb-5 flex items-center justify-center">
