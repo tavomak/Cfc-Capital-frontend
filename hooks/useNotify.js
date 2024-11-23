@@ -1,28 +1,28 @@
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 const toastConfig = {
-  position: "top-center",
+  position: 'top-center',
   autoClose: 5000,
   hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
-  theme: "colored",
+  theme: 'colored',
 };
 
 const useNotify = () => {
   const notification = (status, message) => {
     switch (status) {
-      case "success":
+      case 'success':
         toast.success(message, { ...toastConfig });
         break;
-      case "warning":
+      case 'warning':
         toast.warning(message, { ...toastConfig });
         break;
-      case "info":
+      case 'info':
         toast.info(message, { ...toastConfig });
         break;
-      case "error":
+      case 'error':
         toast.error(message, { ...toastConfig });
         break;
       default:
