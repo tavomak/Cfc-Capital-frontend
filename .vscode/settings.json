@@ -1,5 +1,19 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "files.eol": "\n",
   "tailwind-fold.foldStyle": "QUOTES",
   "tailwind-fold.unfoldIfLineSelected": true
 }
