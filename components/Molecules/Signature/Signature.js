@@ -37,16 +37,16 @@ const Signature = ({ data, setData }) => {
       setLoading(false);
       notification('success', 'Firma de correo copiada en el portapapeles');
     } catch (error) {
-      console.error(error);
+      console.log({ error });
       setLoading(false);
       notification('error', '¡Oh! algo salió mal, inténtalo de nuevo');
     }
   };
 
   return (
-    <div className="flex justify-center items-center w-full">
+    <div className="flex items-center justify-center w-full">
       <div className="w-1/2">
-        <h5 className="text-center font-bold mb-10 text-blue">
+        <h5 className="mb-10 font-bold text-center text-blue">
           Previsualización de firma de correo
         </h5>
         <Card cardClassName="shadow py-14 pb-20 mb-5 flex items-center justify-center">
@@ -65,11 +65,14 @@ const Signature = ({ data, setData }) => {
           >
             <tbody>
               <tr>
-                <td height="20" />
+                <td height="20" aria-label="Espaciador vertical" />
               </tr>
 
               <tr>
-                <td style={{ verticalAlign: 'middle' }}>
+                <td
+                  style={{ verticalAlign: 'middle' }}
+                  aria-label="Contenedor de nombre y posición"
+                >
                   <table
                     cellPadding="0"
                     cellSpacing="0"
@@ -88,12 +91,14 @@ const Signature = ({ data, setData }) => {
                           align="left"
                           width="200"
                           style={{ verticalAlign: 'middle' }}
+                          aria-label="Contenedor de logo"
                         >
                           <a
                             href="https://www.cfccapital.cl/"
                             target="_blank"
                             rel="noreferrer"
                           >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                               src="./cfc-logo.jpg"
                               role="presentation"
@@ -156,7 +161,7 @@ const Signature = ({ data, setData }) => {
               </tr>
 
               <tr>
-                <td height="10" />
+                <td height="10" aria-label="Espaciador vertical" />
               </tr>
               <tr>
                 <td
@@ -167,6 +172,7 @@ const Signature = ({ data, setData }) => {
                     width: '100%',
                     borderLeft: 'none',
                   }}
+                  aria-label="Separador horizontal"
                 >
                   <span
                     style={{
@@ -178,7 +184,7 @@ const Signature = ({ data, setData }) => {
                 </td>
               </tr>
               <tr>
-                <td height="10" />
+                <td height="10" aria-label="Espaciador vertical" />
               </tr>
 
               <tr>
@@ -200,7 +206,9 @@ const Signature = ({ data, setData }) => {
                           align="left"
                           width="200"
                           style={{ verticalAlign: 'middle' }}
+                          aria-label="Contenedor de iconos"
                         >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             src="icon20.png"
                             alt="20 años"
@@ -212,6 +220,7 @@ const Signature = ({ data, setData }) => {
                               display: 'inline',
                             }}
                           />
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             width="63"
                             height="30"
@@ -225,6 +234,7 @@ const Signature = ({ data, setData }) => {
                               display: 'inline',
                             }}
                           />
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
                             width="45"
                             height="30"
@@ -266,7 +276,7 @@ const Signature = ({ data, setData }) => {
               </tr>
 
               <tr>
-                <td height="15" />
+                <td height="15" aria-label="Espaciador vertical" />
               </tr>
 
               <tr>

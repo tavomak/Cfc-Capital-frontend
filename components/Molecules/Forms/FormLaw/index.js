@@ -145,7 +145,7 @@ const FormContact = () => {
       </div>
       {anonymity === 'no' && (
         <>
-          <div className="form-group pt-3">
+          <div className="pt-3 form-group">
             <Input
               className={`${styles.formInput} ${errors.username ? styles.formInputError : ''} form-control mt-2`}
               name="username"
@@ -238,10 +238,10 @@ const FormContact = () => {
           </div>
         </div>
       </div>
-      <div className="form-group pt-4">
+      <div className="pt-4 form-group">
         <label
           htmlFor="message"
-          className="rounded relative my-4 block border border-gray-200 shadow-sm pt-4 px-4"
+          className="relative block px-4 pt-4 my-4 border border-gray-200 rounded shadow-sm"
         >
           <textarea
             className="w-full text-sm focus:outline-none focus-visible:outline-none"
@@ -254,9 +254,9 @@ const FormContact = () => {
           </span>
         </label>
       </div>
-      <div className="form-group mb-5">
+      <div className="mb-5 form-group">
         <Button
-          className="btn btn-complementary mt-4 text-uppercase py-2 px-4"
+          className="px-4 py-2 mt-4 btn btn-complementary text-uppercase"
           text="Enviar Denuncia"
           loading={loading}
           submit

@@ -8,8 +8,8 @@ const CustomInput = forwardRef(({ value, onClick, txt }, ref) => {
     setCurrentValue(value);
   }, [value]);
   return (
-    <div className="flex flex-nowrap border border-gray-200 rounded-md px-10 py-2">
-      <span className="mt-1 mx-2">
+    <div className="flex px-10 py-2 border border-gray-200 rounded-md flex-nowrap">
+      <span className="mx-2 mt-1">
         <span className="text-xl">
           <BiCalendar />
         </span>

@@ -29,7 +29,7 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
             <button
               type="button"
               onClick={() => toggleAccordion(key)}
-              className="lg:flex w-full items-center justify-between px-4 py-4"
+              className="items-center justify-between w-full px-4 py-4 lg:flex"
             >
               <span className="text-lg font-medium">{item.title}</span>
               <motion.span
@@ -72,7 +72,7 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
                     },
                   }}
                 >
-                  <div className="lg:px-4 pb-4">
+                  <div className="pb-4 lg:px-4">
                     <p className="font-normal">{item.text}</p>
                   </div>
                 </motion.div>

@@ -28,10 +28,10 @@ const Stepper = () => {
     setActive({ karin: false, ley: false });
   };
   return (
-    <section className="flex flex-col justify-center shadow px-5">
+    <section className="flex flex-col justify-center px-5 shadow">
       {!step && (
-        <aside className="flex flex-col py-5 my-5 gap-4 items-center">
-          <p className="display-font text-xl text-center">
+        <aside className="flex flex-col items-center gap-4 py-5 my-5">
+          <p className="text-xl text-center display-font">
             Selecciona el tipo de denuncia que quieres realizar
           </p>
           <div>
@@ -50,9 +50,9 @@ const Stepper = () => {
               }
             />
           </div>
-          <a className="mb-0 mt-4" href="!#" onClick={(e) => handleStep(e)}>
+          <a className="mt-4 mb-0" href="!#" onClick={(e) => handleStep(e)}>
             <div className="mb-0 text-xl text-center">
-              <div className="flex justify-center items-center">
+              <div className="flex items-center justify-center">
                 <FaArrowAltCircleRight />
                 <span className="ps-2">
                   <u>Continuar</u>
@@ -71,7 +71,7 @@ const Stepper = () => {
         <a className="py-4" href="!#" onClick={(e) => handleBack(e)}>
           <p className="text-center">
             <FaArrowAltCircleLeft />
-            <span className="ps-2 text-sm">
+            <span className="text-sm ps-2">
               <u>Volver</u>
             </span>
           </p>

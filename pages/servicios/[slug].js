@@ -34,14 +34,14 @@ const iconsMapping = {
 };
 
 const Content = () => (
-  <div className="text-left px-4">
-    <h1 className="text-3xl font-bold text-purple display-font mb-6">
+  <div className="px-4 text-left">
+    <h1 className="mb-6 text-3xl font-bold text-purple display-font">
       Factoring
     </h1>
-    <h3 className="lg:text-5xl text-2xl font-bold display-font text-purple mb-4">
+    <h3 className="mb-4 text-2xl font-bold lg:text-5xl display-font text-purple">
       ¡Que el crecimiento no tarde en llegar!
     </h3>
-    <p className="lg:text-2xl text-2xl font-semibold text-dark-grey">
+    <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
       Obtén liquidez inmediata cediéndonos tus facturas.
     </p>
   </div>
@@ -109,38 +109,38 @@ const Service = ({ data }) => {
             buttonText="Saber más"
           />
 
-          <section className="container md:px-4 mx-auto">
-            <h2 className="text-dark-blue text-4xl font-black text-center my-12">
+          <section className="container mx-auto md:px-4">
+            <h2 className="my-12 text-4xl font-black text-center text-dark-blue">
               Preguntas Frecuentes
             </h2>
             <Accordion list={data.serviceFaq} />
           </section>
 
-          <section className="container md:px-4 mx-auto pt-12">
-            <h2 className="text-dark-blue text-4xl font-black text-center my-12">
+          <section className="container pt-12 mx-auto md:px-4">
+            <h2 className="my-12 text-4xl font-black text-center text-dark-blue">
               Proceso de {data.title}
             </h2>
-            <div className="py-10 flex flex-wrap">
+            <div className="flex flex-wrap py-10">
               {data.serviceProcess.map((item, key) => (
                 <Card
                   key={item.description}
                   containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
                   cardClassName="p-4 lg:px-12"
                 >
-                  <div className="text-4xl flex">
+                  <div className="flex text-4xl">
                     <div
-                      className="display-font font-black p-12 relative text-blue rounded-full my-5"
+                      className="relative p-12 my-5 font-black rounded-full display-font text-blue"
                       style={{
                         backgroundColor: `var(--${iconsMapping[key + 1]?.color})`,
                       }}
                     >
-                      <span className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                      <span className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
                         {key + 1}
                       </span>
                     </div>
                   </div>
 
-                  <p className="display-font font-semibold text-xl text-blue">
+                  <p className="text-xl font-semibold display-font text-blue">
                     {item.subtitle}
                   </p>
                   {item.description && (
@@ -203,15 +203,32 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const servicesPath = '/servicios/';
-  const { data } = getServices();
+  try {
+    const response = await getServices();
+    const services = response?.data?.services;
+    const path = '/servicios/';
 
-  const services = await data?.services;
+    if (!services) {
+      console.warn(
+        'No se encontraron services o la estructura de datos es incorrecta'
+      );
+      return {
+        paths: [],
+        fallback: true,
+      };
+    }
 
-  return {
-    paths: services?.map((item) => servicesPath + item.slug) || [
-      '/servicios/factoring',
-    ],
-    fallback: true,
-  };
+    return {
+      paths: services
+        ?.filter((item) => item.slug !== 'factoring-web')
+        .map((item) => path + item.slug),
+      fallback: true,
+    };
+  } catch (error) {
+    console.warn('Error en getStaticPaths:', error);
+    return {
+      paths: [],
+      fallback: true,
+    };
+  }
 }

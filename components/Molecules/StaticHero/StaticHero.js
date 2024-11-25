@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Hero = ({ image, alt, heroImages }) => (
   <section>
-    <div className="content hidden md:block">
+    <div className="hidden content md:block">
       <Image
         src={heroImages ? heroImages?.desktop : `/hero-${image}.jpg`}
         alt={`${alt} | CFC Capital`}

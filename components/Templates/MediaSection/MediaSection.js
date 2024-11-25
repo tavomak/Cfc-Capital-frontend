@@ -49,8 +49,8 @@ const sliderSettings = {
 const MediaSection = ({ mediaSet = [] }) => (
   <section className="pt-5 pb-12 bg-dark-blue">
     <div className="container mx-auto md:px-4">
-      <div className="text-center text-white py-12">
-        <h2 className="display-font text-2xl py-4 font-semibold">
+      <div className="py-12 text-center text-white">
+        <h2 className="py-4 text-2xl font-semibold display-font">
           ¡Descubre los medios <br />
           que nos han destacado!
         </h2>

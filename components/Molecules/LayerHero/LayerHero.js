@@ -18,12 +18,12 @@ const LayerHero = ({
     className={`relative pt-4 lg:pt-12 ${type === 'circle' ? 'bg-gradient-circle' : ''} ${styles.layerHero}`}
     style={{
       '--rtl': `${rtl ? 'right' : 'left'}`,
-      backgroundColor: `${backgroundColor || ''}`,
+      backgroundColor: `${backgroundColor || 'none'}`,
       backgroundImage: `${backgroundImage ? `url(${backgroundImage})` : 'none'}`,
     }}
   >
-    <div className="container md:px-4 mx-auto">
-      <div className="md:flex justify-around items-center text-center text-lg-start">
+    <div className="container mx-auto md:px-4">
+      <div className="items-center justify-around text-center md:flex text-lg-start">
         <div
           className={`lg:my-0 w-full md:w-1/2 2xl:w-3/6 ${rtl ? 'order-2' : 'order-1'}`}
         >
@@ -52,7 +52,7 @@ const LayerHero = ({
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(title),
               }}
-              className="text-2xl font-bold mb-4 display-font text-purple"
+              className="mb-4 text-2xl font-bold display-font text-purple"
             />
           )}
           {subtitle && !columnContent && !content && (
@@ -61,7 +61,7 @@ const LayerHero = ({
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(subtitle),
               }}
-              className="text-xl mb-4"
+              className="mb-4 text-xl"
             />
           )}
           {columnContent ||
