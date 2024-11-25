@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Link from 'next/link';
 import Slider from 'react-slick';
-// import { AdvancedVideo } from '@cloudinary/react';
-// import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedVideo } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen';
 import {
   formatServices,
   sliderSettings,
@@ -10,9 +11,11 @@ import {
   getPageBySlugAndServices,
   mediaLogos,
   steps,
+  highlights,
 } from '@/utils';
 
 import Layout from '@/components/Templates/Layout';
+import Card from '@/components/Atoms/Card';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StaticHero from '@/components/Molecules/StaticHero';
 import LayerHero from '@/components/Molecules/LayerHero';
@@ -20,20 +23,29 @@ import MediaSection from '@/components/Templates/MediaSection';
 import SubscribeSection from '@/components/Templates/SubscribeSection';
 import Testimonial from '@/components/Templates/Testimonial';
 import BlogCard from '@/components/Templates/BlogCard';
+import Button from '@/components/Atoms/Button';
 import StepCard from '@/components/Molecules/StepCard';
-import Link from 'next/link';
+import StarIcon from '@/components/Atoms/StarIcon';
+import ClientsIcon from '@/components/Atoms/ClientsIcon';
+import DolarIcon from '@/components/Atoms/DolarIcon';
 
-// function getVideoTransformationsWithReactVideo() {
-//   const cld = new Cloudinary({
-//     cloud: {
-//       cloudName: 'deevr9k54',
-//     },
-//   });
+const iconsMapping = {
+  star: <StarIcon />,
+  people: <ClientsIcon />,
+  money: <DolarIcon />,
+};
 
-//   const myVideo = cld.video('1112_s1nvpc');
+function getVideoTransformationsWithReactVideo() {
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'deevr9k54',
+    },
+  });
 
-//   return myVideo;
-// }
+  const myVideo = cld.video('CFC-video-home_dzdgeq').quality('auto');
+
+  return myVideo;
+}
 
 const Content = ({ content }) => {
   const { title, subtitle, description } = content;
@@ -42,7 +54,7 @@ const Content = ({ content }) => {
       <h2 className="mb-6 text-2xl font-bold text-purple display-font">
         {title}
       </h2>
-      <h3 className="lg:text-[40px] leading-tight text-2xl font-bold display-font text-purple mb-4">
+      <h3 className="lg:text-[38px] leading-tight text-2xl font-bold display-font text-purple mb-4">
         {subtitle}
       </h3>
       <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
@@ -66,25 +78,26 @@ const Home = ({ data }) => {
     >
       <Slider {...sliderSettings}>
         {bannersToShow(data.pages.hero).map((item) =>
-          !item?.desktop?.url ? (
+          item.subtitle ? (
             <LayerHero
               key={item.id}
               title={item.title}
               columnContent={<Content content={item} />}
               subtitle={item.subtitle}
-              backgroundImage={item.backgroundImage.url}
+              backgroundImage={item?.backgroundImage?.url}
+              backgroundColor={item?.backgroundColor[0]?.hex}
               rtl={item.rtl}
             >
               <div className="w-full h-5/6">
                 <Image
                   src={item.frontImage.url}
-                  width={500}
-                  height={500}
+                  width={750}
+                  height={580}
                   style={{
                     width: '100%',
-                    height: '100%',
+                    height: 'auto',
                     objectFit: 'contain',
-                    maxHeight: '600px',
+                    objectPosition: 'bottom',
                   }}
                   alt={item.title || item.subtitle}
                   priority
@@ -103,39 +116,26 @@ const Home = ({ data }) => {
         )}
       </Slider>
       <section className="container flex flex-col items-center justify-between px-4 mx-auto mt-20 lg:py-20 lg:flex-row">
-        <div className="order-2 lg:w-1/2 xl:w-2/6 lg:order-1">
-          <h1 className="text-3xl font-semibold display-font text-blue">
-            Somos una empresa de servicios financieros, presente en el mercado
-            desde el año 2003
-          </h1>
-          <p className="my-5">
-            Estamos especializados en el segmento de empresas y pymes entregando
-            soluciones a las necesidades de financiamiento de capital de trabajo
-            y de inversión, transformando los flujos por cobrar a plazo, en
-            dinero efectivo de inmediato o bien haciendo posible adquirir
-            activos productivos a las empresas
-          </p>
-        </div>
-        <div className="order-1 lg:w-1/2 xl:w-3/6 lg:order-2">
-          {/* <AdvancedVideo
+        <div className="lg:w-1/2 xl:w-3/6">
+          <AdvancedVideo
             cldVid={getVideoTransformationsWithReactVideo()}
             autoPlay
             loop
             muted
             playsInline
             poster="/hombre-ameba.png"
-          /> */}
-          <Image
-            src="/hombre-ameba.png"
-            alt="Home image"
-            width={500}
-            height={500}
-            style={{
-              width: '100%',
-              height: 'auto',
-              objectFit: 'contain',
-            }}
           />
+        </div>
+        <div className="lg:w-1/2 xl:w-5/12 md:px-10">
+          <h1 className="text-3xl font-semibold display-font text-blue">
+            Somos una empresa de servicios financieros, presente en el mercado
+            desde el año 2003
+          </h1>
+          <p className="my-5">
+            Ofrecemos a las empresas y pymes soluciones para transformar las
+            cuentas por cobrar en efectivo inmediato o para la adquisición de
+            activos productivos
+          </p>
         </div>
       </section>
       <article className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
@@ -150,8 +150,8 @@ const Home = ({ data }) => {
         />
       </article>
 
-      <section className="bg-testimonial p-8">
-        <h2 className="text-center display-font font-bold text-2xl md:text-4xl text-medium-blue mb-8">
+      <section className="p-8 bg-testimonial">
+        <h2 className="mb-8 text-2xl font-bold text-center display-font md:text-4xl text-blue">
           Testimonios
         </h2>
         <Testimonial
@@ -161,11 +161,11 @@ const Home = ({ data }) => {
         />
       </section>
 
-      <section className="bg-gradient-to-r from-medium-blue to-soft-blue my-24 pt-8">
-        <h2 className="text-center display-font font-bold text-2xl md:text-4xl text-white mb-8">
+      <section className="pt-8 bg-gradient-to-r from-medium-blue to-soft-blue">
+        <h2 className="mb-8 text-2xl font-bold text-center text-white display-font md:text-4xl">
           Educación Financiera
         </h2>
-        <p className="w-3/4 md:w-2/5 mx-auto text-center display-font font-medium text-md md:text-xl text-white">
+        <p className="w-3/4 mx-auto font-medium text-center text-white md:w-2/5 display-font text-md md:text-xl">
           Te presentamos nuestra plataforma de recursos y artículo de interés en
           el desarrollo y crecimiento financiero.
         </p>
@@ -179,49 +179,75 @@ const Home = ({ data }) => {
         />
       </section>
 
-      <section className="bg-gradient-to-r from-dark-blue to-purple text-white">
-        <article className="mx-auto md:mr-0 pt-16 md:w-11/12">
-          <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/3 flex flex-col gap-8 justify-center">
-              <h2 className="w-3/4 mx-auto md:mx-0 text-center text-white text-balance display-font font-bold text-2xl md:text-left lg:text-4xl">
+      <section className="container max-w-4xl py-10 mx-auto my-10 md:px-4">
+        <h2 className="mb-8 text-2xl font-bold text-center display-font md:text-4xl text-blue">
+          Lo que nos valida
+        </h2>
+        <article className="flex flex-wrap">
+          {highlights.map((item) => (
+            <Card
+              key={item.name}
+              containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
+              cardClassName="p-4 shadow-lg"
+            >
+              {item.icon && (
+                <div className="flex justify-center p-4 text-4xl text-blue">
+                  <span className="w-28 h-28">{iconsMapping[item.icon]}</span>
+                </div>
+              )}
+              {item.prev && (
+                <p className="text-xl font-semibold text-center display-font text-blue">
+                  {item.title}
+                </p>
+              )}
+              {item.description && (
+                <p className="mt-5 text-sm text-center ">{item.description}</p>
+              )}
+            </Card>
+          ))}
+        </article>
+      </section>
+
+      <section className="pt-12 text-white bg-gradient-to-r from-dark-blue to-purple">
+        <article className="container px-4 mx-auto">
+          <div className="md:flex">
+            <div className="flex flex-col justify-center gap-8 md:w-3/6 xl:w-1/3">
+              <h2 className="w-3/4 mx-auto text-2xl font-bold text-center text-white md:mx-0 text-balance display-font md:text-left lg:text-4xl">
                 Creando capacidad de crecer
               </h2>
-              <p className="w-5/6 sm:w-3/4 mx-auto md:mx-0 text-center text-wrap text-white display-font font-medium text-sm md:text-left lg:text-lg">
+              <p className="w-5/6 mx-auto text-sm font-medium text-center text-white sm:w-3/4 md:mx-0 text-wrap display-font md:text-left lg:text-lg">
                 Fomentamos tu capacidad de desarrollar negocios que crezcan, se
                 proyecten en el tiempo y aporten al país
               </p>
-              <Link
-                href="/"
-                rel="noopener noreferrer"
-                className="btn mx-auto md:mx-0 md:mb-8 cursor-pointer w-fit bg-white text-medium-blue py-2 px-7 transition-all hover:opacity-90"
-              >
-                Escríbenos
+              <Link href="/contacto" rel="noopener noreferrer">
+                <Button className="btn">Escríbenos</Button>
               </Link>
             </div>
-            <div className="mt-auto md:w-2/3">
+            <div className="md:w-3/6 xl:w-2/3">
               <Image
                 src="/empresarios-ameba.png"
                 alt="empresarios"
                 width={968}
                 height={606}
-                style={{ width: '100%', height: 'auto' }}
               />
             </div>
           </div>
         </article>
       </section>
+
       <SubscribeSection />
+
       <section className="pt-8">
-        <h2 className="text-center display-font font-bold text-2xl md:text-4xl text-medium-blue mb-8">
+        <h2 className="mb-8 text-2xl font-bold text-center display-font md:text-4xl text-medium-blue">
           Factoring web
         </h2>
-        <p className="w-3/4 mx-auto text-center text-balance display-font font-semibold text-md md:text-xl text-medium-grey">
+        <p className="w-3/4 max-w-3xl mx-auto font-semibold text-center text-balance display-font text-md md:text-xl text-medium-grey">
           En nuestra plataforma digital podrás cargar de manera masiva tus
           facturas, con cotización en línea clara y transparente.
         </p>
-        <article className="w-full md:w-11/12 mx-auto md:mr-0 pt-4">
-          <div className="flex gap-12 flex-col-reverse items-center justify-between md:flex-row">
-            <div className="md:w-1/2 px-4 md:px-0">
+        <article className="container pt-10 mx-auto">
+          <div className="flex flex-col-reverse items-center justify-between gap-12 md:flex-row">
+            <div className="md:w-1/2 xl:w-1/3">
               {steps.map((step) => (
                 <StepCard
                   key={step.title}
@@ -233,11 +259,10 @@ const Home = ({ data }) => {
             </div>
             <div className="md:w-1/2">
               <Image
-                src="/chica-ameba.jpg"
+                src="/chica-ameba.png"
                 alt="empresarios"
                 width={756}
                 height={609}
-                style={{ width: '100%', height: 'auto' }}
               />
             </div>
           </div>

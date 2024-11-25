@@ -44,7 +44,7 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
           )}
 
           {categories?.length > 0 && (
-            <div className="min-h-24">
+            <div className="my-10 min-h-24">
               <CategoryNavBar categories={categories} />
             </div>
           )}
@@ -87,7 +87,7 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                   }
                 >
                   <a href={`/prensa/${item.slug}`}>
-                    <p className="px-2 py-4 font-semibold text-blue">
+                    <p className="px-2 py-4 font-semibold lg:px-4 text-blue">
                       {item.title.slice(0, 100)}
                       {item.title.length > 100 && '...'}
                     </p>

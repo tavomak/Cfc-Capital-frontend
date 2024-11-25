@@ -38,10 +38,10 @@ const Content = () => (
     <h1 className="mb-6 text-3xl font-bold text-purple display-font">
       Factoring
     </h1>
-    <h3 className="mb-4 text-2xl font-bold lg:text-5xl display-font text-purple">
+    <h3 className="mb-4 lg:text-[38px] leading-tight text-2xl font-bold display-font text-purple">
       ¡Que el crecimiento no tarde en llegar!
     </h3>
-    <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
+    <p className="text-xl font-semibold lg:text-2xl text-dark-grey">
       Obtén liquidez inmediata cediéndonos tus facturas.
     </p>
   </div>
