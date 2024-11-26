@@ -171,6 +171,7 @@ const Signature = ({ data, setData }) => {
                   style={{
                     width: '100%',
                     borderLeft: 'none',
+                    backgroundColor: '#d3d3d3',
                   }}
                   aria-label="Separador horizontal"
                 >
