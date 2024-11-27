@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.0.0...v1.0.1) (2024-11-27)
+
+### Bug Fixes
+
+- **signature:** Empty phone ([2d50c32](https://github.com/tavomak/Cfc-Capital-frontend/commit/2d50c326cb2ff1bc8b511157b2228167fe86aacd))
+
 # 1.0.0 (2024-11-23)
 
 ### Features
