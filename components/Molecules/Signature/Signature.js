@@ -270,7 +270,7 @@ const Signature = ({ data, setData }) => {
                             >
                               {data.mobile && (
                                 <>
-                                  <span>56</span>
+                                  <span>56 </span>
                                   {formatPhoneNumberString(data.mobile)}
                                 </>
                               )}
