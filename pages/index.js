@@ -54,7 +54,7 @@ const Content = ({ content }) => {
       <h2 className="mb-6 text-2xl font-bold text-purple display-font">
         {title}
       </h2>
-      <h3 className="lg:text-[38px] leading-tight text-2xl font-bold display-font text-purple mb-4">
+      <h3 className="lg:text-[38px] leading-tight text-3xl font-bold display-font text-purple mb-4">
         {subtitle}
       </h3>
       <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
@@ -115,6 +115,7 @@ const Home = ({ data }) => {
           )
         )}
       </Slider>
+
       <section className="container flex flex-col items-center justify-between px-4 mx-auto mt-20 lg:py-20 lg:flex-row">
         <div className="lg:w-1/2 xl:w-3/6">
           <AdvancedVideo
@@ -138,7 +139,8 @@ const Home = ({ data }) => {
           </p>
         </div>
       </section>
-      <article className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
+
+      <section className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
         <ZigZagSection
           itemList={formatServices(data.services, {
             imageKey: 'cardImage',
@@ -148,7 +150,7 @@ const Home = ({ data }) => {
           itemClassName="my-20 md:rounded-3xl shadow-lg hover:shadow-xl overflow-hidden"
           onClick={handleSectionClick}
         />
-      </article>
+      </section>
 
       <section className="p-8 bg-testimonial">
         <h2 className="mb-8 text-2xl font-bold text-center display-font md:text-4xl text-blue">
@@ -179,20 +181,20 @@ const Home = ({ data }) => {
         />
       </section>
 
-      <section className="container max-w-4xl py-10 mx-auto my-10 md:px-4">
-        <h2 className="mb-8 text-2xl font-bold text-center display-font md:text-4xl text-blue">
-          Lo que nos valida
+      <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
+        <h2 className="mb-8 text-2xl font-bold text-center text-balance display-font md:text-4xl text-blue">
+          Tenemos la experiencia para enfrentar el futuro
         </h2>
-        <article className="flex flex-wrap">
+        <article className="md:flex">
           {highlights.map((item) => (
             <Card
               key={item.name}
-              containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
-              cardClassName="p-4 shadow-lg"
+              containerClassName="w-full px-4 py-4 md:py-0"
+              cardClassName="px-4 py-12 shadow-2xl"
             >
               {item.icon && (
                 <div className="flex justify-center p-4 text-4xl text-blue">
-                  <span className="w-28 h-28">{iconsMapping[item.icon]}</span>
+                  <span className="w-20 h-20">{iconsMapping[item.icon]}</span>
                 </div>
               )}
               {item.prev && (
@@ -211,19 +213,19 @@ const Home = ({ data }) => {
       <section className="pt-12 text-white bg-gradient-to-r from-dark-blue to-purple">
         <article className="container px-4 mx-auto">
           <div className="md:flex">
-            <div className="flex flex-col justify-center gap-8 md:w-3/6 xl:w-1/3">
-              <h2 className="w-3/4 mx-auto text-2xl font-bold text-center text-white md:mx-0 text-balance display-font md:text-left lg:text-4xl">
+            <div className="flex flex-col justify-center gap-6 md:w-3/6 xl:w-1/3">
+              <h2 className="w-3/4 text-2xl text-left font-bold text-white md:mx-0 display-font md:text-left lg:text-4xl">
                 Creando capacidad de crecer
               </h2>
-              <p className="w-5/6 mx-auto text-sm font-medium text-center text-white sm:w-3/4 md:mx-0 text-wrap display-font md:text-left lg:text-lg">
+              <p className="w-5/6 text-sm text-left font-medium text-white sm:w-3/4 md:mx-0 text-wrap display-font lg:text-lg">
                 Fomentamos tu capacidad de desarrollar negocios que crezcan, se
                 proyecten en el tiempo y aporten al país
               </p>
               <Link href="/contacto" rel="noopener noreferrer">
-                <Button className="btn">Escríbenos</Button>
+                <Button className="btn mb-12">Escríbenos</Button>
               </Link>
             </div>
-            <div className="md:w-3/6 xl:w-2/3">
+            <div className="md:w-4/6 xl:w-2/3 mt-auto">
               <Image
                 src="/empresarios-ameba.png"
                 alt="empresarios"
@@ -248,10 +250,10 @@ const Home = ({ data }) => {
         <article className="container pt-10 mx-auto">
           <div className="flex flex-col-reverse items-center justify-between gap-12 md:flex-row">
             <div className="md:w-1/2 xl:w-1/3">
-              {steps.map((step) => (
+              {steps.map((step, index) => (
                 <StepCard
                   key={step.title}
-                  number={step.number}
+                  number={index + 1}
                   title={step.title}
                   description={step.description}
                 />

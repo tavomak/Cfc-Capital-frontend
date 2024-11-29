@@ -43,7 +43,7 @@ const News = ({ banner, posts, categories }) => {
         <h2 className="px-4 mb-4 text-4xl font-bold display-font text-purple">
           Factoring
         </h2>
-        <div className="flex flex-wrap items-stretch justify-center">
+        <div className="md:flex flex-wrap justify-center">
           {factoringPosts?.length > 0 &&
             factoringPosts.map((item) => (
               <Card

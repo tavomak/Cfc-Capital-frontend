@@ -9,26 +9,26 @@ const CardLayoutTwoColumns = ({
   className,
   btnClassName,
 }) => (
-  <section className={`${className} py-12`}>
+  <section className={`${className} py-8 px-4`}>
     {posts?.length > 0 && (
-      <div className="container mx-auto md:px-4">
-        <div className="py-5">
+      <div className="container mx-auto">
+        <div className="mb-8">
           {title && (
             <h1 className="text-2xl font-bold display-font">{title}</h1>
           )}
         </div>
-        <div className="flex justify-center">
+        <div className="md:flex mb-6">
           {posts.map(
             (item, key) =>
               key < 2 && (
                 <div
                   key={item.id}
-                  className="flex flex-wrap"
+                  className="flex w-3/4 justify-center mx-auto flex-wrap"
                   // style={{
                   //   height: '100%',
                   // }}
                 >
-                  <div className="w-1/2 px-3">
+                  <div className="md:w-1/2">
                     <Link
                       href={`/prensa/${item.slug}`}
                       className="block"
@@ -56,7 +56,7 @@ const CardLayoutTwoColumns = ({
                       />
                     </Link>
                   </div>
-                  <div className="flex flex-col justify-center w-1/2 px-3">
+                  <div className="flex flex-col justify-center md:w-1/2 p-3">
                     <p className="mb-4 display-font">{item.title}</p>
                     <div>
                       <Link

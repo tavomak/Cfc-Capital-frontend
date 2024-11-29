@@ -51,7 +51,7 @@ const cfc = ({ data }) => {
           >
             {item.icon && (
               <div className="flex justify-center p-4 text-4xl text-blue">
-                <span className="w-28 h-28">{iconsMapping[item.icon]}</span>
+                <span className="w-20 h-20">{iconsMapping[item.icon]}</span>
               </div>
             )}
             {item.prev && (

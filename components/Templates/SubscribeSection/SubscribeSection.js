@@ -2,11 +2,11 @@ import Image from 'next/image';
 import FormSubscribe from '@/components/Molecules/Forms/FormSubscribe';
 
 const SubscribeSection = () => (
-  <section className="py-12 text-white bg-gradient-to-r from-medium-blue to-soft-blue">
-    <div className="container flex-wrap items-center justify-around px-4 py-12 mx-auto md:flex">
-      <div className="md:w-1/2">
-        <div className="flex flex-col items-start md:flex-row lg:items-center">
-          <div className="p-5 lg:w-1/3">
+  <section className="text-white bg-gradient-to-r from-medium-blue to-soft-blue">
+    <div className="container items-center justify-around py-24 px-4 mx-auto lg:flex">
+      <div className="lg:w-1/2">
+        <div className="md:flex items-center">
+          <div className="p-5 w-1/3">
             <Image
               src="/newsletter-icon.svg"
               alt="newsletter"
@@ -29,7 +29,7 @@ const SubscribeSection = () => (
           </div>
         </div>
       </div>
-      <div className="md:w-1/2 xl:w-1/3">
+      <div className="mx-auto lg:mx-0 md:w-1/2 xl:w-1/3">
         <FormSubscribe />
       </div>
     </div>

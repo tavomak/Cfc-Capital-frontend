@@ -129,6 +129,11 @@ export const memorial = [
 
 export const navItems = [
   {
+    label: 'Inicio',
+    path: '/',
+    children: false,
+  },
+  {
     label: 'CFC',
     path: '/cfc',
     children: false,
@@ -155,7 +160,7 @@ export const navItems = [
       {
         label: 'Leasing',
         path: '/servicios/leasing',
-        text: 'arrienda un bien de capital con opción a compra.',
+        text: 'Arrienda un bien de capital con opción a compra.',
       },
       {
         label: 'Leaseback',
@@ -228,18 +233,15 @@ export const highlights = [
 
 export const steps = [
   {
-    number: 1,
     title: 'Solicita tu clave de acceso',
     description:
       'Llegará a tu correo luego de que tu ejecutivo valide tu solicitud.',
   },
   {
-    number: 2,
     title: 'Registra tus datos',
     description: 'Accede a la información sin costo adicional.',
   },
   {
-    number: 3,
     title: 'Carga tus facturas',
     description:
       'Puedes ceder electrónicamente todas tus facturas en solo 3 clics.',
