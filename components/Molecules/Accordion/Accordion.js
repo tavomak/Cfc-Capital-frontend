@@ -31,13 +31,15 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
               onClick={() => toggleAccordion(key)}
               className="items-center justify-between w-full px-4 py-4 lg:flex"
             >
-              <span className="text-lg font-medium">{item.title}</span>
+              <span className="display-font text-lg font-medium">
+                {item.title}
+              </span>
               <motion.span
                 // animate={{ rotate: isExpanded ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
                 className="block lg:inline"
               >
-                ver más
+                Saber más...
               </motion.span>
             </button>
 

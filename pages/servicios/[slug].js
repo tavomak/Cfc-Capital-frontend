@@ -77,7 +77,7 @@ const Service = ({ data }) => {
               title={data.title}
               columnContent={<Content />}
               subtitle={data.subTitle}
-              backgroundImage="/elipse.png"
+              backgroundImage="/ameba-factoring.png"
               ltr
             >
               <Card
@@ -109,15 +109,8 @@ const Service = ({ data }) => {
             buttonText="Saber más"
           />
 
-          <section className="container mx-auto md:px-4">
-            <h2 className="my-12 text-4xl font-black text-center text-dark-blue">
-              Preguntas Frecuentes
-            </h2>
-            <Accordion list={data.serviceFaq} />
-          </section>
-
           <section className="container pt-12 mx-auto md:px-4">
-            <h2 className="my-12 text-4xl font-black text-center text-dark-blue">
+            <h2 className="display-font text-4xl font-black text-center text-dark-blue">
               Proceso de {data.title}
             </h2>
             <div className="flex flex-wrap py-10">
@@ -149,6 +142,13 @@ const Service = ({ data }) => {
                 </Card>
               ))}
             </div>
+          </section>
+
+          <section className="container mx-auto my-12 md:px-4">
+            <h2 className="display-font text-4xl mb-8 font-black text-center text-dark-blue">
+              Preguntas Frecuentes
+            </h2>
+            <Accordion list={data.serviceFaq} />
           </section>
 
           <SubscribeSection />
