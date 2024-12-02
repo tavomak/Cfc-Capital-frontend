@@ -48,6 +48,7 @@ const Content = () => (
 );
 
 const Service = ({ data }) => {
+  console.log({ data });
   const [modal, setModal] = useState(false);
   const router = useRouter();
   const handleClick = () => {
@@ -93,8 +94,8 @@ const Service = ({ data }) => {
                 desktop: data.heroImage.url,
                 mobile: data.heroImageMobile.url,
               }}
-              image={data.title}
-              alt={data.title}
+              image={data?.title?.toLowerCase()}
+              alt={data?.title}
             />
           )}
 

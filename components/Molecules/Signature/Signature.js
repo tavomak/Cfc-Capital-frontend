@@ -171,6 +171,7 @@ const Signature = ({ data, setData }) => {
                   style={{
                     width: '100%',
                     borderLeft: 'none',
+                    backgroundColor: '#d3d3d3',
                   }}
                   aria-label="Separador horizontal"
                 >
@@ -255,7 +256,9 @@ const Signature = ({ data, setData }) => {
                               fontSize: '12px',
                             }}
                           >
-                            {formatPhoneNumberString(data.phone)}
+                            {data.phone
+                              ? formatPhoneNumberString(data.phone)
+                              : ''}
                           </p>
                           {data.phone && (
                             <p
@@ -265,7 +268,12 @@ const Signature = ({ data, setData }) => {
                                 fontSize: '12px',
                               }}
                             >
-                              56 {formatPhoneNumberString(data.mobile)}
+                              {data.mobile && (
+                                <>
+                                  <span>56 </span>
+                                  {formatPhoneNumberString(data.mobile)}
+                                </>
+                              )}
                             </p>
                           )}
                         </td>
