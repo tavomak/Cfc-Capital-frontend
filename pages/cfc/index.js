@@ -108,7 +108,7 @@ const cfc = ({ data }) => {
                   }`}
                 >
                   <div className="py-6 text-center md:px-12 md:text-left">
-                    <h1 className="text-2xl font-bold text-dark-blue md:text-4xl">
+                    <h1 className="display-font text-2xl font-bold text-dark-blue md:text-4xl">
                       {item.name}
                     </h1>
                     <span className="inline-block h-0.5 w-20 bg-dark-blue my-2 md:my-4" />

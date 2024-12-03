@@ -101,7 +101,7 @@ const Service = ({ data }) => {
                   key={item.description}
                   name={item.subtitle}
                   icon={
-                    <div className="display-font flex items-center justify-center w-20 h-20 text-4xl font-bold text-medium-blue rounded-full border-medium-blue border-solid border-2">
+                    <div className="display-font flex items-center justify-center w-20 h-20 text-4xl font-bolds text-medium-blue rounded-full border-medium-blue border-solid border-2">
                       {key + 1}
                     </div>
                   }
