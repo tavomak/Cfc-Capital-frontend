@@ -151,11 +151,13 @@ export const navItems = [
         label: 'Factoring',
         path: '/servicios/factoring',
         text: 'Obtén liquidez inmediata cediéndonos tus facturas.',
-      },
-      {
-        label: 'Factoring web',
-        path: '/servicios/factoring-web',
-        text: 'Cede todas tus facturas en solo 3 clics.',
+        subnav: [
+          {
+            label: 'Factoring web',
+            path: '/servicios/factoring-web',
+            text: 'Cede todas tus facturas en solo 3 clics.',
+          },
+        ],
       },
       {
         label: 'Leasing',

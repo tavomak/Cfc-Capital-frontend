@@ -1,15 +1,17 @@
-const StepCard = ({ number, title, description }) => (
-  <div className="flex items-center p-4 mb-6 bg-white rounded-xl shadow-lg">
-    <div className="display-font flex-shrink-0 flex items-center justify-center w-14 h-14 mr-4 text-4xl font-bold text-medium-blue rounded-full border-medium-blue border-solid border-2">
-      {number}
-    </div>
-    <div className="flex-grow">
-      <h3 className="display-font text-lg font-semibold text-medium-blue mb-1">
-        {title}
-      </h3>
-      <p className="text-sm text-medium-grey">{description}</p>
-    </div>
-  </div>
-);
+import Card from '@/components/Atoms/Card';
 
+const StepCard = ({ name, icon, description }) => (
+  <Card
+    containerClassName="w-full px-4 py-4 md:py-0"
+    cardClassName="px-4 py-12 shadow-2xl"
+  >
+    <div className="flex justify-center p-4 text-4xl text-blue">
+      <span className="w-20 h-20">{icon}</span>
+    </div>
+    <p className="text-xl font-semibold text-center display-font text-blue">
+      {name}
+    </p>
+    <p className="mt-5 text-sm text-center ">{description}</p>
+  </Card>
+);
 export default StepCard;

@@ -3,6 +3,10 @@ body {
   color: var(--dark-grey);
 }
 
+.modal-active {
+  overflow: hidden;
+}
+
 .display-font {
   font-family: var(--display-font);
 }

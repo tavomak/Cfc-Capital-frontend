@@ -7,8 +7,8 @@ import DolarIcon from '@/components/Atoms/DolarIcon';
 
 import { getTeamMembers, highlights } from '@/utils';
 import Layout from '@/components/Templates/Layout';
-import Card from '@/components/Atoms/Card';
 import Link from 'next/link';
+import StepCard from '@/components/Molecules/StepCard';
 
 const iconsMapping = {
   star: <StarIcon />,
@@ -42,28 +42,17 @@ const cfc = ({ data }) => {
           poster="/hero-servicios.jpg"
         />
       </section>
-      <section className="container flex flex-wrap max-w-4xl py-10 mx-auto my-10 md:px-4">
-        {highlights.map((item) => (
-          <Card
-            key={item.name}
-            containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
-            cardClassName="p-4"
-          >
-            {item.icon && (
-              <div className="flex justify-center p-4 text-4xl text-blue">
-                <span className="w-20 h-20">{iconsMapping[item.icon]}</span>
-              </div>
-            )}
-            {item.prev && (
-              <p className="text-xl font-semibold text-center display-font text-blue">
-                {item.title}
-              </p>
-            )}
-            {item.description && (
-              <p className="mt-5 text-sm text-center">{item.description}</p>
-            )}
-          </Card>
-        ))}
+      <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
+        <article className="md:flex">
+          {highlights.map((item) => (
+            <StepCard
+              key={item.title}
+              name={item.title}
+              icon={iconsMapping[item.icon]}
+              description={item.description}
+            />
+          ))}
+        </article>
         <div className="w-full py-10 text-center">
           <Link href="/memorias" className="btn btn-gray">
             Ver memorias
@@ -135,12 +124,16 @@ const cfc = ({ data }) => {
 
       <section className="flex justify-center mt-6 md:py-12 md:mt-12">
         <div className="text-center text-dark-blue">
-          <h2 className="text-xl font-bold md:text-2xl">Equipo Comercial</h2>
-          <p className="px-2">
-            <span className="font-bold">Más que ejecutivos</span> somos un
-            equipo humano dispuestos a ser parte de tu empresa.
+          <h2 className="display-font text-3xl font-bold md:text-4xl">
+            Equipo Comercial
+          </h2>
+          <p className="px-2 text-medium-grey text-lg md:text-2xl">
+            <span className="font-bold">Más que ejecutivos </span>
+            somos un equipo humano dispuestos a ser parte de tu empresa.
           </p>
-          <p>Porque sabemos que eres el motor de la economía.</p>
+          <p className="text-medium-grey text-lg md:text-2xl">
+            Porque sabemos que eres el motor de la economía.
+          </p>
         </div>
       </section>
 
@@ -167,11 +160,11 @@ const cfc = ({ data }) => {
                 <p className="text-2xl font-bold display-font text-purple md:text-xl">
                   {item.name}
                 </p>
-                <p className="font-bold text-dark-blue">{item.position}</p>
+                <p className="font-bold text-medium-gray">{item.position}</p>
                 <a
                   href={`mailto:${item.email}`}
-                  className="text-purple"
-                  target="_blanc"
+                  className="text-medium-gray"
+                  target="_blank"
                   rel="noreferrer"
                 >
                   {item.email}
@@ -208,7 +201,7 @@ const cfc = ({ data }) => {
                   <p className="text-2xl font-bold display-font text-blue md:text-xl">
                     {item.name}
                   </p>
-                  <p className="font-bold text-dark-blue">{item.position}</p>
+                  <p className="text-medium-gray">{item.position}</p>
                 </div>
               </div>
             ))}

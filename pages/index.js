@@ -15,7 +15,6 @@ import {
 } from '@/utils';
 
 import Layout from '@/components/Templates/Layout';
-import Card from '@/components/Atoms/Card';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StaticHero from '@/components/Molecules/StaticHero';
 import LayerHero from '@/components/Molecules/LayerHero';
@@ -187,25 +186,12 @@ const Home = ({ data }) => {
         </h2>
         <article className="md:flex">
           {highlights.map((item) => (
-            <Card
-              key={item.name}
-              containerClassName="w-full px-4 py-4 md:py-0"
-              cardClassName="px-4 py-12 shadow-2xl"
-            >
-              {item.icon && (
-                <div className="flex justify-center p-4 text-4xl text-blue">
-                  <span className="w-20 h-20">{iconsMapping[item.icon]}</span>
-                </div>
-              )}
-              {item.prev && (
-                <p className="text-xl font-semibold text-center display-font text-blue">
-                  {item.title}
-                </p>
-              )}
-              {item.description && (
-                <p className="mt-5 text-sm text-center ">{item.description}</p>
-              )}
-            </Card>
+            <StepCard
+              key={item.title}
+              name={item.title}
+              icon={iconsMapping[item.icon]}
+              description={item.description}
+            />
           ))}
         </article>
       </section>
@@ -251,12 +237,22 @@ const Home = ({ data }) => {
           <div className="flex flex-col-reverse items-center justify-between gap-12 md:flex-row">
             <div className="md:w-1/2 xl:w-1/3">
               {steps.map((step, index) => (
-                <StepCard
+                <div
+                  className="flex items-center p-4 mb-6 bg-white rounded-xl shadow-lg"
                   key={step.title}
-                  number={index + 1}
-                  title={step.title}
-                  description={step.description}
-                />
+                >
+                  <div className="display-font flex-shrink-0 flex items-center justify-center w-14 h-14 mr-4 text-4xl font-bold text-medium-blue rounded-full border-medium-blue border-solid border-2">
+                    {index + 1}
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="display-font text-lg font-semibold text-medium-blue mb-1">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-medium-grey">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
               ))}
             </div>
             <div className="md:w-1/2">

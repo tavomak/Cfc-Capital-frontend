@@ -1,10 +1,5 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import {
-  FaClipboardList,
-  FaCircleCheck,
-  FaCircleDollarToSlot,
-} from 'react-icons/fa6';
 import { getServices, getServiceBySlug, formatServices } from '@/utils';
 
 import StaticHero from '@/components/Molecules/StaticHero';
@@ -17,21 +12,7 @@ import SubscribeSection from '@/components/Templates/SubscribeSection';
 import Accordion from '@/components/Molecules/Accordion';
 import Spinner from '@/components/Atoms/Spinner';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
-
-const iconsMapping = {
-  1: {
-    icon: <FaClipboardList />,
-    color: 'light-purple',
-  },
-  2: {
-    icon: <FaCircleCheck />,
-    color: 'light-blue',
-  },
-  3: {
-    icon: <FaCircleDollarToSlot />,
-    color: 'soft-purple',
-  },
-};
+import StepCard from '@/components/Molecules/StepCard';
 
 const Content = () => (
   <div className="px-4 text-left">
@@ -110,37 +91,22 @@ const Service = ({ data }) => {
             buttonText="Saber más"
           />
 
-          <section className="container pt-12 mx-auto md:px-4">
-            <h2 className="display-font text-4xl font-black text-center text-dark-blue">
+          <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
+            <h2 className="display-font mb-8 text-4xl font-black text-center text-dark-blue">
               Proceso de {data.title}
             </h2>
-            <div className="flex flex-wrap py-10">
+            <div className="md:flex">
               {data.serviceProcess.map((item, key) => (
-                <Card
+                <StepCard
                   key={item.description}
-                  containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
-                  cardClassName="p-4 lg:px-12"
-                >
-                  <div className="flex text-4xl">
-                    <div
-                      className="relative p-12 my-5 font-black rounded-full display-font text-blue"
-                      style={{
-                        backgroundColor: `var(--${iconsMapping[key + 1]?.color})`,
-                      }}
-                    >
-                      <span className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
-                        {key + 1}
-                      </span>
+                  name={item.subtitle}
+                  icon={
+                    <div className="display-font flex items-center justify-center w-20 h-20 text-4xl font-bold text-medium-blue rounded-full border-medium-blue border-solid border-2">
+                      {key + 1}
                     </div>
-                  </div>
-
-                  <p className="text-xl font-semibold display-font text-blue">
-                    {item.subtitle}
-                  </p>
-                  {item.description && (
-                    <p className="my-5 text-sm text-blue">{item.description}</p>
-                  )}
-                </Card>
+                  }
+                  description={item.description}
+                />
               ))}
             </div>
           </section>

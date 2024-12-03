@@ -1,25 +1,23 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 import styles from './styles.module.css';
 
 const Modal = ({ children, onClick, showModal, size, bgColor, noPadding }) => {
-  useEffect(() => {
-    document.body.style.overflow = showModal ? 'hidden' : 'auto';
+  const handleClose = () => {
+    document.body.classList.remove('modal-active');
+    onClick();
+  };
 
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [showModal]);
+  if (showModal) {
+    document.body.classList.add('modal-active');
+  }
 
   return (
     <AnimatePresence>
       {showModal && (
         <motion.div
           initial={{ opacity: 0, transform: 'scale(1.1)' }}
-          animate={{
-            opacity: 1,
-          }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0, transform: 'scale(1.1)' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="fixed top-0 left-0 z-30 w-screen h-full pt-24 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50"
@@ -32,7 +30,7 @@ const Modal = ({ children, onClick, showModal, size, bgColor, noPadding }) => {
               <button
                 data-testid="printed-username"
                 className={`p-0 ${styles.close}`}
-                onClick={onClick}
+                onClick={handleClose}
                 type="button"
               >
                 <span
