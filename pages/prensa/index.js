@@ -49,8 +49,8 @@ const News = ({ banner, posts, categories }) => {
             columnContent={
               <Content
                 content={{
-                  subtitle: `${banner.title}`,
-                  description: `${banner.subTitle}`,
+                  subtitle: banner.title,
+                  description: banner.subTitle,
                 }}
               />
             }

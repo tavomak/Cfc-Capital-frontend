@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { getServices, getServiceBySlug, formatServices } from '@/utils';
 
-import StaticHero from '@/components/Molecules/StaticHero';
 import LayerHero from '@/components/Molecules/LayerHero';
 import Layout from '@/components/Templates/Layout';
 import Card from '@/components/Atoms/Card';
@@ -14,19 +13,22 @@ import Spinner from '@/components/Atoms/Spinner';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StepCard from '@/components/Molecules/StepCard';
 
-const Content = () => (
-  <div className="px-4 text-left">
-    <h1 className="mb-6 text-3xl font-bold text-purple display-font">
-      Factoring
-    </h1>
-    <h3 className="text-balance mb-4 lg:text-[38px] leading-tight text-2xl font-bold display-font text-purple">
-      ¡Que el crecimiento no tarde en llegar!
-    </h3>
-    <p className="text-xl font-semibold lg:text-2xl text-dark-grey">
-      Obtén liquidez inmediata cediéndonos tus facturas.
-    </p>
-  </div>
-);
+const Content = ({ content }) => {
+  const { title, subtitle, description } = content;
+  return (
+    <div className="px-4 text-left">
+      <h2 className="mb-6 text-2xl font-bold text-purple display-font">
+        {title}
+      </h2>
+      <h3 className="lg:text-[38px] leading-tight text-3xl font-bold display-font text-purple mb-4">
+        {subtitle}
+      </h3>
+      <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
+        {description}
+      </p>
+    </div>
+  );
+};
 
 const Service = ({ data }) => {
   console.log({ data });
@@ -54,31 +56,35 @@ const Service = ({ data }) => {
         </div>
       ) : (
         <>
-          {data?.title === 'Factoring' ? (
-            <LayerHero
-              title={data.title}
-              columnContent={<Content />}
-              subtitle={data.subTitle}
-              backgroundImage="/ameba-factoring.png"
-              ltr
-            >
+          <LayerHero
+            title={data.title}
+            columnContent={
+              <Content
+                content={{
+                  title: data.title,
+                  subtitle: data.label,
+                  description: data.heroDescription,
+                }}
+              />
+            }
+            subtitle={data.subTitle}
+            backgroundImage={
+              data?.title === 'Factoring' ? '/ameba-factoring.png' : undefined
+            }
+            imageUrl={
+              data?.title !== 'Factoring' ? data.heroImage.url : undefined
+            }
+            ltr
+          >
+            {data?.title === 'Factoring' && (
               <Card
                 containerClassName="px-4"
                 cardClassName="p-4 lg:p-10 lg:mx-10 bg-white"
               >
                 <FormGetInfo service={data.title} title={data.title} />
               </Card>
-            </LayerHero>
-          ) : (
-            <StaticHero
-              HeroImages={{
-                desktop: data.heroImage.url,
-                mobile: data.heroImageMobile.url,
-              }}
-              image={data?.title?.toLowerCase()}
-              alt={data?.title}
-            />
-          )}
+            )}
+          </LayerHero>
 
           <ZigZagSection
             itemList={formatServices(data.serviceContent, {

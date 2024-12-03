@@ -91,7 +91,7 @@ const cfc = ({ data }) => {
                   </div>
                   <div className="md:hidden">
                     <Image
-                      src={item.photo[1].url}
+                      src={item.photo[0].url}
                       alt={item.name}
                       width={640}
                       height={390}
@@ -107,12 +107,11 @@ const cfc = ({ data }) => {
                     (index + 1) % 2 === 0 ? 'order-first' : 'order-last'
                   }`}
                 >
-                  <div className="py-6 text-center md:px-12 md:text-left">
-                    <h1 className="display-font text-2xl font-bold text-dark-blue md:text-4xl">
+                  <div className="p-6 text-left">
+                    <h1 className="display-font text-xl font-bold text-dark-blue md:text-4xl">
                       {item.name}
                     </h1>
-                    <span className="inline-block h-0.5 w-20 bg-dark-blue my-2 md:my-4" />
-                    <h2 className="mb-0 text-dark-blue md:text-lg">
+                    <h2 className="mb-0 text-dark-grey text-xl">
                       {item.position}
                     </h2>
                   </div>
