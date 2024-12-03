@@ -29,7 +29,7 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
             <button
               type="button"
               onClick={() => toggleAccordion(key)}
-              className="items-center justify-between w-full px-4 py-4 lg:flex"
+              className="text-left items-center justify-between w-full px-4 py-4 lg:flex"
             >
               <span className="display-font text-lg font-medium">
                 {item.title}
