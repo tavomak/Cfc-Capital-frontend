@@ -1,3 +1,9 @@
+## [1.0.3](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.0.2...v1.0.3) (2024-12-04)
+
+### Bug Fixes
+
+- **metadata:** Search console verification ([c8ffc18](https://github.com/tavomak/Cfc-Capital-frontend/commit/c8ffc18301aa509f16a50a9756c611da16678cc7))
+
 ## [1.0.2](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.0.1...v1.0.2) (2024-11-28)
 
 ### Bug Fixes
