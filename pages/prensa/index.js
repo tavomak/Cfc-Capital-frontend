@@ -9,23 +9,8 @@ import SubscribeSection from '@/components/Templates/SubscribeSection';
 import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
+import Content from '@/components/Molecules/Content';
 
-const Content = ({ content }) => {
-  const { title, subtitle, description } = content;
-  return (
-    <div className="px-4 text-left">
-      <h2 className="mb-6 text-2xl font-bold text-purple display-font">
-        {title}
-      </h2>
-      <h3 className="lg:text-[38px] leading-tight text-3xl font-bold display-font text-purple mb-4">
-        {subtitle}
-      </h3>
-      <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
-        {description}
-      </p>
-    </div>
-  );
-};
 const filterPosts = (posts, category) =>
   posts.filter((item) => item.categories[0].name === category);
 const News = ({ banner, posts, categories }) => {
