@@ -9,6 +9,7 @@ import SubscribeSection from '@/components/Templates/SubscribeSection';
 import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
+import Content from '@/components/Molecules/Content';
 
 const filterPosts = (posts, category) =>
   posts.filter((item) => item.categories[0].name === category);
@@ -25,38 +26,48 @@ const News = ({ banner, posts, categories }) => {
       description="Noticias de actualidad que ayudan a tus finanzas"
     >
       {banner?.image && (
-        <LayerHero
-          title={banner.title}
-          subtitle={banner.subTitle}
-          imageUrl={banner.image.url}
-          content={banner.content?.html}
-        />
+        <div className="bg-sky-100 pb-10">
+          <LayerHero
+            title={banner.title}
+            subtitle={banner.subTitle}
+            imageUrl={banner.image.url}
+            columnContent={
+              <Content
+                content={{
+                  subtitle: banner.title,
+                  description: banner.subTitle,
+                }}
+              />
+            }
+            rtl=""
+          />
+        </div>
       )}
 
       {categories?.length > 0 && (
-        <div className="min-h-24">
+        <div className="my-10 min-h-24">
           <CategoryNavBar categories={categories} />
         </div>
       )}
 
       <section className="container mx-auto">
-        <h2 className="px-4 text-4xl font-bold mb-4 display-font text-purple">
+        <h2 className="px-4 mb-4 text-4xl font-bold display-font text-purple">
           Factoring
         </h2>
-        <div className="flex flex-wrap justify-center items-stretch">
+        <div className="md:flex flex-wrap justify-center">
           {factoringPosts?.length > 0 &&
             factoringPosts.map((item) => (
               <Card
                 key={item.id}
                 containerClassName="p-2 md:w-1/2 lg:w-1/3 xl:w-1/4 mb-10"
-                cardClassName="flex flex-col justify-between group"
+                cardClassName="flex flex-col justify-between group pb-4"
                 header={
                   <a
                     href={`/prensa/${item.slug}`}
-                    className="min-h-64 overflow-hidden"
+                    className="overflow-hidden min-h-64"
                   >
                     <Image
-                      className="scale-100 group-hover:scale-110 transition"
+                      className="transition scale-100 group-hover:scale-110"
                       src={item.coverImage.url}
                       alt={item.title}
                       width={500}
@@ -74,14 +85,14 @@ const News = ({ banner, posts, categories }) => {
                 footer={
                   <a className="w-full p-2" href={`/prensa/${item.slug}`}>
                     <Button
-                      className="font-semibold text-sm text-blue"
+                      className="text-sm font-semibold text-blue"
                       text="Leer más"
                     />
                   </a>
                 }
               >
                 <a href={`/prensa/${item.slug}`}>
-                  <p className="px-2 py-4 text-blue font-semibold">
+                  <p className="px-2 py-4 font-semibold text-blue">
                     {item.title.slice(0, 100)}
                     {item.title.length > 100 && '...'}
                   </p>
@@ -102,7 +113,7 @@ const News = ({ banner, posts, categories }) => {
       <CardLayoutTwoColumns
         posts={consejosPosts}
         title="Consejos PYMes"
-        className="bg-soft-blue text-white"
+        className="text-white bg-soft-blue"
         btnClassName="btn-secondary"
       />
 

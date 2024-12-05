@@ -1,5 +1,10 @@
 body {
   font-family: var(--primary-font);
+  color: var(--dark-grey);
+}
+
+.modal-active {
+  overflow: hidden;
 }
 
 .display-font {
@@ -16,6 +21,10 @@ body {
 
 .bg-leasing {
   background: var(--soft-blue);
+}
+
+.bg-testimonial {
+  background: var(--soft-blue-light);
 }
 
 .bg-leaseback,

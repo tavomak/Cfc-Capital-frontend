@@ -37,16 +37,33 @@ const MobileNavigation = ({
             {item.children?.length > 1 ? (
               <>
                 {item.children.map((subItem) => (
-                  <a
-                    key={subItem.path}
-                    href={subItem.path}
-                    onClick={(e) => {
-                      setMenuOpen(false);
-                      handleClick(e, subItem.label, subItem.path);
-                    }}
-                  >
-                    <p className="mb-1">{subItem.label}</p>
-                  </a>
+                  <div key={subItem.path}>
+                    <a
+                      href={subItem.path}
+                      onClick={(e) => {
+                        setMenuOpen(false);
+                        handleClick(e, subItem.label, subItem.path);
+                      }}
+                    >
+                      <p className="mb-1">{subItem.label}</p>
+                    </a>
+                    {subItem.subnav && subItem.subnav.length > 0 && (
+                      <div>
+                        {subItem.subnav.map((subnavItem) => (
+                          <a
+                            key={subnavItem.path}
+                            href={subnavItem.path}
+                            onClick={(e) => {
+                              setMenuOpen(false);
+                              handleClick(e, subnavItem.label, subnavItem.path);
+                            }}
+                          >
+                            <p className="mb-1">{subnavItem.label}</p>
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </>
             ) : (
