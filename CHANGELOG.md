@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.0.3...v1.1.0) (2024-12-12)
+
+### Features
+
+- **SEO:** Structured data, tag manager environment ([fd87867](https://github.com/tavomak/Cfc-Capital-frontend/commit/fd87867ea861e4fa09bfaf4ad07a9cda210d59c6))
+
 ## [1.0.3](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.0.2...v1.0.3) (2024-12-04)
 
 ### Bug Fixes
