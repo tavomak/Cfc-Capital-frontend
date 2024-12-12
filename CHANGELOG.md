@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.1.0...v1.2.0) (2024-12-12)
+
+### Features
+
+- **SEO:** Zendesk removed ([6f0793a](https://github.com/tavomak/Cfc-Capital-frontend/commit/6f0793a0a14cde8870ca12a4c9d0a7a1eba64c6f))
+
 # [1.1.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.0.3...v1.1.0) (2024-12-12)
 
 ### Features
