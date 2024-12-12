@@ -119,10 +119,6 @@ const Layout = ({
       <ToastContainer />
       {showTopBtn && <GoToTopButton />}
       <Footer />
-      <Script
-        id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=e2a24a24-64b6-4805-ad57-dbfadaa4ec69"
-      />
       {schema && (
         // eslint-disable-next-line
         <Script
