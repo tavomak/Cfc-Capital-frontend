@@ -225,3 +225,8 @@ export const highlights = [
     color: 'soft-blue',
   },
 ];
+
+export const environments = {
+  production: 'production',
+  development: 'development',
+};

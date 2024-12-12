@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import TagManager from 'react-gtm-module';
 import { PagesProgressBar as ProgressBar } from 'next-nprogress-bar';
+import { environments } from '@/utils/constants';
 import 'react-toastify/dist/ReactToastify.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -12,7 +13,9 @@ const tagManagerArgs = {
 
 function App({ Component, pageProps }) {
   useEffect(() => {
-    TagManager.initialize(tagManagerArgs);
+    if (process.env.NODE_ENV === environments.production) {
+      TagManager.initialize(tagManagerArgs);
+    }
   }, []);
   return (
     <>

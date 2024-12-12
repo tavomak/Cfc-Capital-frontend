@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { environments } from '@/utils/constants';
 import ReCAPTCHA from 'react-google-recaptcha';
 import TagManager from 'react-gtm-module';
 import useNotify from '@/hooks/useNotify';
@@ -83,7 +84,9 @@ const FormContact = ({ service, title, image, content }) => {
           'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.'
         );
         reset();
-        TagManager.dataLayer(tagManagerArgs);
+        if (process.env.NODE_ENV === environments.production) {
+          TagManager.dataLayer(tagManagerArgs);
+        }
       } else {
         const error = await response.json();
         throw new Error(error.message);

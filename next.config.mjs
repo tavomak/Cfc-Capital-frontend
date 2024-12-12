@@ -2,11 +2,13 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      'localhost',
-      'cfc-capital-strapi.herokuapp.com',
-      'cfc-capital.s3.amazonaws.com',
-      'media.graphassets.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.graphassets.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
   experimental: {

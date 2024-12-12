@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import { environments } from '@/utils/constants';
 import ReCAPTCHA from 'react-google-recaptcha';
 import TagManager from 'react-gtm-module';
 import emailjs from '@emailjs/browser';
@@ -83,7 +84,9 @@ const FormComplaint = ({ target }) => {
                 'success',
                 'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.'
               );
-              TagManager.dataLayer(tagManagerArgs);
+              if (process.env.NODE_ENV === environments.production) {
+                TagManager.dataLayer(tagManagerArgs);
+              }
               reset();
             },
             () => {
