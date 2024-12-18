@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
   try {
     const {
-      contact: { email, firstName, lastName, phone, tag },
+      contact: { email, firstName, lastName, phone, tag, contactMessage },
     } = data;
 
     const contactData = {
@@ -13,6 +13,8 @@ export default async function handler(req, res) {
       'Last+Name': lastName,
       'Contact+Email': email,
       Phone: phone,
+      Mensaje: contactMessage,
+      Servicios: tag,
     };
 
     const authorization = await fetch(

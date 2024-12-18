@@ -32,7 +32,7 @@ const Input = ({
         {register ? (
           <input
             className="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
-            type={showPassword ? 'text' : type || 'password'}
+            type={showPassword ? 'text' : type}
             id={name}
             placeholder={placeholder}
             {...register(name, { ...rules })}
@@ -41,7 +41,7 @@ const Input = ({
         ) : (
           <input
             className="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
-            type={showPassword ? 'text' : type || 'password'}
+            type={showPassword ? 'text' : type}
             id={name}
             name={name}
             placeholder={placeholder}

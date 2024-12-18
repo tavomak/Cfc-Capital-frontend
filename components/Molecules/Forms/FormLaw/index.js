@@ -74,7 +74,9 @@ const FormContact = () => {
             { publicKey: process.env.NEXT_PUBLIC_EMAIL_JS_PUBlIC_KEY }
           );
           const data = await emailResponse;
+
           if (data.text !== 'OK') throw new Error(data);
+
           setLoading(false);
           notification(
             'success',
@@ -93,7 +95,7 @@ const FormContact = () => {
       console.log({ error });
       notification(
         'error',
-        '¡Mensaje no enviado, por favor inténtalo de nuevo! 2'
+        '¡Mensaje no enviado, por favor inténtalo de nuevo!'
       );
     } finally {
       recaptchaRef.current.reset();

@@ -21,8 +21,8 @@ const FormSubscribe = () => {
         method: 'POST',
         body: JSON.stringify({
           contact: {
-            email: form.email,
-            tag: 'newsletter',
+            email: form.subscribeEmail,
+            tag: 'Sitio Web Newsletter',
           },
         }),
       };
@@ -30,13 +30,7 @@ const FormSubscribe = () => {
       const activeResponse = await fetch('/api/zoho', options);
       const data = await activeResponse.json();
 
-      if (data.error) {
-        setLoading(false);
-        notification(
-          'error',
-          '¡Upps... No hemos podido enviar tu mensaje, por favor inténtalo de nuevo!'
-        );
-      }
+      if (data.error) if (data.error) throw new Error(data);
 
       setLoading(false);
       notification(
@@ -61,12 +55,12 @@ const FormSubscribe = () => {
         </p>
         <Input
           type="email"
-          name="email"
+          name="subscribeEmail"
           placeholder="Introduce tu email"
           rules={{
             required: 'Email Requerido',
           }}
-          errors={errors.email}
+          errors={errors.subscribeEmail}
           register={register}
         />
         <div className="ms-auto">

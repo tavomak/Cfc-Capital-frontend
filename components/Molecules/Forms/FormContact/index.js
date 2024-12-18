@@ -62,7 +62,8 @@ const FormContact = ({ service, title, image, content }) => {
               firstName: form.current.name.value,
               lastName: form.current.lastName.value,
               phone: form.current.telefono.value,
-              tag: service?.toLowerCase() || 'contacto',
+              tag: service?.toLowerCase() || 'Sitio Web Contacto',
+              contactMessage: form.current.message.value,
             },
           }),
         };
@@ -70,13 +71,7 @@ const FormContact = ({ service, title, image, content }) => {
         const activeResponse = await fetch('/api/zoho', options);
         const data = await activeResponse.json();
 
-        if (data.error) {
-          setLoading(false);
-          notification(
-            'error',
-            '¡Mensaje no enviado, por favor inténtalo de nuevo!'
-          );
-        }
+        if (data.error) throw new Error(data);
 
         setLoading(false);
         notification(
@@ -88,8 +83,8 @@ const FormContact = ({ service, title, image, content }) => {
           TagManager.dataLayer(tagManagerArgs);
         }
       } else {
-        const error = await response.json();
-        throw new Error(error.message);
+        const captchaError = await response.json();
+        throw new Error(JSON.stringify(captchaError));
       }
     } catch (error) {
       console.log('error', error);

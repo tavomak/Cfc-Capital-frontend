@@ -79,8 +79,12 @@ const Stepper = () => {
           </span>
         </a>
       )}
-      {step === 'ley' && !error && <FormLaw />}
-      {step === 'karin' && !error && <FormComplaint />}
+      {step === 'ley' && !error && (
+        <FormLaw target={process.env.NEXT_PUBLIC_CONTACT_EMAIL} />
+      )}
+      {step === 'karin' && !error && (
+        <FormComplaint target={process.env.NEXT_PUBLIC_LAW_EMAIL} />
+      )}
     </section>
   );
 };

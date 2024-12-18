@@ -49,7 +49,7 @@ const FormComplaint = ({ target }) => {
       return;
     }
     const templateParams = {
-      service: 'Formulario de denuncia Ley Karin | Sitio web CFC',
+      service: 'Formulario de denuncia Ley Karin',
       username: form.current.lastName.value,
       email: form.current.email.value,
       telefono: form.current.telefono.value,
