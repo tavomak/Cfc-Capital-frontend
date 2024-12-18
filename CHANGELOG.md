@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.0...v1.2.1) (2024-12-18)
+
+### Bug Fixes
+
+- **Form:** Send form handler and fonts fix ([45578d4](https://github.com/tavomak/Cfc-Capital-frontend/commit/45578d48b8d04bcde1a83f78d611f44dd3ac84e4))
+
 # [1.2.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.1.0...v1.2.0) (2024-12-12)
 
 ### Features
