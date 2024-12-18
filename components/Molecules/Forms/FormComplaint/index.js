@@ -70,43 +70,37 @@ const FormComplaint = ({ target }) => {
         },
       });
       if (response.ok) {
-        emailjs
-          .send(
+        try {
+          const emailResponse = await emailjs.send(
             process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
             process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_SERVICES_ID,
             templateParams,
-            process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY
-          )
-          .then(
-            () => {
-              setLoading(false);
-              notification(
-                'success',
-                'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.'
-              );
-              if (process.env.NODE_ENV === environments.production) {
-                TagManager.dataLayer(tagManagerArgs);
-              }
-              reset();
-            },
-            () => {
-              setLoading(false);
-              notification(
-                'error',
-                '¡Mensaje no enviado, por favor inténtalo de nuevo!'
-              );
-            }
+            { publicKey: process.env.NEXT_PUBLIC_EMAIL_JS_PUBlIC_KEY }
           );
+          const data = await emailResponse;
+          if (data.text !== 'OK') throw new Error(data);
+          setLoading(false);
+          notification(
+            'success',
+            'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.'
+          );
+          reset();
+          if (process.env.NODE_ENV === environments.production) {
+            TagManager.dataLayer(tagManagerArgs);
+          }
+        } catch (error) {
+          setLoading(false);
+          throw new Error(JSON.stringify(error));
+        }
       } else {
-        const error = await response.json();
-        console.log(error);
-        throw new Error(error.message);
+        const captchaError = await response.json();
+        throw new Error(JSON.stringify(captchaError));
       }
     } catch (error) {
-      console.log('error', error);
+      console.log({ error });
       notification(
         'error',
-        '¡Mensaje no enviado, por favor inténtalo de nuevo!'
+        '¡Mensaje no enviado, por favor inténtalo de nuevo! 2'
       );
     } finally {
       recaptchaRef.current.reset();
@@ -114,6 +108,10 @@ const FormComplaint = ({ target }) => {
   };
 
   const handleSelect = (e) => {
+    setSelectionMessage({
+      ...selectionMessage,
+      errorMsg: false,
+    });
     if (e.target.value === 'seleccionar') {
       setSelectionMessage({
         name: 'seleccionar',
@@ -138,15 +136,10 @@ const FormComplaint = ({ target }) => {
         Fecha de denuncia: {new Date().toLocaleDateString('es-CL')}
       </h2>
 
-      <label
-        htmlFor="selectLeasing"
-        className="flex items-center justify-between w-full"
-      >
-        <span className={styles.formLabel}>
-          ¿Cual es tu relación con CFC Capital?
-        </span>
+      <label htmlFor="selectLeasing" className="flex flex-col">
+        <span className="me-2">¿Cual es tu relación con CFC Capital?</span>
         <select
-          className="px-4 py-2 border border-gray-200 rounded-md"
+          className="relative w-full px-4 py-2 border border-gray-200 rounded-md md:mb-0 md:w-auto"
           aria-label="¿Deseas leasing habitacional?"
           name="selectLeasing"
           onChange={(e) => handleSelect(e)}
@@ -159,7 +152,7 @@ const FormComplaint = ({ target }) => {
           <option value="proveedor">Proveedor</option>
         </select>
         {selectionMessage.errorMsg && (
-          <span className={styles.formInputSpanError}>
+          <span className="relative text-xs text-red-600 ">
             {selectionMessage.errorMsg}
           </span>
         )}
