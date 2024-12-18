@@ -1,3 +1,9 @@
+## [1.2.2](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.1...v1.2.2) (2024-12-18)
+
+### Bug Fixes
+
+- **Form:** Submmit refactor ([731639d](https://github.com/tavomak/Cfc-Capital-frontend/commit/731639d5986455ba2df92dbdb3c6f81db82a5dec))
+
 ## [1.2.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.0...v1.2.1) (2024-12-18)
 
 ### Bug Fixes
