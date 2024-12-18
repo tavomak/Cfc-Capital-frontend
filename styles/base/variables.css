@@ -21,8 +21,8 @@
   --dark-blue: #002169;
   --dark-purple: #1a122a;
 
-  --primary-font: 'Open Sans', sans-serif;
-  --display-font: 'Poppins', sans-serif;
+  --primary-font: var(--font-open-sans);
+  --display-font: var(--font-poppins);
 
   --btn-color: '';
   --btn-background-color: '';

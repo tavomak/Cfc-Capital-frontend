@@ -18,3 +18,7 @@
 .formInputError.form-control:focus {
   border: 1px solid #FD2626 !important;
 } */
+
+.react-datepicker-wrapper {
+  display: block !important;
+}

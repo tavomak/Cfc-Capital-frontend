@@ -34,7 +34,7 @@ const Stepper = () => {
           <p className="text-xl text-center display-font">
             Selecciona el tipo de denuncia que quieres realizar
           </p>
-          <div>
+          <div className="flex flex-col gap-4">
             <Button
               text="Ley 20.393"
               className={`btn btn-${active.ley ? 'complementary' : 'primary'} btn-no--focused`}
@@ -50,31 +50,33 @@ const Stepper = () => {
               }
             />
           </div>
-          <a className="mt-4 mb-0" href="!#" onClick={(e) => handleStep(e)}>
-            <div className="mb-0 text-xl text-center">
-              <div className="flex items-center justify-center">
-                <FaArrowAltCircleRight />
-                <span className="ps-2">
-                  <u>Continuar</u>
-                </span>
+          {Object.values(active).some((value) => value) && (
+            <a className="mt-4 mb-0" href="!#" onClick={(e) => handleStep(e)}>
+              <div className="mb-0 text-xl text-center">
+                <div className="flex items-center justify-center">
+                  <FaArrowAltCircleRight />
+                  <span className="ps-2">
+                    <u>Continuar</u>
+                  </span>
+                </div>
               </div>
-            </div>
-            <p className={`${error ? 'text-danger' : ''} text-center`}>
-              <small>
-                Debes seleccionar el tipo de denuncia para poder continuar.
-              </small>
-            </p>
-          </a>
+              <p className={`${error ? 'text-danger' : ''} text-center`}>
+                <small>
+                  Debes seleccionar el tipo de denuncia para poder continuar.
+                </small>
+              </p>
+            </a>
+          )}
         </aside>
       )}
       {step && (
         <a className="py-4" href="!#" onClick={(e) => handleBack(e)}>
-          <p className="text-center">
+          <span className="flex items-center">
             <FaArrowAltCircleLeft />
             <span className="text-sm ps-2">
               <u>Volver</u>
             </span>
-          </p>
+          </span>
         </a>
       )}
       {step === 'ley' && !error && <FormLaw />}

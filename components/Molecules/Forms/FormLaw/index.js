@@ -66,37 +66,35 @@ const FormContact = () => {
         },
       });
       if (response.ok) {
-        emailjs
-          .sendForm(
+        try {
+          const emailResponse = await emailjs.sendForm(
             process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID,
             process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_LAW_ID,
             form.current,
-            process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY
-          )
-          .then(
-            () => {
-              setLoading(false);
-              notification(
-                'success',
-                'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.'
-              );
-              reset();
-            },
-            () => {
-              setLoading(false);
-              notification(
-                'error',
-                '¡Mensaje no enviado, por favor inténtalo de nuevo!'
-              );
-            }
+            { publicKey: process.env.NEXT_PUBLIC_EMAIL_JS_PUBlIC_KEY }
           );
+          const data = await emailResponse;
+          if (data.text !== 'OK') throw new Error(data);
+          setLoading(false);
+          notification(
+            'success',
+            'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.'
+          );
+          reset();
+        } catch (error) {
+          setLoading(false);
+          throw new Error(JSON.stringify(error));
+        }
       } else {
-        const error = await response.json();
-        console.log(error);
-        throw new Error(error.message);
+        const captchaError = await response.json();
+        throw new Error(JSON.stringify(captchaError));
       }
     } catch (error) {
-      console.log('error', error?.message);
+      console.log({ error });
+      notification(
+        'error',
+        '¡Mensaje no enviado, por favor inténtalo de nuevo! 2'
+      );
     } finally {
       recaptchaRef.current.reset();
     }
@@ -188,8 +186,8 @@ const FormContact = () => {
       )}
       <div className="form-group row">
         <h4 className="py-4">Detalles del incidente</h4>
-        <div className="flex flex-wrap">
-          <div className="w-1/2">
+        <div className="flex flex-col gap-4 md:flex-row">
+          <div className="md:w-1/2">
             <Controller
               control={control}
               name="event_date"
@@ -211,7 +209,7 @@ const FormContact = () => {
                 'Fecha del incidente requerida'}
             </span>
           </div>
-          <div className="w-1/2">
+          <div className="md:w-1/2">
             <Controller
               name="optionType"
               control={control}
@@ -256,7 +254,7 @@ const FormContact = () => {
       </div>
       <div className="mb-5 form-group">
         <Button
-          className="px-4 py-2 mt-4 btn btn-complementary text-uppercase"
+          className="px-4 py-2 mt-4 btn btn-primary text-uppercase"
           text="Enviar Denuncia"
           loading={loading}
           submit
