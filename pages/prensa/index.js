@@ -9,7 +9,7 @@ import SubscribeSection from '@/components/Templates/SubscribeSection';
 import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
-import Content from '@/components/Molecules/Content';
+import Content from '@/components/Molecules/CardContentTitle';
 
 const filterPosts = (posts, category) =>
   posts.filter((item) => item.categories[0].name === category);

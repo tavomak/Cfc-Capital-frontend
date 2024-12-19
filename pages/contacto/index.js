@@ -2,7 +2,7 @@ import Layout from '@/components/Templates/Layout';
 import FormContact from '@/components/Molecules/Forms/FormContact';
 import Image from 'next/image';
 import LayerHero from '@/components/Molecules/LayerHero';
-import Content from '@/components/Molecules/Content';
+import Content from '@/components/Molecules/CardContentTitle';
 
 const Contacto = () => (
   <Layout

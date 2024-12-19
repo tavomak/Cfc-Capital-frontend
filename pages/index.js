@@ -27,7 +27,7 @@ import StepCard from '@/components/Molecules/StepCard';
 import StarIcon from '@/components/Atoms/StarIcon';
 import ClientsIcon from '@/components/Atoms/ClientsIcon';
 import DolarIcon from '@/components/Atoms/DolarIcon';
-import Content from '@/components/Molecules/Content';
+import Content from '@/components/Molecules/CardContentTitle';
 
 const iconsMapping = {
   star: <StarIcon />,
@@ -225,10 +225,10 @@ const Home = ({ data }) => {
                   className="flex items-center p-4 mb-6 bg-white rounded-xl shadow-lg"
                   key={step.title}
                 >
-                  <div className="display-font flex-shrink-0 flex items-center justify-center w-14 h-14 mr-4 text-4xl font-bold text-medium-blue rounded-full border-medium-blue border-solid border-2">
+                  <div className="display-font flex-shrink-0 flex items-center justify-center w-16 h-16 mr-4 text-3xl font-extrabold text-medium-blue rounded-full border-medium-blue border-solid circle-width">
                     {index + 1}
                   </div>
-                  <div className="flex-grow">
+                  <div>
                     <h3 className="display-font text-lg font-semibold text-medium-blue mb-1">
                       {step.title}
                     </h3>

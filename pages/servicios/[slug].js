@@ -12,7 +12,7 @@ import Accordion from '@/components/Molecules/Accordion';
 import Spinner from '@/components/Atoms/Spinner';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StepCard from '@/components/Molecules/StepCard';
-import Content from '@/components/Molecules/Content';
+import Content from '@/components/Molecules/CardContentTitle';
 
 const Service = ({ data }) => {
   console.log({ data });
@@ -82,7 +82,7 @@ const Service = ({ data }) => {
           />
 
           <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
-            <h2 className="display-font mb-8 text-4xl font-black text-center text-dark-blue">
+            <h2 className="display-font mb-8 text-4xl font-extrabold text-center text-dark-blue">
               Proceso de {data.title}
             </h2>
             <div className="md:flex">
@@ -91,7 +91,7 @@ const Service = ({ data }) => {
                   key={item.description}
                   name={item.subtitle}
                   icon={
-                    <div className="display-font flex items-center justify-center w-20 h-20 text-4xl font-bolds text-medium-blue rounded-full border-medium-blue border-solid border-2">
+                    <div className="display-font flex items-center justify-center w-20 h-20 text-3xl font-extrabold text-medium-blue rounded-full border-medium-blue border-solid circle-width">
                       {key + 1}
                     </div>
                   }
