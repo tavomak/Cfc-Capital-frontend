@@ -12,6 +12,7 @@ const Layout = ({
   children,
   title = 'Bienvenido a CFC Capital',
   description,
+  schema,
 }) => {
   const hostname = typeof window !== 'undefined' ? window.location.href : '';
 
@@ -118,10 +119,16 @@ const Layout = ({
       <ToastContainer />
       {showTopBtn && <GoToTopButton />}
       <Footer />
-      <Script
-        id="ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=e2a24a24-64b6-4805-ad57-dbfadaa4ec69"
-      />
+      {schema && (
+        // eslint-disable-next-line
+        <Script
+          id="structured-data"
+          key="structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          strategy="beforeInteractive"
+        />
+      )}
     </>
   );
 };

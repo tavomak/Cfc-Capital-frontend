@@ -8,6 +8,7 @@ const Hero = ({ image, alt, heroImages }) => (
         alt={`${alt} | CFC Capital`}
         width={1400}
         height={635}
+        priority
         style={{
           width: '100%',
           height: 'auto',

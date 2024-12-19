@@ -14,6 +14,9 @@ const Navbar = () => {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   const router = useRouter();
+  const handleModal = () => {
+    setModal(!modal);
+  };
   const handleClick = (e, label, path) => {
     e.preventDefault();
     if (path === '/servicios/factoring-web' || label === 'Factoring web') {
@@ -85,13 +88,7 @@ const Navbar = () => {
           />
         )}
       </header>
-      <Modal
-        showModal={modal}
-        onClick={(e) => {
-          e.preventDefault();
-          setModal(false);
-        }}
-      >
+      <Modal showModal={modal} onClick={handleModal}>
         <FormAccess />
       </Modal>
     </>

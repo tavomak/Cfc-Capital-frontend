@@ -34,6 +34,28 @@ const iconsMapping = {
   people: <ClientsIcon />,
   money: <DolarIcon />,
 };
+// function getVideoTransformationsWithReactVideo() {
+//   const cld = new Cloudinary({
+//     cloud: {
+//       cloudName: 'deevr9k54',
+//     },
+//   });
+
+//   const myVideo = cld.video('1112_s1nvpc');
+
+//   return myVideo;
+// }
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  url: 'https://www.cfc.cl',
+  logo: 'https://www.cfc.cl/cfc-logo.jpg',
+  name: 'CFC Capital',
+  legalName: 'CFC Capital',
+  telephone: '+562281818181',
+  sameAs: ['https://cl.linkedin.com/company/cfc-capital-s-a'],
+};
 
 function getVideoTransformationsWithReactVideo() {
   const cld = new Cloudinary({
@@ -58,6 +80,7 @@ const Home = ({ data }) => {
     <Layout
       title="Financiamos al motor de la economía"
       description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
+      schema={structuredData}
     >
       <Slider {...sliderSettings}>
         {bannersToShow(data.pages.hero).map((item) =>

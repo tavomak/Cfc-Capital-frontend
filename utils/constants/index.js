@@ -249,3 +249,7 @@ export const steps = [
       'Puedes ceder electrónicamente todas tus facturas en solo 3 clics.',
   },
 ];
+export const environments = {
+  production: 'production',
+  development: 'development',
+};
