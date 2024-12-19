@@ -7,8 +7,8 @@ import DolarIcon from '@/components/Atoms/DolarIcon';
 
 import { getTeamMembers, highlights } from '@/utils';
 import Layout from '@/components/Templates/Layout';
-import Card from '@/components/Atoms/Card';
 import Link from 'next/link';
+import StepCard from '@/components/Molecules/StepCard';
 
 const iconsMapping = {
   star: <StarIcon />,
@@ -32,7 +32,7 @@ const cfc = ({ data }) => {
       title="Somos CFC"
       description="Somos una empresa de servicios financieros, presente en el mercado desde el año 2003"
     >
-      <section className="container md:px-4 mx-auto flex flex-wrap">
+      <section className="container flex flex-wrap mx-auto md:px-4">
         <AdvancedVideo
           cldVid={myVideo}
           autoPlay
@@ -42,33 +42,18 @@ const cfc = ({ data }) => {
           poster="/hero-servicios.jpg"
         />
       </section>
-      <section className="container md:px-4 mx-auto py-10 my-10 flex flex-wrap">
-        {highlights.map((item) => (
-          <Card
-            key={item.name}
-            containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
-            cardClassName="p-4"
-          >
-            {item.icon && (
-              <div
-                className={`p-4 text-4xl text-${item.color} flex justify-center`}
-              >
-                <span className="w-28 h-28">{iconsMapping[item.icon]}</span>
-              </div>
-            )}
-            {item.prev && (
-              <p className="text-center display-font font-semibold text-xl text-blue">
-                {item.title}
-              </p>
-            )}
-            {item.description && (
-              <p className="text-center mt-5 text-sm text-blue">
-                {item.description}
-              </p>
-            )}
-          </Card>
-        ))}
-        <div className="text-center py-10 w-full">
+      <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
+        <article className="md:flex">
+          {highlights.map((item) => (
+            <StepCard
+              key={item.title}
+              name={item.title}
+              icon={iconsMapping[item.icon]}
+              description={item.description}
+            />
+          ))}
+        </article>
+        <div className="w-full py-10 text-center">
           <Link href="/memorias" className="btn btn-gray">
             Ver memorias
           </Link>
@@ -85,8 +70,8 @@ const cfc = ({ data }) => {
             }`}
             key={item.name}
           >
-            <div className="container md:px-4 mx-auto">
-              <div className="md:flex items-center">
+            <div className="container mx-auto md:px-4">
+              <div className="items-center md:flex">
                 <div
                   className={`md:w-1/2 ${
                     (index + 1) % 2 === 0 ? 'order-last' : 'order-first'
@@ -106,7 +91,7 @@ const cfc = ({ data }) => {
                   </div>
                   <div className="md:hidden">
                     <Image
-                      src={item.photo[1].url}
+                      src={item.photo[0].url}
                       alt={item.name}
                       width={640}
                       height={390}
@@ -122,12 +107,11 @@ const cfc = ({ data }) => {
                     (index + 1) % 2 === 0 ? 'order-first' : 'order-last'
                   }`}
                 >
-                  <div className="md:px-12 py-6 text-center md:text-left">
-                    <h1 className="font-bold text-dark-blue text-2xl md:text-4xl">
+                  <div className="p-6 text-left">
+                    <h1 className="display-font text-xl font-bold text-dark-blue md:text-4xl">
                       {item.name}
                     </h1>
-                    <span className="inline-block h-0.5 w-20 bg-dark-blue my-2 md:my-4" />
-                    <h2 className="mb-0 text-dark-blue md:text-lg">
+                    <h2 className="mb-0 text-dark-grey text-xl">
                       {item.position}
                     </h2>
                   </div>
@@ -139,21 +123,25 @@ const cfc = ({ data }) => {
 
       <section className="flex justify-center mt-6 md:py-12 md:mt-12">
         <div className="text-center text-dark-blue">
-          <h2 className="text-xl md:text-2xl font-bold">Equipo Comercial</h2>
-          <p className="px-2">
-            <span className="font-bold">Más que ejecutivos</span> somos un
-            equipo humano dispuestos a ser parte de tu empresa.
+          <h2 className="display-font text-3xl font-bold md:text-4xl">
+            Equipo Comercial
+          </h2>
+          <p className="px-2 text-medium-grey text-lg md:text-2xl">
+            <span className="font-bold">Más que ejecutivos </span>
+            somos un equipo humano dispuestos a ser parte de tu empresa.
           </p>
-          <p>Porque sabemos que eres el motor de la economía.</p>
+          <p className="text-medium-grey text-lg md:text-2xl">
+            Porque sabemos que eres el motor de la economía.
+          </p>
         </div>
       </section>
 
-      <section className="container md:px-4 mx-auto flex flex-wrap">
+      <section className="container flex flex-wrap mx-auto md:px-4">
         {team?.length > 0 &&
           team.map((item) => (
-            <div key={item.name} className="md:w-1/3 mb-4 px-2 md:px-12 py-6">
-              <div className="px-md-5 mb-3">
-                <div className="team-img rounded-3xl overflow-hidden">
+            <div key={item.name} className="px-2 py-6 mb-4 md:w-1/3 md:px-12">
+              <div className="mb-3 px-md-5">
+                <div className="overflow-hidden team-img rounded-3xl">
                   <Image
                     src={item.photo[0].url}
                     alt={item.name}
@@ -168,14 +156,14 @@ const cfc = ({ data }) => {
                 </div>
               </div>
               <div className="text-center">
-                <p className="display-font text-purple text-2xl md:text-xl font-bold">
+                <p className="text-2xl font-bold display-font text-purple md:text-xl">
                   {item.name}
                 </p>
-                <p className="text-dark-blue font-bold">{item.position}</p>
+                <p className="font-bold text-medium-gray">{item.position}</p>
                 <a
                   href={`mailto:${item.email}`}
-                  className="text-purple"
-                  target="_blanc"
+                  className="text-medium-gray"
+                  target="_blank"
                   rel="noreferrer"
                 >
                   {item.email}
@@ -185,16 +173,16 @@ const cfc = ({ data }) => {
           ))}
       </section>
 
-      <section className="bg-primary-gradient-grey py-12 mt-12">
-        <h2 className="text-center text-blue font-bold text-2xl mb-12">
+      <section className="py-12 mt-12 bg-primary-gradient-grey">
+        <h2 className="mb-12 text-2xl font-bold text-center text-blue">
           Directorio
         </h2>
-        <article className="container md:px-4 mx-auto flex flex-wrap justify-center">
+        <article className="container flex flex-wrap justify-center mx-auto md:px-4">
           {directors?.length > 0 &&
             directors.map((item) => (
-              <div key={item.name} className="md:w-1/3 mb-4 px-12 py-6">
-                <div className="px-md-5 mb-3">
-                  <div className="team-img rounded-3xl overflow-hidden">
+              <div key={item.name} className="px-12 py-6 mb-4 md:w-1/3">
+                <div className="mb-3 px-md-5">
+                  <div className="overflow-hidden team-img rounded-3xl">
                     <Image
                       src={item.photo[0].url}
                       alt={item.name}
@@ -209,10 +197,10 @@ const cfc = ({ data }) => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <p className="display-font text-blue text-2xl md:text-xl font-bold">
+                  <p className="text-2xl font-bold display-font text-blue md:text-xl">
                     {item.name}
                   </p>
-                  <p className="text-dark-blue font-bold">{item.position}</p>
+                  <p className="text-medium-gray">{item.position}</p>
                 </div>
               </div>
             ))}

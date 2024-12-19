@@ -25,7 +25,7 @@ const Memorias = () => (
                 <div className="mt-auto">
                   <a
                     href={item.url}
-                    target="_blanc"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-gray"
                   >

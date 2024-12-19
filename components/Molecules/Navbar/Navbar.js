@@ -14,6 +14,9 @@ const Navbar = () => {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   const router = useRouter();
+  const handleModal = () => {
+    setModal(!modal);
+  };
   const handleClick = (e, label, path) => {
     e.preventDefault();
     if (path === '/servicios/factoring-web' || label === 'Factoring web') {
@@ -28,36 +31,18 @@ const Navbar = () => {
   };
 
   const itemActive = (path) => {
-    let underline = false;
-    switch (path) {
-      case '/':
-        underline = router.asPath === '/';
-        break;
-      case '/cfc':
-        underline = router.asPath === '/cfc';
-        break;
-      case '/servicios/factoring':
-        underline = router.asPath === '/servicios/factoring';
-        break;
-      case '/servicios':
-        underline =
-          router.asPath === '/servicios' ||
-          router.asPath === '/servicios/leasing' ||
-          router.asPath === '/servicios/leaseback' ||
-          router.asPath === '/servicios/factoring-web';
-        break;
-      case '/prensa':
-        underline =
-          router.asPath === '/prensa' || router.pathname === '/prensa/[slug]';
-        break;
-      case '/contacto':
-        underline = router.asPath === '/contacto';
-        break;
-      default:
-        underline = false;
-        break;
+    if (path === '/servicios') {
+      return (
+        router.asPath.startsWith('/servicios') &&
+        router.asPath !== '/servicios/factoring'
+      );
     }
-    return underline;
+    if (path === '/prensa')
+      return (
+        router.asPath === '/prensa' || router.pathname.startsWith('/prensa/')
+      );
+
+    return router.asPath === path;
   };
 
   useEffect(() => {
@@ -103,13 +88,7 @@ const Navbar = () => {
           />
         )}
       </header>
-      <Modal
-        showModal={modal}
-        onClick={(e) => {
-          e.preventDefault();
-          setModal(false);
-        }}
-      >
+      <Modal showModal={modal} onClick={handleModal}>
         <FormAccess />
       </Modal>
     </>

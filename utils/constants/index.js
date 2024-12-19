@@ -129,6 +129,11 @@ export const memorial = [
 
 export const navItems = [
   {
+    label: 'Inicio',
+    path: '/',
+    children: false,
+  },
+  {
     label: 'CFC',
     path: '/cfc',
     children: false,
@@ -146,16 +151,18 @@ export const navItems = [
         label: 'Factoring',
         path: '/servicios/factoring',
         text: 'Obtén liquidez inmediata cediéndonos tus facturas.',
-      },
-      {
-        label: 'Factoring web',
-        path: '/servicios/factoring-web',
-        text: 'Cede todas tus facturas en solo 3 clics.',
+        subnav: [
+          {
+            label: 'Factoring web',
+            path: '/servicios/factoring-web',
+            text: 'Cede todas tus facturas en solo 3 clics.',
+          },
+        ],
       },
       {
         label: 'Leasing',
         path: '/servicios/leasing',
-        text: 'arrienda un bien de capital con opción a compra.',
+        text: 'Arrienda un bien de capital con opción a compra.',
       },
       {
         label: 'Leaseback',
@@ -226,6 +233,22 @@ export const highlights = [
   },
 ];
 
+export const steps = [
+  {
+    title: 'Solicita tu clave de acceso',
+    description:
+      'Llegará a tu correo luego de que tu ejecutivo valide tu solicitud.',
+  },
+  {
+    title: 'Registra tus datos',
+    description: 'Accede a la información sin costo adicional.',
+  },
+  {
+    title: 'Carga tus facturas',
+    description:
+      'Puedes ceder electrónicamente todas tus facturas en solo 3 clics.',
+  },
+];
 export const environments = {
   production: 'production',
   development: 'development',
