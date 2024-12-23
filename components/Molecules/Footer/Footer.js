@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import {
   FaRegEnvelope,
   FaPhone,
-  FaLocationDot,
   FaFacebook,
   FaLinkedin,
   FaInstagram,
@@ -35,7 +34,7 @@ const Footer = () => {
       path: '/servicios/factoring',
       children: [
         {
-          label: '¿Que es?',
+          label: '¿Qué es?',
           path: '/servicios/factoring#que-es-factoring',
         },
         {
@@ -85,36 +84,59 @@ const Footer = () => {
       <div className="container px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <ul className="flex w-full gap-2">
-              <li>
+            <ul className="w-3/5 mx-auto lg:mx-0">
+              <li className="mb-4">
                 <Link href="/">
                   <Image
-                    src="/cfc-footer-logo.svg"
+                    src="/cfc-horizontal.png"
                     alt="Cfc Capital Logo"
-                    width={100}
-                    height={100}
+                    width={450}
+                    height={88}
                     priority
                   />
                 </Link>
               </li>
-              <li>
-                <a href="https://efa.cl/" target="_blank">
-                  <Image
-                    src="/efa-logo.svg"
-                    alt="Efa Logo"
-                    width={100}
-                    height={100}
-                    priority
-                  />
-                </a>
-              </li>
+              <div className="flex items-center justify-center gap-8 lg:justify-between">
+                <li>
+                  <Link href="/">
+                    <Image
+                      src="/logo-edición-20-aniversario.png"
+                      alt="Logo edición 20 aniversario"
+                      width={80}
+                      height={80}
+                      priority
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/">
+                    <Image
+                      src="/logo-40-horas.png"
+                      alt="Logo 40 horas"
+                      width={100}
+                      height={100}
+                      priority
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <a href="https://efa.cl/" target="_blank">
+                    <Image
+                      src="/efa-logo.png"
+                      alt="Efa Logo"
+                      width={100}
+                      height={100}
+                      priority
+                    />
+                  </a>
+                </li>
+              </div>
             </ul>
             <a
-              className="flex gap-2 mt-4 transition hover:opacity-75"
+              className="flex justify-center lg:justify-start gap-2 mt-4 transition hover:opacity-75"
               href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
               target="_blank"
             >
-              <FaLocationDot />
               <small>
                 El Bosque Central 92, piso 11, Las Condes,
                 <br /> Región Metropolitana, Chile
@@ -202,44 +224,42 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        <ul className="flex py-4 pt-4 mt-4 space-x-8 text-2xl border-t border-white lg:space-x-24 lg:border-none lg:mt-0">
-          <li>
-            <a
-              href="https://www.facebook.com/cfccapitalchile/"
-              target="_blank"
-              className="transition hover:opacity-75"
-            >
-              <FaFacebook />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.linkedin.com/company/cfc-capital-s-a/"
-              target="_blank"
-              className="transition hover:opacity-75"
-            >
-              <FaLinkedin />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.instagram.com/cfc_capital"
-              target="_blank"
-              className="transition hover:opacity-75"
-            >
-              <FaInstagram />
-            </a>
-          </li>
-        </ul>
-
-        <div className="pt-4 border-t border-white">
-          <div className="sm:flex sm:justify-between">
+        <ul className="lg:flex gap-8 w-11/12 mx-auto justify-center items-center border-t border-white pt-4 mt-4 text-2xl">
+          <div className="flex gap-8 justify-center mb-2 lg:mb-0">
+            <li>
+              <a
+                href="https://www.facebook.com/cfccapitalchile/"
+                target="_blank"
+                className="transition hover:opacity-75"
+              >
+                <FaFacebook />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/company/cfc-capital-s-a/"
+                target="_blank"
+                className="transition hover:opacity-75"
+              >
+                <FaLinkedin />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/cfc_capital"
+                target="_blank"
+                className="transition hover:opacity-75"
+              >
+                <FaInstagram />
+              </a>
+            </li>
+          </div>
+          <div className="text-center">
             <p className="text-xs text-white">
               &copy; 2024. CFC Capital. Todos los derechos reservados.
             </p>
-
-            <ul className="flex flex-wrap justify-start hidden gap-4 mt-8 text-xs sm:mt-0 lg:justify-end">
+            {/* 
+            <ul className="flex flex-wrap justify-start  gap-4 mt-8 text-xs sm:mt-0 lg:justify-end">
               <li>
                 <Link
                   href="/terminos-y-condiciones"
@@ -263,9 +283,9 @@ const Footer = () => {
                   Cookies
                 </Link>
               </li>
-            </ul>
+            </ul> */}
           </div>
-        </div>
+        </ul>
       </div>
     </footer>
   );

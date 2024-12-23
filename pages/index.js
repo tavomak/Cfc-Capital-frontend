@@ -20,7 +20,6 @@ import StaticHero from '@/components/Molecules/StaticHero';
 import LayerHero from '@/components/Molecules/LayerHero';
 import MediaSection from '@/components/Templates/MediaSection';
 import SubscribeSection from '@/components/Templates/SubscribeSection';
-import Testimonial from '@/components/Templates/Testimonial';
 import BlogCard from '@/components/Templates/BlogCard';
 import Button from '@/components/Atoms/Button';
 import StepCard from '@/components/Molecules/StepCard';
@@ -147,6 +146,9 @@ const Home = ({ data }) => {
       </section>
 
       <section className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
+        <h2 className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl">
+          Servicios
+        </h2>
         <ZigZagSection
           itemList={formatServices(data.services, {
             imageKey: 'cardImage',
@@ -155,17 +157,6 @@ const Home = ({ data }) => {
           sectionClassName="container md:px-4 mx-auto"
           itemClassName="my-20 md:rounded-3xl shadow-lg hover:shadow-xl overflow-hidden"
           onClick={handleSectionClick}
-        />
-      </section>
-
-      <section className="p-8 bg-testimonial">
-        <h2 className="mb-8 text-2xl font-bold text-center display-font md:text-4xl text-blue">
-          Testimonios
-        </h2>
-        <Testimonial
-          quote="CFC está conmigo. Me siento respaldada porque se que llegarán estas lucas, yo las puedo necesitar mañana y las voy a tener."
-          author="Marcela Nercam"
-          imageUrl="/Marcela Nercam.jpg"
         />
       </section>
 

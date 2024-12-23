@@ -12,7 +12,7 @@ const BlogCard = ({ imageUrl, title, description, source, websiteUrl }) => (
       rel="noopener noreferrer"
       className="flex flex-col md:flex-row items-center group"
     >
-      <div className="md:w-2/5 overflow-hidden">
+      <div className="md:w-2/5 overflow-hidden rounded-3xl">
         <div className="transition-transform duration-300 ease-in-out group-hover:scale-110">
           <Image
             src={imageUrl}
