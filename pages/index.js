@@ -2,8 +2,8 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
-import { AdvancedVideo } from '@cloudinary/react';
-import { Cloudinary } from '@cloudinary/url-gen';
+/* import { AdvancedVideo } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen'; */
 import {
   formatServices,
   sliderSettings,
@@ -56,7 +56,7 @@ const structuredData = {
   sameAs: ['https://cl.linkedin.com/company/cfc-capital-s-a'],
 };
 
-function getVideoTransformationsWithReactVideo() {
+/* function getVideoTransformationsWithReactVideo() {
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'deevr9k54',
@@ -66,7 +66,7 @@ function getVideoTransformationsWithReactVideo() {
   const myVideo = cld.video('CFC-video-home_dzdgeq').quality('auto');
 
   return myVideo;
-}
+} */
 
 const Home = ({ data }) => {
   const router = useRouter();
@@ -121,28 +121,36 @@ const Home = ({ data }) => {
         )}
       </Slider>
 
-      <section className="container flex flex-col items-center justify-between px-4 mx-auto mt-20 lg:py-20 lg:flex-row">
-        <div className="lg:w-1/2 xl:w-3/6">
-          <AdvancedVideo
+      <section className="mt-20 lg:bg-gradient-to-r from-white to-light-grey">
+        <article className="container mx-auto lg:flex items-center justify-between px-4 lg:py-20">
+          <div className="w-fit lg:w-1/2 mx-auto mb-6 lg:mb-0">
+            <Image
+              src="/edificio-cfc.png"
+              alt="edificio cfc"
+              width={350}
+              height={577}
+            />
+            {/*           <AdvancedVideo
             cldVid={getVideoTransformationsWithReactVideo()}
             autoPlay
             loop
             muted
             playsInline
-            poster="/hombre-ameba.png"
-          />
-        </div>
-        <div className="lg:w-1/2 xl:w-5/12 md:px-10">
-          <h1 className="text-3xl font-semibold display-font text-blue">
-            Somos una empresa de servicios financieros, presente en el mercado
-            desde el año 2003
-          </h1>
-          <p className="my-5">
-            Ofrecemos a las empresas y pymes soluciones para transformar las
-            cuentas por cobrar en efectivo inmediato o para la adquisición de
-            activos productivos
-          </p>
-        </div>
+            poster="/hombre-ameba.png" 
+          /> */}
+          </div>
+          <div className="lg:w-1/2 md:px-10">
+            <h1 className="text-3xl font-semibold display-font text-blue">
+              En CFC Capital, desde el 2003, nos hemos dedicado a ser más que un
+              proveedor de servicios financieros
+            </h1>
+            <p className="my-5">
+              Somos parte de tu equipo. Trabajamos junto a empresas y PYMES,
+              ofreciendo soluciones personalizadas. Entendemos tus desafíos y
+              metas, y estamos aquí para acompañarte en cada paso.
+            </p>
+          </div>
+        </article>
       </section>
 
       <section className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
@@ -165,15 +173,14 @@ const Home = ({ data }) => {
           Educación Financiera
         </h2>
         <p className="w-3/4 mx-auto font-medium text-center text-white md:w-2/5 display-font text-md md:text-xl">
-          Te presentamos nuestra plataforma de recursos y artículo de interés en
-          el desarrollo y crecimiento financiero.
+          Te presentamos nuestra plataforma de recursos y artículos de interés
+          en el desarrollo y crecimiento financiero.
         </p>
         <BlogCard
           imageUrl="/5 mitos sobre factoring.png"
           tags={['Factoring', 'Pyme']}
           title="Los 5 mitos más comunes sobre el Factoring"
           description="Francisco Goycoolea, gerente comercial de CFC Capital, aclara los 5 mitos más comunes que se tienen sobre esta popular opción de financiamiento."
-          source="El Mercurio"
           websiteUrl="https://digital.elmercurio.com/"
         />
       </section>
@@ -203,7 +210,7 @@ const Home = ({ data }) => {
               </h2>
               <p className="w-5/6 text-sm text-left font-medium text-white sm:w-3/4 md:mx-0 text-wrap display-font lg:text-lg">
                 Fomentamos tu capacidad de desarrollar negocios que crezcan, se
-                proyecten en el tiempo y aporten al país
+                proyecten en el tiempo y aporten al país.
               </p>
               <Link href="/contacto" rel="noopener noreferrer">
                 <Button className="btn mb-12">Escríbenos</Button>

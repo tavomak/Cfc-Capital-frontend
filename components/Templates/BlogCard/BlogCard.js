@@ -1,7 +1,7 @@
 import Card from '@/components/Atoms/Card';
 import Image from 'next/image';
 
-const BlogCard = ({ imageUrl, title, description, source, websiteUrl }) => (
+const BlogCard = ({ imageUrl, title, description, websiteUrl }) => (
   <Card
     containerClassName="container md:mx-auto my-12 max-w-4xl px-8"
     cardClassName="bg-white p-8"
@@ -30,12 +30,6 @@ const BlogCard = ({ imageUrl, title, description, source, websiteUrl }) => (
         <p className="mb-4 leading-relaxed text-medium-grey text-md">
           {description}
         </p>
-
-        <div className="flex items-center text-soft-blue bg-soft-medium-blue w-fit rounded-2xl">
-          <span className="px-4 py-1 text-xs font-semibold uppercase">
-            {source}
-          </span>
-        </div>
       </div>
     </a>
   </Card>

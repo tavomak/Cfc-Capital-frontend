@@ -12,7 +12,7 @@ import Accordion from '@/components/Molecules/Accordion';
 import Spinner from '@/components/Atoms/Spinner';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StepCard from '@/components/Molecules/StepCard';
-import Content from '@/components/Molecules/CardContentTitle';
+import CardContentTitle from '@/components/Molecules/CardContentTitle';
 
 const Service = ({ data }) => {
   console.log({ data });
@@ -43,7 +43,7 @@ const Service = ({ data }) => {
           <LayerHero
             title={data.title}
             columnContent={
-              <Content
+              <CardContentTitle
                 content={{
                   title: data.title,
                   subtitle: data.label,

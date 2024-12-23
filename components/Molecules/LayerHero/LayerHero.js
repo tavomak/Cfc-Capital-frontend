@@ -31,8 +31,8 @@ const LayerHero = ({
             <Image
               src={imageUrl}
               alt={title}
-              width={500}
-              height={400}
+              width={750}
+              height={580}
               style={{
                 width: '100%',
                 height: 'auto',

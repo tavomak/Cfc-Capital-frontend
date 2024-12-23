@@ -100,7 +100,7 @@ const Footer = () => {
                 <li>
                   <Link href="/">
                     <Image
-                      src="/logo-edición-20-aniversario.png"
+                      src="/20-años.svg"
                       alt="Logo edición 20 aniversario"
                       width={80}
                       height={80}
@@ -111,7 +111,7 @@ const Footer = () => {
                 <li>
                   <Link href="/">
                     <Image
-                      src="/logo-40-horas.png"
+                      src="/logo-40hrs.svg"
                       alt="Logo 40 horas"
                       width={100}
                       height={100}
@@ -122,7 +122,7 @@ const Footer = () => {
                 <li>
                   <a href="https://efa.cl/" target="_blank">
                     <Image
-                      src="/efa-logo.png"
+                      src="/logo-efa.svg"
                       alt="Efa Logo"
                       width={100}
                       height={100}
