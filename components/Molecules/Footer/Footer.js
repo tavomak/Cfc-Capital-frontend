@@ -84,7 +84,7 @@ const Footer = () => {
       <div className="container px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <ul className="w-3/5 mx-auto lg:mx-0">
+            <ul className="w-3/5 mr-auto">
               <li className="mb-4">
                 <Link href="/">
                   <Image
@@ -96,7 +96,7 @@ const Footer = () => {
                   />
                 </Link>
               </li>
-              <div className="flex items-center justify-center text-white gap-8 lg:justify-between">
+              <div className="flex items-center justify text-white gap-8 lg:justify-between">
                 <li>
                   <Link href="/">
                     <Image
@@ -133,7 +133,7 @@ const Footer = () => {
               </div>
             </ul>
             <a
-              className="flex justify-center lg:justify-start gap-2 mt-4 transition hover:opacity-75"
+              className="flex justify-start gap-2 mt-4 transition hover:opacity-75"
               href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
               target="_blank"
             >

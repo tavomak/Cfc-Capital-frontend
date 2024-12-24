@@ -129,7 +129,7 @@ const Home = ({ data }) => {
               alt="edificio cfc"
               width={1080}
               height={1658}
-              className="aspect-square"
+              className="w-1/2 mx-auto lg:w-5/6"
             />
             {/*           <AdvancedVideo
             cldVid={getVideoTransformationsWithReactVideo()}

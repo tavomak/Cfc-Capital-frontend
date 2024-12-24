@@ -98,6 +98,7 @@ const cfc = ({ data }) => {
                       style={{
                         width: '100%',
                         height: 'auto',
+                        marginTop: '3rem',
                       }}
                     />
                   </div>
@@ -174,7 +175,7 @@ const cfc = ({ data }) => {
       </section>
 
       <section className="py-12 mt-12 bg-primary-gradient-grey">
-        <h2 className="mb-12 text-2xl font-bold text-center text-blue">
+        <h2 className="display-font md:text-4xl mb-12 text-2xl font-bold text-center text-blue">
           Directorio
         </h2>
         <article className="container flex flex-wrap justify-center mx-auto md:px-4">
