@@ -81,28 +81,30 @@ const Service = ({ data }) => {
             buttonText="Saber más"
           />
 
-          <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
-            <h2 className="display-font mb-8 text-4xl font-extrabold text-center text-dark-blue">
-              Proceso de {data.title}
-            </h2>
-            <div className="md:flex">
-              {data.serviceProcess.map((item, key) => (
-                <StepCard
-                  key={item.description}
-                  name={item.subtitle}
-                  icon={
-                    <div className="display-font flex items-center justify-center w-20 h-20 text-3xl font-extrabold text-medium-blue rounded-full border-medium-blue border-solid circle-width">
-                      {key + 1}
-                    </div>
-                  }
-                  description={item.description}
-                />
-              ))}
-            </div>
+          <section className="lg:bg-gradient-to-r from-white to-light-grey">
+            <article className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
+              <h2 className="display-font mb-8 text-4xl font-bold text-center text-dark-blue">
+                Proceso de {data.title}
+              </h2>
+              <div className="md:flex">
+                {data.serviceProcess.map((item, key) => (
+                  <StepCard
+                    key={item.description}
+                    name={item.subtitle}
+                    icon={
+                      <div className="display-font flex items-center justify-center w-20 h-20 text-3xl font-bold text-medium-blue rounded-full border-medium-blue border-solid circle-width">
+                        {key + 1}
+                      </div>
+                    }
+                    description={item.description}
+                  />
+                ))}
+              </div>
+            </article>
           </section>
 
           <section className="container mx-auto my-12 md:px-4">
-            <h2 className="display-font text-4xl mb-8 font-black text-center text-dark-blue">
+            <h2 className="display-font text-4xl mb-8 font-bold text-center text-dark-blue">
               Preguntas Frecuentes
             </h2>
             <Accordion list={data.serviceFaq} />

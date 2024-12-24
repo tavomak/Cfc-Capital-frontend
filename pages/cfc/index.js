@@ -136,10 +136,10 @@ const cfc = ({ data }) => {
         </div>
       </section>
 
-      <section className="container flex flex-wrap mx-auto md:px-4">
+      <section className="container flex flex-wrap justify-center mx-auto md:px-4">
         {team?.length > 0 &&
           team.map((item) => (
-            <div key={item.name} className="px-2 py-6 mb-4 md:w-1/3 md:px-12">
+            <div key={item.name} className="px-12 py-6 mb-4 md:w-1/3">
               <div className="mb-3 px-md-5">
                 <div className="overflow-hidden team-img rounded-3xl">
                   <Image

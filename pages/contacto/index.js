@@ -79,7 +79,7 @@ const Contacto = () => (
       </article>
     </section>
     <section className="container mx-auto my-12 md:px-4">
-      <h2 className="display-font text-4xl mb-8 font-black text-center text-dark-blue">
+      <h2 className="display-font text-4xl mb-8 font-bold text-center text-dark-blue">
         Preguntas Frecuentes
       </h2>
       <Accordion list={data} />

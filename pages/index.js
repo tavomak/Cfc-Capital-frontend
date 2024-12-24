@@ -123,12 +123,13 @@ const Home = ({ data }) => {
 
       <section className="mt-20 lg:bg-gradient-to-r from-white to-light-grey">
         <article className="container mx-auto lg:flex items-center justify-between px-4 lg:py-20">
-          <div className="w-fit lg:w-1/2 mx-auto mb-6 lg:mb-0">
+          <div className="lg:w-1/2 mx-auto mb-6 lg:mb-0">
             <Image
               src="/edificio-cfc.png"
               alt="edificio cfc"
-              width={350}
-              height={577}
+              width={1080}
+              height={1658}
+              className="aspect-square"
             />
             {/*           <AdvancedVideo
             cldVid={getVideoTransformationsWithReactVideo()}
@@ -246,7 +247,7 @@ const Home = ({ data }) => {
                   className="flex items-center p-4 mb-6 bg-white rounded-xl shadow-lg"
                   key={step.title}
                 >
-                  <div className="display-font flex-shrink-0 flex items-center justify-center w-16 h-16 mr-4 text-3xl font-extrabold text-medium-blue rounded-full border-medium-blue border-solid circle-width">
+                  <div className="display-font flex-shrink-0 flex items-center justify-center w-16 h-16 mr-4 text-3xl font-bold text-medium-blue rounded-full border-medium-blue border-solid circle-width">
                     {index + 1}
                   </div>
                   <div>

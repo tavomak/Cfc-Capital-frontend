@@ -96,7 +96,7 @@ const Footer = () => {
                   />
                 </Link>
               </li>
-              <div className="flex items-center justify-center gap-8 lg:justify-between">
+              <div className="flex items-center justify-center text-white gap-8 lg:justify-between">
                 <li>
                   <Link href="/">
                     <Image
