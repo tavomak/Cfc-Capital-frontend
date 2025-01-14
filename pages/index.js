@@ -177,13 +177,15 @@ const Home = ({ data }) => {
           Te presentamos nuestra plataforma de recursos y artículos de interés
           en el desarrollo y crecimiento financiero.
         </p>
-        <BlogCard
-          imageUrl="/5 mitos sobre factoring.png"
-          tags={['Factoring', 'Pyme']}
-          title="Los 5 mitos más comunes sobre el Factoring"
-          description="Francisco Goycoolea, gerente comercial de CFC Capital, aclara los 5 mitos más comunes que se tienen sobre esta popular opción de financiamiento."
-          websiteUrl="https://digital.elmercurio.com/"
-        />
+        {data.pages.posts?.map((post) => (
+          <BlogCard
+            key={post.title}
+            imageUrl={post.coverImage.url}
+            title={post.title}
+            description={post.excerpt}
+            slug={post.slug}
+          />
+        ))}
       </section>
 
       <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
