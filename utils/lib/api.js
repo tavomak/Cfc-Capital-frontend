@@ -92,7 +92,6 @@ export const getAllPosts = () =>
           id
           slug
           title
-          video
           coverImage {
             url
           }
@@ -212,15 +211,6 @@ export const getPageBySlugAndServices = (slug) =>
             }
             frontImage {
               id
-              url
-            }
-          }
-          posts(orderBy: createdAt_DESC, first: 1) {
-            id
-            slug
-            title
-            excerpt
-            coverImage {
               url
             }
           }

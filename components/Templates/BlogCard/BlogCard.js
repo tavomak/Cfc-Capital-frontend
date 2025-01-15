@@ -1,14 +1,15 @@
 import Card from '@/components/Atoms/Card';
 import Image from 'next/image';
-import Link from 'next/link';
 
-const BlogCard = ({ imageUrl, title, description, slug }) => (
+const BlogCard = ({ imageUrl, title, description, websiteUrl }) => (
   <Card
     containerClassName="container md:mx-auto my-12 max-w-4xl px-8"
     cardClassName="bg-white p-8"
   >
-    <Link
-      href={`/prensa/${slug}`}
+    <a
+      href={websiteUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex flex-col md:flex-row items-center group"
     >
       <div className="md:w-2/5 overflow-hidden rounded-3xl">
@@ -18,7 +19,7 @@ const BlogCard = ({ imageUrl, title, description, slug }) => (
             alt={`${title} image`}
             width={309}
             height={302}
-            className="object-cover aspect-square w-full h-full"
+            className="object-cover w-full h-full"
           />
         </div>
       </div>
@@ -30,7 +31,7 @@ const BlogCard = ({ imageUrl, title, description, slug }) => (
           {description}
         </p>
       </div>
-    </Link>
+    </a>
   </Card>
 );
 
