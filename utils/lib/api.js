@@ -323,6 +323,17 @@ export const getTeamMembers = () =>
             }
             position
           }
+          subManager {
+            description
+            email
+            id
+            linkedinUrl
+            name
+            photo {
+              url
+            }
+            position
+          }
         }
       }
     `,

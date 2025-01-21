@@ -37,7 +37,7 @@ const LayerHero = ({
                 width: '100%',
                 height: 'auto',
                 objectFit: 'contain',
-                maxHeight: '400px',
+                maxHeight: '600px',
               }}
               priority
             />
