@@ -6,8 +6,8 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const colorsMapping = {
-    1: 'medium-blue',
-    2: 'soft-blue',
+    1: 'soft-blue',
+    2: 'medium-blue',
     3: 'purple',
   };
 
@@ -29,7 +29,7 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
             <button
               type="button"
               onClick={() => toggleAccordion(key)}
-              className="text-left items-center justify-between w-full px-4 py-4 lg:flex"
+              className="text-left items-center justify-between w-full px-4 py-4 md:py-8 lg:flex"
             >
               <span className="display-font text-lg font-medium">
                 {item.title}
@@ -37,7 +37,7 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
               <motion.span
                 // animate={{ rotate: isExpanded ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="block lg:inline"
+                className="block lg:inline text-base font-medium"
               >
                 Saber más...
               </motion.span>

@@ -12,6 +12,7 @@ import {
   mediaLogos,
   steps,
   highlights,
+  accordionData,
 } from '@/utils';
 
 import Layout from '@/components/Templates/Layout';
@@ -27,6 +28,7 @@ import StarIcon from '@/components/Atoms/StarIcon';
 import ClientsIcon from '@/components/Atoms/ClientsIcon';
 import DolarIcon from '@/components/Atoms/DolarIcon';
 import Content from '@/components/Molecules/CardContentTitle';
+import Accordion from '@/components/Molecules/Accordion';
 
 const iconsMapping = {
   star: <StarIcon />,
@@ -141,14 +143,15 @@ const Home = ({ data }) => {
           /> */}
           </div>
           <div className="lg:w-1/2 md:px-10">
-            <h1 className="text-3xl font-semibold display-font text-blue">
+            <h1 className="text-3xl font-bold display-font text-blue">
               En CFC Capital, desde el 2003, nos hemos dedicado a ser más que un
               proveedor de servicios financieros
             </h1>
-            <p className="my-5">
+            <p className="my-5 font-semibold text-2xl">
               Somos parte de tu equipo. Trabajamos junto a empresas y PYMES,
               ofreciendo soluciones personalizadas. Entendemos tus desafíos y
-              metas, y estamos aquí para acompañarte en cada paso.
+              metas, y estamos aquí para acompañarte en cada paso. Estamos
+              ubicados en el corazón financiero de El Bosque.
             </p>
           </div>
         </article>
@@ -173,7 +176,7 @@ const Home = ({ data }) => {
         <h2 className="mb-8 text-2xl font-bold text-center text-white display-font md:text-4xl">
           Educación Financiera
         </h2>
-        <p className="w-3/4 mx-auto font-medium text-center text-white md:w-2/5 display-font text-md md:text-xl">
+        <p className="w-3/4 mx-auto font-bold text-center text-white lg:w-2/5 display-font text-md md:text-lg">
           Te presentamos nuestra plataforma de recursos y artículos de interés
           en el desarrollo y crecimiento financiero.
         </p>
@@ -189,7 +192,7 @@ const Home = ({ data }) => {
       </section>
 
       <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
-        <h2 className="mb-8 text-2xl font-bold text-center text-balance display-font md:text-4xl text-blue">
+        <h2 className="w-full lg:w-1/2 mx-auto mb-8 text-2xl font-bold text-center text-balance display-font md:text-4xl text-dark-blue">
           Tenemos la experiencia para enfrentar el futuro
         </h2>
         <article className="md:flex">
@@ -206,12 +209,12 @@ const Home = ({ data }) => {
 
       <section className="pt-12 text-white bg-gradient-to-r from-dark-blue to-purple">
         <article className="container px-4 mx-auto">
-          <div className="md:flex">
+          <div className="md:flex ">
             <div className="flex flex-col justify-center gap-6 md:w-3/6 xl:w-1/3">
-              <h2 className="w-3/4 text-2xl text-left font-bold text-white md:mx-0 display-font md:text-left lg:text-4xl">
+              <h2 className="w-full text-2xl font-bold display-font lg:text-4xl">
                 Creando capacidad de crecer
               </h2>
-              <p className="w-5/6 text-sm text-left font-medium text-white sm:w-3/4 md:mx-0 text-wrap display-font lg:text-lg">
+              <p className="w-5/6 text-sm font-bold md:w-full display-font md:text-lg">
                 Fomentamos tu capacidad de desarrollar negocios que crezcan, se
                 proyecten en el tiempo y aporten al país.
               </p>
@@ -231,13 +234,20 @@ const Home = ({ data }) => {
         </article>
       </section>
 
+      <section className="container mx-auto my-24 md:px-4">
+        <h2 className="display-font text-4xl mb-8 font-bold text-center text-dark-blue">
+          Preguntas Frecuentes
+        </h2>
+        <Accordion list={accordionData} />
+      </section>
+
       <SubscribeSection />
 
       <section className="pt-8">
-        <h2 className="mb-8 text-2xl font-bold text-center display-font md:text-4xl text-medium-blue">
+        <h2 className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl">
           Factoring web
         </h2>
-        <p className="w-3/4 max-w-3xl mx-auto font-semibold text-center text-balance display-font text-md md:text-xl text-medium-grey">
+        <p className="w-11/12 max-w-3xl mx-auto font-semibold text-center text-pretty display-font text-base md:text-2xl text-medium-grey">
           En nuestra plataforma digital podrás cargar de manera masiva tus
           facturas, con cotización en línea clara y transparente.
         </p>

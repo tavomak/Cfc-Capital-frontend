@@ -138,8 +138,8 @@ const Footer = () => {
               target="_blank"
             >
               <small>
-                El Bosque Central 92, piso 11, Las Condes,
-                <br /> Región Metropolitana, Chile
+                Av. El Bosque 92, piso 11, Las Condes, <br />
+                Santiago, Chile
               </small>
             </a>
           </div>

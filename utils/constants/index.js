@@ -201,35 +201,38 @@ export const sliderSettings = {
 
 export const highlights = [
   {
-    name: 'Fundada',
     title: 'Fundada en 2003',
     description: 'Especializados en el segmento de empresas y pymes.',
-    number: 2003,
-    prev: 'Fundada en ',
-    next: null,
     icon: 'star',
     color: 'blue',
   },
   {
-    name: 'Clientes',
     title: '+4000 Clientes',
     description:
       'Detrás de cada financiamiento, hay sueños que ayudamos a convertir en realidad.',
-    number: 4000,
-    prev: '+',
-    next: ' Clientes',
     icon: 'people',
     color: 'purple',
   },
   {
-    name: 'Operaciones',
-    title: 'US $591 MM',
+    title: 'US $700 MM',
     description: 'Contribuyendo al desarrollo del país.',
-    number: 591,
-    prev: 'US $',
-    next: 'MM',
     icon: 'money',
     color: 'soft-blue',
+  },
+];
+
+export const accordionData = [
+  {
+    title: '¿Qué necesito para evaluar una primera operación?',
+    text: 'Te apoyamos desde la factura N° 1. ¿Tienes dicom? No te preocupes. Envíanos tu carpeta tributaria y factura emitida, nosotros nos encargamos del resto.',
+  },
+  {
+    title: '¿En cuánto tiempo obtengo mi financiamiento?',
+    text: 'En CFC Capital puedes abrir una línea, realizar tu primera operación en sólo horas y sin papeleos.',
+  },
+  {
+    title: '¿Tengo Dicom, puedo operar?',
+    text: 'No te preocupes. Envíanos tu carpeta tributaria y factura emitida, nosotros nos encargamos del resto.',
   },
 ];
 
