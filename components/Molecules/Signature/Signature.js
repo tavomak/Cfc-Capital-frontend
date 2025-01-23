@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useNotify from '@/hooks/useNotify';
 import Button from '@/components/Atoms/Button';
 import Card from '@/components/Atoms/Card';
-import SignatureVerticalBody from '../SignatureVerticalBody';
+import VerticalNoRRSS from '../Signatures/VerticalNoRRSS';
 
 const Signature = ({ data, setData }) => {
   const [notification] = useNotify();
@@ -61,9 +61,9 @@ const Signature = ({ data, setData }) => {
               maxWidth: '450px',
             }}
           >
-            <SignatureVerticalBody
+            <VerticalNoRRSS
               data={data}
-              direccion="Av. El Bosque 92, piso 11, Las Condes."
+              direccion="Av. El Bosque 92, piso 11, Las Condes, Santiago de Chile"
               urlMaps="https://maps.app.goo.gl/m9Jh1PuoAC3xnRif9"
               socialLinks={{
                 instagram: 'https://www.instagram.com/cfc_capital/',
@@ -81,12 +81,12 @@ const Signature = ({ data, setData }) => {
                   <a href="https://cfccapital.cl/" target="_blank">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      // src="http://imgfz.com/i/Bq0xcQn.png"
-                      src="Firma-cfc-logo.png"
-                      width="180"
+                      src="http://imgfz.com/i/Bq0xcQn.png"
+                      // src="Firma-cfc-logo.png"
+                      width="160"
                       style={{
                         display: 'block',
-                        maxWidth: '180px',
+                        maxWidth: '160px',
                         margin: '0 auto',
                       }}
                       alt="CFC Capital"
@@ -94,7 +94,7 @@ const Signature = ({ data, setData }) => {
                   </a>
                 </td>
               </tr>
-            </SignatureVerticalBody>
+            </VerticalNoRRSS>
           </table>
         </Card>
         <div className="flex justify-center py-5">

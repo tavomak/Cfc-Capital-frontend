@@ -339,6 +339,14 @@ export const getUserByEmail = (email) =>
             phone
             position
           }
+          subManager(where: { email: $email }) {
+            email
+            id
+            mobile
+            name
+            phone
+            position
+          }
           team(where: { email: $email }) {
             email
             id

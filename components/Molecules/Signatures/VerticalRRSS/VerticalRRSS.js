@@ -1,7 +1,7 @@
 import { formatPhoneNumberString } from '@/utils';
 import styles from './styles.module.css';
 
-const SignatureVerticalBody = ({
+const VerticalRRSS = ({
   data,
   children,
   direccion,
@@ -213,4 +213,4 @@ const SignatureVerticalBody = ({
   </tbody>
 );
 
-export default SignatureVerticalBody;
+export default VerticalRRSS;

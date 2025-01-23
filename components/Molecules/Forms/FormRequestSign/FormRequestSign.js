@@ -11,11 +11,11 @@ import Input from '@/components/Atoms/Input';
 const getUserData = async (email) => {
   const {
     data: {
-      teams: [{ managers, workers, team }],
+      teams: [{ managers, workers, team, subManager }],
     },
   } = await getUserByEmail(email);
 
-  const userGroups = [managers, workers, team];
+  const userGroups = [managers, workers, team, subManager];
   if (userGroups.length === 0) return undefined;
 
   const firstNonEmptyGroup = userGroups.find((group) => group?.length > 0);
