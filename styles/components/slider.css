@@ -12,3 +12,7 @@
 .slick-dots {
   @apply -bottom-12;
 }
+
+.cfc-dots-list-media .slick-active .cfc-dots-list-item {
+  @apply bg-gray-400 w-4;
+}

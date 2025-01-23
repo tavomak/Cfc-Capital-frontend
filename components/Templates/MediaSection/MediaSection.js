@@ -13,7 +13,7 @@ const sliderSettings = {
   lazyLoad: 'progressive',
   appendDots: (dots) => (
     <div className="cfc-dots-container">
-      <ul className="cfc-dots-list"> {dots} </ul>
+      <ul className="cfc-dots-list-media"> {dots} </ul>
     </div>
   ),
   customPaging: () => <span className="cfc-dots-list-item" />,
