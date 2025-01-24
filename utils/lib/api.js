@@ -155,7 +155,14 @@ export const getPostAndMorePosts = (slug) =>
         post(where: { slug: $slug }) {
           id
           content {
-            html
+            json
+            references {
+              ... on Asset {
+                id
+                url
+                mimeType
+              }
+            }
           }
           title
           slug

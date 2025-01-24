@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import DOMPurify from 'isomorphic-dompurify';
 
 import { getAllPosts, getPostAndMorePosts, markdownToHtml } from '@/utils';
 import Spinner from '@/components/Atoms/Spinner';
@@ -9,8 +8,11 @@ import Image from 'next/image';
 import Layout from '@/components/Templates/Layout';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
+import RichContent from '@/components/Atoms/RichContent';
 
 export default function Post({ post, morePosts }) {
+  const title = `${post?.article?.title} | CFC Capital`;
+
   const router = useRouter();
   return (
     <Layout
@@ -24,7 +26,7 @@ export default function Post({ post, morePosts }) {
       ) : (
         <>
           <Head>
-            <title>{post.article.title} | CFC Capital</title>
+            <title>{title}</title>
             <meta property="og:image" content={post.article.coverImage.url} />
           </Head>
 
@@ -53,7 +55,7 @@ export default function Post({ post, morePosts }) {
                 </div>
               </div>
             </section>
-            <section className="container max-w-screen-xl mx-auto my-10">
+            <section className="container w-11/12 max-w-screen-xl mx-auto my-10">
               {post.article.video && (
                 <figure className="max-w-screen-lg mx-auto video-container">
                   <iframe
@@ -67,20 +69,20 @@ export default function Post({ post, morePosts }) {
                 </figure>
               )}
               <div className="py-10 my-10">
-                <div
-                  // eslint-disable-next-line react/no-danger
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(post.article.content.html),
-                  }}
-                />
+                <div>
+                  <RichContent
+                    content={post.article.content.json}
+                    references={post.article.content.references}
+                  />
+                </div>
               </div>
             </section>
           </article>
 
-          <aside className="container max-w-screen-xl mx-auto">
-            <div className="col-12">
+          <aside className="container mx-auto">
+            <div>
               <hr />
-              <h2 className="py-4 display-font text-purple fs-5">
+              <h2 className="py-4 display-font text-purple text-2xl">
                 Más noticias
               </h2>
             </div>
