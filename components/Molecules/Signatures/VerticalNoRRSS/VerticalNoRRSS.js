@@ -207,8 +207,8 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                       src="http://imgfz.com/i/nyzoSjk.png"
                       // src="Firma-IG.png"
                       alt="20 años"
-                      width="70"
-                      height="64"
+                      width="63"
+                      height="58"
                       style={{
                         maxWidth: '70px',
                       }}
@@ -224,8 +224,8 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                       src="http://imgfz.com/i/fBTnlJV.png"
                       // src="Firma-IN.png"
                       alt="40hrs"
-                      width="80"
-                      height="50"
+                      width="70"
+                      height="45"
                       style={{
                         maxWidth: '80px',
                       }}
@@ -237,8 +237,8 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                       src="http://imgfz.com/i/6FLI3kX.png"
                       // src="Firma-FB.png"
                       alt="EFA logo"
-                      width="80"
-                      height="62"
+                      width="70"
+                      height="55"
                       style={{
                         maxWidth: '80px',
                       }}
