@@ -7,8 +7,8 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
 
   const colorsMapping = {
     1: 'soft-blue',
-    2: 'medium-blue',
-    3: 'purple',
+    2: 'dark-blue',
+    3: 'medium-purple',
   };
 
   const toggleAccordion = (index) => {

@@ -125,22 +125,30 @@ const Home = ({ data }) => {
 
       <section className="mt-20 lg:bg-gradient-to-r from-white to-light-grey">
         <article className="container mx-auto lg:flex items-center justify-between px-4 lg:py-20">
-          <div className="lg:w-1/2 mx-auto mb-6 lg:mb-0">
-            <Image
-              src="/edificio-cfc.png"
-              alt="edificio cfc"
-              width={1080}
-              height={1658}
-              className="w-1/2 mx-auto lg:w-5/6"
-            />
+          <div className="relative lg:w-1/2 mx-auto mb-6 lg:mb-0">
+            <figure className="relative">
+              <Image
+                src="/edificio-cfc.png"
+                alt="edificio cfc"
+                width={1080}
+                height={1658}
+                className="w-1/2 mx-auto lg:w-5/6"
+              />
+              <figcaption className="absolute -bottom-2 -right-7 md:bottom-14 md:-right-14 w-1/2">
+                <p className="display-font text-xs font-bold text-balance text-dark-grey">
+                  Estamos ubicados en El Bosque, corazón financiero de la
+                  ciudad.
+                </p>
+              </figcaption>
+            </figure>
             {/*           <AdvancedVideo
-            cldVid={getVideoTransformationsWithReactVideo()}
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/hombre-ameba.png" 
-          /> */}
+        cldVid={getVideoTransformationsWithReactVideo()}
+        autoPlay
+        loop
+        muted
+        playsInline
+        poster="/hombre-ameba.png" 
+      /> */}
           </div>
           <div className="lg:w-1/2 md:px-10">
             <h1 className="text-3xl font-bold display-font text-blue">
@@ -150,8 +158,7 @@ const Home = ({ data }) => {
             <p className="my-5 font-semibold text-2xl">
               Somos parte de tu equipo. Trabajamos junto a empresas y PYMES,
               ofreciendo soluciones personalizadas. Entendemos tus desafíos y
-              metas, y estamos aquí para acompañarte en cada paso. Estamos
-              ubicados en el corazón financiero de El Bosque.
+              metas, y estamos aquí para acompañarte en cada paso.
             </p>
           </div>
         </article>
