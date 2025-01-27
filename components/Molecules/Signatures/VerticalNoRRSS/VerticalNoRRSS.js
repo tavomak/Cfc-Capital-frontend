@@ -25,13 +25,18 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
               <td>
                 <p
                   style={{
-                    margin: 0,
+                    margin: '0 auto',
                     fontSize: '10px',
                     paddingRight: '20px',
+                    width: '85%',
                   }}
                 >
                   <a
-                    style={{ textDecoration: 'none', color: '#472c6e' }}
+                    style={{
+                      textDecoration: 'none',
+                      color: '#472c6e',
+                      textWrap: 'balance',
+                    }}
                     href={urlMaps}
                     target="_blank"
                   >
@@ -65,8 +70,7 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                 <span
                   style={{
                     color: '#623482',
-                    fontSize: '15px',
-                    fontWeight: 'bold',
+                    fontSize: '18px',
                     margin: 0,
                   }}
                 >
@@ -87,12 +91,12 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
           <tr>
             <td
               style={{
-                paddingBottom: '15px',
+                paddingBottom: '13px',
               }}
             >
               <p
                 style={{
-                  fontSize: '12px',
+                  fontSize: '14px',
                   color: '#00ABC8',
                   margin: 0,
                 }}
@@ -160,7 +164,7 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                 style={{
                   margin: 0,
                   color: '#7f7f7f',
-                  fontSize: '14px',
+                  fontSize: '12px',
                   textDecoration: 'none',
                 }}
               >
@@ -180,7 +184,7 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                 style={{
                   margin: 0,
                   color: '#7f7f7f',
-                  fontSize: '14px',
+                  fontSize: '12px',
                   textDecoration: 'none',
                 }}
               >
@@ -200,11 +204,14 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="http://imgfz.com/i/hOvwWV4.png"
+                      src="http://imgfz.com/i/nyzoSjk.png"
                       // src="Firma-IG.png"
-                      alt="Instagram"
-                      width="24"
-                      height="24"
+                      alt="20 años"
+                      width="70"
+                      height="64"
+                      style={{
+                        maxWidth: '70px',
+                      }}
                     />
                   </td>
                   <td
@@ -214,21 +221,27 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="http://imgfz.com/i/eH1lTpb.png"
+                      src="http://imgfz.com/i/fBTnlJV.png"
                       // src="Firma-IN.png"
-                      alt="LinkedIn"
-                      width="24"
-                      height="24"
+                      alt="40hrs"
+                      width="80"
+                      height="50"
+                      style={{
+                        maxWidth: '80px',
+                      }}
                     />
                   </td>
                   <td>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="http://imgfz.com/i/H8mELlU.png"
+                      src="http://imgfz.com/i/6FLI3kX.png"
                       // src="Firma-FB.png"
-                      alt="Facebook"
-                      width="24"
-                      height="24"
+                      alt="EFA logo"
+                      width="80"
+                      height="62"
+                      style={{
+                        maxWidth: '80px',
+                      }}
                     />
                   </td>
                 </tr>
