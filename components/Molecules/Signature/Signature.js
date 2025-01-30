@@ -63,8 +63,13 @@ const Signature = ({ data, setData }) => {
           >
             <VerticalNoRRSS
               data={data}
-              direccion="Av. El Bosque 92, piso 11, Las Condes, Santiago de Chile"
-              urlMaps="https://maps.app.goo.gl/m9Jh1PuoAC3xnRif9"
+              direction={
+                <>
+                  Av El Bosque 92, piso 11
+                  <br />
+                  Las Condes
+                </>
+              }
               socialLinks={{
                 instagram: 'https://www.instagram.com/cfc_capital/',
                 linkedin: 'https://www.linkedin.com/company/cfc-capital-s-a/',
@@ -82,11 +87,11 @@ const Signature = ({ data, setData }) => {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="http://imgfz.com/i/kiyjBA9.png"
-                      // src="Firma-cfc-logo.png"
-                      width="200"
+                      // src="/CFC-logo.png"
+                      width="160"
                       style={{
                         display: 'block',
-                        maxWidth: '200px',
+                        maxWidth: '160px',
                         margin: '0 auto',
                       }}
                       alt="CFC Capital"

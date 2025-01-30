@@ -1,7 +1,7 @@
 import { formatPhoneNumberString } from '@/utils';
 import styles from './styles.module.css';
 
-const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
+const VerticalNoRRSS = ({ data, children, direction, urlMaps }) => (
   <tbody>
     <tr>
       <td
@@ -20,29 +20,50 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
         >
           {/* Renderiza los elementos hijos proporcionados */}
           {children}
-          {direccion && (
+          {direction && (
             <tr>
               <td>
-                <p
-                  style={{
-                    margin: '0 auto',
-                    fontSize: '10px',
-                    paddingRight: '20px',
-                    width: '85%',
-                  }}
-                >
+                {urlMaps ? (
                   <a
                     style={{
                       textDecoration: 'none',
-                      color: '#472c6e',
-                      textWrap: 'balance',
+                      color: '#7f7f7f',
+                      display: 'block',
                     }}
                     href={urlMaps}
                     target="_blank"
                   >
-                    {direccion}
+                    <span
+                      style={{
+                        display: 'block',
+                        textDecoration: 'none',
+                        color: '#7f7f7f',
+                        fontSize: '13px',
+                        paddingRight: '20px',
+                        textWrap: 'balance',
+                        MozTextDecoration: 'none',
+                        WebkitTextDecoration: 'none',
+                      }}
+                    >
+                      {direction}
+                    </span>
                   </a>
-                </p>
+                ) : (
+                  <span
+                    style={{
+                      display: 'block',
+                      textDecoration: 'none ',
+                      color: '#7f7f7f',
+                      fontSize: '13px',
+                      paddingRight: '20px',
+                      textWrap: 'balance',
+                      MozTextDecoration: 'none',
+                      WebkitTextDecoration: 'none',
+                    }}
+                  >
+                    {direction}
+                  </span>
+                )}
               </td>
             </tr>
           )}
@@ -51,8 +72,7 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
 
       <td
         style={{
-          borderLeft: '1px solid #b1a3c6',
-          height: '100%',
+          borderLeft: '2px solid #b1a3c6',
         }}
         aria-label="Separador vertical"
       />
@@ -69,7 +89,7 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
               <b>
                 <span
                   style={{
-                    color: '#623482',
+                    color: '#235092',
                     fontSize: '18px',
                     margin: 0,
                   }}
@@ -80,7 +100,7 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                     <span className={styles.skeletonContainer}>
                       <span
                         className={styles.skeleton}
-                        style={{ height: '35px' }}
+                        style={{ color: '#623482', height: '35px' }}
                       />
                     </span>
                   )}
@@ -129,12 +149,23 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                 style={{
                   margin: 0,
                   color: '#7f7f7f',
-                  fontSize: '10px',
-                  textDecoration: 'none',
+                  fontSize: '13px',
+                  textDecoration: 'none ',
                   paddingRight: '4px',
+                  MozTextDecoration: 'none',
+                  WebkitTextDecoration: 'none',
                 }}
               >
-                <span>+56 </span>
+                <span
+                  style={{
+                    color: '#7f7f7f',
+                    textDecoration: 'none ',
+                    MozTextDecoration: 'none',
+                    WebkitTextDecoration: 'none',
+                  }}
+                >
+                  +56{' '}
+                </span>
                 {data.phone ? formatPhoneNumberString(data.phone) : ''}
               </p>
 
@@ -142,15 +173,26 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                 style={{
                   margin: 0,
                   color: '#7f7f7f',
-                  fontSize: '10px',
-                  textDecoration: 'none',
+                  fontSize: '13px',
                   paddingLeft: '4px',
                   borderLeft: '1px solid #b1a3c6',
+                  textDecoration: 'none ',
+                  MozTextDecoration: 'none',
+                  WebkitTextDecoration: 'none',
                 }}
               >
                 {data.mobile && (
                   <>
-                    <span>+56 </span>
+                    <span
+                      style={{
+                        color: '#7f7f7f',
+                        textDecoration: 'none ',
+                        MozTextDecoration: 'none',
+                        WebkitTextDecoration: 'none',
+                      }}
+                    >
+                      +56{' '}
+                    </span>
                     {formatPhoneNumberString(data.mobile)}
                   </>
                 )}
@@ -163,12 +205,23 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                 href={`mailto:${data.email ? data.email : ''}`}
                 style={{
                   margin: 0,
+                  fontSize: '13px',
                   color: '#7f7f7f',
-                  fontSize: '12px',
                   textDecoration: 'none',
+                  MozTextDecoration: 'none',
+                  WebkitTextDecoration: 'none',
                 }}
               >
-                {data.email ? data.email : ''}
+                <span
+                  style={{
+                    color: '#7f7f7f',
+                    textDecoration: 'none',
+                    MozTextDecoration: 'none',
+                    WebkitTextDecoration: 'none',
+                  }}
+                >
+                  {data.email ? data.email : ''}
+                </span>
               </a>
             </td>
           </tr>
@@ -184,11 +237,22 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                 style={{
                   margin: 0,
                   color: '#7f7f7f',
-                  fontSize: '12px',
+                  fontSize: '13px',
                   textDecoration: 'none',
+                  MozTextDecoration: 'none',
+                  WebkitTextDecoration: 'none',
                 }}
               >
-                www.cfccapital.cl
+                <span
+                  style={{
+                    color: '#7f7f7f',
+                    textDecoration: 'none',
+                    MozTextDecoration: 'none',
+                    WebkitTextDecoration: 'none',
+                  }}
+                >
+                  www.cfccapital.cl
+                </span>
               </a>
             </td>
           </tr>
@@ -204,13 +268,13 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="http://imgfz.com/i/nyzoSjk.png"
-                      // src="Firma-IG.png"
-                      alt="20 años"
-                      width="63"
-                      height="58"
+                      src="FC-20years.png"
+                      // src="http://imgfz.com/i/nyzoSjk.png"
+                      alt="20yrs"
+                      width="43"
+                      height="36"
                       style={{
-                        maxWidth: '70px',
+                        maxWidth: '43px',
                       }}
                     />
                   </td>
@@ -221,26 +285,26 @@ const VerticalNoRRSS = ({ data, children, direccion, urlMaps }) => (
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="http://imgfz.com/i/fBTnlJV.png"
-                      // src="Firma-IN.png"
+                      src="FC-40hrs.png"
+                      // src="http://imgfz.com/i/fBTnlJV.png"
                       alt="40hrs"
-                      width="70"
-                      height="45"
+                      width="55"
+                      height="30"
                       style={{
-                        maxWidth: '80px',
+                        maxWidth: '55px',
                       }}
                     />
                   </td>
                   <td>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="http://imgfz.com/i/6FLI3kX.png"
-                      // src="Firma-FB.png"
+                      src="FC-Efa.png"
+                      // src="http://imgfz.com/i/6FLI3kX.png"
                       alt="EFA logo"
-                      width="70"
-                      height="55"
+                      width="50"
+                      height="33"
                       style={{
-                        maxWidth: '80px',
+                        maxWidth: '50px',
                       }}
                     />
                   </td>
