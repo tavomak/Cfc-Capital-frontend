@@ -45,6 +45,7 @@ const FormRequestSign = ({ setData }) => {
     if (!captchaCode) {
       return;
     }
+
     try {
       const response = await fetch('/api/register', {
         method: 'POST',
@@ -70,6 +71,7 @@ const FormRequestSign = ({ setData }) => {
     } catch (error) {
       console.log('error', error?.message);
       notification('error', '¡Oh! algo salió mal, inténtalo de nuevo');
+      setLoading(false);
     } finally {
       recaptchaRef.current.reset();
     }

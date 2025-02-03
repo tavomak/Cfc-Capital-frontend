@@ -76,29 +76,31 @@ const Signature = ({ data, setData }) => {
                 facebook: 'https://www.facebook.com/cfccapitalchile/',
               }}
             >
-              <tr>
-                <td
-                  style={{
-                    paddingBottom: '20px',
-                    paddingRight: '20px',
-                  }}
-                >
-                  <a href="https://cfccapital.cl/" target="_blank">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="http://imgfz.com/i/kiyjBA9.png"
-                      // src="/CFC-logo.png"
-                      width="160"
-                      style={{
-                        display: 'block',
-                        maxWidth: '160px',
-                        margin: '0 auto',
-                      }}
-                      alt="CFC Capital"
-                    />
-                  </a>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td
+                    style={{
+                      paddingBottom: '20px',
+                      paddingRight: '20px',
+                    }}
+                  >
+                    <a href="https://cfccapital.cl/" target="_blank">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="http://imgfz.com/i/kiyjBA9.png"
+                        // src="/CFC-logo.png"
+                        width="160"
+                        style={{
+                          display: 'block',
+                          maxWidth: '160px',
+                          margin: '0 auto',
+                        }}
+                        alt="CFC Capital"
+                      />
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
             </VerticalNoRRSS>
           </table>
         </Card>
