@@ -15,12 +15,12 @@ import StepCard from '@/components/Molecules/StepCard';
 import CardContentTitle from '@/components/Molecules/CardContentTitle';
 
 const Service = ({ data }) => {
-  console.log({ data });
   const [modal, setModal] = useState(false);
   const router = useRouter();
   const handleClick = () => {
     setModal(!modal);
   };
+
   return (
     <Layout
       title={!router.isFallback ? data.title : 'CFC Capital'}
@@ -69,7 +69,6 @@ const Service = ({ data }) => {
               </Card>
             )}
           </LayerHero>
-
           <ZigZagSection
             itemList={formatServices(data.serviceContent, {
               colorKey: 'color',

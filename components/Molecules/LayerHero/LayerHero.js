@@ -37,7 +37,7 @@ const LayerHero = ({
                 width: '100%',
                 height: 'auto',
                 objectFit: 'contain',
-                maxHeight: '400px',
+                maxHeight: '600px',
               }}
               priority
             />
@@ -52,7 +52,7 @@ const LayerHero = ({
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(title),
               }}
-              className="mb-4 text-2xl font-bold display-font text-purple"
+              className="mb-4 text-2xl font-bold display-font text-medium-purple"
             />
           )}
           {subtitle && !columnContent && !content && (

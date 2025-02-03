@@ -1,14 +1,18 @@
 .cfc-dots-list-item {
-  @apply bg-gray-200 h-2 w-2 rounded-full block;
+  @apply bg-gray-200 h-3 w-3 rounded-full block;
   transition-duration: var(--default-timing-duration);
   transition-timing-function: var(--default-timing-function);
   transition-property: all;
 }
 
 .slick-active .cfc-dots-list-item {
-  @apply bg-gray-400 w-5;
+  @apply bg-lilac w-6;
 }
 
 .slick-dots {
   @apply -bottom-12;
+}
+
+.cfc-dots-list-media .slick-active .cfc-dots-list-item {
+  @apply bg-gray-400 w-4;
 }

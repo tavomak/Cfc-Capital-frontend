@@ -19,6 +19,7 @@ body {
   background: var(--medium-blue);
 }
 
+.bg-dark-blue,
 .bg-factoring-web {
   background: var(--dark-blue);
 }
@@ -31,9 +32,9 @@ body {
   background: var(--soft-blue-light);
 }
 
-.bg-leaseback,
-.bg-soft-purple {
-  background: var(--purple);
+.bg-medium-purple,
+.bg-leaseback {
+  background: var(--medium-purple);
 }
 
 .text-factoring {

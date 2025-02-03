@@ -9,6 +9,7 @@ import { getTeamMembers, highlights } from '@/utils';
 import Layout from '@/components/Templates/Layout';
 import Link from 'next/link';
 import StepCard from '@/components/Molecules/StepCard';
+import TeamCard from '@/components/Molecules/TeamCard';
 
 const iconsMapping = {
   star: <StarIcon />,
@@ -26,7 +27,7 @@ const cld = new Cloudinary({
 const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
 
 const cfc = ({ data }) => {
-  const { directors, managers, team } = data;
+  const { directors, managers, team, subManager } = data;
   return (
     <Layout
       title="Somos CFC"
@@ -42,8 +43,14 @@ const cfc = ({ data }) => {
           poster="/hero-servicios.jpg"
         />
       </section>
-      <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
-        <article className="md:flex">
+
+      <section className="container max-w-5xl mx-auto mt-6 md:py-12 md:mt-12">
+        <div className="w-full md:w-1/2 text-center text-balance mx-auto text-dark-blue">
+          <h2 className="display-font text-3xl font-bold md:text-4xl mb-8">
+            Tenemos la experiencia para enfrentar el futuro
+          </h2>
+        </div>
+        <article className="md:flex mt-8">
           {highlights.map((item) => (
             <StepCard
               key={item.title}
@@ -122,9 +129,21 @@ const cfc = ({ data }) => {
           </section>
         ))}
 
-      <section className="flex justify-center mt-6 md:py-12 md:mt-12">
+      <section className="py-20 bg-gradient-to-r from-white to-soft-blue-light">
+        <h2 className="display-font md:text-4xl mb-12 text-2xl font-bold text-center text-dark-blue">
+          Gerencia
+        </h2>
+        <article className="container flex flex-wrap gap-20 justify-center mx-auto md:px-4">
+          {subManager?.length > 0 &&
+            subManager.map((item) => (
+              <TeamCard key={item.name} {...item} photo={item.photo[0].url} />
+            ))}
+        </article>
+      </section>
+
+      <section className="container mx-auto px-4 py-20">
         <div className="text-center text-dark-blue">
-          <h2 className="display-font text-3xl font-bold md:text-4xl">
+          <h2 className="display-font text-3xl font-bold md:text-4xl mb-8">
             Equipo Comercial
           </h2>
           <p className="px-2 text-medium-grey text-lg md:text-2xl">
@@ -135,75 +154,22 @@ const cfc = ({ data }) => {
             Porque sabemos que eres el motor de la economía.
           </p>
         </div>
+        <article className="container flex flex-wrap justify-center mx-auto md:px-4">
+          {team?.length > 0 &&
+            team.map((item) => (
+              <TeamCard key={item.name} {...item} photo={item.photo[0].url} />
+            ))}
+        </article>
       </section>
 
-      <section className="container flex flex-wrap justify-center mx-auto md:px-4">
-        {team?.length > 0 &&
-          team.map((item) => (
-            <div key={item.name} className="px-12 py-6 mb-4 md:w-1/3">
-              <div className="mb-3 px-md-5">
-                <div className="overflow-hidden team-img rounded-3xl">
-                  <Image
-                    src={item.photo[0].url}
-                    alt={item.name}
-                    width={1000}
-                    height={1361}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                    }}
-                    priority
-                  />
-                </div>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold display-font text-purple md:text-xl">
-                  {item.name}
-                </p>
-                <p className="font-bold text-medium-gray">{item.position}</p>
-                <a
-                  href={`mailto:${item.email}`}
-                  className="text-medium-gray"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {item.email}
-                </a>
-              </div>
-            </div>
-          ))}
-      </section>
-
-      <section className="py-12 mt-12 bg-primary-gradient-grey">
-        <h2 className="display-font md:text-4xl mb-12 text-2xl font-bold text-center text-blue">
+      <section className="py-20 bg-primary-gradient-grey">
+        <h2 className="display-font md:text-4xl mb-12 text-2xl font-bold text-center text-dark-blue">
           Directorio
         </h2>
         <article className="container flex flex-wrap justify-center mx-auto md:px-4">
           {directors?.length > 0 &&
             directors.map((item) => (
-              <div key={item.name} className="px-12 py-6 mb-4 md:w-1/3">
-                <div className="mb-3 px-md-5">
-                  <div className="overflow-hidden team-img rounded-3xl">
-                    <Image
-                      src={item.photo[0].url}
-                      alt={item.name}
-                      width={1000}
-                      height={1361}
-                      style={{
-                        width: '100%',
-                        height: 'auto',
-                      }}
-                      priority
-                    />
-                  </div>
-                </div>
-                <div className="text-center">
-                  <p className="text-2xl font-bold display-font text-blue md:text-xl">
-                    {item.name}
-                  </p>
-                  <p className="text-medium-gray">{item.position}</p>
-                </div>
-              </div>
+              <TeamCard key={item.name} {...item} photo={item.photo[0].url} />
             ))}
         </article>
       </section>

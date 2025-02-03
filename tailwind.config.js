@@ -26,6 +26,7 @@ module.exports = {
         'dark-grey': 'var(--dark-grey)',
         'dark-blue': 'var(--dark-blue)',
         'dark-purple': 'var(--dark-purple)',
+        lilac: 'var(--lilac)',
       },
       backgroundImage: {
         'ameba-pattern': "url('/ameba-bg.jpg')",
