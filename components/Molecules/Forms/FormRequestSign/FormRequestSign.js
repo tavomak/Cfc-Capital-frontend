@@ -79,7 +79,7 @@ const FormRequestSign = ({ setData }) => {
   return (
     <form
       ref={form}
-      className="min-w-[350px]"
+      className="min-w-96"
       onSubmit={(e) => handleSubmit(handleFormSubmit(e))}
     >
       <ReCAPTCHA

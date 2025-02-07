@@ -2,7 +2,7 @@ import { useState } from 'react';
 import useNotify from '@/hooks/useNotify';
 import Button from '@/components/Atoms/Button';
 import Card from '@/components/Atoms/Card';
-import VerticalNoRRSS from '../Signatures/VerticalNoRRSS';
+import SignatureBody from '../SignatureBody';
 
 const Signature = ({ data, setData }) => {
   const [notification] = useNotify();
@@ -61,20 +61,10 @@ const Signature = ({ data, setData }) => {
               maxWidth: '450px',
             }}
           >
-            <VerticalNoRRSS
+            <SignatureBody
+              mode="vertical-no-rrss"
               data={data}
-              direction={
-                <>
-                  Av El Bosque 92, piso 11
-                  <br />
-                  Las Condes
-                </>
-              }
-              socialLinks={{
-                instagram: 'https://www.instagram.com/cfc_capital/',
-                linkedin: 'https://www.linkedin.com/company/cfc-capital-s-a/',
-                facebook: 'https://www.facebook.com/cfccapitalchile/',
-              }}
+              direction="Av El Bosque 92, piso 11 Las Condes"
             >
               <tbody>
                 <tr>
@@ -101,7 +91,7 @@ const Signature = ({ data, setData }) => {
                   </td>
                 </tr>
               </tbody>
-            </VerticalNoRRSS>
+            </SignatureBody>
           </table>
         </Card>
         <div className="flex justify-center py-5">
