@@ -55,7 +55,7 @@ const DesktopNavigation = ({
             >
               <Link
                 href={item.path}
-                className={`block font-semibold text-neutral-600 ${itemActive(item.path) ? styles.underline : styles.navLink}`}
+                className={`block display-font font-semibold ${itemActive(item.path) ? styles.underline : styles.navLink}`}
               >
                 <p>{item.label}</p>
               </Link>
@@ -114,7 +114,7 @@ const DesktopNavigation = ({
                                     ]
                                   }
                                 </span>
-                                <p className="py-4 font-bold group-hover:text-white">
+                                <p className="display-font py-4 font-bold group-hover:text-white">
                                   {subItem.label}
                                 </p>
                                 <p className="group-hover:text-white">

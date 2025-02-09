@@ -132,12 +132,11 @@ const Home = ({ data }) => {
                 alt="edificio cfc"
                 width={1080}
                 height={1658}
-                className="w-1/2 mx-auto lg:w-5/6"
+                className="w-1/2 mr-auto sm:mx-auto lg:w-5/6"
               />
-              <figcaption className="absolute -bottom-2 -right-7 md:bottom-14 md:-right-14 w-1/2">
+              <figcaption className="absolute bottom-1/2 right-6 sm:bottom-14 sm:-right-14 w-1/3">
                 <p className="display-font text-xs font-bold text-balance text-dark-grey">
-                  Estamos ubicados en El Bosque, corazón financiero de la
-                  ciudad.
+                  Estamos ubicados en Av. El Bosque 92, Las Condes.
                 </p>
               </figcaption>
             </figure>
@@ -151,11 +150,11 @@ const Home = ({ data }) => {
       /> */}
           </div>
           <div className="lg:w-1/2 md:px-10">
-            <h1 className="text-3xl font-bold display-font text-blue">
+            <h1 className="text-base md:text-3xl font-bold display-font text-blue">
               En CFC Capital, desde el 2003, nos hemos dedicado a ser más que un
               proveedor de servicios financieros
             </h1>
-            <p className="my-5 font-semibold text-2xl">
+            <p className="text-xs md:text-2xl my-5 font-semibold">
               Somos parte de tu equipo. Trabajamos junto a empresas y PYMES,
               ofreciendo soluciones personalizadas. Entendemos tus desafíos y
               metas, y estamos aquí para acompañarte en cada paso.
@@ -221,7 +220,7 @@ const Home = ({ data }) => {
               <h2 className="w-full text-2xl font-bold display-font lg:text-4xl">
                 Creando capacidad de crecer
               </h2>
-              <p className="w-5/6 text-sm font-bold md:w-full display-font md:text-lg">
+              <p className="w-5/6 text-sm lg:font-semibold md:w-full display-font md:text-lg">
                 Fomentamos tu capacidad de desarrollar negocios que crezcan, se
                 proyecten en el tiempo y aporten al país.
               </p>

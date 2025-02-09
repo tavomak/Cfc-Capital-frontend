@@ -3,8 +3,6 @@ import FormContact from '@/components/Molecules/Forms/FormContact';
 import Image from 'next/image';
 import LayerHero from '@/components/Molecules/LayerHero';
 import Content from '@/components/Molecules/CardContentTitle';
-import Accordion from '@/components/Molecules/Accordion';
-import { accordionData } from '@/utils';
 
 const Contacto = () => (
   <Layout
@@ -64,12 +62,6 @@ const Contacto = () => (
           </div>
         </LayerHero>
       </article>
-    </section>
-    <section className="container mx-auto my-12 md:px-4">
-      <h2 className="display-font text-4xl mb-8 font-bold text-center text-dark-blue">
-        Preguntas Frecuentes
-      </h2>
-      <Accordion list={accordionData} />
     </section>
   </Layout>
 );

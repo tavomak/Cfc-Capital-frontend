@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
 const TeamCard = ({ name, photo, position, email }) => (
-  <div key={name} className="px-12 py-6 mb-4 md:w-1/3">
-    <div className="mb-3 px-md-5">
-      <div className="overflow-hidden team-img rounded-3xl">
+  <div key={name} className="px-12 py-6 mb-4 md:w-1/2 lg:w-1/3">
+    <div className="mb-3">
+      <div className="overflow-hidden rounded-3xl">
         <Image
           src={photo}
           alt={name}

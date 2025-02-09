@@ -129,11 +129,11 @@ const cfc = ({ data }) => {
           </section>
         ))}
 
-      <section className="py-20 bg-gradient-to-r from-white to-soft-blue-light">
+      <section className="container mx-auto px-4 py-20 bg-gradient-to-r from-white to-soft-blue-light">
         <h2 className="display-font md:text-4xl mb-12 text-2xl font-bold text-center text-dark-blue">
           Gerencia
         </h2>
-        <article className="container flex flex-wrap gap-20 justify-center mx-auto md:px-4">
+        <article className="container flex flex-wrap justify-center mx-auto md:px-4">
           {subManager?.length > 0 &&
             subManager.map((item) => (
               <TeamCard key={item.name} {...item} photo={item.photo[0].url} />
@@ -162,7 +162,7 @@ const cfc = ({ data }) => {
         </article>
       </section>
 
-      <section className="py-20 bg-primary-gradient-grey">
+      <section className="container mx-auto px-4 py-20">
         <h2 className="display-font md:text-4xl mb-12 text-2xl font-bold text-center text-dark-blue">
           Directorio
         </h2>

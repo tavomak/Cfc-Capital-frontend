@@ -26,7 +26,7 @@ const BlogCard = ({ imageUrl, title, description, slug }) => (
         <h2 className="display-font mb-4 text-2xl font-bold text-medium-purple">
           {title}
         </h2>
-        <p className="mb-4 leading-relaxed text-medium-grey text-md">
+        <p className="mb-4 leading-relaxed text-medium-grey text-md line-clamp-2 sm:line-clamp-none">
           {description}
         </p>
       </div>

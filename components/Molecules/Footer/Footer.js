@@ -80,11 +80,11 @@ const Footer = () => {
     }
   };
   return (
-    <footer className="text-white bg-gradient-to-r from-dark-blue to-purple">
+    <footer className="text-white bg-gradient-to-r from-dark-blue to-medium-purple">
       <div className="container px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <ul className="w-3/5 mr-auto">
+            <ul className="w-3/5 mx-auto">
               <li className="mb-4">
                 <Link href="/">
                   <Image
@@ -96,7 +96,7 @@ const Footer = () => {
                   />
                 </Link>
               </li>
-              <div className="flex items-center justify text-white gap-8 lg:justify-between">
+              <div className="w-3/4 mx-auto flex items-center justify-center text-white gap-8 lg:justify-between">
                 <li>
                   <Link href="/">
                     <Image
@@ -131,17 +131,17 @@ const Footer = () => {
                   </a>
                 </li>
               </div>
+              <a
+                className="flex justify-center text-center gap-2 mt-4 transition hover:opacity-75"
+                href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
+                target="_blank"
+              >
+                <small>
+                  Av. El Bosque 92, piso 11, <br />
+                  Las Condes, Chile
+                </small>
+              </a>
             </ul>
-            <a
-              className="flex justify-start gap-2 mt-4 transition hover:opacity-75"
-              href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
-              target="_blank"
-            >
-              <small>
-                Av. El Bosque 92, piso 11, Las Condes, <br />
-                Santiago, Chile
-              </small>
-            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-8 pt-4 border-t border-white sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 lg:border-none">

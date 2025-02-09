@@ -3,7 +3,7 @@ import FormSubscribe from '@/components/Molecules/Forms/FormSubscribe';
 
 const SubscribeSection = () => (
   <section className="text-white bg-gradient-to-l from-medium-blue to-soft-blue">
-    <div className="container items-center justify-around py-36 px-4 mx-auto lg:flex">
+    <div className="container items-center justify-around py-12 sm:py-36 px-4 mx-auto lg:flex">
       <div className="lg:w-1/2">
         <div className="md:flex gap-4">
           <div className="w-1/3">

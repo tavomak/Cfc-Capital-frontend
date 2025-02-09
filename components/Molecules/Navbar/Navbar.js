@@ -28,6 +28,7 @@ const Navbar = () => {
   const handleClickModal = (e) => {
     e.preventDefault();
     setModal(true);
+    setMenuOpen(false);
   };
 
   const itemActive = (path) => {
@@ -68,7 +69,7 @@ const Navbar = () => {
       <header
         className={`transition relative z-20 p-2 ${scrollTop > 150 ? 'bg-white sticky top-0 shadow-xl' : ''}`}
       >
-        {viewportWidth < 972 ? (
+        {viewportWidth < 1024 ? (
           <MobileNavigation
             menuOpen={menuOpen}
             setMenuOpen={setMenuOpen}
