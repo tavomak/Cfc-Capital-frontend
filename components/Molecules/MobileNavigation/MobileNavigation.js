@@ -31,165 +31,177 @@ const MobileNavigation = ({
       />
     </Link>
     <Hamburger open={menuOpen} setOpen={setMenuOpen} />
-    <ul
-      className={`px-8 flex flex-col gap-1 justify-center fixed w-screen h-screen left-0 top-0 transition-all bg-white ${menuOpen ? 'top-0' : 'top-[-120%]'}`}
+
+    <div
+      className={`fixed inset-0 bg-white transition-all ${menuOpen ? 'translate-y-0' : '-translate-y-full'}`}
     >
-      <div className="mt-12 sm:mt-0">
-        {navItems
-          .filter((item) => item.label !== 'Factoring')
-          .map((item) => (
-            <li
-              className="text-base display-font font-semibold text-blue"
-              key={item.label}
-            >
-              {item.children?.length > 1 ? (
-                <>
-                  <Link href={item.path}>
-                    <p className="mb-1">{item.label}</p>
-                  </Link>
-                  {item.children.map((subItem) => (
-                    <div
-                      key={subItem.path}
-                      className="ml-4 primary-font font-medium text-sm"
-                    >
-                      <a
-                        href={subItem.path}
-                        onClick={(e) => {
-                          setMenuOpen(false);
-                          handleClick(e, subItem.label, subItem.path);
-                        }}
-                      >
-                        <p className="mb-1">{subItem.label}</p>
-                      </a>
-                      {subItem.subnav && subItem.subnav.length > 0 && (
-                        <div>
-                          {subItem.subnav.map((subnavItem) => (
+      <div className="h-full flex flex-col">
+        <div className="h-20" />
+        <div className="flex-1 overflow-y-auto px-8">
+          <ul className="flex flex-col gap-1">
+            <div className="mt-12 sm:mt-0">
+              {navItems
+                .filter((item) => item.label !== 'Factoring')
+                .map((item) => (
+                  <li
+                    className="text-base display-font font-semibold text-blue"
+                    key={item.label}
+                  >
+                    {item.children?.length > 1 ? (
+                      <>
+                        <Link href={item.path}>
+                          <p className="mb-1">{item.label}</p>
+                        </Link>
+                        {item.children.map((subItem) => (
+                          <div
+                            key={subItem.path}
+                            className="ml-4 primary-font font-medium text-sm"
+                          >
                             <a
-                              key={subnavItem.path}
-                              href={subnavItem.path}
+                              href={subItem.path}
                               onClick={(e) => {
                                 setMenuOpen(false);
-                                handleClick(
-                                  e,
-                                  subnavItem.label,
-                                  subnavItem.path
-                                );
+                                handleClick(e, subItem.label, subItem.path);
                               }}
                             >
-                              <p className="mb-1">{subnavItem.label}</p>
+                              <p className="mb-1">{subItem.label}</p>
                             </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <Link href={item.path}>
-                  <p className="mb-1">{item.label}</p>
-                </Link>
-              )}
-            </li>
-          ))}
-      </div>
-
-      <div className="my-6">
-        <Card
-          cardClassName="rounded-xl shadow-lg py-2 px-8"
-          containerClassName="w-full mb-4"
-        >
-          <a
-            href="!#"
-            className="text-medium-blue"
-            onClick={(e) => {
-              setMenuOpen(false);
-              handleClick(e, 'Factoring', '/servicios/factoring');
-            }}
-          >
-            <div className="w-16 h-16 block">
-              <FactoringIcon />
+                            {subItem.subnav && subItem.subnav.length > 0 && (
+                              <div>
+                                {subItem.subnav.map((subnavItem) => (
+                                  <a
+                                    key={subnavItem.path}
+                                    href={subnavItem.path}
+                                    onClick={(e) => {
+                                      setMenuOpen(false);
+                                      handleClick(
+                                        e,
+                                        subnavItem.label,
+                                        subnavItem.path
+                                      );
+                                    }}
+                                  >
+                                    <p className="mb-1">{subnavItem.label}</p>
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </>
+                    ) : (
+                      <Link href={item.path}>
+                        <p className="mb-1">{item.label}</p>
+                      </Link>
+                    )}
+                  </li>
+                ))}
             </div>
-            <h1 className="display-font font-semibold">Factoring</h1>
-          </a>
-        </Card>
-        <div className="flex gap-12">
-          <Card
-            cardClassName="rounded-xl shadow-lg p-6"
-            containerClassName="w-full"
-          >
-            <a
-              href="!#"
-              className="text-soft-blue"
-              onClick={(e) => {
-                setMenuOpen(false);
-                handleClick(e, 'Factoring', '/servicios/leasing');
-              }}
-            >
-              <div className="w-16 h-16 block">
-                <LeasingIcon />
+
+            <div className="my-6">
+              <Card
+                cardClassName="rounded-xl shadow-lg py-2 px-8"
+                containerClassName="w-full mb-4"
+              >
+                <a
+                  href="!#"
+                  className="text-medium-blue"
+                  onClick={(e) => {
+                    setMenuOpen(false);
+                    handleClick(e, 'Factoring', '/servicios/factoring');
+                  }}
+                >
+                  <div className="w-16 h-16 block">
+                    <FactoringIcon />
+                  </div>
+                  <h1 className="display-font font-semibold">Factoring</h1>
+                </a>
+              </Card>
+              <div className="flex gap-12">
+                <Card
+                  cardClassName="rounded-xl shadow-lg p-6"
+                  containerClassName="w-full"
+                >
+                  <a
+                    href="!#"
+                    className="text-soft-blue"
+                    onClick={(e) => {
+                      setMenuOpen(false);
+                      handleClick(e, 'Factoring', '/servicios/leasing');
+                    }}
+                  >
+                    <div className="w-16 h-16 block">
+                      <LeasingIcon />
+                    </div>
+                    <h1 className="display-font font-semibold">Leasing</h1>
+                  </a>
+                </Card>
+                <Card
+                  cardClassName="rounded-xl shadow-lg p-6"
+                  containerClassName="w-full"
+                >
+                  <a
+                    href="!#"
+                    className="text-medium-purple"
+                    onClick={(e) => {
+                      setMenuOpen(false);
+                      handleClick(e, 'Factoring', '/servicios/leaseback');
+                    }}
+                  >
+                    <div className="w-16 h-16 block">
+                      <LeasebackIcon />
+                    </div>
+                    <h1 className="display-font font-semibold">Leaseback</h1>
+                  </a>
+                </Card>
               </div>
-              <h1 className="display-font font-semibold">Leasing</h1>
-            </a>
-          </Card>
-          <Card
-            cardClassName="rounded-xl shadow-lg p-6"
-            containerClassName="w-full"
+            </div>
+
+            <ul className="flex gap-2 justify-between xl:gap-4">
+              <li>
+                <a
+                  href="!#"
+                  className="py-3 inline-block btn btn-primary"
+                  onClick={handleClickModal}
+                >
+                  Acceso Clientes
+                </a>
+              </li>
+              <li>
+                <a
+                  href="http://cfc.fapro.app/"
+                  target="_blank"
+                  className="py-3 inline-block btn btn-secondary"
+                  rel="noreferrer"
+                >
+                  Enrólate aquí
+                </a>
+              </li>
+            </ul>
+
+            <Link href="/canal-de-denuncias" className="my-4">
+              <p className="text-base display-font text-blue">
+                Canal de denuncias
+              </p>
+            </Link>
+          </ul>
+        </div>
+        {/* Fixed close button at bottom */}
+        <div className="flex justify-center p-4 bg-white">
+          <button
+            type="button"
+            className="h-14 w-14 z-20"
+            aria-label="Close"
+            onClick={() => setMenuOpen(false)}
           >
-            <a
-              href="!#"
-              className="text-medium-purple"
-              onClick={(e) => {
-                setMenuOpen(false);
-                handleClick(e, 'Factoring', '/servicios/leaseback');
-              }}
-            >
-              <div className="w-16 h-16 block">
-                <LeasebackIcon />
-              </div>
-              <h1 className="display-font font-semibold">Leaseback</h1>
-            </a>
-          </Card>
+            <div className="relative">
+              <span className="absolute top-1/2 left-1/2 h-1 w-8 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-full bg-medium-purple" />
+              <span className="absolute top-1/2 left-1/2 h-1 w-8 -translate-x-1/2 -translate-y-1/2 -rotate-45 rounded-full bg-medium-purple" />
+            </div>
+          </button>
         </div>
       </div>
-
-      <ul className="flex gap-2 justify-between xl:gap-4">
-        <li>
-          <a
-            href="!#"
-            className="py-3 inline-block btn btn-primary"
-            onClick={handleClickModal}
-          >
-            Acceso Clientes
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://cfc.fapro.app/"
-            target="_blank"
-            className="py-3 inline-block btn btn-secondary"
-            rel="noreferrer"
-          >
-            Enrólate aquí
-          </a>
-        </li>
-      </ul>
-
-      <Link href="/canal-de-denuncias" className="my-4">
-        <p className="text-base display-font text-blue">Canal de denuncias</p>
-      </Link>
-
-      <button
-        type="button"
-        className="h-14 w-14 z-20 mx-auto"
-        aria-label="Close"
-        onClick={() => setMenuOpen(false)}
-      >
-        <div className="relative">
-          <span className="absolute top-1/2 left-1/2 h-1 w-8 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-full bg-medium-purple" />
-          <span className="absolute top-1/2 left-1/2 h-1 w-8 -translate-x-1/2 -translate-y-1/2 -rotate-45 rounded-full bg-medium-purple" />
-        </div>
-      </button>
-    </ul>
+    </div>
   </nav>
 );
 
