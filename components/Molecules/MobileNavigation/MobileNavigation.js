@@ -36,7 +36,7 @@ const MobileNavigation = ({
       className={`fixed inset-0 bg-white transition-all ${menuOpen ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="h-full flex flex-col">
-        <div className="h-20" />
+        <div className="h-14" />
         <div className="flex-1 overflow-y-auto px-8">
           <ul className="flex flex-col gap-1">
             <div className="mt-12 sm:mt-0">
