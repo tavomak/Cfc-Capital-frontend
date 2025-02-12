@@ -28,7 +28,7 @@ export default function Post({ post, morePosts }) {
         <>
           <Head>
             <title>{title}</title>
-            <meta property="og:image" content={currentPost.coverImage.url} />
+            <meta property="og:image" content={currentPost.coverImage?.url} />
           </Head>
 
           <article className="main bg-gradient-to-r from-white to-soft-blue-light">
@@ -37,7 +37,7 @@ export default function Post({ post, morePosts }) {
                 <div className="md:w-1/2">
                   <div className="overflow-hidden h-96">
                     <Image
-                      src={`${currentPost.coverImage.url}`}
+                      src={`${currentPost.coverImage?.url}`}
                       alt={currentPost.title}
                       width={500}
                       height={380}
@@ -63,7 +63,7 @@ export default function Post({ post, morePosts }) {
                   <iframe
                     className="w-full aspect-video"
                     title="Embed video"
-                    src={`https://www.youtube.com/embed/${currentPost.video}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
+                    src={`https://www.youtube.com/embed/${currentPost?.video}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -72,7 +72,7 @@ export default function Post({ post, morePosts }) {
               )}
               <div className="my-10">
                 <div className="md:w-4/5">
-                  {currentPost.tags.length > 0 && (
+                  {currentPost.tags?.length > 0 && (
                     <span className="w-fit px-3 py-1 text-sm bg-sky-100 text-soft-blue rounded-md">
                       {currentPost.tags}
                     </span>

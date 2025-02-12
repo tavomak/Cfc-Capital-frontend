@@ -16,7 +16,6 @@ const News = ({ posts, categories }) => {
     filterPosts(posts, 'Factoring').filter((item, key) => key < 6)
   );
   const [prensaPosts] = useState(filterPosts(posts, 'Prensa'));
-  // const [consejosPosts] = useState(filterPosts(posts, 'Consejos'));
 
   const firstPost = posts[0];
 
@@ -51,10 +50,10 @@ const News = ({ posts, categories }) => {
 
                   {firstPost.author && (
                     <div className="flex items-center gap-3 my-6">
-                      {firstPost.author.picture && (
+                      {firstPost.author?.picture && (
                         <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
                           <Image
-                            src={firstPost.author.picture.url}
+                            src={firstPost.author.picture?.url}
                             alt={`${firstPost.author.name} profile picture`}
                             fill
                             className="object-cover"
@@ -102,7 +101,7 @@ const News = ({ posts, categories }) => {
                   />
                 ))}
           </div>
-          {prensaPosts.length > 9 && (
+          {prensaPosts?.length > 9 && (
             <div className="text-center mb-8">
               <Link
                 className="btn btn-primary px-6"
@@ -121,7 +120,7 @@ const News = ({ posts, categories }) => {
             Explorar por categoría
           </h3>
           <ul className="w-11/12 mx-auto flex flex-wrap gap-6 justify-center">
-            {categories.map((item) => (
+            {categories?.map((item) => (
               <li
                 key={item.slug}
                 className="px-4 py-1 bg-soft-medium-blue rounded-xl"
@@ -156,7 +155,7 @@ const News = ({ posts, categories }) => {
                     >
                       <Image
                         className="transition scale-100 group-hover:scale-110"
-                        src={item.coverImage.url}
+                        src={item.coverImage?.url}
                         alt={item.title}
                         width={500}
                         height={160}
@@ -198,7 +197,7 @@ const News = ({ posts, categories }) => {
                   Explorar por categoría
                 </h3>
                 <ul className="mt-8">
-                  {categories.map((item) => (
+                  {categories?.map((item) => (
                     <li key={item.slug} className="p-3">
                       <a
                         href={`/prensa/categoria/${item.slug}`}

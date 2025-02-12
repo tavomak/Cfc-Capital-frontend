@@ -6,7 +6,6 @@ import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
 import NewCard from '@/components/Molecules/NewCard';
 import Image from 'next/image';
 import StepCard from '@/components/Molecules/StepCard';
-// import CardLayout from '@/components/Templates/CardLayout';
 
 const Category = ({ posts, banner, service, categoryName, categories }) => {
   const router = useRouter();
@@ -30,24 +29,15 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
       ) : (
         <>
           <Head>
-            <title>{banner.title} | CFC Capital</title>
+            <title>{banner?.title} | CFC Capital</title>
           </Head>
-
-          {/* {banner?.image && (
-            <LayerHero
-              title={banner.title}
-              subtitle={banner.subTitle}
-              imageUrl={banner.image.url}
-              content={banner.content?.html}
-            />
-          )} */}
 
           <section className="container mx-auto px-4 py-20">
             {firstPost && (
               <a
                 href={`/prensa/${firstPost.slug}`}
                 className="block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl "
-                key={firstPost.id}
+                key={firstPost?.id}
               >
                 <div className="md:w-1/2 relative overflow-hidden">
                   <Image
@@ -67,10 +57,10 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
 
                     {firstPost.author && (
                       <div className="flex items-center gap-3 my-6">
-                        {firstPost.author.picture && (
+                        {firstPost.author?.picture && (
                           <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
                             <Image
-                              src={firstPost.author.picture.url}
+                              src={firstPost.author.picture?.url}
                               alt={`${firstPost.author.name} profile picture`}
                               fill
                               className="object-cover"
@@ -79,17 +69,17 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                         )}
                         <div>
                           <p className="text-sm font-semibold text-dark-grey">
-                            {firstPost.author.name}
+                            {firstPost.author?.name}
                           </p>
                           <p className="text-xs text-dark-grey">
-                            {firstPost.author.title}
+                            {firstPost.author?.title}
                           </p>
                         </div>
                       </div>
                     )}
 
                     <p className="text-dark-grey md:text-base text-xs leading-relaxed">
-                      {firstPost.excerpt}
+                      {firstPost?.excerpt}
                     </p>
                   </div>
                 </div>
@@ -119,7 +109,7 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
               ))}
           </section>
 
-          {service && service.length > 0 && (
+          {service?.length > 0 && (
             <section className="py-24 bg-dark-blue">
               <div className="container mx-auto">
                 <h2 className="text-white text-center py-4 text-2xl font-bold display-font">
