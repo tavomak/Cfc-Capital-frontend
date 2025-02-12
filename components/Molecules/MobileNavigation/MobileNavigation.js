@@ -17,7 +17,7 @@ const MobileNavigation = ({
     className="container relative flex items-center justify-between mx-auto md:px-4"
     aria-label="Global"
   >
-    <Link href="/" className="z-30">
+    <Link href="/" className="z-40">
       <Image
         src="/logo-cfc.svg"
         alt="Cfc Capital Logo"
@@ -33,7 +33,7 @@ const MobileNavigation = ({
     <Hamburger open={menuOpen} setOpen={setMenuOpen} />
 
     <div
-      className={`fixed inset-0 bg-white transition-all ${menuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+      className={`fixed inset-0 bg-white backdrop-blur-md opacity-95 transition-all ${menuOpen ? 'translate-y-0' : '-translate-y-full'}`}
     >
       <div className="h-full flex flex-col">
         <div className="h-14" />
@@ -127,7 +127,7 @@ const MobileNavigation = ({
                     className="text-soft-blue"
                     onClick={(e) => {
                       setMenuOpen(false);
-                      handleClick(e, 'Factoring', '/servicios/leasing');
+                      handleClick(e, 'Leasing', '/servicios/leasing');
                     }}
                   >
                     <div className="w-16 h-16 block">
@@ -145,7 +145,7 @@ const MobileNavigation = ({
                     className="text-medium-purple"
                     onClick={(e) => {
                       setMenuOpen(false);
-                      handleClick(e, 'Factoring', '/servicios/leaseback');
+                      handleClick(e, 'Leaseback', '/servicios/leaseback');
                     }}
                   >
                     <div className="w-16 h-16 block">
@@ -185,20 +185,6 @@ const MobileNavigation = ({
               </p>
             </Link>
           </ul>
-        </div>
-        {/* Fixed close button at bottom */}
-        <div className="flex justify-center p-4 bg-white">
-          <button
-            type="button"
-            className="h-14 w-14 z-20"
-            aria-label="Close"
-            onClick={() => setMenuOpen(false)}
-          >
-            <div className="relative">
-              <span className="absolute top-1/2 left-1/2 h-1 w-8 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-full bg-medium-purple" />
-              <span className="absolute top-1/2 left-1/2 h-1 w-8 -translate-x-1/2 -translate-y-1/2 -rotate-45 rounded-full bg-medium-purple" />
-            </div>
-          </button>
         </div>
       </div>
     </div>

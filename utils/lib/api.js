@@ -93,6 +93,15 @@ export const getAllPosts = () =>
           slug
           title
           video
+          excerpt
+          tags
+          author {
+            name
+            title
+            picture {
+              url
+            }
+          }
           coverImage {
             url
           }
@@ -125,11 +134,17 @@ export const getPostsByCategoryAndProcess = (slug) => {
             id
             slug
             title
+            excerpt
+            tags
             coverImage {
               url
             }
             author {
               name
+              title
+              picture {
+                url
+              }
             }
           }
         }
@@ -167,9 +182,23 @@ export const getPostAndMorePosts = (slug) =>
           title
           slug
           video
+          excerpt
+          tags
+          author {
+            name
+            title
+            picture {
+              url
+            }
+          }
           coverImage {
             url
           }
+          categories {
+            id
+            name
+          }
+          createdAt
         }
         morePosts: posts(
           orderBy: createdAt_DESC
@@ -179,6 +208,15 @@ export const getPostAndMorePosts = (slug) =>
           id
           title
           slug
+          excerpt
+          tags
+          author {
+            name
+            title
+            picture {
+              url
+            }
+          }
           coverImage {
             url
           }

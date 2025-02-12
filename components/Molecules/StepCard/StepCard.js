@@ -11,7 +11,7 @@ const StepCard = ({ name, icon, description }) => (
     <p className="text-xl font-semibold text-center display-font text-blue">
       {name}
     </p>
-    <p className="mt-5 text-sm text-center ">{description}</p>
+    <p className="mt-5 text-sm text-center">{description}</p>
   </Card>
 );
 export default StepCard;

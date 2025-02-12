@@ -6,9 +6,21 @@ const Hamburger = ({ open = false, setOpen }) => (
     onClick={() => setOpen(!open)}
   >
     <div className="relative grid gap-1.5 justify-items-center">
-      <span className="h-[4px] w-8 rounded-full bg-medium-purple transition" />
-      <span className="h-[4px] w-8 rounded-full bg-medium-purple transition" />
-      <span className="h-[4px] w-8 rounded-full bg-medium-purple" />
+      <span
+        className={`h-0.5 w-6 rounded-full bg-medium-purple transition-transform duration-300 ease-in-out ${
+          open ? 'transform rotate-45 translate-y-2' : ''
+        }`}
+      />
+      <span
+        className={`h-0.5 w-6 rounded-full bg-medium-purple transition-opacity duration-300 ease-in-out ${
+          open ? 'opacity-0' : ''
+        }`}
+      />
+      <span
+        className={`h-0.5 w-6 rounded-full bg-medium-purple transition-transform duration-300 ease-in-out ${
+          open ? 'transform -rotate-45 -translate-y-2' : ''
+        }`}
+      />
     </div>
   </button>
 );
