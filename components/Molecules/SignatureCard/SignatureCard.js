@@ -1,7 +1,8 @@
 import { formatPhoneNumberString } from '@/utils';
+import Card from '@/components/Atoms/Card';
 import styles from './styles.module.css';
 
-const SignatureBody = ({
+const SignatureCard = ({
   mode,
   data,
   children,
@@ -658,16 +659,38 @@ const SignatureBody = ({
     </tbody>
   );
 
-  switch (mode) {
-    case 'vertical-rrss':
-      return renderVerticalRRSS();
-    case 'horizontal':
-      return renderHorizontal();
-    case 'vertical-no-rrss':
-      return renderVerticalNoRRSS();
-    default:
-      return renderVerticalRRSS();
-  }
+  const renderSignatureBody = () => {
+    switch (mode) {
+      case 'vertical-rrss':
+        return renderVerticalRRSS();
+      case 'horizontal':
+        return renderHorizontal();
+      case 'vertical-no-rrss':
+        return renderVerticalNoRRSS();
+      default:
+        return renderVerticalRRSS();
+    }
+  };
+
+  return (
+    <Card cardClassName="shadow py-14 pb-20 mb-5 flex items-center justify-center">
+      <table
+        id="signatureTable"
+        cellPadding="0"
+        cellSpacing="0"
+        border="0"
+        style={{
+          verticalAlign: 'middle',
+          fontSize: 'medium',
+          fontFamily: 'Arial',
+          width: '100%',
+          maxWidth: '450px',
+        }}
+      >
+        {renderSignatureBody()}
+      </table>
+    </Card>
+  );
 };
 
-export default SignatureBody;
+export default SignatureCard;

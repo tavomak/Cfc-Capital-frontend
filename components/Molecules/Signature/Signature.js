@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import useNotify from '@/hooks/useNotify';
 import Button from '@/components/Atoms/Button';
-import Card from '@/components/Atoms/Card';
-import SignatureBody from '../SignatureBody';
+import SignatureCard from '../SignatureCard';
 
 const Signature = ({ data, setData }) => {
   const [notification] = useNotify();
@@ -47,53 +46,37 @@ const Signature = ({ data, setData }) => {
         <h5 className="mb-10 font-bold text-center text-blue">
           Previsualización de firma de correo
         </h5>
-        <Card cardClassName="shadow py-14 pb-20 mb-5 flex items-center justify-center">
-          <table
-            id="signatureTable"
-            cellPadding="0"
-            cellSpacing="0"
-            border="0"
-            style={{
-              verticalAlign: 'middle',
-              fontSize: 'medium',
-              fontFamily: 'Arial',
-              width: '100%',
-              maxWidth: '450px',
-            }}
-          >
-            <SignatureBody
-              mode="vertical-no-rrss"
-              data={data}
-              direction="Av El Bosque 92, piso 11 Las Condes"
-            >
-              <tbody>
-                <tr>
-                  <td
+        <SignatureCard
+          mode="vertical-no-rrss"
+          data={data}
+          direction="Av El Bosque 92, piso 11 Las Condes"
+        >
+          <tbody>
+            <tr>
+              <td
+                style={{
+                  paddingBottom: '20px',
+                  paddingRight: '20px',
+                }}
+              >
+                <a href="https://cfccapital.cl/" target="_blank">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="http://imgfz.com/i/kiyjBA9.png"
+                    // src="/CFC-logo.png"
+                    width="160"
                     style={{
-                      paddingBottom: '20px',
-                      paddingRight: '20px',
+                      display: 'block',
+                      maxWidth: '160px',
+                      margin: '0 auto',
                     }}
-                  >
-                    <a href="https://cfccapital.cl/" target="_blank">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="http://imgfz.com/i/kiyjBA9.png"
-                        // src="/CFC-logo.png"
-                        width="160"
-                        style={{
-                          display: 'block',
-                          maxWidth: '160px',
-                          margin: '0 auto',
-                        }}
-                        alt="CFC Capital"
-                      />
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </SignatureBody>
-          </table>
-        </Card>
+                    alt="CFC Capital"
+                  />
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </SignatureCard>
         <div className="flex justify-center py-5">
           <Button
             className="btn btn-primary"

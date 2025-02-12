@@ -39,8 +39,6 @@ export const getServiceBySlug = (slug) =>
             markdown
           }
           title
-          label
-          heroDescription
           serviceContent {
             id
             color
@@ -92,16 +90,6 @@ export const getAllPosts = () =>
           id
           slug
           title
-          video
-          excerpt
-          tags
-          author {
-            name
-            title
-            picture {
-              url
-            }
-          }
           coverImage {
             url
           }
@@ -134,17 +122,11 @@ export const getPostsByCategoryAndProcess = (slug) => {
             id
             slug
             title
-            excerpt
-            tags
             coverImage {
               url
             }
             author {
               name
-              title
-              picture {
-                url
-              }
             }
           }
         }
@@ -170,35 +152,14 @@ export const getPostAndMorePosts = (slug) =>
         post(where: { slug: $slug }) {
           id
           content {
-            json
-            references {
-              ... on Asset {
-                id
-                url
-                mimeType
-              }
-            }
+            html
           }
           title
           slug
           video
-          excerpt
-          tags
-          author {
-            name
-            title
-            picture {
-              url
-            }
-          }
           coverImage {
             url
           }
-          categories {
-            id
-            name
-          }
-          createdAt
         }
         morePosts: posts(
           orderBy: createdAt_DESC
@@ -248,15 +209,6 @@ export const getPageBySlugAndServices = (slug) =>
             }
             frontImage {
               id
-              url
-            }
-          }
-          posts(orderBy: createdAt_DESC, first: 1) {
-            id
-            slug
-            title
-            excerpt
-            coverImage {
               url
             }
           }
