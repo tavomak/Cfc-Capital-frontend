@@ -5,7 +5,7 @@ import ClientsIcon from '@/components/Atoms/ClientsIcon';
 import StarIcon from '@/components/Atoms/StarIcon';
 import DolarIcon from '@/components/Atoms/DolarIcon';
 
-import { getTeamMembers, highlights } from '@/utils';
+import { getTeamMembers } from '@/utils';
 import Layout from '@/components/Templates/Layout';
 import Link from 'next/link';
 import StepCard from '@/components/Molecules/StepCard';
@@ -27,7 +27,7 @@ const cld = new Cloudinary({
 const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
 
 const cfc = ({ data }) => {
-  const { directors, managers, team, subManager } = data;
+  const { directors, managers, team, subManager, highlights } = data;
   return (
     <Layout
       title="Somos CFC"

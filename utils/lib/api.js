@@ -260,6 +260,12 @@ export const getPageBySlugAndServices = (slug) =>
               url
             }
           }
+          highlights {
+            title
+            description
+            icon
+            color
+          }
           posts(orderBy: createdAt_DESC, first: 1) {
             id
             slug
@@ -337,6 +343,12 @@ export const getTeamMembers = () =>
     query: gql`
       query Teams {
         teams {
+          highlights {
+            title
+            description
+            icon
+            color
+          }
           team {
             description
             email

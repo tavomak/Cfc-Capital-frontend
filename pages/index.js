@@ -11,7 +11,6 @@ import {
   getPageBySlugAndServices,
   mediaLogos,
   steps,
-  highlights,
   accordionData,
 } from '@/utils';
 
@@ -194,7 +193,7 @@ const Home = ({ data }) => {
           Tenemos la experiencia para enfrentar el futuro
         </h2>
         <article className="md:flex">
-          {highlights.map((item) => (
+          {data.pages.highlights.map((item) => (
             <StepCard
               key={item.title}
               name={item.title}

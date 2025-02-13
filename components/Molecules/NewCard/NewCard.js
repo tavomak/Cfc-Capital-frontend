@@ -7,10 +7,10 @@ const NewCard = ({ title, slug, image, author, excerpt, tags }) => (
     header={
       <a
         href={`/prensa/${slug}`}
-        className="p-2 overflow-hidden min-h-64 group"
+        className="p-2 overflow-hidden min-h-64 group rounded-2xl"
       >
         <Image
-          className="transition scale-100 group-hover:scale-110"
+          className="rounded-2xl transition scale-100 group-hover:scale-110"
           src={image}
           alt={title}
           width={500}

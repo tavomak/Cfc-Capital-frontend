@@ -199,28 +199,6 @@ export const sliderSettings = {
   customPaging: () => <span className="cfc-dots-list-item" />,
 };
 
-export const highlights = [
-  {
-    title: 'Fundada en 2003',
-    description: 'Especializados en el segmento de empresas y pymes.',
-    icon: 'star',
-    color: 'blue',
-  },
-  {
-    title: '+4000 Clientes',
-    description:
-      'Detrás de cada financiamiento, hay sueños que ayudamos a convertir en realidad.',
-    icon: 'people',
-    color: 'purple',
-  },
-  {
-    title: 'US $700 MM',
-    description: 'Contribuyendo al desarrollo del país.',
-    icon: 'money',
-    color: 'soft-blue',
-  },
-];
-
 export const accordionData = [
   {
     title: '¿Qué necesito para evaluar una primera operación?',
