@@ -28,10 +28,10 @@ const News = ({ posts, categories }) => {
             posts.slice(0, 1).map((firstPost) => (
               <a
                 href={`/prensa/${firstPost.slug}`}
-                className="block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl "
+                className="p-4 block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl "
                 key={firstPost.id}
               >
-                <div className="md:w-1/2 relative overflow-hidden">
+                <div className="md:w-1/2 relative overflow-hidden rounded-2xl">
                   <Image
                     src={firstPost.coverImage?.url}
                     alt={firstPost.title}
@@ -140,20 +140,19 @@ const News = ({ posts, categories }) => {
             Factoring
           </h2>
           <article className="flex">
-            <div className="w-full lg:w-2/3">
+            <div className="w-full space-y-8 lg:w-2/3 mb-8">
               {factoringPosts?.length > 0 &&
                 factoringPosts.slice(0, 3).map((item) => (
                   <Card
                     key={item.slug}
-                    containerClassName="p-4 w-full"
-                    cardClassName="flex items-center bg-white gap-4 rounded-xl group shadow-lg hover:shadow-none border-none"
+                    cardClassName="p-4 flex items-center bg-white gap-4 group shadow-lg hover:shadow-none border-none"
                   >
                     <a
                       href={`/prensa/${item.slug}`}
-                      className="overflow-hidden min-w-32 md:min-w-64 rounded-l-2xl group"
+                      className="overflow-hidden rounded-xl min-w-32 md:min-w-64 group"
                     >
                       <Image
-                        className="transition scale-100 group-hover:scale-110"
+                        className="rounded-xl overflow-hidden transition scale-100 group-hover:scale-110"
                         src={item.coverImage?.url}
                         alt={item.title}
                         width={500}
@@ -176,7 +175,7 @@ const News = ({ posts, categories }) => {
                   </Card>
                 ))}
               {factoringPosts.length > 3 && (
-                <div className="px-4 my-8">
+                <div className="px-4">
                   <Link
                     className="btn btn-primary px-6"
                     href="/prensa/categoria/factoring"

@@ -36,16 +36,16 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
               posts.slice(0, 1).map((firstPost) => (
                 <a
                   href={`/prensa/${firstPost.slug}`}
-                  className="block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl"
-                  key={firstPost?.id}
+                  className="p-4 block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl "
+                  key={firstPost.id}
                 >
-                  <div className="md:w-1/2 relative overflow-hidden">
+                  <div className="md:w-1/2 relative overflow-hidden rounded-2xl">
                     <Image
                       src={firstPost.coverImage?.url}
                       alt={firstPost.title}
                       width={800}
                       height={600}
-                      className="h-80 md:h-full w-full object-cover transition-all scale-100 group-hover:scale-110"
+                      className="h-80 md:h-full w-full object-contain transition-transform duration-300 scale-100 group-hover:scale-110"
                     />
                   </div>
 
@@ -69,17 +69,17 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                           )}
                           <div>
                             <p className="text-sm font-semibold text-dark-grey">
-                              {firstPost.author?.name}
+                              {firstPost.author.name}
                             </p>
                             <p className="text-xs text-dark-grey">
-                              {firstPost.author?.title}
+                              {firstPost.author.title}
                             </p>
                           </div>
                         </div>
                       )}
 
                       <p className="text-dark-grey md:text-base text-xs leading-relaxed">
-                        {firstPost?.excerpt}
+                        {firstPost.excerpt}
                       </p>
                     </div>
                   </div>
