@@ -1,10 +1,8 @@
 import { useRouter } from 'next/router';
-
 import { getAllPosts, getPostAndMorePosts, markdownToHtml } from '@/utils';
 import Spinner from '@/components/Atoms/Spinner';
 import Head from 'next/head';
 import Image from 'next/image';
-
 import Layout from '@/components/Templates/Layout';
 import RichContent from '@/components/Atoms/RichContent';
 import NewCard from '@/components/Molecules/NewCard';
@@ -12,7 +10,6 @@ import NewCard from '@/components/Molecules/NewCard';
 export default function Post({ post, morePosts }) {
   const title = `${post?.article?.title} | CFC Capital`;
   const currentPost = post?.article;
-  console.log(morePosts);
 
   const router = useRouter();
   return (

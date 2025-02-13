@@ -17,8 +17,6 @@ const News = ({ posts, categories }) => {
   );
   const [prensaPosts] = useState(filterPosts(posts, 'Prensa'));
 
-  const firstPost = posts[0];
-
   return (
     <Layout
       title="Blog y prensa"
@@ -26,58 +24,59 @@ const News = ({ posts, categories }) => {
     >
       <div className="bg-soft-light-blue">
         <section className="container mx-auto px-4 py-20">
-          {firstPost && (
-            <a
-              href={`/prensa/${firstPost.slug}`}
-              className="block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl "
-              key={firstPost.id}
-            >
-              <div className="md:w-1/2 relative overflow-hidden">
-                <Image
-                  src={firstPost.coverImage?.url}
-                  alt={firstPost.title}
-                  width={800}
-                  height={600}
-                  className="h-80 md:h-full w-full object-contain transition-transform duration-300 scale-100 group-hover:scale-110"
-                />
-              </div>
-
-              <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-                <div className="max-w-md">
-                  <h2 className="display-font md:text-2xl text-base font-semibold text-blue">
-                    {firstPost.title}
-                  </h2>
-
-                  {firstPost.author && (
-                    <div className="flex items-center gap-3 my-6">
-                      {firstPost.author?.picture && (
-                        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
-                          <Image
-                            src={firstPost.author.picture?.url}
-                            alt={`${firstPost.author.name} profile picture`}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      )}
-                      <div>
-                        <p className="text-sm font-semibold text-dark-grey">
-                          {firstPost.author.name}
-                        </p>
-                        <p className="text-xs text-dark-grey">
-                          {firstPost.author.title}
-                        </p>
-                      </div>
-                    </div>
-                  )}
-
-                  <p className="text-dark-grey md:text-base text-xs leading-relaxed">
-                    {firstPost.excerpt}
-                  </p>
+          {posts?.length > 1 &&
+            posts.slice(0, 1).map((firstPost) => (
+              <a
+                href={`/prensa/${firstPost.slug}`}
+                className="block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl "
+                key={firstPost.id}
+              >
+                <div className="md:w-1/2 relative overflow-hidden">
+                  <Image
+                    src={firstPost.coverImage?.url}
+                    alt={firstPost.title}
+                    width={800}
+                    height={600}
+                    className="h-80 md:h-full w-full object-contain transition-transform duration-300 scale-100 group-hover:scale-110"
+                  />
                 </div>
-              </div>
-            </a>
-          )}
+
+                <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                  <div className="max-w-md">
+                    <h2 className="display-font md:text-2xl text-base font-semibold text-blue">
+                      {firstPost.title}
+                    </h2>
+
+                    {firstPost.author && (
+                      <div className="flex items-center gap-3 my-6">
+                        {firstPost.author?.picture && (
+                          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                            <Image
+                              src={firstPost.author.picture?.url}
+                              alt={`${firstPost.author.name} profile picture`}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        )}
+                        <div>
+                          <p className="text-sm font-semibold text-dark-grey">
+                            {firstPost.author.name}
+                          </p>
+                          <p className="text-xs text-dark-grey">
+                            {firstPost.author.title}
+                          </p>
+                        </div>
+                      </div>
+                    )}
+
+                    <p className="text-dark-grey md:text-base text-xs leading-relaxed">
+                      {firstPost.excerpt}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            ))}
         </section>
 
         <section className="container mx-auto">
