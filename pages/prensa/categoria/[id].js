@@ -93,20 +93,22 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
             </div>
           )}
 
-          <section className="container grid lg:grid-cols-3 mx-auto mb-12">
-            {posts?.length > 0 &&
-              posts.map((item) => (
-                <NewCard
-                  key={item.id}
-                  title={item.title}
-                  id={item.id}
-                  slug={item.slug}
-                  image={item.coverImage.url}
-                  author={item.author}
-                  tags={item.tags}
-                  excerpt={item.excerpt}
-                />
-              ))}
+          <section className="container mx-auto">
+            <article className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 mb-8">
+              {posts?.length > 0 &&
+                posts.map((item) => (
+                  <NewCard
+                    key={item.id}
+                    title={item.title}
+                    id={item.id}
+                    slug={item.slug}
+                    image={item.coverImage.url}
+                    author={item.author}
+                    tags={item.tags}
+                    excerpt={item.excerpt}
+                  />
+                ))}
+            </article>
           </section>
 
           {service?.length > 0 && (

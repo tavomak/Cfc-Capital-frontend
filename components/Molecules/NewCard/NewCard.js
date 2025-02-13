@@ -3,10 +3,12 @@ import Image from 'next/image';
 
 const NewCard = ({ title, slug, image, author, excerpt, tags }) => (
   <Card
-    containerClassName="p-2 w-3/4 lg:w-11/12 mx-auto mb-4"
-    cardClassName="bg-sky-50 flex flex-col min-w-72 group p-4 rounded-xl h-full hover:shadow-none"
+    cardClassName="p-4 w-3/4 md:w-full mx-auto bg-sky-50 flex flex-col group hover:shadow-none"
     header={
-      <a href={`/prensa/${slug}`} className="overflow-hidden min-h-64 group">
+      <a
+        href={`/prensa/${slug}`}
+        className="p-2 overflow-hidden min-h-64 group"
+      >
         <Image
           className="transition scale-100 group-hover:scale-110"
           src={image}
@@ -18,6 +20,7 @@ const NewCard = ({ title, slug, image, author, excerpt, tags }) => (
             height: '100%',
             maxHeight: '16rem',
             objectPosition: 'top',
+            objectFit: 'cover',
           }}
         />
       </a>

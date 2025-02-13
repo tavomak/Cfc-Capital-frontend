@@ -83,7 +83,7 @@ const News = ({ posts, categories }) => {
           <h2 className="px-4 mb-6 text-lg font-semibold display-font text-medium-blue">
             Últimas notas de prensa
           </h2>
-          <div className="grid lg:grid-cols-3">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 mb-8">
             {prensaPosts?.length > 0 &&
               prensaPosts
                 .slice(0, 9)

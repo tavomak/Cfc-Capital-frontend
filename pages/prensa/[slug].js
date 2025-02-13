@@ -101,7 +101,7 @@ export default function Post({ post, morePosts }) {
                   Más noticias
                 </h2>
               </div>
-              <div className="grid lg:grid-cols-3">
+              <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 mb-8">
                 {morePosts?.length > 0 &&
                   morePosts
                     .slice(0, 3)
