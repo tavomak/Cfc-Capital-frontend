@@ -266,6 +266,14 @@ export const getPageBySlugAndServices = (slug) =>
             icon
             color
           }
+          accordion {
+            title
+            text
+          }
+          steps {
+            description
+            subtitle
+          }
           posts(orderBy: createdAt_DESC, first: 1) {
             id
             slug

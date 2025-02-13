@@ -199,37 +199,6 @@ export const sliderSettings = {
   customPaging: () => <span className="cfc-dots-list-item" />,
 };
 
-export const accordionData = [
-  {
-    title: '¿Qué necesito para evaluar una primera operación?',
-    text: 'Te apoyamos desde la factura N° 1. ¿Tienes dicom? No te preocupes. Envíanos tu carpeta tributaria y factura emitida, nosotros nos encargamos del resto.',
-  },
-  {
-    title: '¿En cuánto tiempo obtengo mi financiamiento?',
-    text: 'En CFC Capital puedes abrir una línea, realizar tu primera operación en sólo horas y sin papeleos.',
-  },
-  {
-    title: '¿Tengo Dicom, puedo operar?',
-    text: 'No te preocupes. Envíanos tu carpeta tributaria y factura emitida, nosotros nos encargamos del resto.',
-  },
-];
-
-export const steps = [
-  {
-    title: 'Solicita tu clave de acceso',
-    description:
-      'Llegará a tu correo luego de que tu ejecutivo valide tu solicitud.',
-  },
-  {
-    title: 'Registra tus datos',
-    description: 'Accede a la información sin costo adicional.',
-  },
-  {
-    title: 'Carga tus facturas',
-    description:
-      'Puedes ceder electrónicamente todas tus facturas en solo 3 clics.',
-  },
-];
 export const environments = {
   production: 'production',
   development: 'development',

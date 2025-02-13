@@ -10,8 +10,6 @@ import {
   bannersToShow,
   getPageBySlugAndServices,
   mediaLogos,
-  steps,
-  accordionData,
 } from '@/utils';
 
 import Layout from '@/components/Templates/Layout';
@@ -71,6 +69,7 @@ const structuredData = {
 
 const Home = ({ data }) => {
   const router = useRouter();
+  console.log(data);
   const handleSectionClick = (e, item) => {
     e.preventDefault();
     router.push(`/servicios/${item.slug}`);
@@ -236,7 +235,7 @@ const Home = ({ data }) => {
         <h2 className="display-font text-4xl mb-8 font-bold text-center text-dark-blue">
           Preguntas Frecuentes
         </h2>
-        <Accordion list={accordionData} />
+        <Accordion list={data.pages.accordion} />
       </section>
 
       <SubscribeSection />
@@ -252,21 +251,19 @@ const Home = ({ data }) => {
         <article className="container pt-10 mx-auto">
           <div className="flex flex-col-reverse items-center justify-between gap-12 md:flex-row">
             <div className="md:w-1/2 xl:w-1/3">
-              {steps.map((step, index) => (
+              {data.pages.steps.map((step, index) => (
                 <div
                   className="flex items-center p-4 mb-6 bg-white rounded-xl shadow-lg"
-                  key={step.title}
+                  key={step.description}
                 >
                   <div className="display-font flex-shrink-0 flex items-center justify-center w-16 h-16 mr-4 text-3xl font-bold text-medium-blue rounded-full border-medium-blue border-solid circle-width">
                     {index + 1}
                   </div>
                   <div>
                     <h3 className="display-font text-lg font-semibold text-medium-blue mb-1">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-medium-grey">
                       {step.description}
-                    </p>
+                    </h3>
+                    <p className="text-sm text-medium-grey">{step.subtitle}</p>
                   </div>
                 </div>
               ))}
