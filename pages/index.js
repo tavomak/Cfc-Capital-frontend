@@ -69,7 +69,6 @@ const structuredData = {
 
 const Home = ({ data }) => {
   const router = useRouter();
-  console.log(data);
   const handleSectionClick = (e, item) => {
     e.preventDefault();
     router.push(`/servicios/${item.slug}`);
