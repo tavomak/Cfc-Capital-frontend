@@ -124,7 +124,7 @@ const Home = ({ data }) => {
       </Slider>
 
       <section className="mt-20 lg:bg-gradient-to-r from-white to-light-grey">
-        <article className="container mx-auto lg:flex items-center justify-between px-4 lg:py-20">
+        <article className="container mx-auto lg:flex items-center justify-between lg:py-20">
           <div className="relative lg:w-1/2 mx-auto mb-6 lg:mb-0">
             <figure className="relative">
               <Image
@@ -132,24 +132,16 @@ const Home = ({ data }) => {
                 alt="edificio cfc"
                 width={1080}
                 height={1658}
-                className="w-1/2 mr-auto sm:mx-auto lg:w-5/6"
+                className="w-2/3 mr-auto sm:mx-auto lg:w-5/6"
               />
-              <figcaption className="absolute bottom-1/2 right-6 sm:bottom-14 sm:-right-14 w-1/3">
-                <p className="display-font text-xs font-bold text-balance text-dark-grey">
+              <figcaption className="w-1/3 absolute bottom-1/2 right-0 sm:bottom-14 sm:-right-14">
+                <p className="display-font text-xs font-bold text-dark-grey">
                   Estamos ubicados en Av. El Bosque 92, Las Condes.
                 </p>
               </figcaption>
             </figure>
-            {/*           <AdvancedVideo
-        cldVid={getVideoTransformationsWithReactVideo()}
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/hombre-ameba.png" 
-      /> */}
           </div>
-          <div className="lg:w-1/2 md:px-10">
+          <div className="px-4 lg:w-1/2 md:px-10">
             <h1 className="text-base md:text-3xl font-bold display-font text-blue">
               En CFC Capital, desde el 2003, nos hemos dedicado a ser más que un
               proveedor de servicios financieros
@@ -214,9 +206,9 @@ const Home = ({ data }) => {
       </section>
 
       <section className="pt-12 text-white bg-gradient-to-r from-dark-blue to-purple">
-        <article className="container px-4 mx-auto">
-          <div className="md:flex ">
-            <div className="flex flex-col justify-center gap-6 md:w-3/6 xl:w-1/3">
+        <article className="container mx-auto">
+          <div className="md:flex">
+            <div className="px-4 flex flex-col justify-center gap-6 md:w-3/6 xl:w-1/3">
               <h2 className="w-full text-2xl font-bold display-font lg:text-4xl">
                 Creando capacidad de crecer
               </h2>
@@ -225,7 +217,7 @@ const Home = ({ data }) => {
                 proyecten en el tiempo y aporten al país.
               </p>
               <Link href="/contacto" rel="noopener noreferrer">
-                <Button className="btn mb-12">Escríbenos</Button>
+                <Button className="btn mb-6">Escríbenos</Button>
               </Link>
             </div>
             <div className="md:w-4/6 xl:w-2/3 mt-auto">
@@ -234,6 +226,7 @@ const Home = ({ data }) => {
                 alt="empresarios"
                 width={968}
                 height={606}
+                className="h-full aspect-square md:aspect-auto object-cover"
               />
             </div>
           </div>
