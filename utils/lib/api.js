@@ -300,7 +300,29 @@ export const getTeamMembers = () =>
             }
             position
           }
+          subManager {
+            description
+            email
+            id
+            linkedinUrl
+            name
+            photo {
+              url
+            }
+            position
+          }
           managers {
+            description
+            email
+            id
+            linkedinUrl
+            name
+            photo {
+              url
+            }
+            position
+          }
+          subManager {
             description
             email
             id
@@ -322,6 +344,14 @@ export const getUserByEmail = (email) =>
       query getUserByEmail($email: String) {
         teams {
           directors(where: { email: $email }) {
+            email
+            id
+            mobile
+            name
+            phone
+            position
+          }
+          subManager(where: { email: $email }) {
             email
             id
             mobile
