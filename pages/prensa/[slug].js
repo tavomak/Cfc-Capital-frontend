@@ -47,7 +47,7 @@ export default function Post({ post, morePosts }) {
                   </div>
                 </div>
                 <div className="p-4 md:w-1/2">
-                  <h1 className="text-3xl md:text-5xl display-font text-blue">
+                  <h1 className="text-3xl md:text-5xl display-font font-bold text-blue">
                     {currentPost.title}
                   </h1>
                 </div>
