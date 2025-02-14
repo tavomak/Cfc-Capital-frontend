@@ -45,7 +45,7 @@ const NewCard = ({ title, slug, image, author, excerpt, tags }) => (
               />
             </div>
             <div>
-              <p className="font-semibold text-lg md:text-xs text-dark-grey">
+              <p className="text-sm font-semibold text-dark-grey">
                 {author.name}
               </p>
               {author.title && (
