@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.2...v1.2.3) (2025-02-17)
+
+### Bug Fixes
+
+- **Forms:** Password link ([bfedcf7](https://github.com/tavomak/Cfc-Capital-frontend/commit/bfedcf776fc005857bbc1fe60d8637b23e6e6a8b))
+- **Forms:** Password link styles ([97cccb0](https://github.com/tavomak/Cfc-Capital-frontend/commit/97cccb0109a5edcf507dc0452ac128e98dcaee57))
+
 ## [1.2.2](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.1...v1.2.2) (2024-12-18)
 
 ### Bug Fixes
