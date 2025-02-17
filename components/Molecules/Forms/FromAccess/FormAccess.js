@@ -2,7 +2,7 @@ import Input from '@/components/Atoms/Input';
 /* eslint-disable jsx-a11y/tabindex-no-positive */
 const FormAccess = () => (
   <div className="container md:px-4">
-    <div className="row">
+    <div className="">
       <form
         name="frmIngreso"
         id="frmIngresoRegistro"
@@ -74,7 +74,32 @@ const FormAccess = () => (
         />
       </form>
 
-      <div className="md:flex">
+      <hr className="my-4" />
+
+      <div className="mt-5 md:flex">
+        <form
+          name="frmOlvido"
+          id="frmOlvido"
+          method="POST"
+          encType="multipart/form-data"
+          target="_blank"
+          action="https://prosystem-fe.cl/Inicio/LoginProd"
+          className="w-full"
+        >
+          <input type="hidden" name="Tipo" value="0" className="form-control" />
+          <input
+            type="hidden"
+            name="FactID"
+            value="26"
+            className="form-control"
+          />
+          <input
+            type="submit"
+            value="Olvidé mi contraseña"
+            className="mb-2 text-sm font-semibold transition-colors duration-300 cursor-pointer text-dark-grey hover:text-soft-blue"
+          />
+        </form>
+
         <form
           name="frmSolic"
           id="frmSolic"
@@ -82,7 +107,7 @@ const FormAccess = () => (
           encType="multipart/form-data"
           target="_blank"
           action="https://prosystem-fe.cl/Inicio/LoginProd"
-          className="w-full text-right"
+          className="w-full md:text-right"
         >
           <input type="hidden" name="Tipo" value="1" className="form-control" />
           <input
@@ -93,8 +118,8 @@ const FormAccess = () => (
           />
           <input
             type="submit"
-            value="Olvidé mi contraseña"
-            className="relative mb-2 text-sm font-semibold text-soft-blue -top-6"
+            value="Solicitar Clave"
+            className="mb-2 text-sm font-semibold transition-colors duration-300 cursor-pointer text-dark-grey hover:text-soft-blue"
           />
         </form>
       </div>
