@@ -74,6 +74,8 @@ const FormAccess = () => (
         />
       </form>
 
+      <hr className="my-4" />
+
       <div className="mt-5 md:flex">
         <form
           name="frmOlvido"
@@ -94,7 +96,7 @@ const FormAccess = () => (
           <input
             type="submit"
             value="Olvidé mi contraseña"
-            className="relative mb-2 text-sm font-semibold text-soft-blue"
+            className="mb-2 text-sm font-semibold transition-colors duration-300 cursor-pointer text-dark-grey hover:text-soft-blue"
           />
         </form>
 
@@ -105,7 +107,7 @@ const FormAccess = () => (
           encType="multipart/form-data"
           target="_blank"
           action="https://prosystem-fe.cl/Inicio/LoginProd"
-          className="w-full text-right"
+          className="w-full md:text-right"
         >
           <input type="hidden" name="Tipo" value="1" className="form-control" />
           <input
@@ -117,7 +119,7 @@ const FormAccess = () => (
           <input
             type="submit"
             value="Solicitar Clave"
-            className="relative mb-2 text-sm font-semibold text-soft-blue "
+            className="mb-2 text-sm font-semibold transition-colors duration-300 cursor-pointer text-dark-grey hover:text-soft-blue"
           />
         </form>
       </div>
