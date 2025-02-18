@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import Link from 'next/link';
 import Slider from 'react-slick';
-// import { AdvancedVideo } from '@cloudinary/react';
-// import { Cloudinary } from '@cloudinary/url-gen';
+/* import { AdvancedVideo } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen'; */
 import {
   formatServices,
   sliderSettings,
@@ -17,7 +18,20 @@ import StaticHero from '@/components/Molecules/StaticHero';
 import LayerHero from '@/components/Molecules/LayerHero';
 import MediaSection from '@/components/Templates/MediaSection';
 import SubscribeSection from '@/components/Templates/SubscribeSection';
+import BlogCard from '@/components/Templates/BlogCard';
+import Button from '@/components/Atoms/Button';
+import StepCard from '@/components/Molecules/StepCard';
+import StarIcon from '@/components/Atoms/StarIcon';
+import ClientsIcon from '@/components/Atoms/ClientsIcon';
+import DolarIcon from '@/components/Atoms/DolarIcon';
+import Content from '@/components/Molecules/CardContentTitle';
+import Accordion from '@/components/Molecules/Accordion';
 
+const iconsMapping = {
+  star: <StarIcon />,
+  people: <ClientsIcon />,
+  money: <DolarIcon />,
+};
 // function getVideoTransformationsWithReactVideo() {
 //   const cld = new Cloudinary({
 //     cloud: {
@@ -41,22 +55,17 @@ const structuredData = {
   sameAs: ['https://cl.linkedin.com/company/cfc-capital-s-a'],
 };
 
-const Content = ({ content }) => {
-  const { title, subtitle, description } = content;
-  return (
-    <div className="px-4 text-left">
-      <h2 className="mb-6 text-2xl font-bold text-purple display-font">
-        {title}
-      </h2>
-      <h3 className="lg:text-[40px] leading-tight text-2xl font-bold display-font text-purple mb-4">
-        {subtitle}
-      </h3>
-      <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
-        {description}
-      </p>
-    </div>
-  );
-};
+/* function getVideoTransformationsWithReactVideo() {
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'deevr9k54',
+    },
+  });
+
+  const myVideo = cld.video('CFC-video-home_dzdgeq').quality('auto');
+
+  return myVideo;
+} */
 
 const Home = ({ data }) => {
   const router = useRouter();
@@ -73,25 +82,26 @@ const Home = ({ data }) => {
     >
       <Slider {...sliderSettings}>
         {bannersToShow(data.pages.hero).map((item) =>
-          !item?.desktop?.url ? (
+          item.subtitle ? (
             <LayerHero
               key={item.id}
               title={item.title}
               columnContent={<Content content={item} />}
               subtitle={item.subtitle}
-              backgroundImage={item.backgroundImage.url}
+              backgroundImage={item?.backgroundImage?.url}
+              backgroundColor={item?.backgroundColor[0]?.hex}
               rtl={item.rtl}
             >
               <div className="w-full h-5/6">
                 <Image
                   src={item.frontImage.url}
-                  width={500}
-                  height={500}
+                  width={750}
+                  height={580}
                   style={{
                     width: '100%',
-                    height: '100%',
+                    height: 'auto',
                     objectFit: 'contain',
-                    maxHeight: '600px',
+                    objectPosition: 'bottom',
                   }}
                   alt={item.title || item.subtitle}
                   priority
@@ -110,44 +120,42 @@ const Home = ({ data }) => {
         )}
       </Slider>
 
-      <section className="container flex flex-col items-center justify-between px-4 mx-auto mt-20 lg:py-20 lg:flex-row">
-        <div className="order-2 lg:w-1/2 xl:w-2/6 lg:order-1">
-          <h1 className="text-3xl font-semibold display-font text-blue">
-            Somos una empresa de servicios financieros, presente en el mercado
-            desde el año 2003
-          </h1>
-          <p className="my-5">
-            Estamos especializados en el segmento de empresas y pymes entregando
-            soluciones a las necesidades de financiamiento de capital de trabajo
-            y de inversión, transformando los flujos por cobrar a plazo, en
-            dinero efectivo de inmediato o bien haciendo posible adquirir
-            activos productivos a las empresas
-          </p>
-        </div>
-        <div className="order-1 lg:w-1/2 xl:w-3/6 lg:order-2">
-          {/* <AdvancedVideo
-            cldVid={getVideoTransformationsWithReactVideo()}
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/hombre-ameba.png"
-          /> */}
-          <Image
-            src="/hombre-ameba.png"
-            alt="Home image"
-            width={500}
-            height={500}
-            style={{
-              width: '100%',
-              height: 'auto',
-              objectFit: 'contain',
-            }}
-          />
-        </div>
+      <section className="mt-20 lg:bg-gradient-to-r from-white to-light-grey">
+        <article className="container items-center justify-between mx-auto lg:flex lg:py-20">
+          <div className="relative mx-auto mb-6 lg:w-1/2 lg:mb-0">
+            <figure className="relative">
+              <Image
+                src="/edificio-cfc.png"
+                alt="edificio cfc"
+                width={1080}
+                height={1658}
+                className="w-2/3 mr-auto sm:mx-auto lg:w-5/6"
+              />
+              <figcaption className="absolute right-0 w-1/3 bottom-1/2 sm:bottom-14 sm:right-8">
+                <p className="text-xs font-bold text-balance display-font text-dark-grey">
+                  Estamos ubicados en Av. El Bosque 92, Las Condes.
+                </p>
+              </figcaption>
+            </figure>
+          </div>
+          <div className="px-4 lg:w-1/2 md:px-10">
+            <h1 className="text-base font-bold md:text-3xl display-font text-blue">
+              En CFC Capital, desde el 2003, nos hemos dedicado a ser más que un
+              proveedor de servicios financieros.
+            </h1>
+            <p className="my-5 text-xs font-semibold display-font md:text-2xl">
+              Somos parte de tu equipo. Trabajamos junto a empresas y PYMES,
+              ofreciendo soluciones personalizadas. Entendemos tus desafíos y
+              metas, y estamos aquí para acompañarte en cada paso.
+            </p>
+          </div>
+        </article>
       </section>
 
-      <article className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
+      <section className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
+        <h2 className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl">
+          Servicios
+        </h2>
         <ZigZagSection
           itemList={formatServices(data.services, {
             imageKey: 'cardImage',
@@ -157,9 +165,119 @@ const Home = ({ data }) => {
           itemClassName="my-20 md:rounded-3xl shadow-lg hover:shadow-xl overflow-hidden"
           onClick={handleSectionClick}
         />
-      </article>
+      </section>
+
+      <section className="pt-8 bg-gradient-to-r from-medium-blue to-soft-blue">
+        <h2 className="mb-8 text-2xl font-bold text-center text-white display-font md:text-4xl">
+          Educación Financiera
+        </h2>
+        <p className="w-3/4 mx-auto font-bold text-center text-white lg:w-2/5 display-font text-md md:text-lg">
+          Te presentamos nuestra plataforma de recursos y artículos de interés
+          en el desarrollo y crecimiento financiero.
+        </p>
+        {data.pages.posts?.map((post) => (
+          <BlogCard
+            key={post.title}
+            imageUrl={post.coverImage.url}
+            title={post.title}
+            description={post.excerpt}
+            slug={post.slug}
+          />
+        ))}
+      </section>
+
+      <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
+        <h2 className="w-full mx-auto mb-8 text-2xl font-bold text-center lg:w-1/2 text-balance display-font md:text-4xl text-dark-blue">
+          Tenemos la experiencia para enfrentar el futuro
+        </h2>
+        <article className="md:flex">
+          {data.pages.highlights.map((item) => (
+            <StepCard
+              key={item.title}
+              name={item.title}
+              icon={iconsMapping[item.icon]}
+              description={item.description}
+            />
+          ))}
+        </article>
+      </section>
+
+      <section className="pt-12 text-white bg-gradient-to-r from-dark-blue to-purple">
+        <article className="container mx-auto">
+          <div className="md:flex">
+            <div className="flex flex-col justify-center gap-6 px-4 md:w-3/6 xl:w-1/3">
+              <h2 className="w-full text-2xl font-bold display-font lg:text-4xl">
+                Creando capacidad de crecer.
+              </h2>
+              <p className="w-5/6 text-sm lg:font-semibold md:w-full display-font md:text-lg">
+                Fomentamos tu capacidad de desarrollar negocios que crezcan, se
+                proyecten en el tiempo y aporten al país.
+              </p>
+              <Link href="/contacto" rel="noopener noreferrer">
+                <Button className="mb-6 btn">Escríbenos</Button>
+              </Link>
+            </div>
+            <div className="mt-auto md:w-4/6 xl:w-2/3">
+              <Image
+                src="/empresarios-ameba.png"
+                alt="empresarios"
+                width={968}
+                height={606}
+                className="object-cover h-full aspect-square md:aspect-auto"
+              />
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section className="container mx-auto my-24 md:px-4">
+        <h2 className="mb-8 text-4xl font-bold text-center display-font text-dark-blue">
+          Preguntas Frecuentes
+        </h2>
+        <Accordion list={data.pages.accordion} />
+      </section>
 
       <SubscribeSection />
+
+      {/* <section className="pt-8">
+        <h2 className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl">
+          Factoring web
+        </h2>
+        <p className="w-11/12 max-w-3xl mx-auto text-base font-semibold text-center text-pretty display-font md:text-2xl text-medium-grey">
+          En nuestra plataforma digital podrás cargar de manera masiva tus
+          facturas, con cotización en línea clara y transparente.
+        </p>
+        <article className="container pt-10 mx-auto">
+          <div className="flex flex-col-reverse items-center justify-between gap-12 md:flex-row">
+            <div className="md:w-1/2 xl:w-1/3">
+              {data.pages.steps.map((step, index) => (
+                <div
+                  className="flex items-center p-4 mb-6 bg-white shadow-lg rounded-xl"
+                  key={step.description}
+                >
+                  <div className="flex items-center justify-center flex-shrink-0 w-16 h-16 mr-4 text-3xl font-bold border-solid rounded-full display-font text-medium-blue border-medium-blue circle-width">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3 className="mb-1 text-lg font-semibold display-font text-medium-blue">
+                      {step.description}
+                    </h3>
+                    <p className="text-sm text-medium-grey">{step.subtitle}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="md:w-1/2">
+              <Image
+                src="/chica-ameba.png"
+                alt="empresarios"
+                width={756}
+                height={609}
+              />
+            </div>
+          </div>
+        </article>
+      </section> */}
 
       <MediaSection mediaSet={mediaLogos} />
     </Layout>

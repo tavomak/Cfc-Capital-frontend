@@ -218,7 +218,7 @@ const FormContact = ({ service, title, image, content }) => {
         >
           <textarea
             className="w-full text-sm focus:outline-none focus-visible:outline-none"
-            rows="8"
+            rows="5"
             id="message"
             {...register('message')}
           />
