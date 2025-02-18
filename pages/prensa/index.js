@@ -23,34 +23,34 @@ const News = ({ posts, categories }) => {
       description="Noticias de actualidad que ayudan a tus finanzas"
     >
       <div className="bg-soft-light-blue">
-        <section className="container mx-auto px-4 py-20">
+        <section className="container px-4 py-20 mx-auto">
           {posts?.length > 1 &&
             posts.slice(0, 1).map((firstPost) => (
               <a
                 href={`/prensa/${firstPost.slug}`}
-                className="p-4 block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl "
+                className="block p-4 overflow-hidden shadow-xl rounded-3xl group bg-sky-50 md:flex "
                 key={firstPost.id}
               >
-                <div className="md:w-1/2 relative overflow-hidden rounded-2xl">
+                <div className="relative overflow-hidden md:w-1/2 rounded-2xl">
                   <Image
                     src={firstPost.coverImage?.url}
                     alt={firstPost.title}
                     width={800}
                     height={600}
-                    className="h-80 md:h-full w-full object-contain transition-transform duration-300 scale-100 group-hover:scale-110"
+                    className="object-contain w-full transition-transform duration-300 scale-100 h-80 md:h-full group-hover:scale-110"
                   />
                 </div>
 
-                <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <div className="flex flex-col justify-center p-8 md:w-1/2 md:p-12">
                   <div className="max-w-md">
-                    <h2 className="display-font md:text-2xl text-base font-semibold text-blue">
+                    <h2 className="text-base font-semibold display-font md:text-2xl text-blue">
                       {firstPost.title}
                     </h2>
 
                     {firstPost.author && (
                       <div className="flex items-center gap-3 my-6">
                         {firstPost.author?.picture && (
-                          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                          <div className="relative w-12 h-12 overflow-hidden rounded-full shrink-0">
                             <Image
                               src={firstPost.author.picture?.url}
                               alt={`${firstPost.author.name} profile picture`}
@@ -70,7 +70,7 @@ const News = ({ posts, categories }) => {
                       </div>
                     )}
 
-                    <p className="text-dark-grey md:text-base text-xs leading-relaxed">
+                    <p className="text-xs leading-relaxed text-dark-grey md:text-base">
                       {firstPost.excerpt}
                     </p>
                   </div>
@@ -83,7 +83,7 @@ const News = ({ posts, categories }) => {
           <h2 className="px-4 mb-6 text-lg font-semibold display-font text-medium-blue">
             Últimas notas de prensa
           </h2>
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 mb-8">
+          <div className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
             {prensaPosts?.length > 0 &&
               prensaPosts
                 .slice(0, 9)
@@ -101,9 +101,9 @@ const News = ({ posts, categories }) => {
                 ))}
           </div>
           {prensaPosts?.length > 9 && (
-            <div className="text-center mb-8">
+            <div className="mb-8 text-center">
               <Link
-                className="btn btn-primary px-6"
+                className="px-6 btn btn-primary"
                 href="/prensa/categoria/prensa"
               >
                 Ver más
@@ -114,11 +114,11 @@ const News = ({ posts, categories }) => {
 
         <SubscribeSection />
 
-        <section className="block lg:hidden container mx-auto">
-          <h3 className="px-4 my-6 display-font text-base font-semibold text-medium-blue">
+        <section className="container block mx-auto lg:hidden">
+          <h3 className="px-4 my-6 text-base font-semibold display-font text-medium-blue">
             Explorar por categoría
           </h3>
-          <ul className="w-11/12 mx-auto flex flex-wrap gap-6 justify-center">
+          <ul className="flex flex-wrap justify-center w-11/12 gap-6 mx-auto">
             {categories?.map((item) => (
               <li
                 key={item.slug}
@@ -126,7 +126,7 @@ const News = ({ posts, categories }) => {
               >
                 <a
                   href={`/prensa/categoria/${item.slug}`}
-                  className="font-semibold text-xs text-blue"
+                  className="text-xs font-semibold text-blue"
                 >
                   {item.name}
                 </a>
@@ -136,11 +136,11 @@ const News = ({ posts, categories }) => {
         </section>
 
         <section className="container mx-auto">
-          <h2 className="px-4 my-6 md:my-12 text-base font-semibold md:text-3xl md:font-bold display-font text-medium-blue">
+          <h2 className="px-4 my-6 text-base font-semibold md:my-12 md:text-3xl md:font-bold display-font text-medium-blue">
             Factoring
           </h2>
           <article className="flex">
-            <div className="w-full space-y-8 lg:w-2/3 mb-8">
+            <div className="w-full mb-8 space-y-8 lg:w-2/3">
               {factoringPosts?.length > 0 &&
                 factoringPosts.slice(0, 3).map((item) => (
                   <Card
@@ -152,7 +152,7 @@ const News = ({ posts, categories }) => {
                       className="overflow-hidden rounded-xl min-w-32 md:min-w-64 group"
                     >
                       <Image
-                        className="rounded-xl overflow-hidden transition scale-100 group-hover:scale-110"
+                        className="overflow-hidden transition scale-100 rounded-xl group-hover:scale-110"
                         src={item.coverImage?.url}
                         alt={item.title}
                         width={500}
@@ -167,7 +167,7 @@ const News = ({ posts, categories }) => {
                     </a>
                     <div className="">
                       <a href={`/prensa/${item.slug}`}>
-                        <h3 className="display-font px-8 lg:text-xl text-base font-semibold text-blue line-clamp-2">
+                        <h3 className="px-8 text-base font-semibold display-font lg:text-xl text-blue line-clamp-2">
                           {item.title}
                         </h3>
                       </a>
@@ -177,7 +177,7 @@ const News = ({ posts, categories }) => {
               {factoringPosts.length > 3 && (
                 <div className="px-4">
                   <Link
-                    className="btn btn-primary px-6"
+                    className="px-6 btn btn-primary"
                     href="/prensa/categoria/factoring"
                   >
                     Ver más
@@ -186,12 +186,12 @@ const News = ({ posts, categories }) => {
               )}
             </div>
 
-            <div className="w-1/3 hidden lg:block">
+            <div className="hidden w-1/3 lg:block">
               <Card
                 containerClassName="mx-auto mt-8 h-3/4 w-3/4"
                 cardClassName="bg-white p-12 group shadow-lg border-none"
               >
-                <h3 className="display-font text-center lg:text-xl text-base font-semibold text-medium-blue">
+                <h3 className="text-base font-semibold text-center display-font lg:text-xl text-medium-blue">
                   Explorar por categoría
                 </h3>
                 <ul className="mt-8">
@@ -199,7 +199,7 @@ const News = ({ posts, categories }) => {
                     <li key={item.slug} className="p-3">
                       <a
                         href={`/prensa/categoria/${item.slug}`}
-                        className="display-font font-semibold text-lg text-blue hover:opacity-75"
+                        className="text-lg font-semibold display-font text-blue hover:opacity-75"
                       >
                         {item.name}
                       </a>

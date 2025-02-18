@@ -15,10 +15,10 @@ const LawForm = () => (
         mobile: '/denuncias-mobile.jpg',
       }}
     />
-    <section className="container md:px-4 mx-auto py-12 lg:flex">
-      <div className="lg:w-1/2 mb-4 px-4">
+    <section className="container py-12 mx-auto md:px-4 lg:flex">
+      <div className="px-4 mb-4 lg:w-1/2">
         <div className="pe-lg-4">
-          <h1 className="display-font text-3xl mb-4">Canal de Denuncias</h1>
+          <h1 className="mb-4 text-3xl display-font">Canal de Denuncias</h1>
           <p className="font-bold">
             Este es el canal de denuncias dispuesto exclusivamente para recibir:
           </p>
@@ -65,7 +65,7 @@ const LawForm = () => (
           </p>
         </div>
       </div>
-      <div className="lg:w-1/2 pb-5 px-4">
+      <div className="px-4 pb-5 lg:w-1/2">
         <Stepper />
       </div>
     </section>

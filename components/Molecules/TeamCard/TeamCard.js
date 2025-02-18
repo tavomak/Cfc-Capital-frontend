@@ -21,7 +21,7 @@ const TeamCard = ({ name, photo, position, email }) => (
       <p className="text-2xl font-bold display-font text-purple md:text-xl">
         {name}
       </p>
-      <p className="font-bold text-medium-gray text-center">{position}</p>
+      <p className="font-bold text-center text-medium-gray">{position}</p>
       <a
         href={`mailto:${email}`}
         className="text-medium-gray"

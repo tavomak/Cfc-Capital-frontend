@@ -17,13 +17,13 @@ const CardLayoutTwoColumns = ({
             <h1 className="text-2xl font-bold display-font">{title}</h1>
           )}
         </div>
-        <div className="md:flex mb-6">
+        <div className="mb-6 md:flex">
           {posts.map(
             (item, key) =>
               key < 2 && (
                 <div
                   key={item.id}
-                  className="flex w-3/4 justify-center mx-auto flex-wrap"
+                  className="flex flex-wrap justify-center w-3/4 mx-auto"
                   // style={{
                   //   height: '100%',
                   // }}
@@ -57,7 +57,7 @@ const CardLayoutTwoColumns = ({
                       />
                     </Link>
                   </div>
-                  <div className="flex flex-col justify-center md:w-1/2 p-3">
+                  <div className="flex flex-col justify-center p-3 md:w-1/2">
                     <p className="mb-4 display-font">{item.title}</p>
                     <div>
                       <Link

@@ -14,7 +14,7 @@ const Contacto = () => (
         <Content
           content={{
             title: 'Contacto',
-            subtitle: 'Somos un gran equipo profesional',
+            subtitle: 'Somos un gran equipo profesional.',
             description: 'Con capacidad para hacer crecer tu negocio.',
           }}
         />
@@ -40,7 +40,7 @@ const Contacto = () => (
     </LayerHero>
 
     <section className="lg:bg-gradient-to-l from-white to-light-grey">
-      <article className=" container mx-auto md:px-4 py-12 ">
+      <article className="container py-12 mx-auto md:px-4">
         <LayerHero
           columnContent={
             <Content

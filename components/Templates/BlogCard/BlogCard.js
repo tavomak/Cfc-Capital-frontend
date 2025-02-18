@@ -9,21 +9,21 @@ const BlogCard = ({ imageUrl, title, description, slug }) => (
   >
     <Link
       href={`/prensa/${slug}`}
-      className="flex flex-col md:flex-row items-center group"
+      className="flex flex-col items-center md:flex-row group"
     >
-      <div className="md:w-2/5 overflow-hidden rounded-3xl">
+      <div className="overflow-hidden md:w-2/5 rounded-3xl">
         <div className="transition-transform duration-300 ease-in-out group-hover:scale-110">
           <Image
             src={imageUrl}
             alt={`${title} image`}
             width={309}
             height={302}
-            className="object-cover aspect-square w-full h-full"
+            className="object-cover w-full h-full aspect-square"
           />
         </div>
       </div>
       <div className="py-6 md:px-6 md:w-3/5">
-        <h2 className="display-font mb-4 text-2xl font-bold text-medium-purple">
+        <h2 className="mb-4 text-2xl font-bold display-font text-medium-purple">
           {title}
         </h2>
         <p className="mb-4 leading-relaxed text-medium-grey text-md line-clamp-2 sm:line-clamp-none">

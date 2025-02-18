@@ -121,8 +121,8 @@ const Home = ({ data }) => {
       </Slider>
 
       <section className="mt-20 lg:bg-gradient-to-r from-white to-light-grey">
-        <article className="container mx-auto lg:flex items-center justify-between lg:py-20">
-          <div className="relative lg:w-1/2 mx-auto mb-6 lg:mb-0">
+        <article className="container items-center justify-between mx-auto lg:flex lg:py-20">
+          <div className="relative mx-auto mb-6 lg:w-1/2 lg:mb-0">
             <figure className="relative">
               <Image
                 src="/edificio-cfc.png"
@@ -131,19 +131,19 @@ const Home = ({ data }) => {
                 height={1658}
                 className="w-2/3 mr-auto sm:mx-auto lg:w-5/6"
               />
-              <figcaption className="w-1/3 absolute bottom-1/2 right-0 sm:bottom-14 sm:-right-14">
-                <p className="display-font text-xs font-bold text-dark-grey">
+              <figcaption className="absolute right-0 w-1/3 bottom-1/2 sm:bottom-14 sm:right-8">
+                <p className="text-xs font-bold text-balance display-font text-dark-grey">
                   Estamos ubicados en Av. El Bosque 92, Las Condes.
                 </p>
               </figcaption>
             </figure>
           </div>
           <div className="px-4 lg:w-1/2 md:px-10">
-            <h1 className="text-base md:text-3xl font-bold display-font text-blue">
+            <h1 className="text-base font-bold md:text-3xl display-font text-blue">
               En CFC Capital, desde el 2003, nos hemos dedicado a ser más que un
-              proveedor de servicios financieros
+              proveedor de servicios financieros.
             </h1>
-            <p className="text-xs md:text-2xl my-5 font-semibold">
+            <p className="my-5 text-xs font-semibold display-font md:text-2xl">
               Somos parte de tu equipo. Trabajamos junto a empresas y PYMES,
               ofreciendo soluciones personalizadas. Entendemos tus desafíos y
               metas, y estamos aquí para acompañarte en cada paso.
@@ -187,7 +187,7 @@ const Home = ({ data }) => {
       </section>
 
       <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
-        <h2 className="w-full lg:w-1/2 mx-auto mb-8 text-2xl font-bold text-center text-balance display-font md:text-4xl text-dark-blue">
+        <h2 className="w-full mx-auto mb-8 text-2xl font-bold text-center lg:w-1/2 text-balance display-font md:text-4xl text-dark-blue">
           Tenemos la experiencia para enfrentar el futuro
         </h2>
         <article className="md:flex">
@@ -205,25 +205,25 @@ const Home = ({ data }) => {
       <section className="pt-12 text-white bg-gradient-to-r from-dark-blue to-purple">
         <article className="container mx-auto">
           <div className="md:flex">
-            <div className="px-4 flex flex-col justify-center gap-6 md:w-3/6 xl:w-1/3">
+            <div className="flex flex-col justify-center gap-6 px-4 md:w-3/6 xl:w-1/3">
               <h2 className="w-full text-2xl font-bold display-font lg:text-4xl">
-                Creando capacidad de crecer
+                Creando capacidad de crecer.
               </h2>
               <p className="w-5/6 text-sm lg:font-semibold md:w-full display-font md:text-lg">
                 Fomentamos tu capacidad de desarrollar negocios que crezcan, se
                 proyecten en el tiempo y aporten al país.
               </p>
               <Link href="/contacto" rel="noopener noreferrer">
-                <Button className="btn mb-6">Escríbenos</Button>
+                <Button className="mb-6 btn">Escríbenos</Button>
               </Link>
             </div>
-            <div className="md:w-4/6 xl:w-2/3 mt-auto">
+            <div className="mt-auto md:w-4/6 xl:w-2/3">
               <Image
                 src="/empresarios-ameba.png"
                 alt="empresarios"
                 width={968}
                 height={606}
-                className="h-full aspect-square md:aspect-auto object-cover"
+                className="object-cover h-full aspect-square md:aspect-auto"
               />
             </div>
           </div>
@@ -231,7 +231,7 @@ const Home = ({ data }) => {
       </section>
 
       <section className="container mx-auto my-24 md:px-4">
-        <h2 className="display-font text-4xl mb-8 font-bold text-center text-dark-blue">
+        <h2 className="mb-8 text-4xl font-bold text-center display-font text-dark-blue">
           Preguntas Frecuentes
         </h2>
         <Accordion list={data.pages.accordion} />
@@ -239,11 +239,11 @@ const Home = ({ data }) => {
 
       <SubscribeSection />
 
-      <section className="pt-8">
+      {/* <section className="pt-8">
         <h2 className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl">
           Factoring web
         </h2>
-        <p className="w-11/12 max-w-3xl mx-auto font-semibold text-center text-pretty display-font text-base md:text-2xl text-medium-grey">
+        <p className="w-11/12 max-w-3xl mx-auto text-base font-semibold text-center text-pretty display-font md:text-2xl text-medium-grey">
           En nuestra plataforma digital podrás cargar de manera masiva tus
           facturas, con cotización en línea clara y transparente.
         </p>
@@ -252,14 +252,14 @@ const Home = ({ data }) => {
             <div className="md:w-1/2 xl:w-1/3">
               {data.pages.steps.map((step, index) => (
                 <div
-                  className="flex items-center p-4 mb-6 bg-white rounded-xl shadow-lg"
+                  className="flex items-center p-4 mb-6 bg-white shadow-lg rounded-xl"
                   key={step.description}
                 >
-                  <div className="display-font flex-shrink-0 flex items-center justify-center w-16 h-16 mr-4 text-3xl font-bold text-medium-blue rounded-full border-medium-blue border-solid circle-width">
+                  <div className="flex items-center justify-center flex-shrink-0 w-16 h-16 mr-4 text-3xl font-bold border-solid rounded-full display-font text-medium-blue border-medium-blue circle-width">
                     {index + 1}
                   </div>
                   <div>
-                    <h3 className="display-font text-lg font-semibold text-medium-blue mb-1">
+                    <h3 className="mb-1 text-lg font-semibold display-font text-medium-blue">
                       {step.description}
                     </h3>
                     <p className="text-sm text-medium-grey">{step.subtitle}</p>
@@ -277,7 +277,7 @@ const Home = ({ data }) => {
             </div>
           </div>
         </article>
-      </section>
+      </section> */}
 
       <MediaSection mediaSet={mediaLogos} />
     </Layout>

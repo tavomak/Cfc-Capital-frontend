@@ -43,16 +43,16 @@ const MobileNavigation = ({
           menuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="h-full flex flex-col">
+        <div className="flex flex-col h-full">
           <div className="h-14" />
-          <div className="flex-1 overflow-y-auto px-8">
+          <div className="flex-1 px-8 overflow-y-auto">
             <ul className="flex flex-col gap-1">
               <div className="mt-12 sm:mt-0">
                 {navItems
                   .filter((item) => item.label !== 'Factoring')
                   .map((item) => (
                     <li
-                      className="text-base display-font font-semibold text-blue"
+                      className="text-base font-semibold display-font text-blue"
                       key={item.label}
                     >
                       {item.children?.length > 1 ? (
@@ -63,7 +63,7 @@ const MobileNavigation = ({
                           {item.children.map((subItem) => (
                             <div
                               key={subItem.path}
-                              className="ml-4 primary-font font-medium text-sm"
+                              className="ml-4 text-sm font-medium primary-font"
                             >
                               <a
                                 href={subItem.path}
@@ -119,10 +119,10 @@ const MobileNavigation = ({
                       handleClick(e, 'Factoring', '/servicios/factoring');
                     }}
                   >
-                    <div className="w-16 h-16 block">
+                    <div className="block w-16 h-16">
                       <FactoringIcon />
                     </div>
-                    <h1 className="display-font font-semibold">Factoring</h1>
+                    <h1 className="font-semibold display-font">Factoring</h1>
                   </a>
                 </Card>
                 <div className="flex gap-12">
@@ -138,10 +138,10 @@ const MobileNavigation = ({
                         handleClick(e, 'Leasing', '/servicios/leasing');
                       }}
                     >
-                      <div className="w-16 h-16 block">
+                      <div className="block w-16 h-16">
                         <LeasingIcon />
                       </div>
-                      <h1 className="display-font font-semibold">Leasing</h1>
+                      <h1 className="font-semibold display-font">Leasing</h1>
                     </a>
                   </Card>
                   <Card
@@ -156,20 +156,20 @@ const MobileNavigation = ({
                         handleClick(e, 'Leaseback', '/servicios/leaseback');
                       }}
                     >
-                      <div className="w-16 h-16 block">
+                      <div className="block w-16 h-16">
                         <LeasebackIcon />
                       </div>
-                      <h1 className="display-font font-semibold">Leaseback</h1>
+                      <h1 className="font-semibold display-font">Leaseback</h1>
                     </a>
                   </Card>
                 </div>
               </div>
 
-              <ul className="flex gap-2 justify-between xl:gap-4">
+              <ul className="flex justify-between gap-2 xl:gap-4">
                 <li>
                   <a
                     href="!#"
-                    className="py-3 inline-block btn btn-primary"
+                    className="inline-block py-3 btn btn-primary"
                     onClick={handleClickModal}
                   >
                     Acceso Clientes
@@ -179,7 +179,7 @@ const MobileNavigation = ({
                   <a
                     href="http://cfc.fapro.app/"
                     target="_blank"
-                    className="py-3 inline-block btn btn-secondary"
+                    className="inline-block py-3 btn btn-secondary"
                     rel="noreferrer"
                   >
                     Enrólate aquí

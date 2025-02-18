@@ -45,12 +45,12 @@ const cfc = ({ data }) => {
       </section>
 
       <section className="container max-w-5xl mx-auto mt-6 md:py-12 md:mt-12">
-        <div className="w-full md:w-1/2 text-center text-balance mx-auto text-dark-blue">
-          <h2 className="display-font text-3xl font-bold md:text-4xl mb-8">
+        <div className="w-full mx-auto text-center md:w-1/2 text-balance text-dark-blue">
+          <h2 className="mb-8 text-3xl font-bold display-font md:text-4xl">
             Tenemos la experiencia para enfrentar el futuro
           </h2>
         </div>
-        <article className="md:flex mt-8">
+        <article className="mt-8 md:flex">
           {highlights.map((item) => (
             <StepCard
               key={item.title}
@@ -116,10 +116,10 @@ const cfc = ({ data }) => {
                   }`}
                 >
                   <div className="p-6 text-left">
-                    <h1 className="display-font text-xl font-bold text-dark-blue md:text-4xl">
+                    <h1 className="text-xl font-bold display-font text-dark-blue md:text-4xl">
                       {item.name}
                     </h1>
-                    <h2 className="mb-0 text-dark-grey text-xl">
+                    <h2 className="mb-0 text-xl text-dark-grey">
                       {item.position}
                     </h2>
                   </div>
@@ -129,8 +129,8 @@ const cfc = ({ data }) => {
           </section>
         ))}
 
-      <section className="container mx-auto px-4 py-20 bg-gradient-to-r from-white to-soft-blue-light">
-        <h2 className="display-font md:text-4xl mb-12 text-2xl font-bold text-center text-dark-blue">
+      <section className="container px-4 py-20 mx-auto bg-gradient-to-r from-white to-soft-blue-light">
+        <h2 className="mb-12 text-2xl font-bold text-center display-font md:text-4xl text-dark-blue">
           Gerencia
         </h2>
         <article className="container flex flex-wrap justify-center mx-auto md:px-4">
@@ -141,16 +141,16 @@ const cfc = ({ data }) => {
         </article>
       </section>
 
-      <section className="container mx-auto px-4 py-20">
+      <section className="container px-4 py-20 mx-auto">
         <div className="text-center text-dark-blue">
-          <h2 className="display-font text-3xl font-bold md:text-4xl mb-8">
+          <h2 className="mb-8 text-3xl font-bold display-font md:text-4xl">
             Equipo Comercial
           </h2>
-          <p className="px-2 text-medium-grey text-lg md:text-2xl">
+          <p className="px-2 text-lg text-medium-grey md:text-2xl">
             <span className="font-bold">Más que ejecutivos </span>
             somos un equipo humano dispuestos a ser parte de tu empresa.
           </p>
-          <p className="text-medium-grey text-lg md:text-2xl">
+          <p className="text-lg text-medium-grey md:text-2xl">
             Porque sabemos que eres el motor de la economía.
           </p>
         </div>
@@ -162,8 +162,8 @@ const cfc = ({ data }) => {
         </article>
       </section>
 
-      <section className="container mx-auto px-4 py-20">
-        <h2 className="display-font md:text-4xl mb-12 text-2xl font-bold text-center text-dark-blue">
+      <section className="container px-4 py-20 mx-auto">
+        <h2 className="mb-12 text-2xl font-bold text-center display-font md:text-4xl text-dark-blue">
           Directorio
         </h2>
         <article className="container flex flex-wrap justify-center mx-auto md:px-4">

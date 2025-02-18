@@ -69,7 +69,7 @@ const DesktopNavigation = ({
                       transition={{ duration: 0.2, ease: 'easeInOut' }}
                       className="absolute left-0 w-screen p-5 mt-1 bg-white border shadow-xl"
                     >
-                      <ul className="container flex item mx-auto w-full justify-evenly md:px-4">
+                      <ul className="container flex w-full mx-auto item justify-evenly md:px-4">
                         {item.children.map((subItem) => (
                           <li key={subItem.path} className="w-1/4">
                             <Card
@@ -114,7 +114,7 @@ const DesktopNavigation = ({
                                     ]
                                   }
                                 </span>
-                                <p className="display-font py-4 font-bold group-hover:text-white">
+                                <p className="py-4 font-bold display-font group-hover:text-white">
                                   {subItem.label}
                                 </p>
                                 <p className="group-hover:text-white">

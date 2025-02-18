@@ -5,10 +5,10 @@ const CardContentTitle = ({ content }) => {
       <h2 className="mb-6 text-2xl font-bold text-medium-purple display-font">
         {title}
       </h2>
-      <h3 className="lg:text-4xl leading-tight text-3xl font-bold display-font text-medium-purple mb-4">
+      <h3 className="mb-4 text-3xl font-bold leading-tight lg:text-4xl display-font text-medium-purple">
         {subtitle}
       </h3>
-      <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
+      <p className="w-11/12 text-lg font-semibold lg:text-xl text-dark-grey ">
         {description}
       </p>
     </div>

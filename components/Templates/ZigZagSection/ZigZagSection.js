@@ -44,7 +44,7 @@ const ZigZagSection = ({
             className={`${item.color} md:w-1/2 flex flex-col justify-center items-center text-white p-10`}
           >
             <div className="max-w-md">
-              <h2 className="text-2xl md:text-3xl font-semibold display-font">
+              <h2 className="text-2xl font-semibold md:text-3xl display-font">
                 {item.title}
               </h2>
 

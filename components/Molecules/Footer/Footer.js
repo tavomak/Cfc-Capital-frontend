@@ -96,7 +96,7 @@ const Footer = () => {
                   />
                 </Link>
               </li>
-              <div className="w-3/4 mx-auto flex items-center justify-center text-white gap-8 lg:justify-between">
+              <div className="flex items-center justify-center w-3/4 gap-8 mx-auto text-white lg:justify-between">
                 <li>
                   <Link href="/">
                     <Image
@@ -132,7 +132,7 @@ const Footer = () => {
                 </li>
               </div>
               <a
-                className="flex justify-center text-center gap-2 mt-4 transition hover:opacity-75"
+                className="flex justify-center gap-2 mt-4 text-center transition hover:opacity-75"
                 href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
                 target="_blank"
               >
@@ -224,8 +224,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <ul className="lg:flex gap-8 w-11/12 mx-auto justify-center items-center border-t border-white pt-4 mt-4 text-2xl">
-          <div className="flex gap-8 justify-center mb-2 lg:mb-0">
+        <ul className="items-center justify-center w-11/12 gap-8 pt-4 mx-auto mt-4 text-2xl border-t border-white lg:flex">
+          <div className="flex justify-center gap-8 mb-2 lg:mb-0">
             <li>
               <a
                 href="https://www.facebook.com/cfccapitalchile/"
@@ -259,7 +259,7 @@ const Footer = () => {
               &copy; 2024. CFC Capital. Todos los derechos reservados.
             </p>
             {/* 
-            <ul className="flex flex-wrap justify-start  gap-4 mt-8 text-xs sm:mt-0 lg:justify-end">
+            <ul className="flex flex-wrap justify-start gap-4 mt-8 text-xs sm:mt-0 lg:justify-end">
               <li>
                 <Link
                   href="/terminos-y-condiciones"
