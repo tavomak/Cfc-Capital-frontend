@@ -8,9 +8,7 @@ const CardContentTitle = ({ content }) => {
       <h3 className="mb-4 text-3xl font-bold leading-tight lg:text-4xl display-font text-medium-purple">
         {subtitle}
       </h3>
-      <p className="w-11/12 text-lg font-semibold lg:text-xl text-dark-grey ">
-        {description}
-      </p>
+      <p className="text-2xl font-semibold text-dark-grey">{description}</p>
     </div>
   );
 };
