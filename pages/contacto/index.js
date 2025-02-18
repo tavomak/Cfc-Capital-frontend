@@ -17,6 +17,7 @@ const Contacto = () => (
             subtitle: 'Somos un gran equipo profesional.',
             description: 'Con capacidad para hacer crecer tu negocio.',
           }}
+          descriptionColor
         />
       }
       backgroundColor="#FFFFFF"
@@ -49,6 +50,7 @@ const Contacto = () => (
                 subtitle:
                   'En CFC, ofrecemos productos financieros y apoyamos tus objetivos empresariales.',
                 description: '¡Tu éxito es nuestro éxito!',
+                descriptionColor: false,
               }}
             />
           }
