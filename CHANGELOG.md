@@ -1,3 +1,9 @@
+## [1.2.5](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.4...v1.2.5) (2025-02-19)
+
+### Bug Fixes
+
+- **Signature:** Efa Image src fix ([61090bf](https://github.com/tavomak/Cfc-Capital-frontend/commit/61090bfd4d6d73c9edf6e6b2bdedfba6494a5d22))
+
 ## [1.2.4](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.3...v1.2.4) (2025-02-19)
 
 ### Bug Fixes
