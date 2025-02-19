@@ -1,3 +1,9 @@
+## [1.2.4](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.3...v1.2.4) (2025-02-19)
+
+### Bug Fixes
+
+- **Signature:** Password Image src fix ([ece0637](https://github.com/tavomak/Cfc-Capital-frontend/commit/ece06377498f15b1e8402c8c1b950fe82af5e74b))
+
 ## [1.2.3](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.2...v1.2.3) (2025-02-17)
 
 ### Bug Fixes
