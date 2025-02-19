@@ -154,7 +154,7 @@ const SignatureCard = ({
                         <a href={socialLinks.instagram}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
-                            src="Firma-IG.png"
+                            src="/Firma-IG.png"
                             alt="Instagram"
                             width="24"
                             height="24"
@@ -620,7 +620,7 @@ const SignatureCard = ({
                         <td style={{ paddingTop: '2px', paddingRight: '15px' }}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
-                            src="http://imgfz.com/i/nyzoSjk.png"
+                            src="/cfc-20years.png"
                             alt="20yrs"
                             width="43"
                             height="36"
@@ -630,7 +630,7 @@ const SignatureCard = ({
                         <td style={{ paddingRight: '15px' }}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
-                            src="http://imgfz.com/i/fBTnlJV.png"
+                            src="/cfc-40hrs.png"
                             alt="40hrs"
                             width="55"
                             height="30"
@@ -640,7 +640,7 @@ const SignatureCard = ({
                         <td>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
-                            src="http://imgfz.com/i/6FLI3kX.png"
+                            src="/cfc-efa.png"
                             alt="EFA logo"
                             width="50"
                             height="33"
