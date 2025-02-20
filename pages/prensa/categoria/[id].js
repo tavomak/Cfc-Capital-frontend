@@ -6,6 +6,7 @@ import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
 import NewCard from '@/components/Molecules/NewCard';
 import Image from 'next/image';
 import StepCard from '@/components/Molecules/StepCard';
+import Card from '@/components/Atoms/Card';
 
 const Category = ({ posts, banner, service, categoryName, categories }) => {
   const router = useRouter();
@@ -31,34 +32,34 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
             <title>{banner?.title} | CFC Capital</title>
           </Head>
 
-          <section className="container mx-auto px-4 py-20">
+          <section className="container px-4 py-20 mx-auto">
             {posts?.length > 1 &&
               posts.slice(0, 1).map((firstPost) => (
                 <a
                   href={`/prensa/${firstPost.slug}`}
-                  className="p-4 block overflow-hidden rounded-3xl group bg-sky-50 md:flex shadow-xl "
+                  className="block p-4 overflow-hidden shadow-xl rounded-3xl group bg-sky-50 md:flex "
                   key={firstPost.id}
                 >
-                  <div className="md:w-1/2 relative overflow-hidden rounded-2xl">
+                  <div className="relative overflow-hidden md:w-1/2 rounded-2xl">
                     <Image
                       src={firstPost.coverImage?.url}
                       alt={firstPost.title}
                       width={800}
                       height={600}
-                      className="h-80 md:h-full w-full object-contain transition-transform duration-300 scale-100 group-hover:scale-110"
+                      className="object-contain w-full transition-transform duration-300 scale-100 h-80 md:h-full group-hover:scale-110"
                     />
                   </div>
 
-                  <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                  <div className="flex flex-col justify-center p-8 md:w-1/2 md:p-12">
                     <div className="max-w-md">
-                      <h2 className="display-font md:text-2xl text-base font-semibold text-blue">
+                      <h2 className="text-base font-semibold display-font md:text-2xl text-blue">
                         {firstPost.title}
                       </h2>
 
                       {firstPost.author && (
                         <div className="flex items-center gap-3 my-6">
                           {firstPost.author?.picture && (
-                            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+                            <div className="relative w-12 h-12 overflow-hidden rounded-full shrink-0">
                               <Image
                                 src={firstPost.author.picture?.url}
                                 alt={`${firstPost.author.name} profile picture`}
@@ -78,7 +79,7 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                         </div>
                       )}
 
-                      <p className="text-dark-grey md:text-base text-xs leading-relaxed">
+                      <p className="text-xs leading-relaxed text-dark-grey md:text-base">
                         {firstPost.excerpt}
                       </p>
                     </div>
@@ -94,7 +95,7 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
           )}
 
           <section className="container mx-auto">
-            <article className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 mb-8">
+            <article className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
               {posts?.length > 0 &&
                 posts.map((item) => (
                   <NewCard
@@ -114,24 +115,29 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
           {service?.length > 0 && (
             <section className="py-24 bg-dark-blue">
               <div className="container mx-auto">
-                <h2 className="text-white text-center py-4 text-2xl font-bold display-font">
+                <h2 className="py-4 text-2xl font-bold text-center text-white display-font">
                   {'El proceso de '}
                   <span className="text-capitalize">{categoryName}</span>
                 </h2>
-                <div className="md:flex text-white">
+                <article className="text-white md:flex">
                   {service.map((item, key) => (
-                    <StepCard
-                      key={item.description}
-                      name={item.subtitle}
-                      icon={
-                        <div className="display-font flex items-center justify-center w-20 h-20 text-3xl font-bold text-white rounded-full border-white border-solid circle-width">
-                          {key + 1}
-                        </div>
-                      }
-                      description={item.description}
-                    />
+                    <Card
+                      containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
+                      cardClassName="px-4 py-4 sm:py-12 shadow-lg"
+                      key={item.title}
+                    >
+                      <StepCard
+                        name={item.subtitle}
+                        icon={
+                          <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold text-white border-white border-solid rounded-full display-font circle-width">
+                            {key + 1}
+                          </div>
+                        }
+                        description={item.description}
+                      />
+                    </Card>
                   ))}
-                </div>
+                </article>
               </div>
             </section>
           )}

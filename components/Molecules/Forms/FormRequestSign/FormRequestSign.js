@@ -11,11 +11,11 @@ import Input from '@/components/Atoms/Input';
 const getUserData = async (email) => {
   const {
     data: {
-      teams: [{ managers, workers, team }],
+      teams: [{ managers, workers, team, subManager }],
     },
   } = await getUserByEmail(email);
 
-  const userGroups = [managers, workers, team];
+  const userGroups = [managers, workers, team, subManager];
   if (userGroups.length === 0) return undefined;
 
   const firstNonEmptyGroup = userGroups.find((group) => group?.length > 0);
@@ -70,6 +70,7 @@ const FormRequestSign = ({ setData }) => {
     } catch (error) {
       console.log('error', error?.message);
       notification('error', '¡Oh! algo salió mal, inténtalo de nuevo');
+      setLoading(false);
     } finally {
       recaptchaRef.current.reset();
     }
@@ -77,7 +78,7 @@ const FormRequestSign = ({ setData }) => {
   return (
     <form
       ref={form}
-      className="min-w-[350px]"
+      className="min-w-96"
       onSubmit={(e) => handleSubmit(handleFormSubmit(e))}
     >
       <ReCAPTCHA

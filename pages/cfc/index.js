@@ -10,6 +10,7 @@ import Layout from '@/components/Templates/Layout';
 import Link from 'next/link';
 import StepCard from '@/components/Molecules/StepCard';
 import TeamCard from '@/components/Molecules/TeamCard';
+import Card from '@/components/Atoms/Card';
 
 const iconsMapping = {
   star: <StarIcon />,
@@ -52,12 +53,17 @@ const cfc = ({ data }) => {
         </div>
         <article className="mt-8 md:flex">
           {highlights.map((item) => (
-            <StepCard
+            <Card
+              containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
+              cardClassName="px-4 py-4 sm:py-12 shadow-lg"
               key={item.title}
-              name={item.title}
-              icon={iconsMapping[item.icon]}
-              description={item.description}
-            />
+            >
+              <StepCard
+                name={item.title}
+                icon={iconsMapping[item.icon]}
+                description={item.description}
+              />
+            </Card>
           ))}
         </article>
         <div className="w-full py-10 text-center">

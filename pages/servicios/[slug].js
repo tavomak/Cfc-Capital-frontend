@@ -87,16 +87,21 @@ const Service = ({ data }) => {
               </h2>
               <div className="md:flex">
                 {data.serviceProcess.map((item, key) => (
-                  <StepCard
-                    key={item.description}
-                    name={item.subtitle}
-                    icon={
-                      <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold border-solid rounded-full display-font text-medium-blue border-medium-blue circle-width">
-                        {key + 1}
-                      </div>
-                    }
-                    description={item.description}
-                  />
+                  <Card
+                    key={item.title}
+                    containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
+                    cardClassName="px-4 py-4 sm:py-12 shadow-lg"
+                  >
+                    <StepCard
+                      name={item.subtitle}
+                      icon={
+                        <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold border-solid rounded-full display-font text-medium-blue border-medium-blue circle-width">
+                          {key + 1}
+                        </div>
+                      }
+                      description={item.description}
+                    />
+                  </Card>
                 ))}
               </div>
             </article>

@@ -1,31 +1,27 @@
-import Card from '@/components/Atoms/Card';
 import Image from 'next/image';
 
 const NewCard = ({ title, slug, image, author, excerpt, tags }) => (
-  <Card
-    cardClassName="p-4 w-3/4 md:w-full mx-auto bg-sky-50 flex flex-col group hover:shadow-none"
-    header={
-      <a
-        href={`/prensa/${slug}`}
-        className="p-2 overflow-hidden min-h-64 group rounded-2xl"
-      >
-        <Image
-          className="transition scale-100 rounded-2xl group-hover:scale-110"
-          src={image}
-          alt={title}
-          width={500}
-          height={500}
-          style={{
-            width: '100%',
-            height: '100%',
-            maxHeight: '16rem',
-            objectPosition: 'top',
-            objectFit: 'cover',
-          }}
-        />
-      </a>
-    }
-  >
+  <article className="flex flex-col w-3/4 p-4 mx-auto md:w-full bg-sky-50 group hover:shadow-none">
+    <a
+      href={`/prensa/${slug}`}
+      className="p-2 overflow-hidden min-h-64 group rounded-2xl"
+    >
+      <Image
+        className="transition scale-100 rounded-2xl group-hover:scale-110"
+        src={image}
+        alt={title}
+        width={500}
+        height={500}
+        style={{
+          width: '100%',
+          height: '100%',
+          maxHeight: '16rem',
+          objectPosition: 'top',
+          objectFit: 'cover',
+        }}
+      />
+    </a>
+
     <div className="h-full">
       <div className="py-3 space-y-3">
         <a href={`/prensa/${slug}`}>
@@ -72,6 +68,6 @@ const NewCard = ({ title, slug, image, author, excerpt, tags }) => (
         </a>
       </div>
     </div>
-  </Card>
+  </article>
 );
 export default NewCard;

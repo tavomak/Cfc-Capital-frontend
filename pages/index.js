@@ -26,6 +26,7 @@ import ClientsIcon from '@/components/Atoms/ClientsIcon';
 import DolarIcon from '@/components/Atoms/DolarIcon';
 import Content from '@/components/Molecules/CardContentTitle';
 import Accordion from '@/components/Molecules/Accordion';
+import Card from '@/components/Atoms/Card';
 
 const iconsMapping = {
   star: <StarIcon />,
@@ -133,7 +134,9 @@ const Home = ({ data }) => {
               />
               <figcaption className="absolute right-0 w-1/3 bottom-1/2 sm:bottom-14 sm:right-8">
                 <p className="text-xs font-bold text-balance display-font text-dark-grey">
-                  Estamos ubicados en Av. El Bosque 92, Las Condes.
+                  Estamos ubicados en
+                  <br />
+                  Av. El Bosque 92, Las Condes.
                 </p>
               </figcaption>
             </figure>
@@ -192,12 +195,17 @@ const Home = ({ data }) => {
         </h2>
         <article className="md:flex">
           {data.pages.highlights.map((item) => (
-            <StepCard
+            <Card
               key={item.title}
-              name={item.title}
-              icon={iconsMapping[item.icon]}
-              description={item.description}
-            />
+              containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
+              cardClassName="px-4 py-4 sm:py-12 shadow-lg"
+            >
+              <StepCard
+                name={item.title}
+                icon={iconsMapping[item.icon]}
+                description={item.description}
+              />
+            </Card>
           ))}
         </article>
       </section>
