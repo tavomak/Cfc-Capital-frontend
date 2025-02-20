@@ -62,8 +62,7 @@ const Signature = ({ data, setData }) => {
                 <a href="https://cfccapital.cl/" target="_blank">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="http://imgfz.com/i/kiyjBA9.png"
-                    // src="/CFC-logo.png"
+                    src="/signature-logo.png"
                     width="160"
                     style={{
                       display: 'block',

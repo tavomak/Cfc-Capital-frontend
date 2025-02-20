@@ -1,10 +1,5 @@
-import Card from '@/components/Atoms/Card';
-
 const StepCard = ({ name, icon, description }) => (
-  <Card
-    containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
-    cardClassName="px-4 py-4 sm:py-12 shadow-lg"
-  >
+  <div>
     <div className="flex justify-center p-4 text-4xl text-blue">
       <span className="w-20 h-20">{icon}</span>
     </div>
@@ -12,6 +7,6 @@ const StepCard = ({ name, icon, description }) => (
       {name}
     </p>
     <p className="mt-5 text-sm text-center">{description}</p>
-  </Card>
+  </div>
 );
 export default StepCard;
