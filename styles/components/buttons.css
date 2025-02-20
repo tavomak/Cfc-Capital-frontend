@@ -1,12 +1,12 @@
 article.main a {
-  @apply text-dark-blue hover:text-medium-blue font-semibold;
+  @apply font-semibold text-dark-blue hover:text-medium-blue;
   transition-duration: var(--default-timing-duration);
   transition-timing-function: var(--default-timing-function);
   transition-property: all;
 }
 
 .btn {
-  @apply px-4 py-1 rounded-full border font-semibold;
+  @apply px-4 py-1 font-semibold border rounded-full;
   transition-duration: var(--default-timing-duration);
   transition-timing-function: var(--default-timing-function);
   transition-property: all;

@@ -3,7 +3,9 @@ import { getServices, formatServices } from '@/utils';
 
 import Layout from '@/components/Templates/Layout';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
-import StaticHero from '@/components/Molecules/StaticHero';
+import FormContact from '@/components/Molecules/Forms/FormContact';
+import LayerHero from '@/components/Molecules/LayerHero';
+import CardContentTitle from '@/components/Molecules/CardContentTitle';
 
 const Services = ({ data }) => {
   const router = useRouter();
@@ -16,9 +18,21 @@ const Services = ({ data }) => {
       title="Servicios"
       description="Nos encargamos de cobrar las facturas pendientes a las empresas, para que solo te concentres en tu negocio."
     >
-      <StaticHero image="servicios" alt="Servicios" />
+      <LayerHero
+        title="Servicios"
+        columnContent={
+          <CardContentTitle
+            content={{
+              title: 'Servicios',
+              subtitle: 'Financiamos al motor de la economía',
+            }}
+          />
+        }
+        imageUrl="/cfc-servicios.png"
+        ltr
+      />
 
-      <section className="py-1">
+      <section className="pb-12">
         <ZigZagSection
           itemList={formatServices(data, {
             imageKey: 'cardImage',
@@ -28,6 +42,26 @@ const Services = ({ data }) => {
           itemClassName="my-20 md:rounded-3xl shadow-lg overflow-hidden"
           onClick={handleClick}
         />
+        <LayerHero
+          columnContent={
+            <CardContentTitle
+              content={{
+                title: 'Contáctanos',
+                subtitle:
+                  'En CFC, ofrecemos productos financieros y apoyamos tus objetivos empresariales.',
+                description: '¡Tu éxito es nuestro éxito!',
+              }}
+            />
+          }
+          backgroundColor="#FFFFFF"
+          rtl="rtl"
+        >
+          <div className="flex justify-center border-b-4 shadow-md ">
+            <div className="w-full p-5">
+              <FormContact type="Contacto" />
+            </div>
+          </div>
+        </LayerHero>
       </section>
     </Layout>
   );

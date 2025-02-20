@@ -1,16 +1,16 @@
 import { useRouter } from 'next/router';
-import DOMPurify from 'isomorphic-dompurify';
-
 import { getAllPosts, getPostAndMorePosts, markdownToHtml } from '@/utils';
 import Spinner from '@/components/Atoms/Spinner';
 import Head from 'next/head';
 import Image from 'next/image';
-
 import Layout from '@/components/Templates/Layout';
-import Card from '@/components/Atoms/Card';
-import Button from '@/components/Atoms/Button';
+import RichContent from '@/components/Atoms/RichContent';
+import NewCard from '@/components/Molecules/NewCard';
 
 export default function Post({ post, morePosts }) {
+  const title = `${post?.article?.title} | CFC Capital`;
+  const currentPost = post?.article;
+
   const router = useRouter();
   return (
     <Layout
@@ -24,18 +24,18 @@ export default function Post({ post, morePosts }) {
       ) : (
         <>
           <Head>
-            <title>{post.article.title} | CFC Capital</title>
-            <meta property="og:image" content={post.article.coverImage.url} />
+            <title>{title}</title>
+            <meta property="og:image" content={currentPost.coverImage?.url} />
           </Head>
 
-          <article className="main">
-            <section className="py-10 bg-light-blue">
-              <div className="container flex flex-wrap items-center max-w-screen-xl mx-auto md:px-4">
+          <article className="main bg-gradient-to-r from-white to-soft-blue-light">
+            <section className="py-10">
+              <div className="container md:flex items-center max-w-screen-xl mx-auto">
                 <div className="md:w-1/2">
                   <div className="overflow-hidden h-96">
                     <Image
-                      src={`${post.article.coverImage.url}`}
-                      alt={post.article.title}
+                      src={`${currentPost.coverImage?.url}`}
+                      alt={currentPost.title}
                       width={500}
                       height={380}
                       style={{
@@ -47,90 +47,79 @@ export default function Post({ post, morePosts }) {
                   </div>
                 </div>
                 <div className="p-4 md:w-1/2">
-                  <h1 className="pb-4 text-2xl font-bold display-font text-purple">
-                    {post.article.title}
+                  <h1 className="text-3xl md:text-5xl display-font font-bold text-blue">
+                    {currentPost.title}
                   </h1>
                 </div>
               </div>
             </section>
-            <section className="container max-w-screen-xl mx-auto my-10">
-              {post.article.video && (
+
+            <section className="container w-11/12 md:w-3/5 mx-auto md:mx-0 md:ml-auto max-w-screen-xl px-4">
+              {currentPost.video && (
                 <figure className="max-w-screen-lg mx-auto video-container">
                   <iframe
                     className="w-full aspect-video"
                     title="Embed video"
-                    src={`https://www.youtube.com/embed/${post.article.video}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
+                    src={`https://www.youtube.com/embed/${currentPost?.video}?feature=oembed&enablejsapi=1&enablejsapi=1' ;`}
                     frameBorder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
                 </figure>
               )}
-              <div className="py-10 my-10">
-                <div
-                  // eslint-disable-next-line react/no-danger
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(post.article.content.html),
-                  }}
-                />
+              <div className="my-10">
+                <div className="md:w-4/5">
+                  {currentPost.tags?.length > 0 && (
+                    <span className="w-fit px-3 py-1 text-sm bg-sky-100 text-soft-blue rounded-md">
+                      {currentPost.tags}
+                    </span>
+                  )}
+                  {currentPost.author && (
+                    <div className="mb-4">
+                      <span className="text-base text-blue">
+                        {currentPost.author.name}
+                      </span>
+                      |
+                      <span className="text-base text-blue">
+                        {currentPost.author.title}
+                      </span>
+                    </div>
+                  )}
+
+                  <RichContent
+                    content={currentPost.content.json}
+                    references={currentPost.content.references}
+                  />
+                </div>
               </div>
             </section>
-          </article>
 
-          <aside className="container max-w-screen-xl mx-auto">
-            <div className="col-12">
-              <hr />
-              <h2 className="py-4 display-font text-purple fs-5">
-                Más noticias
-              </h2>
-            </div>
-            <section className="container flex flex-wrap items-stretch justify-center mx-auto">
-              {morePosts?.length > 0 &&
-                morePosts.map((item) => (
-                  <Card
-                    key={item.id}
-                    containerClassName="p-2 md:w-1/2 lg:w-1/3 xl:w-1/4 mb-10"
-                    cardClassName="flex flex-col justify-between group"
-                    header={
-                      <a
-                        href={`/prensa/${item.slug}`}
-                        className="overflow-hidden min-h-64"
-                      >
-                        <Image
-                          className="transition scale-100 group-hover:scale-110"
-                          src={item.coverImage.url}
-                          alt={item.title}
-                          width={500}
-                          height={500}
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            maxHeight: '16rem',
-                            objectFit: 'cover',
-                            objectPosition: 'top',
-                          }}
-                        />
-                      </a>
-                    }
-                    footer={
-                      <a className="w-full p-2" href={`/prensa/${item.slug}`}>
-                        <Button
-                          className="text-sm font-semibold text-blue"
-                          text="Leer más"
-                        />
-                      </a>
-                    }
-                  >
-                    <a href={`/prensa/${item.slug}`}>
-                      <p className="px-2 py-4 font-semibold text-blue">
-                        {item.title.slice(0, 100)}
-                        {item.title.length > 100 && '...'}
-                      </p>
-                    </a>
-                  </Card>
-                ))}
-            </section>
-          </aside>
+            <aside className="container mx-auto">
+              <div>
+                <hr />
+                <h2 className="text-center md:text-left py-4 display-font text-purple text-2xl">
+                  Más noticias
+                </h2>
+              </div>
+              <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 mb-8">
+                {morePosts?.length > 0 &&
+                  morePosts
+                    .slice(0, 3)
+                    .map((item) => (
+                      <NewCard
+                        key={item.id}
+                        title={item.title}
+                        id={item.id}
+                        slug={item.slug}
+                        image={item.coverImage.url}
+                        author={item.author}
+                        tags={item.tags}
+                        excerpt={item.excerpt}
+                      />
+                    ))}
+              </div>
+            </aside>
+          </article>
         </>
       )}
     </Layout>

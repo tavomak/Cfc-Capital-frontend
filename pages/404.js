@@ -15,7 +15,7 @@ const FourOhFour = () => (
           />
         </div>
         <div className="mt-5 text-center">
-          <Link href="/" className="btn btn-gray shadow px-5 py-2">
+          <Link href="/" className="px-5 py-2 shadow btn btn-gray">
             Volver al sitio
           </Link>
         </div>

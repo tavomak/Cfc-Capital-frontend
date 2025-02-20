@@ -13,7 +13,7 @@ const SignaturePage = () => {
         {data ? (
           <Signature data={data.user} setData={setData} />
         ) : (
-          <div className="flex justify-center items-center">
+          <div className="flex items-center justify-center">
             <FormRequestSign setData={setData} />
           </div>
         )}

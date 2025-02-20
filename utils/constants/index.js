@@ -129,6 +129,11 @@ export const memorial = [
 
 export const navItems = [
   {
+    label: 'Inicio',
+    path: '/',
+    children: false,
+  },
+  {
     label: 'CFC',
     path: '/cfc',
     children: false,
@@ -146,16 +151,18 @@ export const navItems = [
         label: 'Factoring',
         path: '/servicios/factoring',
         text: 'Obtén liquidez inmediata cediéndonos tus facturas.',
-      },
-      {
-        label: 'Factoring web',
-        path: '/servicios/factoring-web',
-        text: 'Cede todas tus facturas en solo 3 clics.',
+        subnav: [
+          {
+            label: 'Factoring web',
+            path: '/servicios/factoring-web',
+            text: 'Cede todas tus facturas en solo 3 clics.',
+          },
+        ],
       },
       {
         label: 'Leasing',
         path: '/servicios/leasing',
-        text: 'arrienda un bien de capital con opción a compra.',
+        text: 'Arrienda un bien de capital con opción a compra.',
       },
       {
         label: 'Leaseback',
@@ -191,40 +198,6 @@ export const sliderSettings = {
   ),
   customPaging: () => <span className="cfc-dots-list-item" />,
 };
-
-export const highlights = [
-  {
-    name: 'Fundada',
-    title: 'Fundada en 2003',
-    description: 'Especializados en el segmento de empresas y pymes.',
-    number: 2003,
-    prev: 'Fundada en ',
-    next: null,
-    icon: 'star',
-    color: 'blue',
-  },
-  {
-    name: 'Clientes',
-    title: '+4000 Clientes',
-    description:
-      'Detrás de cada financiamiento, hay sueños que ayudamos a convertir en realidad.',
-    number: 4000,
-    prev: '+',
-    next: ' Clientes',
-    icon: 'people',
-    color: 'purple',
-  },
-  {
-    name: 'Operaciones',
-    title: 'US $591 MM',
-    description: 'Contribuyendo al desarrollo del país.',
-    number: 591,
-    prev: 'US $',
-    next: 'MM',
-    icon: 'money',
-    color: 'soft-blue',
-  },
-];
 
 export const environments = {
   production: 'production',
