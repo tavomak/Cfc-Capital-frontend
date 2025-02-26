@@ -212,6 +212,13 @@ export const getPageBySlugAndServices = (slug) =>
               url
             }
           }
+          archives {
+            id
+            name
+            pdf {
+              url
+            }
+          }
         }
         services {
           id
