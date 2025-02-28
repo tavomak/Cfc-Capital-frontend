@@ -24,7 +24,7 @@ const Contacto = () => (
     >
       <div className="w-full h-5/6">
         <Image
-          src="/CFC-mujer-contacto.png"
+          src="/Fco-Ema-Contacto.png"
           width={750}
           height={580}
           style={{

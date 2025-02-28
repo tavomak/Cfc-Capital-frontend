@@ -25,7 +25,6 @@ import StarIcon from '@/components/Atoms/StarIcon';
 import ClientsIcon from '@/components/Atoms/ClientsIcon';
 import DolarIcon from '@/components/Atoms/DolarIcon';
 import Content from '@/components/Molecules/CardContentTitle';
-import Accordion from '@/components/Molecules/Accordion';
 import Card from '@/components/Atoms/Card';
 
 const iconsMapping = {
@@ -238,54 +237,7 @@ const Home = ({ data }) => {
         </article>
       </section>
 
-      <section className="container mx-auto my-24 md:px-4">
-        <h2 className="mb-8 text-4xl font-bold text-center display-font text-dark-blue">
-          Preguntas Frecuentes
-        </h2>
-        <Accordion list={data.pages.accordion} />
-      </section>
-
       <SubscribeSection />
-
-      {/* <section className="pt-8">
-        <h2 className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl">
-          Factoring web
-        </h2>
-        <p className="w-11/12 max-w-3xl mx-auto text-base font-semibold text-center text-pretty display-font md:text-2xl text-medium-grey">
-          En nuestra plataforma digital podrás cargar de manera masiva tus
-          facturas, con cotización en línea clara y transparente.
-        </p>
-        <article className="container pt-10 mx-auto">
-          <div className="flex flex-col-reverse items-center justify-between gap-12 md:flex-row">
-            <div className="md:w-1/2 xl:w-1/3">
-              {data.pages.steps.map((step, index) => (
-                <div
-                  className="flex items-center p-4 mb-6 bg-white shadow-lg rounded-xl"
-                  key={step.description}
-                >
-                  <div className="flex items-center justify-center flex-shrink-0 w-16 h-16 mr-4 text-3xl font-bold border-solid rounded-full display-font text-medium-blue border-medium-blue circle-width">
-                    {index + 1}
-                  </div>
-                  <div>
-                    <h3 className="mb-1 text-lg font-semibold display-font text-medium-blue">
-                      {step.description}
-                    </h3>
-                    <p className="text-sm text-medium-grey">{step.subtitle}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="md:w-1/2">
-              <Image
-                src="/chica-ameba.png"
-                alt="empresarios"
-                width={756}
-                height={609}
-              />
-            </div>
-          </div>
-        </article>
-      </section> */}
 
       <MediaSection mediaSet={mediaLogos} />
     </Layout>
