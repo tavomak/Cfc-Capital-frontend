@@ -33,6 +33,7 @@ body {
 }
 
 .bg-medium-purple,
+.bg-soft-purple,
 .bg-leaseback {
   background: var(--medium-purple);
 }
