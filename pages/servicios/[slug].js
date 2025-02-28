@@ -8,7 +8,6 @@ import Card from '@/components/Atoms/Card';
 import Modal from '@/components/Templates/Modal';
 import FormGetInfo from '@/components/Molecules/Forms/FormContact';
 import SubscribeSection from '@/components/Templates/SubscribeSection';
-import Accordion from '@/components/Molecules/Accordion';
 import Spinner from '@/components/Atoms/Spinner';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StepCard from '@/components/Molecules/StepCard';
@@ -105,13 +104,6 @@ const Service = ({ data }) => {
                 ))}
               </div>
             </article>
-          </section>
-
-          <section className="container mx-auto my-12 md:px-4">
-            <h2 className="mb-8 text-4xl font-bold text-center display-font text-dark-blue">
-              Preguntas Frecuentes
-            </h2>
-            <Accordion list={data.serviceFaq} />
           </section>
 
           <SubscribeSection />

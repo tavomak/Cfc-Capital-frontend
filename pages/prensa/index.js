@@ -86,7 +86,7 @@ const News = ({ posts, categories }) => {
           <div className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
             {prensaPosts?.length > 0 &&
               prensaPosts
-                .slice(0, 9)
+                .slice(1, 10)
                 .map((item) => (
                   <NewCard
                     key={item.id}

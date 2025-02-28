@@ -97,18 +97,20 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
           <section className="container mx-auto">
             <article className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
               {posts?.length > 0 &&
-                posts.map((item) => (
-                  <NewCard
-                    key={item.id}
-                    title={item.title}
-                    id={item.id}
-                    slug={item.slug}
-                    image={item.coverImage.url}
-                    author={item.author}
-                    tags={item.tags}
-                    excerpt={item.excerpt}
-                  />
-                ))}
+                posts
+                  .slice(1)
+                  .map((item) => (
+                    <NewCard
+                      key={item.id}
+                      title={item.title}
+                      id={item.id}
+                      slug={item.slug}
+                      image={item.coverImage.url}
+                      author={item.author}
+                      tags={item.tags}
+                      excerpt={item.excerpt}
+                    />
+                  ))}
             </article>
           </section>
 
