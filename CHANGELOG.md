@@ -1,3 +1,9 @@
+## [1.3.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.0...v1.3.1) (2025-03-01)
+
+### Bug Fixes
+
+- **design:** StarIcon and cfc page update ([2b64353](https://github.com/tavomak/Cfc-Capital-frontend/commit/2b643534d076dea3e0781a656d0717db47cc90d5))
+
 # [1.3.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.2.5...v1.3.0) (2025-03-01)
 
 ### Bug Fixes
