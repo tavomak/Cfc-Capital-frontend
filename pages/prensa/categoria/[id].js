@@ -1,18 +1,16 @@
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Head from 'next/head';
-
 import { getPostsByCategoryAndProcess, getAllCategories } from '@/utils';
-
 import Layout from '@/components/Templates/Layout';
-import LayerHero from '@/components/Molecules/LayerHero';
 import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
+import NewCard from '@/components/Molecules/NewCard';
+import Image from 'next/image';
+import StepCard from '@/components/Molecules/StepCard';
 import Card from '@/components/Atoms/Card';
-import Button from '@/components/Atoms/Button';
-// import CardLayout from '@/components/Templates/CardLayout';
 
 const Category = ({ posts, banner, service, categoryName, categories }) => {
   const router = useRouter();
+
   return (
     <Layout
       title="Blog y prensa"
@@ -31,96 +29,117 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
       ) : (
         <>
           <Head>
-            <title>{banner.title} | CFC Capital</title>
+            <title>{banner?.title} | CFC Capital</title>
           </Head>
 
-          {banner?.image && (
-            <LayerHero
-              title={banner.title}
-              subtitle={banner.subTitle}
-              imageUrl={banner.image.url}
-              content={banner.content?.html}
-            />
-          )}
+          <section className="container px-4 py-20 mx-auto">
+            {posts?.length > 1 &&
+              posts.slice(0, 1).map((firstPost) => (
+                <a
+                  href={`/prensa/${firstPost.slug}`}
+                  className="block p-4 overflow-hidden shadow-xl rounded-3xl group bg-sky-50 md:flex "
+                  key={firstPost.id}
+                >
+                  <div className="relative overflow-hidden md:w-1/2 rounded-2xl">
+                    <Image
+                      src={firstPost.coverImage?.url}
+                      alt={firstPost.title}
+                      width={800}
+                      height={600}
+                      className="object-contain w-full transition-transform duration-300 scale-100 h-80 md:h-full group-hover:scale-110"
+                    />
+                  </div>
+
+                  <div className="flex flex-col justify-center p-8 md:w-1/2 md:p-12">
+                    <div className="max-w-md">
+                      <h2 className="text-base font-semibold display-font md:text-2xl text-blue">
+                        {firstPost.title}
+                      </h2>
+
+                      {firstPost.author && (
+                        <div className="flex items-center gap-3 my-6">
+                          {firstPost.author?.picture && (
+                            <div className="relative w-12 h-12 overflow-hidden rounded-full shrink-0">
+                              <Image
+                                src={firstPost.author.picture?.url}
+                                alt={`${firstPost.author.name} profile picture`}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                          )}
+                          <div>
+                            <p className="text-sm font-semibold text-dark-grey">
+                              {firstPost.author.name}
+                            </p>
+                            <p className="text-xs text-dark-grey">
+                              {firstPost.author.title}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      <p className="text-xs leading-relaxed text-dark-grey md:text-base">
+                        {firstPost.excerpt}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              ))}
+          </section>
 
           {categories?.length > 0 && (
-            <div className="min-h-24">
+            <div className="my-10 min-h-24">
               <CategoryNavBar categories={categories} />
             </div>
           )}
 
-          <section className="container flex flex-wrap items-stretch justify-center mx-auto">
-            {posts?.length > 0 &&
-              posts.map((item) => (
-                <Card
-                  key={item.id}
-                  containerClassName="p-2 md:w-1/2 lg:w-1/3 xl:w-1/4 mb-10"
-                  cardClassName="flex flex-col justify-between group"
-                  header={
-                    <a
-                      href={`/prensa/${item.slug}`}
-                      className="overflow-hidden min-h-64"
-                    >
-                      <Image
-                        className="transition scale-100 group-hover:scale-110"
-                        src={item.coverImage.url}
-                        alt={item.title}
-                        width={500}
-                        height={500}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          maxHeight: '16rem',
-                          objectFit: 'cover',
-                          objectPosition: 'top',
-                        }}
-                      />
-                    </a>
-                  }
-                  footer={
-                    <a className="w-full p-2" href={`/prensa/${item.slug}`}>
-                      <Button
-                        className="text-sm font-semibold text-blue"
-                        text="Leer más"
-                      />
-                    </a>
-                  }
-                >
-                  <a href={`/prensa/${item.slug}`}>
-                    <p className="px-2 py-4 font-semibold text-blue">
-                      {item.title.slice(0, 100)}
-                      {item.title.length > 100 && '...'}
-                    </p>
-                  </a>
-                </Card>
-              ))}
+          <section className="container mx-auto">
+            <article className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
+              {posts?.length > 0 &&
+                posts
+                  .slice(1)
+                  .map((item) => (
+                    <NewCard
+                      key={item.id}
+                      title={item.title}
+                      id={item.id}
+                      slug={item.slug}
+                      image={item.coverImage.url}
+                      author={item.author}
+                      tags={item.tags}
+                      excerpt={item.excerpt}
+                    />
+                  ))}
+            </article>
           </section>
 
-          {service && service.length > 0 && (
-            <section className="py-5 bg-dark-blue">
-              <div className="container mx-auto text-white md:px-4">
-                <h2 className="py-4 text-2xl font-bold display-font">
+          {service?.length > 0 && (
+            <section className="py-24 bg-dark-blue">
+              <div className="container mx-auto">
+                <h2 className="py-4 text-2xl font-bold text-center text-white display-font">
                   {'El proceso de '}
                   <span className="text-capitalize">{categoryName}</span>
                 </h2>
-                <div className="flex flex-wrap">
+                <article className="text-white md:flex">
                   {service.map((item, key) => (
-                    <div className="w-1/3 px-4 text-4xl" key={item.description}>
-                      <div className="relative p-12 my-5 font-black text-white rounded-full display-font bg-light-blue">
-                        <div className="relative">
-                          <span className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
+                    <Card
+                      containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
+                      cardClassName="px-4 py-4 sm:py-12 shadow-lg"
+                      key={item.title}
+                    >
+                      <StepCard
+                        name={item.subtitle}
+                        icon={
+                          <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold text-white border-white border-solid rounded-full display-font circle-width">
                             {key + 1}
-                          </span>
-                        </div>
-                      </div>
-                      {item.description && (
-                        <p className="my-5 text-sm text-wite">
-                          {item.description}
-                        </p>
-                      )}
-                    </div>
+                          </div>
+                        }
+                        description={item.description}
+                      />
+                    </Card>
                   ))}
-                </div>
+                </article>
               </div>
             </section>
           )}

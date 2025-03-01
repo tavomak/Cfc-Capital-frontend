@@ -1,5 +1,14 @@
 body {
   font-family: var(--primary-font);
+  color: var(--dark-grey);
+}
+
+.circle-width {
+  border-width: 3px;
+}
+
+.modal-active {
+  overflow: hidden;
 }
 
 .display-font {
@@ -10,6 +19,7 @@ body {
   background: var(--medium-blue);
 }
 
+.bg-dark-blue,
 .bg-factoring-web {
   background: var(--dark-blue);
 }
@@ -18,9 +28,14 @@ body {
   background: var(--soft-blue);
 }
 
-.bg-leaseback,
-.bg-soft-purple {
-  background: var(--purple);
+.bg-testimonial {
+  background: var(--soft-blue-light);
+}
+
+.bg-medium-purple,
+.bg-soft-purple,
+.bg-leaseback {
+  background: var(--medium-purple);
 }
 
 .text-factoring {

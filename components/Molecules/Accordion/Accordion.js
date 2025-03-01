@@ -6,9 +6,9 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const colorsMapping = {
-    1: 'medium-blue',
-    2: 'soft-blue',
-    3: 'purple',
+    1: 'soft-blue',
+    2: 'dark-blue',
+    3: 'medium-purple',
   };
 
   const toggleAccordion = (index) => {
@@ -29,15 +29,17 @@ const Accordion = ({ containerClassName, itemClassName, list }) => {
             <button
               type="button"
               onClick={() => toggleAccordion(key)}
-              className="items-center justify-between w-full px-4 py-4 lg:flex"
+              className="items-center justify-between w-full px-4 py-4 text-left md:py-8 lg:flex"
             >
-              <span className="text-lg font-medium">{item.title}</span>
+              <span className="text-base font-semibold display-font md:text-2xl">
+                {item.title}
+              </span>
               <motion.span
                 // animate={{ rotate: isExpanded ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="block lg:inline"
+                className="block text-sm font-medium lg:inline"
               >
-                ver más
+                Saber más...
               </motion.span>
             </button>
 

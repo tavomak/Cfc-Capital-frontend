@@ -1,59 +1,25 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import {
-  FaClipboardList,
-  FaCircleCheck,
-  FaCircleDollarToSlot,
-} from 'react-icons/fa6';
 import { getServices, getServiceBySlug, formatServices } from '@/utils';
 
-import StaticHero from '@/components/Molecules/StaticHero';
 import LayerHero from '@/components/Molecules/LayerHero';
 import Layout from '@/components/Templates/Layout';
 import Card from '@/components/Atoms/Card';
 import Modal from '@/components/Templates/Modal';
 import FormGetInfo from '@/components/Molecules/Forms/FormContact';
 import SubscribeSection from '@/components/Templates/SubscribeSection';
-import Accordion from '@/components/Molecules/Accordion';
 import Spinner from '@/components/Atoms/Spinner';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
-
-const iconsMapping = {
-  1: {
-    icon: <FaClipboardList />,
-    color: 'light-purple',
-  },
-  2: {
-    icon: <FaCircleCheck />,
-    color: 'light-blue',
-  },
-  3: {
-    icon: <FaCircleDollarToSlot />,
-    color: 'soft-purple',
-  },
-};
-
-const Content = () => (
-  <div className="px-4 text-left">
-    <h1 className="mb-6 text-3xl font-bold text-purple display-font">
-      Factoring
-    </h1>
-    <h3 className="mb-4 text-2xl font-bold lg:text-5xl display-font text-purple">
-      ¡Que el crecimiento no tarde en llegar!
-    </h3>
-    <p className="text-2xl font-semibold lg:text-2xl text-dark-grey">
-      Obtén liquidez inmediata cediéndonos tus facturas.
-    </p>
-  </div>
-);
+import StepCard from '@/components/Molecules/StepCard';
+import CardContentTitle from '@/components/Molecules/CardContentTitle';
 
 const Service = ({ data }) => {
-  console.log({ data });
   const [modal, setModal] = useState(false);
   const router = useRouter();
   const handleClick = () => {
     setModal(!modal);
   };
+
   return (
     <Layout
       title={!router.isFallback ? data.title : 'CFC Capital'}
@@ -73,32 +39,35 @@ const Service = ({ data }) => {
         </div>
       ) : (
         <>
-          {data?.title === 'Factoring' ? (
-            <LayerHero
-              title={data.title}
-              columnContent={<Content />}
-              subtitle={data.subTitle}
-              backgroundImage="/elipse.png"
-              ltr
-            >
+          <LayerHero
+            title={data.title}
+            columnContent={
+              <CardContentTitle
+                content={{
+                  title: data.title,
+                  subtitle: data.label,
+                  description: data.heroDescription,
+                }}
+              />
+            }
+            subtitle={data.subTitle}
+            backgroundImage={
+              data?.title === 'Factoring' ? '/ameba-factoring.png' : undefined
+            }
+            imageUrl={
+              data?.title !== 'Factoring' ? data.heroImage.url : undefined
+            }
+            ltr
+          >
+            {data?.title === 'Factoring' && (
               <Card
                 containerClassName="px-4"
                 cardClassName="p-4 lg:p-10 lg:mx-10 bg-white"
               >
                 <FormGetInfo service={data.title} title={data.title} />
               </Card>
-            </LayerHero>
-          ) : (
-            <StaticHero
-              HeroImages={{
-                desktop: data.heroImage.url,
-                mobile: data.heroImageMobile.url,
-              }}
-              image={data?.title?.toLowerCase()}
-              alt={data?.title}
-            />
-          )}
-
+            )}
+          </LayerHero>
           <ZigZagSection
             itemList={formatServices(data.serviceContent, {
               colorKey: 'color',
@@ -110,46 +79,31 @@ const Service = ({ data }) => {
             buttonText="Saber más"
           />
 
-          <section className="container mx-auto md:px-4">
-            <h2 className="my-12 text-4xl font-black text-center text-dark-blue">
-              Preguntas Frecuentes
-            </h2>
-            <Accordion list={data.serviceFaq} />
-          </section>
-
-          <section className="container pt-12 mx-auto md:px-4">
-            <h2 className="my-12 text-4xl font-black text-center text-dark-blue">
-              Proceso de {data.title}
-            </h2>
-            <div className="flex flex-wrap py-10">
-              {data.serviceProcess.map((item, key) => (
-                <Card
-                  key={item.description}
-                  containerClassName="w-full md:w-1/3 px-4 py-4 md:py-0"
-                  cardClassName="p-4 lg:px-12"
-                >
-                  <div className="flex text-4xl">
-                    <div
-                      className="relative p-12 my-5 font-black rounded-full display-font text-blue"
-                      style={{
-                        backgroundColor: `var(--${iconsMapping[key + 1]?.color})`,
-                      }}
-                    >
-                      <span className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
-                        {key + 1}
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className="text-xl font-semibold display-font text-blue">
-                    {item.subtitle}
-                  </p>
-                  {item.description && (
-                    <p className="my-5 text-sm text-blue">{item.description}</p>
-                  )}
-                </Card>
-              ))}
-            </div>
+          <section className="lg:bg-gradient-to-r from-white to-light-grey">
+            <article className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
+              <h2 className="mb-8 text-4xl font-bold text-center display-font text-dark-blue">
+                Proceso de {data.title}
+              </h2>
+              <div className="md:flex">
+                {data.serviceProcess.map((item, key) => (
+                  <Card
+                    key={item.title}
+                    containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
+                    cardClassName="px-4 py-4 sm:py-12 shadow-lg"
+                  >
+                    <StepCard
+                      name={item.subtitle}
+                      icon={
+                        <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold border-solid rounded-full display-font text-medium-blue border-medium-blue circle-width">
+                          {key + 1}
+                        </div>
+                      }
+                      description={item.description}
+                    />
+                  </Card>
+                ))}
+              </div>
+            </article>
           </section>
 
           <SubscribeSection />

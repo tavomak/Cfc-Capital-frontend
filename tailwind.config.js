@@ -15,6 +15,9 @@ module.exports = {
         'soft-grey': 'var(--soft-grey)',
         'soft-purple': 'var(--soft-purple)',
         'soft-blue': 'var(--soft-blue)',
+        'soft-medium-blue': 'var(--soft-medium-blue)',
+        'soft-light-blue': 'var(--soft-light-blue)',
+        'soft-blue-light': 'var(--soft-blue-light)',
         'medium-grey': 'var(--medium-grey)',
         'medium-blue': 'var(--medium-blue)',
         'medium-purple': 'var(--medium-purple)',
@@ -24,6 +27,7 @@ module.exports = {
         'dark-grey': 'var(--dark-grey)',
         'dark-blue': 'var(--dark-blue)',
         'dark-purple': 'var(--dark-purple)',
+        lilac: 'var(--lilac)',
       },
       backgroundImage: {
         'ameba-pattern': "url('/ameba-bg.jpg')",
