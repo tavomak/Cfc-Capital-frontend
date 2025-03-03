@@ -135,7 +135,7 @@ const cfc = ({ data }) => {
           </section>
         ))}
 
-      <section className="py-20  bg-gradient-to-r from-white to-soft-blue-light">
+      <section className="py-20 bg-gradient-to-r from-white to-soft-blue-light">
         <div className="container px-4 mx-auto">
           <h2 className="mb-12 text-2xl font-bold text-center display-font md:text-4xl text-dark-blue">
             Gerencia
