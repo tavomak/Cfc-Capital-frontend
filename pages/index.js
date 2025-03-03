@@ -2,8 +2,6 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
-/* import { AdvancedVideo } from '@cloudinary/react';
-import { Cloudinary } from '@cloudinary/url-gen'; */
 import {
   formatServices,
   sliderSettings,
@@ -32,17 +30,6 @@ const iconsMapping = {
   people: <ClientsIcon />,
   money: <DolarIcon />,
 };
-// function getVideoTransformationsWithReactVideo() {
-//   const cld = new Cloudinary({
-//     cloud: {
-//       cloudName: 'deevr9k54',
-//     },
-//   });
-
-//   const myVideo = cld.video('1112_s1nvpc');
-
-//   return myVideo;
-// }
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -55,23 +42,15 @@ const structuredData = {
   sameAs: ['https://cl.linkedin.com/company/cfc-capital-s-a'],
 };
 
-/* function getVideoTransformationsWithReactVideo() {
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: 'deevr9k54',
-    },
-  });
-
-  const myVideo = cld.video('CFC-video-home_dzdgeq').quality('auto');
-
-  return myVideo;
-} */
-
 const Home = ({ data }) => {
   const router = useRouter();
   const handleSectionClick = (e, item) => {
     e.preventDefault();
-    router.push(`/servicios/${item.slug}`);
+    if (item.slug === 'factoring-web') {
+      window.open('/cfc_paso_a_paso.pdf', '_ blank');
+    } else {
+      router.push(`/servicios/${item.slug}`);
+    }
   };
 
   return (
