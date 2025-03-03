@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.1...v1.3.2) (2025-03-03)
+
+### Bug Fixes
+
+- **design:** NewCard and factoring web url fixed ([097fff5](https://github.com/tavomak/Cfc-Capital-frontend/commit/097fff54cf32a5b12889cf8b7221eda2ecca3387))
+- **design:** NewCard and factoring web url fixed ([d835844](https://github.com/tavomak/Cfc-Capital-frontend/commit/d83584416eab6d8cbe2f5f69827d400f263dedd0))
+
 ## [1.3.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.0...v1.3.1) (2025-03-01)
 
 ### Bug Fixes
