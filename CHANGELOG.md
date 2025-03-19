@@ -1,3 +1,9 @@
+## [1.3.4](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.3...v1.3.4) (2025-03-19)
+
+### Bug Fixes
+
+- **design:** Blog images v2 ([cf57f4c](https://github.com/tavomak/Cfc-Capital-frontend/commit/cf57f4c063710a737db827022f3e6602660e475a))
+
 ## [1.3.3](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.2...v1.3.3) (2025-03-19)
 
 ### Bug Fixes
