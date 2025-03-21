@@ -32,7 +32,7 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
             <title>{banner?.title} | CFC Capital</title>
           </Head>
 
-          <section className="container px-4 py-20 mx-auto">
+          <section className="container px-8 py-20 mx-auto">
             {posts?.length > 1 &&
               posts.slice(0, 1).map((firstPost) => (
                 <a
@@ -94,7 +94,7 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
             </div>
           )}
 
-          <section className="container mx-auto">
+          <section className="container px-8 mx-auto">
             <article className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
               {posts?.length > 0 &&
                 posts
