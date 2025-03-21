@@ -135,16 +135,18 @@ const cfc = ({ data }) => {
           </section>
         ))}
 
-      <section className="container px-4 py-20 mx-auto bg-gradient-to-r from-white to-soft-blue-light">
-        <h2 className="mb-12 text-2xl font-bold text-center display-font md:text-4xl text-dark-blue">
-          Gerencia
-        </h2>
-        <article className="container flex flex-wrap justify-center mx-auto md:px-4">
-          {subManager?.length > 0 &&
-            subManager.map((item) => (
-              <TeamCard key={item.name} {...item} photo={item.photo[0].url} />
-            ))}
-        </article>
+      <section className="py-20 bg-gradient-to-r from-white to-soft-blue-light">
+        <div className="container px-4 mx-auto">
+          <h2 className="mb-12 text-2xl font-bold text-center display-font md:text-4xl text-dark-blue">
+            Gerencia
+          </h2>
+          <article className="container flex flex-wrap justify-center mx-auto md:px-4">
+            {subManager?.length > 0 &&
+              subManager.map((item) => (
+                <TeamCard key={item.name} {...item} photo={item.photo[0].url} />
+              ))}
+          </article>
+        </div>
       </section>
 
       <section className="container px-4 py-20 mx-auto">

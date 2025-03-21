@@ -53,7 +53,6 @@ const FormContact = ({ service, title, image, content }) => {
         },
       });
       if (response.ok) {
-        console.log(form.current);
         const options = {
           method: 'POST',
           body: JSON.stringify({

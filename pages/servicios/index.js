@@ -11,7 +11,11 @@ const Services = ({ data }) => {
   const router = useRouter();
   const handleClick = (e, item) => {
     e.preventDefault();
-    router.push(`/servicios/${item.slug}`);
+    if (item.slug === 'factoring-web') {
+      window.open('/cfc_paso_a_paso.pdf', '_ blank');
+    } else {
+      router.push(`/servicios/${item.slug}`);
+    }
   };
   return (
     <Layout

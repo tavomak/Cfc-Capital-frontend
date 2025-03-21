@@ -44,9 +44,9 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
                     <Image
                       src={firstPost.coverImage?.url}
                       alt={firstPost.title}
-                      width={800}
-                      height={600}
-                      className="object-contain w-full transition-transform duration-300 scale-100 h-80 md:h-full group-hover:scale-110"
+                      width={738}
+                      height={450}
+                      className="object-cover object-top w-full transition-transform duration-300 scale-100 h-80 md:h-full group-hover:scale-110 max-h-[450px]"
                     />
                   </div>
 
