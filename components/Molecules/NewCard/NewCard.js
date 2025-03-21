@@ -3,7 +3,7 @@ import Image from 'next/image';
 const NewCard = ({ title, slug, image, author, excerpt, tags }) => (
   <a
     href={`/prensa/${slug}`}
-    className="flex flex-col w-3/4 p-4 mx-auto md:w-full bg-sky-50 group hover:shadow-none rounded-3xl"
+    className="flex flex-col w-full p-4 bg-sky-50 group hover:shadow-none rounded-3xl"
   >
     <article>
       <div className="p-2 overflow-hidden min-h-64 group rounded-2xl">
