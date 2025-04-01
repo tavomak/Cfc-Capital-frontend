@@ -109,7 +109,6 @@ const Footer = () => {
                         width: '100%',
                         height: 'auto',
                         objectFit: 'contain',
-                        maxWidth: '100px',
                         maxHeight: '100px',
                       }}
                     />
@@ -127,7 +126,6 @@ const Footer = () => {
                         width: '100%',
                         height: 'auto',
                         objectFit: 'contain',
-                        maxWidth: '120px',
                         maxHeight: '120px',
                       }}
                     />
@@ -145,7 +143,6 @@ const Footer = () => {
                         width: '100%',
                         height: 'auto',
                         objectFit: 'contain',
-                        maxWidth: '120px',
                         maxHeight: '120px',
                       }}
                     />

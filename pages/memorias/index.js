@@ -41,7 +41,7 @@ const Memorias = ({ data }) => (
                 <div className="mt-auto">
                   <a
                     href={item.pdf.url}
-                    target="_blanc"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-gray"
                   >
