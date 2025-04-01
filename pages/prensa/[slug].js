@@ -103,9 +103,12 @@ export default function Post({ post, morePosts }) {
               </div>
               <div className="grid gap-12 px-4 mb-8 md:grid-cols-2 lg:grid-cols-3">
                 {morePosts?.length > 0 &&
-                  morePosts
-                    .slice(0, 3)
-                    .map((item) => (
+                  morePosts.slice(0, 3).map((item) => (
+                    <a
+                      href={`/prensa/${item.slug}`}
+                      key={item.id}
+                      className="flex flex-col w-full p-4 bg-sky-50 group hover:shadow-none rounded-3xl"
+                    >
                       <NewCard
                         key={item.id}
                         title={item.title}
@@ -116,7 +119,8 @@ export default function Post({ post, morePosts }) {
                         tags={item.tags}
                         excerpt={item.excerpt}
                       />
-                    ))}
+                    </a>
+                  ))}
               </div>
             </aside>
           </article>

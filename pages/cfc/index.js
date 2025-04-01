@@ -45,33 +45,40 @@ const cfc = ({ data }) => {
         />
       </section>
 
-      <section className="container max-w-5xl mx-auto mt-6 md:py-12 md:mt-12">
-        <div className="w-full mx-auto text-center md:w-1/2 text-balance text-dark-blue">
-          <h2 className="mb-8 text-3xl font-bold display-font md:text-4xl">
-            Tenemos la experiencia para enfrentar el futuro
-          </h2>
-        </div>
-        <article className="mt-8 md:flex">
-          {highlights.map((item) => (
-            <Card
-              containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
-              cardClassName="px-4 py-4 sm:py-12 shadow-lg"
-              key={item.title}
-            >
-              <StepCard
-                name={item.title}
-                icon={iconsMapping[item.icon]}
-                description={item.description}
-              />
-            </Card>
-          ))}
-        </article>
-        <div className="w-full py-10 text-center">
-          <Link href="/memorias" className="btn btn-gray">
-            Ver memorias
-          </Link>
+      <section className="py-20">
+        <div className="container max-w-5xl py-10 mx-auto md:px-4">
+          <div className="w-full mx-auto text-center md:w-1/2 text-balance text-dark-blue">
+            <h2 className="mb-8 text-3xl font-bold display-font md:text-4xl">
+              Tenemos la experiencia para enfrentar el futuro
+            </h2>
+          </div>
+          <article className="gap-4 md:flex">
+            {highlights.map((item) => (
+              <Card
+                containerClassName="mb-4 md:mb-0 w-3/4 md:w-full mx-auto"
+                cardClassName="p-4 py-12 shadow-lg"
+                key={item.title}
+              >
+                <StepCard
+                  name={item.title}
+                  icon={
+                    <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold rounded-full text-blue display-font">
+                      {iconsMapping[item.icon]}
+                    </div>
+                  }
+                  description={item.description}
+                />
+              </Card>
+            ))}
+          </article>
+          <div className="w-full py-10 text-center">
+            <Link href="/memorias" className="btn btn-gray">
+              Ver memorias
+            </Link>
+          </div>
         </div>
       </section>
+
       {managers?.length > 0 &&
         managers.map((item, index) => (
           <section
@@ -135,21 +142,19 @@ const cfc = ({ data }) => {
           </section>
         ))}
 
-      <section className="py-20 bg-gradient-to-r from-white to-soft-blue-light">
-        <div className="container px-4 mx-auto">
-          <h2 className="mb-12 text-2xl font-bold text-center display-font md:text-4xl text-dark-blue">
-            Gerencia
-          </h2>
-          <article className="container flex flex-wrap justify-center mx-auto md:px-4">
-            {subManager?.length > 0 &&
-              subManager.map((item) => (
-                <TeamCard key={item.name} {...item} photo={item.photo[0].url} />
-              ))}
-          </article>
-        </div>
+      <section className="px-4 py-20 bg-gradient-to-r from-white to-soft-blue-light">
+        <h2 className="mb-12 text-2xl font-bold text-center display-font md:text-4xl text-dark-blue">
+          Gerencia
+        </h2>
+        <article className="container flex flex-wrap justify-center mx-auto md:px-4">
+          {subManager?.length > 0 &&
+            subManager.map((item) => (
+              <TeamCard key={item.name} {...item} photo={item.photo[0].url} />
+            ))}
+        </article>
       </section>
 
-      <section className="container px-4 py-20 mx-auto">
+      <section className="px-4 py-20 mx-auto ">
         <div className="text-center text-dark-blue">
           <h2 className="mb-8 text-3xl font-bold display-font md:text-4xl">
             Equipo Comercial
@@ -170,7 +175,7 @@ const cfc = ({ data }) => {
         </article>
       </section>
 
-      <section className="container px-4 py-20 mx-auto">
+      <section className="px-4 py-20 mx-auto">
         <h2 className="mb-12 text-2xl font-bold text-center display-font md:text-4xl text-dark-blue">
           Directorio
         </h2>
