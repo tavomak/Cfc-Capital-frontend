@@ -85,9 +85,12 @@ const News = ({ posts, categories }) => {
           </h2>
           <div className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
             {prensaPosts?.length > 0 &&
-              prensaPosts
-                .slice(1, 10)
-                .map((item) => (
+              prensaPosts.slice(1, 10).map((item) => (
+                <a
+                  href={`/prensa/${item.slug}`}
+                  key={item.id}
+                  className="flex flex-col w-full p-4 bg-sky-50 group hover:shadow-none rounded-3xl"
+                >
                   <NewCard
                     key={item.id}
                     title={item.title}
@@ -98,7 +101,8 @@ const News = ({ posts, categories }) => {
                     tags={item.tags}
                     excerpt={item.excerpt}
                   />
-                ))}
+                </a>
+              ))}
           </div>
           {prensaPosts?.length > 9 && (
             <div className="mb-8 text-center">

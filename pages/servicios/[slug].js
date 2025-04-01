@@ -80,21 +80,21 @@ const Service = ({ data }) => {
           />
 
           <section className="lg:bg-gradient-to-r from-white to-light-grey">
-            <article className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
+            <article className="container max-w-5xl py-20 mx-auto md:px-4">
               <h2 className="mb-8 text-4xl font-bold text-center display-font text-dark-blue">
                 Proceso de {data.title}
               </h2>
-              <div className="md:flex">
+              <div className="gap-4 md:flex">
                 {data.serviceProcess.map((item, key) => (
                   <Card
                     key={item.title}
-                    containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
-                    cardClassName="px-4 py-4 sm:py-12 shadow-lg"
+                    containerClassName="mb-4 md:mb-0 w-3/4 md:w-full mx-auto"
+                    cardClassName="p-4 py-12 shadow-lg"
                   >
                     <StepCard
                       name={item.subtitle}
                       icon={
-                        <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold border-solid rounded-full display-font text-medium-blue border-medium-blue circle-width">
+                        <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold rounded-full display-font text-medium-blue border-medium-blue circle-width">
                           {key + 1}
                         </div>
                       }

@@ -105,6 +105,13 @@ const Footer = () => {
                       width={80}
                       height={80}
                       priority
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        objectFit: 'contain',
+                        maxWidth: '100px',
+                        maxHeight: '100px',
+                      }}
                     />
                   </Link>
                 </li>
@@ -116,6 +123,13 @@ const Footer = () => {
                       width={100}
                       height={100}
                       priority
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        objectFit: 'contain',
+                        maxWidth: '120px',
+                        maxHeight: '120px',
+                      }}
                     />
                   </Link>
                 </li>
@@ -127,6 +141,13 @@ const Footer = () => {
                       width={100}
                       height={100}
                       priority
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        objectFit: 'contain',
+                        maxWidth: '120px',
+                        maxHeight: '120px',
+                      }}
                     />
                   </a>
                 </li>
