@@ -49,7 +49,7 @@ const Signature = ({ data, setData }) => {
         <SignatureCard
           mode="vertical-no-rrss"
           data={data}
-          direction="Av El Bosque 92, piso 11 Las Condes"
+          direction="Av El Bosque Central 92, Santiago Chile"
         >
           <tbody>
             <tr>
