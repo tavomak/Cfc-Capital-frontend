@@ -88,8 +88,14 @@ export const getAllPosts = () =>
   client.query({
     query: gql`
       query getAllPosts {
+        postsConnection {
+          aggregate {
+            count
+          }
+        }
         posts(orderBy: createdAt_DESC) {
           id
+          highlightNew
           slug
           title
           video
