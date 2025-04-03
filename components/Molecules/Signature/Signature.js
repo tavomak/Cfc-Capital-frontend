@@ -49,7 +49,7 @@ const Signature = ({ data, setData }) => {
         <SignatureCard
           mode="vertical-no-rrss"
           data={data}
-          direction="Av El Bosque Central 92, Santiago Chile"
+          direction="Av El Bosque Central 92, Las Condes, Santiago Chile"
         >
           <tbody>
             <tr>
@@ -63,10 +63,10 @@ const Signature = ({ data, setData }) => {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/signature-logo.png"
-                    width="160"
+                    width="180"
                     style={{
                       display: 'block',
-                      maxWidth: '160px',
+                      maxWidth: '180px',
                       margin: '0 auto',
                     }}
                     alt="CFC Capital"
