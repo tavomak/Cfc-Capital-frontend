@@ -23,7 +23,7 @@ const News = ({ posts, categories }) => {
       description="Noticias de actualidad que ayudan a tus finanzas"
     >
       <div className="bg-soft-light-blue">
-        <section className="container px-4 py-20 mx-auto">
+        <section className="container px-8 py-20 mx-auto">
           {posts?.length > 1 &&
             posts.slice(0, 1).map((firstPost) => (
               <a
@@ -79,7 +79,7 @@ const News = ({ posts, categories }) => {
             ))}
         </section>
 
-        <section className="container mx-auto">
+        <section className="container px-8 mx-auto">
           <h2 className="px-4 mb-6 text-lg font-semibold display-font text-medium-blue">
             Últimas notas de prensa
           </h2>
@@ -114,7 +114,7 @@ const News = ({ posts, categories }) => {
 
         <SubscribeSection />
 
-        <section className="container block mx-auto lg:hidden">
+        <section className="container block px-8 mx-auto lg:hidden">
           <h3 className="px-4 my-6 text-base font-semibold display-font text-medium-blue">
             Explorar por categoría
           </h3>
@@ -135,7 +135,7 @@ const News = ({ posts, categories }) => {
           </ul>
         </section>
 
-        <section className="container mx-auto">
+        <section className="container px-8 mx-auto">
           <h2 className="px-4 my-6 text-base font-semibold md:my-12 md:text-3xl md:font-bold display-font text-medium-blue">
             Factoring
           </h2>
