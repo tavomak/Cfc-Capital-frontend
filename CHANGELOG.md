@@ -1,3 +1,15 @@
+## [1.3.6](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.5...v1.3.6) (2025-03-28)
+
+### Bug Fixes
+
+- **seo:** Sitemaps fix v2 ([b4a87d8](https://github.com/tavomak/Cfc-Capital-frontend/commit/b4a87d8c32046709fa266386ec5e287e669dea60))
+
+## [1.3.5](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.4...v1.3.5) (2025-03-28)
+
+### Bug Fixes
+
+- **seo:** Sitemaps fix ([4a4f7d9](https://github.com/tavomak/Cfc-Capital-frontend/commit/4a4f7d9d6d80d89af292cf7ca10cca8bab01d275))
+
 ## [1.3.4](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.3...v1.3.4) (2025-03-19)
 
 ### Bug Fixes

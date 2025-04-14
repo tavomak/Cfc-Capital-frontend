@@ -8,7 +8,7 @@ const sitemapBlog = async (req, res) => {
     data: { posts: allPosts },
   } = await getAllPosts();
 
-  const baseUrl = 'https://www.cfccapital.cl';
+  const baseUrl = 'https://cfccapital.cl';
 
   const staticPages = allPosts.map((item) => `${baseUrl}/prensa/${item.slug}`);
 
