@@ -1,39 +1,52 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { getPostsByCategoryAndProcess, getAllCategories } from '@/utils';
+import {
+  getPostsByCategoryAndProcess,
+  getAllCategories,
+  POSTS_PER_PAGE,
+} from '@/utils';
 import Layout from '@/components/Templates/Layout';
 import CategoryNavBar from '@/components/Molecules/CategoryNavBar';
 import NewCard from '@/components/Molecules/NewCard';
+import Pagination from '@/components/Molecules/Pagination/Pagination';
 import Image from 'next/image';
 import StepCard from '@/components/Molecules/StepCard';
 import Card from '@/components/Atoms/Card';
+import Loader from '@/components/Atoms/Spinner';
 
-const Category = ({ posts, banner, service, categoryName, categories }) => {
+const Category = ({
+  posts,
+  service,
+  categoryName,
+  categories,
+  currentPage,
+  totalPages,
+}) => {
   const router = useRouter();
-
   return (
     <Layout
       title="Blog y prensa"
       description="Noticias de actualidad que ayudan a tus finanzas"
     >
       {router.isFallback ? (
-        <div className="row content-wrapper align-items-center justify-content-center">
-          <div
-            className="spinner-border text-secondary-color"
-            style={{ width: '3rem', height: '3rem' }}
-            role="status"
-          >
-            <span className="visually-hidden">Loading...</span>
-          </div>
+        <div className="flex items-center justify-center py-12">
+          <Loader
+            width="40px"
+            height="40px"
+            style={{ borderColor: 'var(--medium-purple' }}
+          />
         </div>
       ) : (
         <>
           <Head>
-            <title>{banner?.title} | CFC Capital</title>
+            <title>
+              {categoryName.charAt(0).toUpperCase() + categoryName.slice(1)} |
+              CFC Capital
+            </title>
           </Head>
 
           <section className="container px-4 py-20 mx-auto">
-            {posts?.length > 1 &&
+            {posts?.length > 0 &&
               posts.slice(0, 1).map((firstPost) => (
                 <a
                   href={`/prensa/${firstPost.slug}`}
@@ -95,8 +108,8 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
           )}
 
           <section className="container mx-auto">
-            <article className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
-              {posts?.length > 0 &&
+            <article className="grid gap-12 mb-12 md:grid-cols-2 lg:grid-cols-3">
+              {posts?.length > 1 &&
                 posts
                   .slice(1)
                   .map((item) => (
@@ -114,12 +127,19 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
             </article>
           </section>
 
+          <aside className="container mx-auto mb-12">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              basePath={`/prensa/categoria/${categoryName}`}
+            />
+          </aside>
+
           {service?.length > 0 && (
             <section className="py-24 bg-dark-blue">
               <div className="container mx-auto">
                 <h2 className="py-4 text-2xl font-bold text-center text-white display-font">
-                  {'El proceso de '}
-                  <span className="text-capitalize">{categoryName}</span>
+                  {`El proceso de ${categoryName}`}
                 </h2>
                 <article className="text-white md:flex">
                   {service.map((item, key) => (
@@ -152,8 +172,10 @@ const Category = ({ posts, banner, service, categoryName, categories }) => {
 export default Category;
 
 export async function getStaticProps({ params }) {
+  const { id, page } = params;
+  const currentPage = parseInt(page, 10) || 1;
+
   try {
-    const { id } = params;
     const response = await getPostsByCategoryAndProcess(id);
 
     if (!response?.data?.category) {
@@ -166,42 +188,34 @@ export async function getStaticProps({ params }) {
     }
 
     const {
-      data: {
-        category: {
-          title,
-          subtite,
-          image,
-          backgroundColor,
-          buttonText,
-          buttonUrl,
-          posts,
-        },
-        service,
-      },
+      data: { posts, postsConnection, service },
     } = response;
+
+    const totalPages = Math.ceil(
+      postsConnection.aggregate.count / POSTS_PER_PAGE
+    );
+
+    const paginatedPosts = posts.slice(
+      (currentPage - 1) * POSTS_PER_PAGE,
+      currentPage * POSTS_PER_PAGE
+    );
 
     const categoriesResponse = await getAllCategories();
     const categories = categoriesResponse?.data?.categories || [];
 
     return {
       props: {
-        posts: posts || [],
-        banner: {
-          title: title || '',
-          subTitle: subtite || '',
-          image: image || null,
-          backgroundColor: { hex: backgroundColor || '#FFFFFF' },
-          buttonText: buttonText || '',
-          buttonUrl: buttonUrl || '',
-        },
-        service: service?.serviceProcess || [],
+        posts: paginatedPosts,
+        service,
         categoryName: id,
         categories,
+        currentPage,
+        totalPages,
       },
       revalidate: 10,
     };
   } catch (error) {
-    console.log('Error fetching service data:', error);
+    console.error('Error fetching category data:', error);
     return {
       redirect: {
         destination: '/404',
@@ -213,16 +227,32 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   try {
-    const response = await getAllCategories();
-    const categories = response?.data?.categories || [];
-    const path = '/prensa/categoria/';
+    const responseCategories = await getAllCategories();
+    const categories = responseCategories?.data?.categories || [];
+    const paths = [];
 
+    await Promise.all(
+      categories.map(async (category) => {
+        const response = await getPostsByCategoryAndProcess(category.slug);
+        const totalPosts =
+          response?.data?.category?.postsConnection?.aggregate?.count || 0;
+        const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
+
+        Array.from({ length: totalPages }, (_, page) => page + 1).forEach(
+          (page) => {
+            paths.push({
+              params: { id: category.slug, page: page.toString() },
+            });
+          }
+        );
+      })
+    );
     return {
-      paths: categories?.map((item) => path + item.slug) || [],
+      paths,
       fallback: true,
     };
   } catch (error) {
-    console.log('Error en getStaticPaths:', error);
+    console.error('Error in getStaticPaths:', error);
     return {
       paths: [],
       fallback: true,

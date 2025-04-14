@@ -88,14 +88,10 @@ export const getAllPosts = () =>
   client.query({
     query: gql`
       query getAllPosts {
-        postsConnection {
-          aggregate {
-            count
-          }
-        }
         posts(orderBy: createdAt_DESC) {
           id
           highlightNew
+
           slug
           title
           video
@@ -123,6 +119,7 @@ export const getAllPosts = () =>
 
 export const getPostsByCategoryAndProcess = (slug) => {
   const name = slug.charAt(0).toUpperCase() + slug.slice(1);
+
   return client.query({
     query: gql`
       query getAllPosts($slug: String!, $name: String!) {
@@ -136,24 +133,30 @@ export const getPostsByCategoryAndProcess = (slug) => {
           image {
             url
           }
-          posts(orderBy: date_DESC) {
-            id
-            slug
+        }
+        posts(where: { categories_some: { name: $name } }, orderBy: date_DESC) {
+          id
+          slug
+          title
+          excerpt
+          tags
+          coverImage {
+            url
+          }
+          author {
+            name
             title
-            excerpt
-            tags
-            coverImage {
+            picture {
               url
-            }
-            author {
-              name
-              title
-              picture {
-                url
-              }
             }
           }
         }
+        postsConnection(where: { categories_some: { name: $name } }) {
+          aggregate {
+            count
+          }
+        }
+
         service(where: { slug: $slug }) {
           serviceProcess {
             description

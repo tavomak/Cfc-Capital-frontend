@@ -108,7 +108,7 @@ const News = ({ posts, categories }) => {
             <div className="mb-8 text-center">
               <Link
                 className="px-6 btn btn-primary"
-                href="/prensa/categoria/prensa"
+                href="/prensa/categoria/prensa/1"
               >
                 Ver más
               </Link>
@@ -129,7 +129,7 @@ const News = ({ posts, categories }) => {
                 className="px-4 py-1 bg-soft-medium-blue rounded-xl"
               >
                 <a
-                  href={`/prensa/categoria/${item.slug}`}
+                  href={`/prensa/categoria/${item.slug}/1`}
                   className="text-xs font-semibold text-blue"
                 >
                   {item.name}
@@ -182,7 +182,7 @@ const News = ({ posts, categories }) => {
                 <div className="px-4">
                   <Link
                     className="px-6 btn btn-primary"
-                    href="/prensa/categoria/factoring"
+                    href="/prensa/categoria/factoring/1"
                   >
                     Ver más
                   </Link>
@@ -202,7 +202,7 @@ const News = ({ posts, categories }) => {
                   {categories?.map((item) => (
                     <li key={item.slug} className="p-3">
                       <a
-                        href={`/prensa/categoria/${item.slug}`}
+                        href={`/prensa/categoria/${item.slug}/1`}
                         className="text-lg font-semibold display-font text-blue hover:opacity-75"
                       >
                         {item.name}
