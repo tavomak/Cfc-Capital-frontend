@@ -167,25 +167,33 @@ const Home = ({ data }) => {
         ))}
       </section>
 
-      <section className="container max-w-5xl py-10 mx-auto my-10 md:px-4">
-        <h2 className="w-full mx-auto mb-8 text-2xl font-bold text-center lg:w-1/2 text-balance display-font md:text-4xl text-dark-blue">
-          Tenemos la experiencia para enfrentar el futuro
-        </h2>
-        <article className="md:flex">
-          {data.pages.highlights.map((item) => (
-            <Card
-              key={item.title}
-              containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
-              cardClassName="px-4 py-4 sm:py-12 shadow-lg"
-            >
-              <StepCard
-                name={item.title}
-                icon={iconsMapping[item.icon]}
-                description={item.description}
-              />
-            </Card>
-          ))}
-        </article>
+      <section className="py-20">
+        <div className="container max-w-5xl py-10 mx-auto md:px-4">
+          <div className="w-full mx-auto text-center md:w-1/2 text-balance text-dark-blue">
+            <h2 className="mb-8 text-3xl font-bold display-font md:text-4xl">
+              Tenemos la experiencia para enfrentar el futuro
+            </h2>
+          </div>
+          <article className="gap-4 md:flex">
+            {data.pages.highlights.map((item) => (
+              <Card
+                containerClassName="mb-4 md:mb-0 w-3/4 md:w-full mx-auto"
+                cardClassName="p-4 py-12 shadow-lg"
+                key={item.title}
+              >
+                <StepCard
+                  name={item.title}
+                  icon={
+                    <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold rounded-full text-blue display-font">
+                      {iconsMapping[item.icon]}
+                    </div>
+                  }
+                  description={item.description}
+                />
+              </Card>
+            ))}
+          </article>
+        </div>
       </section>
 
       <section className="pt-12 text-white bg-gradient-to-r from-dark-blue to-purple">

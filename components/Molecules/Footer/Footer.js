@@ -83,65 +83,97 @@ const Footer = () => {
     <footer className="text-white bg-gradient-to-r from-dark-blue to-medium-purple">
       <div className="container px-4 py-16 mx-auto sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div>
-            <ul className="w-3/5 mx-auto">
-              <li className="mb-4">
+          <div className="flex flex-col items-center w-3/4 mx-auto sm:w-1/2 lg:w-3/4">
+            <div className="mb-4">
+              <Link href="/">
+                <Image
+                  src="/cfc-horizontal.png"
+                  alt="Cfc Capital Logo"
+                  width={500}
+                  height={88}
+                  priority
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    maxWidth: '500px',
+                    maxHeight: '100px',
+                    objectFit: 'contain',
+                  }}
+                />
+              </Link>
+            </div>
+
+            <ul className="flex flex-wrap items-center justify-center max-w-3xl gap-4 mb-4">
+              <li className="w-1/4">
                 <Link href="/">
                   <Image
-                    src="/cfc-horizontal.png"
-                    alt="Cfc Capital Logo"
-                    width={450}
-                    height={88}
+                    src="/20-años.svg"
+                    alt="Logo edición 20 aniversario"
+                    width={80}
+                    height={80}
                     priority
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '60px',
+                      maxHeight: '100px',
+                      objectFit: 'contain',
+                      margin: '0 auto',
+                    }}
                   />
                 </Link>
               </li>
-              <div className="flex items-center justify-center w-3/4 gap-8 mx-auto text-white lg:justify-between">
-                <li>
-                  <Link href="/">
-                    <Image
-                      src="/20-años.svg"
-                      alt="Logo edición 20 aniversario"
-                      width={80}
-                      height={80}
-                      priority
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/">
-                    <Image
-                      src="/logo-40hrs.svg"
-                      alt="Logo 40 horas"
-                      width={100}
-                      height={100}
-                      priority
-                    />
-                  </Link>
-                </li>
-                <li>
-                  <a href="https://efa.cl/" target="_blank">
-                    <Image
-                      src="/logo-efa.svg"
-                      alt="Efa Logo"
-                      width={100}
-                      height={100}
-                      priority
-                    />
-                  </a>
-                </li>
-              </div>
-              <a
-                className="flex justify-center gap-2 mt-4 text-center transition hover:opacity-75"
-                href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
-                target="_blank"
-              >
-                <small>
-                  Av. El Bosque 92, piso 11, <br />
-                  Las Condes, Chile
-                </small>
-              </a>
+
+              <li className="w-1/4">
+                <Link href="/">
+                  <Image
+                    src="/logo-40hrs.svg"
+                    alt="Logo 40 horas"
+                    width={100}
+                    height={100}
+                    priority
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '60px',
+                      maxHeight: '120px',
+                      objectFit: 'contain',
+                      margin: '0 auto',
+                    }}
+                  />
+                </Link>
+              </li>
+
+              <li className="w-1/4">
+                <a href="https://efa.cl/" target="_blank">
+                  <Image
+                    src="/logo-efa.svg"
+                    alt="Efa Logo"
+                    width={100}
+                    height={100}
+                    priority
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      maxWidth: '60px',
+                      maxHeight: '120px',
+                      objectFit: 'contain',
+                      margin: '0 auto',
+                    }}
+                  />
+                </a>
+              </li>
             </ul>
+
+            <a
+              className="w-2/3 text-center transition sm:w-1/2 lg:w-3/4 hover:opacity-75"
+              href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
+              target="_blank"
+            >
+              <span className="text-sm">
+                Av. El Bosque 92, piso 11, Las Condes, Chile
+              </span>
+            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-8 pt-4 border-t border-white sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 lg:border-none">

@@ -30,7 +30,7 @@ export default function Post({ post, morePosts }) {
 
           <article className="main bg-gradient-to-r from-white to-soft-blue-light">
             <section className="py-10">
-              <div className="container md:flex items-center max-w-screen-xl mx-auto">
+              <div className="container items-center max-w-screen-xl mx-auto md:flex">
                 <div className="md:w-1/2">
                   <div className="overflow-hidden h-96">
                     <Image
@@ -47,14 +47,14 @@ export default function Post({ post, morePosts }) {
                   </div>
                 </div>
                 <div className="p-4 md:w-1/2">
-                  <h1 className="text-3xl md:text-5xl display-font font-bold text-blue">
+                  <h1 className="text-3xl font-bold md:text-5xl display-font text-blue">
                     {currentPost.title}
                   </h1>
                 </div>
               </div>
             </section>
 
-            <section className="container w-11/12 md:w-3/5 mx-auto md:mx-0 md:ml-auto max-w-screen-xl px-4">
+            <section className="container w-11/12 max-w-screen-xl px-4 mx-auto md:w-3/5 md:mx-0 md:ml-auto">
               {currentPost.video && (
                 <figure className="max-w-screen-lg mx-auto video-container">
                   <iframe
@@ -70,7 +70,7 @@ export default function Post({ post, morePosts }) {
               <div className="my-10">
                 <div className="md:w-4/5">
                   {currentPost.tags?.length > 0 && (
-                    <span className="w-fit px-3 py-1 text-sm bg-sky-100 text-soft-blue rounded-md">
+                    <span className="px-3 py-1 text-sm rounded-md w-fit bg-sky-100 text-soft-blue">
                       {currentPost.tags}
                     </span>
                   )}
@@ -94,18 +94,21 @@ export default function Post({ post, morePosts }) {
               </div>
             </section>
 
-            <aside className="container mx-auto">
+            <aside className="container px-8 mx-auto">
               <div>
                 <hr />
-                <h2 className="text-center md:text-left py-4 display-font text-purple text-2xl">
+                <h2 className="py-4 text-2xl text-center md:text-left display-font text-purple">
                   Más noticias
                 </h2>
               </div>
-              <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3 mb-8">
+              <div className="grid gap-12 px-4 mb-8 md:grid-cols-2 lg:grid-cols-3">
                 {morePosts?.length > 0 &&
-                  morePosts
-                    .slice(0, 3)
-                    .map((item) => (
+                  morePosts.slice(0, 3).map((item) => (
+                    <a
+                      href={`/prensa/${item.slug}`}
+                      key={item.id}
+                      className="flex flex-col w-full p-4 bg-sky-50 group hover:shadow-none rounded-3xl"
+                    >
                       <NewCard
                         key={item.id}
                         title={item.title}
@@ -116,7 +119,8 @@ export default function Post({ post, morePosts }) {
                         tags={item.tags}
                         excerpt={item.excerpt}
                       />
-                    ))}
+                    </a>
+                  ))}
               </div>
             </aside>
           </article>

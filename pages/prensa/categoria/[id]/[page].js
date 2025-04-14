@@ -45,7 +45,7 @@ const Category = ({
             </title>
           </Head>
 
-          <section className="container px-4 py-20 mx-auto">
+          <section className="container px-8 py-20 mx-auto">
             {posts?.length > 0 &&
               posts.slice(0, 1).map((firstPost) => (
                 <a
@@ -107,14 +107,16 @@ const Category = ({
             </div>
           )}
 
-          <section className="container mx-auto">
-            <article className="grid gap-12 mb-12 md:grid-cols-2 lg:grid-cols-3">
-              {posts?.length > 1 &&
-                posts
-                  .slice(1)
-                  .map((item) => (
+          <section className="container px-8 mx-auto">
+            <article className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
+              {posts?.length > 0 &&
+                posts.slice(1, 10).map((item) => (
+                  <a
+                    href={`/prensa/${item.slug}`}
+                    key={item.id}
+                    className="flex flex-col w-full p-4 bg-sky-50 group hover:shadow-none rounded-3xl"
+                  >
                     <NewCard
-                      key={item.id}
                       title={item.title}
                       id={item.id}
                       slug={item.slug}
@@ -123,7 +125,8 @@ const Category = ({
                       tags={item.tags}
                       excerpt={item.excerpt}
                     />
-                  ))}
+                  </a>
+                ))}
             </article>
           </section>
 
@@ -137,21 +140,22 @@ const Category = ({
 
           {service?.length > 0 && (
             <section className="py-24 bg-dark-blue">
-              <div className="container mx-auto">
-                <h2 className="py-4 text-2xl font-bold text-center text-white display-font">
-                  {`El proceso de ${categoryName}`}
+              <article className="container max-w-5xl py-10 mx-auto md:px-4">
+                <h2 className="mb-8 text-3xl font-bold text-center text-white md:text-4xl display-font">
+                  {'El proceso de '}
+                  <span className="text-capitalize">{categoryName}</span>
                 </h2>
-                <article className="text-white md:flex">
+                <div className="gap-4 text-white md:flex">
                   {service.map((item, key) => (
                     <Card
-                      containerClassName="w-3/4 sm:w-full mx-auto px-4 py-4 md:py-0"
-                      cardClassName="px-4 py-4 sm:py-12 shadow-lg"
+                      containerClassName="mb-4 md:mb-0 w-3/4 md:w-full mx-auto"
+                      cardClassName="p-4 py-12 shadow-lg"
                       key={item.title}
                     >
                       <StepCard
                         name={item.subtitle}
                         icon={
-                          <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold text-white border-white border-solid rounded-full display-font circle-width">
+                          <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold text-white border-white rounded-full display-font circle-width">
                             {key + 1}
                           </div>
                         }
@@ -159,8 +163,8 @@ const Category = ({
                       />
                     </Card>
                   ))}
-                </article>
-              </div>
+                </div>
+              </article>
             </section>
           )}
         </>
@@ -202,11 +206,10 @@ export async function getStaticProps({ params }) {
 
     const categoriesResponse = await getAllCategories();
     const categories = categoriesResponse?.data?.categories || [];
-
     return {
       props: {
         posts: paginatedPosts,
-        service,
+        service: service?.serviceProcess || [],
         categoryName: id,
         categories,
         currentPage,

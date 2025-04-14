@@ -28,7 +28,7 @@ const News = ({ posts, categories }) => {
       description="Noticias de actualidad que ayudan a tus finanzas"
     >
       <div className="bg-soft-light-blue">
-        <section className="container px-4 py-20 mx-auto">
+        <section className="container px-8 py-20 mx-auto">
           {highlightedPost && (
             <a
               href={`/prensa/${highlightedPost.slug}`}
@@ -83,15 +83,18 @@ const News = ({ posts, categories }) => {
           )}
         </section>
 
-        <section className="container mx-auto">
+        <section className="container px-8 mx-auto">
           <h2 className="px-4 mb-6 text-lg font-semibold display-font text-medium-blue">
             Últimas notas de prensa
           </h2>
           <div className="grid gap-12 mb-8 md:grid-cols-2 lg:grid-cols-3">
             {prensaPosts?.length > 0 &&
-              prensaPosts
-                .slice(0, 9)
-                .map((item) => (
+              prensaPosts.slice(1, 10).map((item) => (
+                <a
+                  href={`/prensa/${item.slug}`}
+                  key={item.id}
+                  className="flex flex-col w-full p-4 bg-sky-50 group hover:shadow-none rounded-3xl"
+                >
                   <NewCard
                     key={item.id}
                     title={item.title}
@@ -102,7 +105,8 @@ const News = ({ posts, categories }) => {
                     tags={item.tags}
                     excerpt={item.excerpt}
                   />
-                ))}
+                </a>
+              ))}
           </div>
           {prensaPosts?.length > 9 && (
             <div className="mb-8 text-center">
@@ -118,7 +122,7 @@ const News = ({ posts, categories }) => {
 
         <SubscribeSection />
 
-        <section className="container block mx-auto lg:hidden">
+        <section className="container block px-8 mx-auto lg:hidden">
           <h3 className="px-4 my-6 text-base font-semibold display-font text-medium-blue">
             Explorar por categoría
           </h3>
@@ -139,7 +143,7 @@ const News = ({ posts, categories }) => {
           </ul>
         </section>
 
-        <section className="container mx-auto">
+        <section className="container px-8 mx-auto">
           <h2 className="px-4 my-6 text-base font-semibold md:my-12 md:text-3xl md:font-bold display-font text-medium-blue">
             Factoring
           </h2>

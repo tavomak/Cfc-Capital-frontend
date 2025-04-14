@@ -483,6 +483,7 @@ const SignatureCard = ({
                           color: '#7f7f7f',
                           fontSize: '13px',
                           paddingRight: '20px',
+                          textWrap: 'balance',
                         }}
                       >
                         {direction}
