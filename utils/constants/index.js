@@ -203,3 +203,5 @@ export const environments = {
   production: 'production',
   development: 'development',
 };
+
+export const POSTS_PER_PAGE = 10;
