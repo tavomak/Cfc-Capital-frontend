@@ -13,7 +13,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'us-east-1.cdn.hygraph.com',
+        hostname: 'us-east-1.graphassets.com',
         port: '',
         pathname: '/**',
       },
