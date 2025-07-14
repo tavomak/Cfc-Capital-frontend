@@ -1,3 +1,9 @@
+## [1.3.7](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.6...v1.3.7) (2025-07-14)
+
+### Bug Fixes
+
+- **Develop:** Image source ([ff7b5ae](https://github.com/tavomak/Cfc-Capital-frontend/commit/ff7b5aeb15448d031388d8a3f5d842d0f10c82ad))
+
 ## [1.3.6](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.5...v1.3.6) (2025-03-28)
 
 ### Bug Fixes
