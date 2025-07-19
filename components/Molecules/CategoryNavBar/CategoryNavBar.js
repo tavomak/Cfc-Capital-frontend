@@ -54,7 +54,7 @@ const CategoryNavBar = ({ categories }) => {
             {categories.map((item) => (
               <li key={item.slug} className="p-3">
                 <a
-                  href={`/prensa/categoria/${item.slug}`}
+                  href={`/prensa/categoria/${item.slug}/1`}
                   className="btn btn-gray"
                 >
                   {item.name}
