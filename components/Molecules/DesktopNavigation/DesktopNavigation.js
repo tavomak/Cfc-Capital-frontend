@@ -168,17 +168,16 @@ const DesktopNavigation = ({
           <a
             href="!#"
             className="inline-block btn btn-primary"
-            onClick={handleClickModal}
+            onClick={(e) => handleClickModal(e, true)}
           >
             Acceso Clientes
           </a>
         </li>
         <li>
           <a
-            href="http://cfc.fapro.app/"
-            target="_blank"
+            href="!#"
             className="inline-block btn btn-secondary"
-            rel="noreferrer"
+            onClick={(e) => handleClickModal(e, false)}
           >
             Enrólate aquí
           </a>

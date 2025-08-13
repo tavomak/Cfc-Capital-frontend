@@ -6,12 +6,23 @@ import FormAccess from '@/components/Molecules/Forms/FromAccess';
 import MobileNavigation from '../MobileNavigation';
 import DesktopNavigation from '../DesktopNavigation';
 
+const DefaultMessage = () => (
+  <div className="flex flex-col min-h-40 py-6">
+    <p className="text-xl font-bold">Ups… estamos afinando detalles</p>
+    <p>Este enlace está en pausa por mantenimiento.</p>
+    <p className="font-bold text-blue mt-auto">
+      Escríbele a tu ejecutivo/a y te ayudará de inmediato.
+    </p>
+  </div>
+);
+
 const Navbar = () => {
   const [modal, setModal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [isContact, setIsContact] = useState(false);
 
   const router = useRouter();
   const handleModal = () => {
@@ -27,8 +38,10 @@ const Navbar = () => {
       router.push(`${path}`);
     }
   };
-  const handleClickModal = (e) => {
+  const handleClickModal = (e, type) => {
     e.preventDefault();
+    console.log('Funca', type);
+    setIsContact(type);
     setModal(true);
     setMenuOpen(false);
   };
@@ -90,6 +103,8 @@ const Navbar = () => {
     }
   };
 
+  const modalElement = isContact ? <FormAccess /> : <DefaultMessage />;
+
   return (
     <>
       <header
@@ -118,7 +133,7 @@ const Navbar = () => {
         )}
       </header>
       <Modal showModal={modal} onClick={handleModal}>
-        <FormAccess />
+        {modalElement}
       </Modal>
     </>
   );
