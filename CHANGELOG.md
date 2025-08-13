@@ -1,3 +1,9 @@
+## [1.3.10](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.9...v1.3.10) (2025-08-13)
+
+### Bug Fixes
+
+- Enrolate modal mobile ([0b2d43f](https://github.com/tavomak/Cfc-Capital-frontend/commit/0b2d43f6a8359690a055781059e9bad4bd30c84a))
+
 ## [1.3.9](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.8...v1.3.9) (2025-08-13)
 
 ### Bug Fixes
