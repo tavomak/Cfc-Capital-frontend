@@ -1,3 +1,9 @@
+## [1.3.11](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.10...v1.3.11) (2025-11-10)
+
+### Bug Fixes
+
+- enrolador.cl link ([7ecb2a3](https://github.com/tavomak/Cfc-Capital-frontend/commit/7ecb2a36b2e8f9d72397004df28e1b9815b1a7e8))
+
 ## [1.3.10](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.9...v1.3.10) (2025-08-13)
 
 ### Bug Fixes
