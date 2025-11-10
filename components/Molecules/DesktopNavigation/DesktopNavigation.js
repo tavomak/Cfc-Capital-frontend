@@ -175,9 +175,10 @@ const DesktopNavigation = ({
         </li>
         <li>
           <a
-            href="!#"
             className="inline-block btn btn-secondary"
-            onClick={(e) => handleClickModal(e, false)}
+            href="https://cfccapital.enrolador.cl/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Enrólate aquí
           </a>

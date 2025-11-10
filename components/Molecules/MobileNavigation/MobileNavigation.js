@@ -177,9 +177,10 @@ const MobileNavigation = ({
                 </li>
                 <li>
                   <a
-                    href="!#"
+                    href="https://cfccapital.enrolador.cl/"
                     className="inline-block py-3 btn btn-secondary"
-                    onClick={(e) => handleClickModal(e, false)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Enrólate aquí
                   </a>
