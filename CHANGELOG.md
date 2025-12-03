@@ -1,3 +1,9 @@
+# [1.4.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.11...v1.4.0) (2025-12-03)
+
+### Features
+
+- phone label ([a6ee5b1](https://github.com/tavomak/Cfc-Capital-frontend/commit/a6ee5b1f70bf0c26d66ab3c309fb2073ceabc07d))
+
 ## [1.3.11](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.10...v1.3.11) (2025-11-10)
 
 ### Bug Fixes
