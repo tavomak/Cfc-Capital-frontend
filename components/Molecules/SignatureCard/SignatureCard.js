@@ -137,10 +137,7 @@ const SignatureCard = ({
                   }}
                 >
                   {data.mobile && (
-                    <>
-                      <span>+56 </span>
-                      {formatPhoneNumberString(data.mobile)}
-                    </>
+                    <span>{formatPhoneNumberString(data.mobile)}</span>
                   )}
                 </p>
               </td>
