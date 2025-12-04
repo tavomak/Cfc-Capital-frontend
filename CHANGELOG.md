@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.4.0...v1.4.1) (2025-12-04)
+
+### Bug Fixes
+
+- Stprybook seting and warp init ([deb91aa](https://github.com/tavomak/Cfc-Capital-frontend/commit/deb91aa37bb8c496ee07278a626f338f44d78b81))
+
 # [1.4.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.3.11...v1.4.0) (2025-12-03)
 
 ### Features
