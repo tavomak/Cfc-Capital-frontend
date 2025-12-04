@@ -538,21 +538,25 @@ const SignatureCard = ({
               </tr>
               <tr>
                 <td style={{ display: 'flex', width: '100%' }}>
-                  <p
-                    style={{
-                      margin: 0,
-                      color: '#7f7f7f',
-                      fontSize: '13px',
-                      textDecoration: 'none',
-                      paddingRight: '4px',
-                    }}
-                  >
-                    <span style={{ color: '#7f7f7f', textDecoration: 'none' }}>
-                      +56{' '}
-                    </span>
-                    {data.phone && formatPhoneNumberString(data.phone)}
-                  </p>
-
+                  {data.phone && (
+                    <p
+                      style={{
+                        margin: 0,
+                        color: '#7f7f7f',
+                        fontSize: '13px',
+                        textDecoration: 'none',
+                        paddingRight: '4px',
+                        borderRight: '1px solid #b1a3c6',
+                      }}
+                    >
+                      <span
+                        style={{ color: '#7f7f7f', textDecoration: 'none' }}
+                      >
+                        +56{' '}
+                      </span>
+                      {data.phone && formatPhoneNumberString(data.phone)}
+                    </p>
+                  )}
                   {data.mobile && (
                     <p
                       style={{
@@ -560,7 +564,6 @@ const SignatureCard = ({
                         color: '#7f7f7f',
                         fontSize: '13px',
                         paddingLeft: '4px',
-                        borderLeft: '1px solid #b1a3c6',
                         textDecoration: 'none',
                       }}
                     >
