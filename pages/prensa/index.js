@@ -15,7 +15,12 @@ const News = ({ posts, categories }) => {
   const [factoringPosts] = useState(
     filterPosts(posts, 'Factoring').filter((item, key) => key < 6)
   );
-  const [prensaPosts] = useState(filterPosts(posts, 'Prensa'));
+  const highlightedPost = posts.find((post) => post.highlightNew);
+  const [prensaPosts] = useState(
+    filterPosts(posts, 'Prensa').filter(
+      (post) => post.title !== highlightedPost?.title
+    )
+  );
 
   return (
     <Layout
@@ -24,59 +29,58 @@ const News = ({ posts, categories }) => {
     >
       <div className="bg-soft-light-blue">
         <section className="container px-8 py-20 mx-auto">
-          {posts?.length > 1 &&
-            posts.slice(0, 1).map((firstPost) => (
-              <a
-                href={`/prensa/${firstPost.slug}`}
-                className="block p-4 overflow-hidden shadow-xl rounded-3xl group bg-sky-50 md:flex "
-                key={firstPost.id}
-              >
-                <div className="relative overflow-hidden md:w-1/2 rounded-2xl">
-                  <Image
-                    src={firstPost.coverImage?.url}
-                    alt={firstPost.title}
-                    width={738}
-                    height={450}
-                    className="object-cover object-top w-full transition-transform duration-300 scale-100 h-80 md:h-full group-hover:scale-110 max-h-[450px]"
-                  />
-                </div>
+          {highlightedPost && (
+            <a
+              href={`/prensa/${highlightedPost.slug}`}
+              className="block p-4 overflow-hidden shadow-xl rounded-3xl group bg-sky-50 md:flex "
+              key={highlightedPost.id}
+            >
+              <div className="relative overflow-hidden md:w-1/2 rounded-2xl">
+                <Image
+                  src={highlightedPost.coverImage?.url}
+                  alt={highlightedPost.title}
+                  width={738}
+                  height={450}
+                  className="object-cover object-top w-full transition-transform duration-300 scale-100 h-80 md:h-full group-hover:scale-110 max-h-[450px]"
+                />
+              </div>
 
-                <div className="flex flex-col justify-center p-8 md:w-1/2 md:p-12">
-                  <div className="max-w-md">
-                    <h2 className="text-base font-semibold display-font md:text-2xl text-blue">
-                      {firstPost.title}
-                    </h2>
+              <div className="flex flex-col justify-center p-8 md:w-1/2 md:p-12">
+                <div className="max-w-md">
+                  <h2 className="text-base font-semibold display-font md:text-2xl text-blue">
+                    {highlightedPost.title}
+                  </h2>
 
-                    {firstPost.author && (
-                      <div className="flex items-center gap-3 my-6">
-                        {firstPost.author?.picture && (
-                          <div className="relative w-12 h-12 overflow-hidden rounded-full shrink-0">
-                            <Image
-                              src={firstPost.author.picture?.url}
-                              alt={`${firstPost.author.name} profile picture`}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                        )}
-                        <div>
-                          <p className="text-sm font-semibold text-dark-grey">
-                            {firstPost.author.name}
-                          </p>
-                          <p className="text-xs text-dark-grey">
-                            {firstPost.author.title}
-                          </p>
+                  {highlightedPost.author && (
+                    <div className="flex items-center gap-3 my-6">
+                      {highlightedPost.author?.picture && (
+                        <div className="relative w-12 h-12 overflow-hidden rounded-full shrink-0">
+                          <Image
+                            src={highlightedPost.author.picture?.url}
+                            alt={`${highlightedPost.author.name} profile picture`}
+                            fill
+                            className="object-cover"
+                          />
                         </div>
+                      )}
+                      <div>
+                        <p className="text-sm font-semibold text-dark-grey">
+                          {highlightedPost.author.name}
+                        </p>
+                        <p className="text-xs text-dark-grey">
+                          {highlightedPost.author.title}
+                        </p>
                       </div>
-                    )}
+                    </div>
+                  )}
 
-                    <p className="text-xs leading-relaxed text-dark-grey md:text-base">
-                      {firstPost.excerpt}
-                    </p>
-                  </div>
+                  <p className="text-xs leading-relaxed text-dark-grey md:text-base">
+                    {highlightedPost.excerpt}
+                  </p>
                 </div>
-              </a>
-            ))}
+              </div>
+            </a>
+          )}
         </section>
 
         <section className="container px-8 mx-auto">
@@ -108,7 +112,7 @@ const News = ({ posts, categories }) => {
             <div className="mb-8 text-center">
               <Link
                 className="px-6 btn btn-primary"
-                href="/prensa/categoria/prensa"
+                href="/prensa/categoria/prensa/1"
               >
                 Ver más
               </Link>
@@ -129,7 +133,7 @@ const News = ({ posts, categories }) => {
                 className="px-4 py-1 bg-soft-medium-blue rounded-xl"
               >
                 <a
-                  href={`/prensa/categoria/${item.slug}`}
+                  href={`/prensa/categoria/${item.slug}/1`}
                   className="text-xs font-semibold text-blue"
                 >
                   {item.name}
@@ -182,7 +186,7 @@ const News = ({ posts, categories }) => {
                 <div className="px-4">
                   <Link
                     className="px-6 btn btn-primary"
-                    href="/prensa/categoria/factoring"
+                    href="/prensa/categoria/factoring/1"
                   >
                     Ver más
                   </Link>
@@ -202,7 +206,7 @@ const News = ({ posts, categories }) => {
                   {categories?.map((item) => (
                     <li key={item.slug} className="p-3">
                       <a
-                        href={`/prensa/categoria/${item.slug}`}
+                        href={`/prensa/categoria/${item.slug}/1`}
                         className="text-lg font-semibold display-font text-blue hover:opacity-75"
                       >
                         {item.name}

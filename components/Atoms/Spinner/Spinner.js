@@ -16,7 +16,7 @@ const Loader = ({ width, height, type, style }) =>
   ) : (
     <span
       className={styles.loader}
-      style={{ width: width || '20px', height: height || '20px' }}
+      style={{ width: width || '20px', height: height || '20px', ...style }}
     />
   );
 
