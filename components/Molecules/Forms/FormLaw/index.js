@@ -80,7 +80,7 @@ const FormContact = () => {
           setLoading(false);
           notification(
             'success',
-            'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.'
+            'Hemos recibido su mensaje, tomaremos contacto contigo a la brevedad.'
           );
           reset();
         } catch (error) {
