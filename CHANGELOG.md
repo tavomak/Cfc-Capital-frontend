@@ -1,3 +1,9 @@
+# [1.5.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.4.1...v1.5.0) (2026-02-06)
+
+### Features
+
+- contact message ([c0b822d](https://github.com/tavomak/Cfc-Capital-frontend/commit/c0b822d4fa0a5f038ced39dfe46db82639dc4aa9))
+
 ## [1.4.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.4.0...v1.4.1) (2025-12-04)
 
 ### Bug Fixes
