@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import TagManager from 'react-gtm-module';
-import { PagesProgressBar as ProgressBar } from 'next-nprogress-bar';
 import { poppins, openSans } from '@/utils/fonts';
 import { environments } from '@/utils/constants';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,12 +28,6 @@ function App({ Component, pageProps }) {
         `}
       </style>
       <Component {...pageProps} />
-      <ProgressBar
-        height="4px"
-        color="#049bbc"
-        options={{ showSpinner: false }}
-        shallowRouting
-      />
     </>
   );
 }
