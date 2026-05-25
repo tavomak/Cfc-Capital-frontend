@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { environments } from '@/utils/constants';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -15,7 +15,7 @@ const tagManagerArgs = {
 
 const FormContact = ({ service, title, image, content }) => {
   const [loading, setLoading] = useState(false);
-  const [isLeasing, setLeasing] = useState(false);
+  const isLeasing = service === 'Leasing';
   const [leasingHab, setLeasingHab] = useState({
     name: 'seleccionar',
     errorMsg: false,
@@ -114,16 +114,11 @@ const FormContact = ({ service, title, image, content }) => {
     }
   };
 
-  useEffect(() => {
-    if (service === 'Leasing') {
-      setLeasing(true);
-    } else {
-      setLeasing(false);
-    }
-  }, [service]);
+  // eslint-disable-next-line react-hooks/refs -- handleClick accesses refs in submit handler, not during render; false positive for react-hook-form pattern
+  const onSubmit = handleSubmit(handleClick);
 
   return (
-    <form ref={form} className="form" onSubmit={handleSubmit(handleClick)}>
+    <form ref={form} className="form" onSubmit={onSubmit}>
       <ReCAPTCHA
         ref={recaptchaRef}
         size="invisible"

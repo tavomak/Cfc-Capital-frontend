@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/tabindex-no-positive */
-
 const LogIn = () => (
   <form
     name="frmIngreso"

@@ -48,7 +48,6 @@ const LayerHero = ({
         >
           {title && !columnContent && !content && (
             <div
-              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(title),
               }}
@@ -57,7 +56,6 @@ const LayerHero = ({
           )}
           {subtitle && !columnContent && !content && (
             <div
-              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(subtitle),
               }}
@@ -67,7 +65,6 @@ const LayerHero = ({
           {columnContent ||
             (content && (
               <div
-                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(content),
                 }}

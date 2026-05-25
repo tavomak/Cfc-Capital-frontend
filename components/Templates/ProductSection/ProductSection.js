@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
@@ -41,20 +41,15 @@ const getDataFromName = (name) => {
 };
 
 const ProductSection = ({ data, index, setService, handleClick }) => {
-  const [sliceItem, setSliceItem] = useState(0);
   const product = getDataFromName(data.title);
   const viewportWidth = useViewport();
   const isPair = (index + 1) % 2 === 0;
+  const sliceItem = viewportWidth >= 768 ? 3 : 4;
 
   const handleClickButton = (currentService) => {
     setService(currentService);
     handleClick();
   };
-
-  useEffect(() => {
-    const items = viewportWidth >= 768 ? 3 : 4;
-    setSliceItem(items);
-  }, [viewportWidth]);
   return (
     <section
       className={`py-6 ${isPair ? 'md:py-20' : ''}`}
