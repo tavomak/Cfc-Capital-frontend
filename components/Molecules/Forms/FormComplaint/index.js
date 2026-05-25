@@ -120,7 +120,6 @@ const FormComplaint = ({ target }) => {
     }
   };
 
-  // eslint-disable-next-line react-hooks/refs -- handleClick accesses refs in submit handler, not during render; false positive for react-hook-form pattern
   const onSubmit = handleSubmit(handleClick);
 
   return (

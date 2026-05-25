@@ -1,11 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import './base/variables.css';
 @import './base/globals.css';
 
 @import './components/buttons.css';
 @import './components/inputs.css';
-
 @import './components/slider.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -40,6 +40,7 @@ const config = [
         { restrictDefaultExports: { defaultFrom: false } },
       ],
       'react/require-default-props': 'off',
+      'react-hooks/refs': 'warn',
       'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     },
     settings: {
