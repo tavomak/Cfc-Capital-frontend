@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import Layout from '@/components/Templates/Layout';
 import LayerHero from '@/components/Molecules/LayerHero';
@@ -6,9 +7,11 @@ import CardContentTitle from '@/components/Molecules/CardContentTitle';
 import StepCard from '@/components/Molecules/StepCard';
 import FormGetInfo from '@/components/Molecules/Forms/FormContact';
 import ProductSection from '@/components/Templates/ProductSection';
+
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedVideo } from '@cloudinary/react';
 import { products, attributes } from '@/utils';
+import Modal from '@/components/Templates/Modal';
 
 const cld = new Cloudinary({
   cloud: {
@@ -16,10 +19,16 @@ const cld = new Cloudinary({
   },
 });
 
-const primaryVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
+const primaryVideo = cld.video('Reels-Nvos-Productos-cudrado_cyvykb');
 
 const ProductosFactoring = () => {
-  console.log('Productos Factoring');
+  const [modal, setModal] = useState(false);
+  const [service, setService] = useState(null);
+
+  const handleClick = () => {
+    setModal(!modal);
+  };
+
   return (
     <Layout>
       <section className="md:py-20">
@@ -32,7 +41,7 @@ const ProductosFactoring = () => {
                   subtitle: '¡Soluciones a tu medida!',
                   description: 'Liquidez para cada industria, sin esperar.',
                   postDescription:
-                    'Soluciones de factoring diseñadas para proveedores mineros, emprendedores y empresas del mercado público. Aprobación ágil, tasas garantizadas y acompañamiento experto.',
+                    'Soluciones de factoring diseñadas para proveedores mineros, emprendedores y empresas del Mercado Público. Aprobación ágil, tasas garantizadas y acompañamiento experto.',
                 }}
               />
             </div>
@@ -47,6 +56,8 @@ const ProductosFactoring = () => {
             muted
             playsInline
             poster="/hero-servicios.jpg"
+            controls
+            className="aspect-square object-contain w-full h-full shadow-xl rounded-xl"
           />
         </LayerHero>
       </section>
@@ -54,26 +65,28 @@ const ProductosFactoring = () => {
       <section className="md:py-20 container mx-auto px-4">
         <article className="gap-4 md:flex">
           {products.map((item) => (
-            <Card
-              containerClassName="mb-4 md:mb-0 w-full mx-auto"
-              cardClassName="p-4 py-10 mx-2 shadow-lg"
+            <a
+              href={`#${item.title.toLowerCase()}`}
               key={item.title}
+              className="mb-4 md:mb-0 w-full mx-auto"
             >
-              <StepCard
-                icon={
-                  <div className="flex items-end min-h-[150px]">
-                    <Image
-                      src={`/${item.title}-logo.svg`}
-                      alt={item.title}
-                      width={item.width || 160}
-                      height={item.height || 100}
-                      className="object-contain"
-                    />
-                  </div>
-                }
-                description={item.description}
-              />
-            </Card>
+              <Card cardClassName="p-4 py-10 mx-2 shadow-lg">
+                <StepCard
+                  icon={
+                    <div className="flex items-end min-h-[150px]">
+                      <Image
+                        src={`/${item.title}-logo.svg`}
+                        alt={item.title}
+                        width={item.width || 160}
+                        height={item.height || 100}
+                        className="object-contain"
+                      />
+                    </div>
+                  }
+                  description={item.description}
+                />
+              </Card>
+            </a>
           ))}
         </article>
       </section>
@@ -107,7 +120,13 @@ const ProductosFactoring = () => {
       </section>
 
       {products.map((item, key) => (
-        <ProductSection key={item.id} data={item} index={key} />
+        <ProductSection
+          key={item.id}
+          data={item}
+          index={key}
+          setService={setService}
+          handleClick={handleClick}
+        />
       ))}
 
       <section className="md:pb-20">
@@ -134,6 +153,15 @@ const ProductosFactoring = () => {
           </Card>
         </LayerHero>
       </section>
+
+      <Modal
+        bgColor="bg-white"
+        onClick={handleClick}
+        showModal={modal}
+        size="lg"
+      >
+        <FormGetInfo service={service} title={service} />
+      </Modal>
     </Layout>
   );
 };
