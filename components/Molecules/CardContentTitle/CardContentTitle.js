@@ -1,5 +1,5 @@
 const CardContentTitle = ({ content }) => {
-  const { title, subtitle, description } = content;
+  const { title, subtitle, description, postDescription } = content;
   return (
     <div className="px-4 text-left">
       <h2 className="mb-6 text-2xl font-bold text-medium-purple display-font">
@@ -11,6 +11,9 @@ const CardContentTitle = ({ content }) => {
       <p className="w-11/12 text-lg font-semibold lg:text-xl text-dark-grey ">
         {description}
       </p>
+      {postDescription && (
+        <p className="w-11/12 mt-4 text-medium-purple">{postDescription}</p>
+      )}
     </div>
   );
 };

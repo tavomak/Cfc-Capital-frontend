@@ -2,7 +2,33 @@ body {
   font-family: var(--primary-font);
   color: var(--dark-grey);
 }
-
+.bg-gradient-custom {
+  background: linear-gradient(
+    90deg,
+    rgb(214, 213, 213) 0%,
+    rgb(214, 213, 213) 40%,
+    rgb(230, 230, 230) 40% 40%,
+    rgb(230, 230, 230) 100%
+  );
+}
+.product-bg {
+  background-size: contain;
+  @media screen and (min-width: 768px) {
+    background-size: 98%;
+  }
+  @media screen and (min-width: 1024px) {
+    background-size: 58%;
+  }
+  @media screen and (min-width: 1200px) {
+    background-size: 48%;
+  }
+}
+.product-article {
+  background: none;
+  @media screen and (min-width: 768px) {
+    background: var(--product-background);
+  }
+}
 .circle-width {
   border-width: 3px;
 }
