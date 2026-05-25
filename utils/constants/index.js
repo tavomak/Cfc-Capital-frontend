@@ -216,27 +216,28 @@ export const products = [
     services: [
       {
         title: 'Acceso y experiencia minera',
-        icon: 'mining',
+        icon: 'pick',
         description:
           'Tenemos acceso directo a todas las plataformas de confirmación de los pagadores mineros más grandes y entendemos los plazos específicos del sector.',
       },
       {
         title: 'Aprobación ágil y rápida',
-        icon: 'clock',
+        icon: 'clockwhite',
         description:
           'Seguridad y experiencia en análisis de contratos de proyectos mineros, lo que nos permite un cierre rápido de negocios.',
       },
       {
-        title: 'Presencia en zona norte',
-        icon: 'location',
+        title: 'Presencia en Zona Norte',
+        icon: 'pin',
         description:
-          'Contamos con agencia en la zona norte del país, con un especialista dedicado exclusivamente a negocios mineros.',
+          'Contamos con agencia en la Zona Norte del país, con un especialista dedicado exclusivamente a negocios mineros.',
       },
       {
         title: 'Alternativa de financiamiento',
-        icon: 'financing',
-        description:
-          'Financiamos hasta el 20% de la orden de compra en caso de grandes pagadores del sector minero. </br>* Sujeto a evaluación y aprobación comercial',
+        icon: 'docs',
+        description: `Financiamos hasta el 20% de la orden de compra en caso de grandes pagadores del sector minero.
+
+* Sujeto a evaluación y aprobación comercial`,
       },
     ],
   },
@@ -252,18 +253,18 @@ export const products = [
     services: [
       {
         title: 'Financiamos tu factura N°1',
-        icon: 'invoice',
+        icon: 'docs',
         description:
           'No pedimos información histórica. Basamos nuestro análisis en tu deudor y otorgamos liquidez inmediata.',
       },
       {
         title: 'Asesoría legal y tributaria',
-        icon: 'legal',
+        icon: 'justice',
         description:
           'Te acompañamos en todo lo necesario en el ámbito legal y tributario para que puedas operar sin problemas desde el día uno.',
       },
       {
-        title: 'Tu emprendes, nosotros té respaldamos',
+        title: 'Tú emprendes, nosotros te respaldamos',
         icon: 'handshake',
         description:
           'Ofrecemos asesoría y acompañamiento estratégico especializado para tu negocio.',
@@ -276,25 +277,25 @@ export const products = [
     subtitle: 'Factoring para Mercado Público',
     description: 'Factoring a empresas del Estado',
     details:
-      'Solución diseñada para empresas que operan en el mercado público.',
+      'Solución diseñada para empresas que operan en el Mercado Público.',
     services: [
       {
-        title: 'Especialistas en mercado público',
-        icon: 'government',
+        title: 'Especialistas en Mercado Público',
+        icon: 'star',
         description:
-          'Financiamos facturas de largo plazo de empresas públicas. Tenemos acceso al ranking de los mejores pagadores del sector.Financiamos facturas de largo plazo de empresas públicas. Tenemos acceso al ranking de los mejores pagadores del sector.',
+          'Financiamos facturas de largo plazo de empresas públicas. Tenemos acceso al ranking de los mejores pagadores del sector.',
       },
       {
         title: 'Asesoría integral',
-        icon: 'advisor',
+        icon: 'chat',
         description:
           'Te guiamos en el cumplimiento de todos los requisitos necesarios para operar exitosamente en este mercado.',
       },
       {
         title: 'Tasa Garantizada',
-        icon: 'rate',
+        icon: 'guard',
         description:
-          'Producto único el cual te permite mantener la tasa de negocio en caso de mora, hasta por 15, 30 o 45 días.',
+          'Producto único el cual te permite mantener la tasa de negocio en caso de mora, hasta por 15, 30 ó 45 días.',
       },
       {
         title: 'Herramientas digitales',

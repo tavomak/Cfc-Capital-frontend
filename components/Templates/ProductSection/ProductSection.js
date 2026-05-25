@@ -1,40 +1,11 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
 import useViewport from '@/hooks/useViewport';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedVideo } from '@cloudinary/react';
-import {
-  MdCheck,
-  MdNorthEast,
-  MdOutlineTimer,
-  MdOutlineLocationOn,
-  MdOutlineRequestQuote,
-  MdOutlineReceiptLong,
-  MdOutlineGavel,
-  MdOutlineHandshake,
-  MdOutlineAccountBalance,
-  MdOutlinePeopleAlt,
-  MdOutlineVerified,
-  MdOutlineLaptop,
-} from 'react-icons/md';
-import { GiMining } from 'react-icons/gi';
-
-const iconMap = {
-  mining: <GiMining size={22} />,
-  clock: <MdOutlineTimer size={22} />,
-  location: <MdOutlineLocationOn size={22} />,
-  financing: <MdOutlineRequestQuote size={22} />,
-  invoice: <MdOutlineReceiptLong size={22} />,
-  legal: <MdOutlineGavel size={22} />,
-  handshake: <MdOutlineHandshake size={22} />,
-  government: <MdOutlineAccountBalance size={22} />,
-  advisor: <MdOutlinePeopleAlt size={22} />,
-  rate: <MdOutlineVerified size={22} />,
-  digital: <MdOutlineLaptop size={22} />,
-};
+import { MdCheck } from 'react-icons/md';
 
 const cld = new Cloudinary({
   cloud: {
@@ -56,30 +27,39 @@ const getDataFromName = (name) => {
       gradientClass: 'from-[#004559] to-[#1D89A8]',
       color: '#004559',
       background: '#C6FFFF',
-      video: cld.video('Minefact-cuadrado_rionti'),
+      video: cld.video('EmprendeFact-cuadrado_fdbcuz'),
     },
     {
       name: 'Publifact',
       gradientClass: 'from-[#013DA6] to-[#2A83E5]',
       color: '#013DA6',
       background: '#83BEFF',
-      video: cld.video('Minefact-cuadrado_rionti'),
+      video: cld.video('PubliFact-SIN-Sub_d0p9lw'),
     },
   ];
   return data.find((item) => item.name === name);
 };
 
-const ProductSection = ({ data, index }) => {
+const ProductSection = ({ data, index, setService, handleClick }) => {
   const [sliceItem, setSliceItem] = useState(0);
   const product = getDataFromName(data.title);
   const viewportWidth = useViewport();
   const isPair = (index + 1) % 2 === 0;
+
+  const handleClickButton = (currentService) => {
+    setService(currentService);
+    handleClick();
+  };
+
   useEffect(() => {
     const items = viewportWidth >= 768 ? 3 : 4;
     setSliceItem(items);
   }, [viewportWidth]);
   return (
-    <section className={`py-6 ${isPair ? 'md:py-20' : ''}`}>
+    <section
+      className={`py-6 ${isPair ? 'md:py-20' : ''}`}
+      id={data.title.toLowerCase()}
+    >
       <article
         className="pt-14 product-article"
         style={{
@@ -87,9 +67,7 @@ const ProductSection = ({ data, index }) => {
         }}
       >
         <div className="container mx-auto px-4 md:flex items-center justify-between gap-20">
-          <div
-            className={`md:w-1/2 ${isPair % 2 === 0 ? 'order-last' : 'order-first'} `}
-          >
+          <div className={`md:w-1/2 ${isPair ? 'order-last' : 'order-first'} `}>
             <ul>
               <li className="mb-10 text-center md:text-left">
                 <Image
@@ -119,56 +97,42 @@ const ProductSection = ({ data, index }) => {
               <div className="py-4 md:pt-8 md:pb-14">
                 <ul className="space-y-3 md:max-w-80 flex flex-wrap md:flex-col">
                   {data.services.map((item) => (
-                    <li
-                      key={item.title}
-                      className="flex items-center gap-4 w-100"
-                    >
-                      <div
-                        className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white"
-                        style={{ backgroundColor: product.color }}
-                      >
-                        {iconMap[item.icon] ?? <MdCheck size={22} />}
-                      </div>
-                      <div className="bg-white rounded-xl px-4 py-3 shadow-sm w-100">
-                        <p
-                          className="font-semibold display-font text-sm"
-                          style={{ color: product.color }}
+                    <li key={item.title} className="w-100">
+                      <ul className="flex gap-4">
+                        <li
+                          className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white"
+                          style={{ backgroundColor: product.color }}
                         >
-                          {item.title}
-                        </p>
-                      </div>
+                          <Image
+                            src={`/${item.icon}.svg`}
+                            alt={data.title}
+                            width={18}
+                            height={18}
+                            className="w-7 h-7 object-contain"
+                          />
+                        </li>
+                        <li className="bg-white rounded-xl px-4 py-3 shadow-xl w-100 min-w-64">
+                          <p
+                            className="font-semibold display-font text-sm"
+                            style={{ color: product.color }}
+                          >
+                            {item.title}
+                          </p>
+                        </li>
+                      </ul>
                     </li>
                   ))}
                 </ul>
 
                 <div className="flex justify-start mt-6 md:pl-16">
-                  <Link
-                    href="/contacto"
+                  <Button
                     className="inline-block px-8 py-3 rounded-full font-semibold display-font text-white text-sm"
                     style={{ backgroundColor: product.color }}
+                    onClick={() => handleClickButton(data.title)}
                   >
                     Hablar con un asesor
-                  </Link>
+                  </Button>
                 </div>
-              </div>
-
-              {/* Arrow — floats outside blob right edge */}
-              <div
-                className="hidden absolute top-4 right-5 w-11 h-11 rounded-full flex items-center justify-center text-white shadow-md z-10"
-                style={{ backgroundColor: product.color }}
-              >
-                <MdNorthEast size={22} />
-              </div>
-
-              {/* Product logo watermark — outside blob bottom-right */}
-              <div className="hidden absolute bottom-6 right-3 opacity-25">
-                <Image
-                  src={`/${data.title}-logo.svg`}
-                  alt={data.title}
-                  width={60}
-                  height={40}
-                  className="object-contain"
-                />
               </div>
             </div>
           </div>
@@ -176,6 +140,7 @@ const ProductSection = ({ data, index }) => {
             <div>
               <AdvancedVideo
                 cldVid={product.video}
+                controls
                 autoPlay
                 loop
                 muted
@@ -225,20 +190,27 @@ const ProductSection = ({ data, index }) => {
                     background: 'rgba(255,255,255,0.25)',
                   }}
                 >
-                  <MdCheck className="text-white" size={28} />
+                  <MdCheck
+                    className="text-white"
+                    size={28}
+                    style={{ color: product.color }}
+                  />
                 </div>
                 <div>
                   <p className="font-bold display-font">{item.title}</p>
-                  <p className="text-sm opacity-90">{item.description}</p>
+                  <p className="text-sm opacity-90 whitespace-pre-line">
+                    {item.description}
+                  </p>
                 </div>
               </li>
             ))}
           </ul>
-          <Link href="/contacto">
-            <Button className="btn btn-outline px-8 py-2 mt-6">
-              Hablar con un asesor
-            </Button>
-          </Link>
+          <Button
+            className="btn btn-outline px-8 py-2 mt-6"
+            onClick={() => handleClickButton(data.title)}
+          >
+            Hablar con un asesor
+          </Button>
         </div>
 
         <div className="hidden md:block md:w-1/2">
@@ -264,17 +236,23 @@ const ProductSection = ({ data, index }) => {
                   background: 'rgba(255,255,255,0.25)',
                 }}
               >
-                <MdCheck className="text-white" size={28} />
+                <MdCheck
+                  className="text-white"
+                  size={28}
+                  style={{ color: product.color }}
+                />
               </div>
               <div>
                 <p className="font-bold display-font">{item.title}</p>
-                <p className="text-sm opacity-90">{item.description}</p>
+                <p className="text-sm opacity-90 whitespace-pre-line">
+                  {item.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
       </Card>
-      <hr className="md:mt-10" />
+      <hr className="hidden md:mt-10 container mx-auto px-4" />
     </section>
   );
 };

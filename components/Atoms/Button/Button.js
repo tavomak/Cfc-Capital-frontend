@@ -8,12 +8,14 @@ const Button = ({
   loadingType,
   text,
   className,
+  style,
   submit,
   onClick,
   disabled,
 }) => (
   <button
     className={`${className} flex align-center gap-2 disabled:opacity-70`}
+    style={style}
     type={submit ? 'submit' : 'button'}
     onClick={onClick}
     disabled={loading || disabled}
@@ -27,6 +29,7 @@ Button.propTypes = {
   text: PropTypes.string,
   loading: PropTypes.bool,
   className: PropTypes.string,
+  style: PropTypes.node,
   submit: PropTypes.bool,
   onClick: PropTypes.func,
   children: PropTypes.node,
