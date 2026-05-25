@@ -81,9 +81,9 @@ const Footer = () => {
   };
   return (
     <footer className="text-white bg-gradient-to-r from-dark-blue to-medium-purple">
-      <div className="container px-4 py-16 mx-auto sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div className="flex flex-col items-center w-3/4 mx-auto sm:w-1/2 lg:w-3/4">
+      <div className="container px-4 py-16 mx-auto sm:px-6">
+        <div className="gap-8 md:flex">
+          <div className="flex flex-wrap items-center justify-center gap-8 md:flex-col lg:gap-2 md:items-start md:justify-start md:w-1/4 xl:w-2/4">
             <div className="mb-4">
               <Link href="/">
                 <Image
@@ -95,7 +95,7 @@ const Footer = () => {
                   style={{
                     width: '100%',
                     height: 'auto',
-                    maxWidth: '500px',
+                    maxWidth: '250px',
                     maxHeight: '100px',
                     objectFit: 'contain',
                   }}
@@ -103,28 +103,20 @@ const Footer = () => {
               </Link>
             </div>
 
-            <ul className="flex flex-wrap items-center justify-center max-w-3xl gap-4 mb-4">
-              <li className="w-1/4">
+            <ul className="flex items-center justify-around w-full gap-6 mb-4 max-w-64">
+              <li className="w-1/3">
                 <Link href="/">
                   <Image
                     src="/20-años.svg"
                     alt="Logo edición 20 aniversario"
-                    width={80}
-                    height={80}
+                    width={50}
+                    height={60}
                     priority
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      maxWidth: '60px',
-                      maxHeight: '100px',
-                      objectFit: 'contain',
-                      margin: '0 auto',
-                    }}
                   />
                 </Link>
               </li>
 
-              <li className="w-1/4">
+              <li className="w-1/3">
                 <Link href="/">
                   <Image
                     src="/logo-40hrs.svg"
@@ -144,7 +136,7 @@ const Footer = () => {
                 </Link>
               </li>
 
-              <li className="w-1/4">
+              <li className="w-1/3">
                 <a href="https://efa.cl/" target="_blank">
                   <Image
                     src="/logo-efa.svg"
@@ -166,20 +158,20 @@ const Footer = () => {
             </ul>
 
             <a
-              className="w-2/3 text-center transition sm:w-1/2 lg:w-3/4 hover:opacity-75"
+              className="block w-full mb-4 text-center transition hover:opacity-75 md:text-left"
               href="https://maps.app.goo.gl/fqshTCpLzfMJZKKV7"
               target="_blank"
             >
-              <span className="text-sm">
-                Av. El Bosque 92, piso 11, Las Condes, Chile
-              </span>
+              <span className="text-sm">Av. El Bosque 92, piso 11, </span>
+              <br className="xl:hidden" />
+              <span className="text-sm">Las Condes, Chile.</span>
             </a>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 pt-4 border-t border-white sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4 lg:border-none">
+          <div className="flex flex-wrap py-4 border-t border-white md:w-3/4 md:py-0 lg:border-none">
             {navItems.length &&
               navItems.map((item) => (
-                <div key={item.label}>
+                <div key={item.label} className="w-2/4 py-4 md:w-1/4">
                   <Link
                     href={item.path}
                     className="transition hover:opacity-75"
@@ -205,7 +197,7 @@ const Footer = () => {
                   )}
                 </div>
               ))}
-            <div>
+            <div className="w-2/4 py-4 md:w-1/4">
               <Link href="/contacto" className="transition hover:opacity-75">
                 <p className="mb-6 font-bold">Contacto</p>
               </Link>
@@ -256,7 +248,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <ul className="items-center justify-center w-11/12 gap-8 pt-4 mx-auto mt-4 text-2xl border-t border-white lg:flex">
+        <ul className="items-center justify-center gap-8 pt-4 mx-auto mt-4 text-2xl border-t border-white md:mt-0 lg:flex">
           <div className="flex justify-center gap-8 mb-2 lg:mb-0">
             <li>
               <a

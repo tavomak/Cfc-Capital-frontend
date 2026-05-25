@@ -203,3 +203,130 @@ export const environments = {
   production: 'production',
   development: 'development',
 };
+
+export const products = [
+  {
+    id: 1,
+    title: 'Minefact',
+    subtitle: 'El Factoring para la Minería',
+    description: 'Factoring de la minería',
+    details:
+      'Producto especializado con conocimiento profundo de la industria para proveedores del sector minero.',
+    video: 'CFC-video-nvos-productos_nznil6',
+    services: [
+      {
+        title: 'Acceso y experiencia minera',
+        icon: 'mining',
+        description:
+          'Tenemos acceso directo a todas las plataformas de confirmación de los pagadores mineros más grandes y entendemos los plazos específicos del sector.',
+      },
+      {
+        title: 'Aprobación ágil y rápida',
+        icon: 'clock',
+        description:
+          'Seguridad y experiencia en análisis de contratos de proyectos mineros, lo que nos permite un cierre rápido de negocios.',
+      },
+      {
+        title: 'Presencia en zona norte',
+        icon: 'location',
+        description:
+          'Contamos con agencia en la zona norte del país, con un especialista dedicado exclusivamente a negocios mineros.',
+      },
+      {
+        title: 'Alternativa de financiamiento',
+        icon: 'financing',
+        description:
+          'Financiamos hasta el 20% de la orden de compra en caso de grandes pagadores del sector minero. </br>* Sujeto a evaluación y aprobación comercial',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Emprendefact',
+    subtitle: 'El Factoring de los Emprendedores',
+    description: 'Factoring desde la factura uno',
+    details:
+      'Financiamiento diseñado para emprendedores y nuevas empresas que están dando sus primeros pasos.',
+    width: 240,
+    height: 300,
+    services: [
+      {
+        title: 'Financiamos tu factura N°1',
+        icon: 'invoice',
+        description:
+          'No pedimos información histórica. Basamos nuestro análisis en tu deudor y otorgamos liquidez inmediata.',
+      },
+      {
+        title: 'Asesoría legal y tributaria',
+        icon: 'legal',
+        description:
+          'Te acompañamos en todo lo necesario en el ámbito legal y tributario para que puedas operar sin problemas desde el día uno.',
+      },
+      {
+        title: 'Tu emprendes, nosotros té respaldamos',
+        icon: 'handshake',
+        description:
+          'Ofrecemos asesoría y acompañamiento estratégico especializado para tu negocio.',
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Publifact',
+    subtitle: 'Factoring para Mercado Público',
+    description: 'Factoring a empresas del Estado',
+    details:
+      'Solución diseñada para empresas que operan en el mercado público.',
+    services: [
+      {
+        title: 'Especialistas en mercado público',
+        icon: 'government',
+        description:
+          'Financiamos facturas de largo plazo de empresas públicas. Tenemos acceso al ranking de los mejores pagadores del sector.Financiamos facturas de largo plazo de empresas públicas. Tenemos acceso al ranking de los mejores pagadores del sector.',
+      },
+      {
+        title: 'Asesoría integral',
+        icon: 'advisor',
+        description:
+          'Te guiamos en el cumplimiento de todos los requisitos necesarios para operar exitosamente en este mercado.',
+      },
+      {
+        title: 'Tasa Garantizada',
+        icon: 'rate',
+        description:
+          'Producto único el cual te permite mantener la tasa de negocio en caso de mora, hasta por 15, 30 o 45 días.',
+      },
+      {
+        title: 'Herramientas digitales',
+        icon: 'digital',
+        description:
+          'Aprobación ágil con procesos simplificados. Enrolamiento 100% online. Portal de seguimiento en tiempo real. Reportes financieros periódicos para proyectar flujos de caja.',
+      },
+    ],
+  },
+];
+
+export const attributes = [
+  {
+    id: 1,
+    title: 'Agilidad',
+    icon: 'clock',
+    width: 75,
+    description:
+      'Aprobación con procesos simplificados y enrolamiento 100% online para comenzar rápidamente.',
+  },
+  {
+    id: 2,
+    title: 'Transparencia',
+    icon: 'pan',
+    description:
+      'Acceso a portal con seguimiento directo del estado del cobro de tus facturas sin sorpresas. Claridad en la devolución de tus excedentes.',
+  },
+  {
+    id: 3,
+    title: 'Información',
+    icon: 'chart',
+    description:
+      'Te ayudamos con información de clientes, como pagan, antecedentes comerciales y comportamiento, así vendes mas seguro y minimizas el riesgo. (*)',
+  },
+];
