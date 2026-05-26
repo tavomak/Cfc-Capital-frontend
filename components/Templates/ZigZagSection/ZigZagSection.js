@@ -14,7 +14,7 @@ const ZigZagSection = ({
     <section className={sectionClassName}>
       {itemList.map((item, index) => (
         <a
-          href={item.slug}
+          href={item.slug || '#'}
           className={`md:flex group ${itemClassName}`}
           key={item.id}
           onClick={(e) => onClick(e, item)}

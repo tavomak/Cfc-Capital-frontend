@@ -28,9 +28,9 @@ export default function Post({ post, morePosts }) {
             <meta property="og:image" content={currentPost.coverImage?.url} />
           </Head>
 
-          <article className="main bg-gradient-to-r from-white to-soft-blue-light">
+          <article className="main bg-linear-to-r from-white to-soft-blue-light">
             <section className="py-10">
-              <div className="container items-center max-w-screen-xl mx-auto md:flex">
+              <div className="container items-center max-w-(--breakpoint-xl) mx-auto md:flex">
                 <div className="md:w-1/2">
                   <div className="overflow-hidden h-96">
                     <Image
@@ -54,9 +54,9 @@ export default function Post({ post, morePosts }) {
               </div>
             </section>
 
-            <section className="container w-11/12 max-w-screen-xl px-4 mx-auto md:w-3/5 md:mx-0 md:ml-auto">
+            <section className="container w-11/12 max-w-(--breakpoint-xl) px-4 mx-auto md:w-3/5 md:mx-0 md:ml-auto">
               {currentPost.video && (
-                <figure className="max-w-screen-lg mx-auto video-container">
+                <figure className="max-w-(--breakpoint-lg) mx-auto video-container">
                   <iframe
                     className="w-full aspect-video"
                     title="Embed video"

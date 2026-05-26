@@ -99,7 +99,7 @@ const Home = ({ data }) => {
         )}
       </Slider>
 
-      <section className="mt-20 lg:bg-gradient-to-r from-white to-light-grey">
+      <section className="mt-20 lg:bg-linear-to-r from-white to-light-grey">
         <article className="container items-center justify-between mx-auto lg:flex lg:py-20">
           <div className="relative mx-auto mb-6 lg:w-1/2 lg:mb-0">
             <figure className="relative">
@@ -108,6 +108,7 @@ const Home = ({ data }) => {
                 alt="edificio cfc"
                 width={1080}
                 height={1658}
+                priority
                 className="w-2/3 mr-auto sm:mx-auto lg:w-5/6"
               />
               <figcaption className="absolute right-0 w-1/3 bottom-1/2 sm:bottom-14 sm:right-8">
@@ -148,7 +149,7 @@ const Home = ({ data }) => {
         />
       </section>
 
-      <section className="pt-8 bg-gradient-to-r from-medium-blue to-soft-blue">
+      <section className="pt-8 bg-linear-to-r from-medium-blue to-soft-blue">
         <h2 className="mb-8 text-2xl font-bold text-center text-white display-font md:text-4xl">
           Educación Financiera
         </h2>
@@ -196,7 +197,7 @@ const Home = ({ data }) => {
         </div>
       </section>
 
-      <section className="pt-12 text-white bg-gradient-to-r from-dark-blue to-purple">
+      <section className="pt-12 text-white bg-linear-to-r from-dark-blue to-purple">
         <article className="container mx-auto">
           <div className="md:flex">
             <div className="flex flex-col justify-center gap-6 px-4 md:w-3/6 xl:w-1/3">

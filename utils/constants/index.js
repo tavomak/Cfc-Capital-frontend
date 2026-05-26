@@ -208,6 +208,8 @@ export const products = [
   {
     id: 1,
     title: 'Minefact',
+    width: 226,
+    height: 176,
     subtitle: 'El Factoring para la Minería',
     description: 'Factoring de la minería',
     details:
@@ -248,8 +250,8 @@ export const products = [
     description: 'Factoring desde la factura uno',
     details:
       'Financiamiento diseñado para emprendedores y nuevas empresas que están dando sus primeros pasos.',
-    width: 240,
-    height: 300,
+    width: 310,
+    height: 188,
     services: [
       {
         title: 'Financiamos tu factura N°1',
@@ -274,6 +276,8 @@ export const products = [
   {
     id: 3,
     title: 'Publifact',
+    width: 228,
+    height: 176,
     subtitle: 'Factoring para Mercado Público',
     description: 'Factoring a empresas del Estado',
     details:
@@ -312,7 +316,8 @@ export const attributes = [
     id: 1,
     title: 'Agilidad',
     icon: 'clock',
-    width: 75,
+    width: 77,
+    height: 61,
     description:
       'Aprobación con procesos simplificados y enrolamiento 100% online para comenzar rápidamente.',
   },
@@ -327,6 +332,8 @@ export const attributes = [
     id: 3,
     title: 'Información',
     icon: 'chart',
+    width: 71,
+    height: 68,
     description:
       'Te ayudamos con información de clientes, como pagan, antecedentes comerciales y comportamiento, así vendes mas seguro y minimizas el riesgo. (*)',
   },

@@ -21,6 +21,10 @@ const getDataFromName = (name) => {
       color: '#432694',
       background: '#D4BFFE',
       video: cld.video('Minefact-cuadrado_rionti'),
+      logoW: 226,
+      logoH: 176,
+      logoWhiteW: 313,
+      logoWhiteH: 105,
     },
     {
       name: 'Emprendefact',
@@ -28,6 +32,10 @@ const getDataFromName = (name) => {
       color: '#004559',
       background: '#C6FFFF',
       video: cld.video('EmprendeFact-cuadrado_fdbcuz'),
+      logoW: 310,
+      logoH: 188,
+      logoWhiteW: 444,
+      logoWhiteH: 149,
     },
     {
       name: 'Publifact',
@@ -35,6 +43,10 @@ const getDataFromName = (name) => {
       color: '#013DA6',
       background: '#83BEFF',
       video: cld.video('PubliFact-SIN-Sub_d0p9lw'),
+      logoW: 228,
+      logoH: 176,
+      logoWhiteW: 384,
+      logoWhiteH: 141,
     },
   ];
   return data.find((item) => item.name === name);
@@ -68,8 +80,8 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
                 <Image
                   src={`/${data.title}-logo.svg`}
                   alt={data.title}
-                  width={300}
-                  height={200}
+                  width={product.logoW}
+                  height={product.logoH}
                   className="object-contain"
                 />
               </li>
@@ -150,7 +162,7 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
 
       <Card
         containerClassName="container mx-auto px-4 lg:px-20 py-10"
-        cardClassName={`relative md:flex gap-10 items-center py-4 px-4 md:px-10 lg:px-20 shadow-xl ${product.gradientClass} bg-gradient-to-tr`}
+        cardClassName={`relative md:flex gap-10 items-center py-4 px-4 md:px-10 lg:px-20 shadow-xl ${product.gradientClass} bg-linear-to-tr`}
       >
         {/* CFC Capital logo - top right */}
         <div className="hidden md:block absolute top-6 right-8">
@@ -158,7 +170,7 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
             src="/cfc-footer-logo.svg"
             alt="CFC Capital"
             width={90}
-            height={40}
+            height={60}
             className="object-contain"
           />
         </div>
@@ -167,8 +179,8 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
           <Image
             src={`/${data.title}-logo-white.svg`}
             alt={data.title}
-            width={300}
-            height={200}
+            width={product.logoWhiteW}
+            height={product.logoWhiteH}
             className="object-contain"
           />
           <h3 className="my-6 font-bold display-font text-2xl">

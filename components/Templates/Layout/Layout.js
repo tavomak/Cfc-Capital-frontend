@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { ToastContainer } from 'react-toastify';
 
 import Head from 'next/head';
@@ -14,7 +15,8 @@ const Layout = ({
   description,
   schema,
 }) => {
-  const hostname = typeof window !== 'undefined' ? window.location.href : '';
+  const router = useRouter();
+  const canonicalUrl = `https://cfccapital.cl${router.asPath}`;
 
   const [showTopBtn, setShowTopBtn] = useState(false);
   useEffect(() => {
@@ -32,7 +34,7 @@ const Layout = ({
         <title>{`${title} | CFC Capital`}</title>
         <meta charSet="UTF-8" />
         <meta name="description" content={`${description || ' CFC Capital'}`} />
-        <link rel="canonical" href={hostname} />
+        <link rel="canonical" href={canonicalUrl} />
         <meta property="og:locale" content="es_ES" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="hostname" />

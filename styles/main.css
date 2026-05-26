@@ -1,10 +1,52 @@
-@import './base/variables.css';
-@import './base/globals.css';
+@import './base/variables.css' layer(base);
+@import './base/globals.css' layer(base);
 
-@import './components/buttons.css';
-@import './components/inputs.css';
-@import './components/slider.css';
+@import './components/buttons.css' layer(base);
+@import './components/inputs.css' layer(base);
+@import './components/slider.css' layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-white: var(--white);
+  --color-light-grey: var(--light-grey);
+  --color-light-blue: var(--light-blue);
+  --color-light-purple: var(--light-purple);
+  --color-soft-grey: var(--soft-grey);
+  --color-soft-purple: var(--soft-purple);
+  --color-soft-blue: var(--soft-blue);
+  --color-soft-medium-blue: var(--soft-medium-blue);
+  --color-soft-light-blue: var(--soft-light-blue);
+  --color-soft-blue-light: var(--soft-blue-light);
+  --color-medium-grey: var(--medium-grey);
+  --color-medium-blue: var(--medium-blue);
+  --color-medium-purple: var(--medium-purple);
+  --color-grey: var(--grey);
+  --color-blue: var(--blue);
+  --color-purple: var(--purple);
+  --color-dark-grey: var(--dark-grey);
+  --color-dark-blue: var(--dark-blue);
+  --color-dark-purple: var(--dark-purple);
+  --color-lilac: var(--lilac);
+
+  --background-image-ameba-pattern: url('/ameba-bg.jpg');
+  --background-image-ameba-pattern-light: url('/ameba-bg-light.png');
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}

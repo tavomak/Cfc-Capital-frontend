@@ -674,7 +674,7 @@ const SignatureCard = ({
   };
 
   return (
-    <Card cardClassName="shadow py-14 pb-20 mb-5 flex items-center justify-center">
+    <Card cardClassName="shadow-sm py-14 pb-20 mb-5 flex items-center justify-center">
       <table
         id="signatureTable"
         cellPadding="0"

@@ -39,7 +39,7 @@ const Contacto = () => (
       </div>
     </LayerHero>
 
-    <section className="lg:bg-gradient-to-l from-white to-light-grey">
+    <section className="lg:bg-linear-to-l from-white to-light-grey">
       <article className="container py-12 mx-auto md:px-4">
         <LayerHero
           columnContent={

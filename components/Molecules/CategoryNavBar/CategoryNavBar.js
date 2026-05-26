@@ -25,7 +25,7 @@ const CategoryNavBar = ({ categories }) => {
   }, []);
   return (
     <section
-      className={`${styles.categoryFilter} ${scrollTop > 350 ? styles.active : ''} ${scrollTop > 350 ? 'shadow' : ''}`}
+      className={`${styles.categoryFilter} ${scrollTop > 350 ? styles.active : ''} ${scrollTop > 350 ? 'shadow-sm' : ''}`}
     >
       <div className="container px-4 mx-auto">
         <div className="md:hidden">

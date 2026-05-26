@@ -5,7 +5,7 @@ const CardColumns = ({ posts }) => (
   <>
     {posts.map((item) => (
       <div className="pb-5 col-md-4" key={item.id}>
-        <div className="shadow card" style={{ height: '100%' }}>
+        <div className="shadow-sm card" style={{ height: '100%' }}>
           <div className="card-header">
             <Link
               href={`/prensa/${item.slug}`}

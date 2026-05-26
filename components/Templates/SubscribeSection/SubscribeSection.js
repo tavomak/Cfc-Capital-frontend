@@ -2,7 +2,7 @@ import Image from 'next/image';
 import FormSubscribe from '@/components/Molecules/Forms/FormSubscribe';
 
 const SubscribeSection = () => (
-  <section className="text-white bg-gradient-to-l from-medium-blue to-soft-blue">
+  <section className="text-white bg-linear-to-l from-medium-blue to-soft-blue">
     <div className="container items-center justify-around px-4 py-12 mx-auto sm:py-36 lg:flex">
       <div className="lg:w-1/2">
         <div className="gap-4 md:flex">

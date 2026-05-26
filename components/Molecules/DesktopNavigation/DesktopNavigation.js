@@ -35,8 +35,8 @@ const DesktopNavigation = ({
         <Image
           src="/logo-cfc.svg"
           alt="Cfc Capital Logo"
-          width={220}
-          height={41}
+          width={300}
+          height={65}
           style={{
             width: '220px',
             height: 'auto',
