@@ -14,7 +14,7 @@ const Button = ({
   disabled,
 }) => (
   <button
-    className={`${className} flex align-center gap-2 disabled:opacity-70`}
+    className={`${className} flex align-center gap-2 disabled:opacity-70 cursor-pointer`}
     style={style}
     type={submit ? 'submit' : 'button'}
     onClick={onClick}

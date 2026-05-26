@@ -29,7 +29,7 @@ const Modal = ({ children, onClick, showModal, size, bgColor, noPadding }) => {
             <div className="flex justify-end">
               <button
                 data-testid="printed-username"
-                className={`p-0 ${styles.close}`}
+                className="p-0 cursor-pointer"
                 onClick={handleClose}
                 type="button"
               >
