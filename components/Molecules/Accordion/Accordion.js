@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import styles from './styles.module.css';
 
 const Accordion = ({ containerClassName, itemClassName, list }) => {

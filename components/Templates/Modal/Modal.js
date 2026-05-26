@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 

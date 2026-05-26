@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import FactoringIcon from '@/components/Atoms/FactoringIcon';
 import LeasebackIcon from '@/components/Atoms/LeasebackIcon';
 import FactoringWebIcon from '@/components/Atoms/FactoringWebIcon';
