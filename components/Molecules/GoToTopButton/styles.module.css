@@ -6,6 +6,7 @@
   @apply fixed w-10 h-10 rounded-full bottom-3 right-5;
   transition: all 0.1s ease-in-out;
   z-index: 3;
+  cursor: pointer;
 }
 
 .icon {

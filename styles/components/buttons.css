@@ -13,6 +13,7 @@ article.main a {
   background: var(--btn-background-color);
   border-color: var(--btn-border-color);
   color: var(--btn-color);
+  cursor: pointer;
 }
 
 .btn:hover {
