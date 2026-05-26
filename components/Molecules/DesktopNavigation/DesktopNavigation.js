@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 import FactoringIcon from '@/components/Atoms/FactoringIcon';
 import LeasebackIcon from '@/components/Atoms/LeasebackIcon';
 import FactoringWebIcon from '@/components/Atoms/FactoringWebIcon';
@@ -35,8 +35,8 @@ const DesktopNavigation = ({
         <Image
           src="/logo-cfc.svg"
           alt="Cfc Capital Logo"
-          width={220}
-          height={41}
+          width={300}
+          height={65}
           style={{
             width: '220px',
             height: 'auto',

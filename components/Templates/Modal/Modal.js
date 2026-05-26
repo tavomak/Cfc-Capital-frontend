@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
@@ -23,7 +23,7 @@ const Modal = ({ children, onClick, showModal, size, bgColor, noPadding }) => {
           className="fixed top-0 left-0 z-30 w-screen h-full pt-24 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50"
         >
           <div
-            className={`${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-3'} shadow m-auto border-0 position-relative overflow-auto px-6`}
+            className={`${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-3'} shadow-sm m-auto border-0 position-relative overflow-auto px-6`}
             style={{ borderRadius: '16px' }}
           >
             <div className="flex justify-end">

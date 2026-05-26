@@ -27,8 +27,8 @@ const MobileNavigation = ({
         <Image
           src="/logo-cfc.svg"
           alt="Cfc Capital Logo"
-          width={190}
-          height={41}
+          width={300}
+          height={65}
           style={{
             width: '190px',
             height: 'auto',

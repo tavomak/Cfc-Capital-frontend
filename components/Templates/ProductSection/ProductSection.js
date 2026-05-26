@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
@@ -6,6 +5,7 @@ import useViewport from '@/hooks/useViewport';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedVideo } from '@cloudinary/react';
 import { MdCheck } from 'react-icons/md';
+import FadeInSection from '../FadeInSection';
 
 const cld = new Cloudinary({
   cloud: {
@@ -21,6 +21,10 @@ const getDataFromName = (name) => {
       color: '#432694',
       background: '#D4BFFE',
       video: cld.video('Minefact-cuadrado_rionti'),
+      logoW: 226,
+      logoH: 176,
+      logoWhiteW: 313,
+      logoWhiteH: 105,
     },
     {
       name: 'Emprendefact',
@@ -28,6 +32,10 @@ const getDataFromName = (name) => {
       color: '#004559',
       background: '#C6FFFF',
       video: cld.video('EmprendeFact-cuadrado_fdbcuz'),
+      logoW: 310,
+      logoH: 188,
+      logoWhiteW: 444,
+      logoWhiteH: 149,
     },
     {
       name: 'Publifact',
@@ -35,26 +43,25 @@ const getDataFromName = (name) => {
       color: '#013DA6',
       background: '#83BEFF',
       video: cld.video('PubliFact-SIN-Sub_d0p9lw'),
+      logoW: 228,
+      logoH: 176,
+      logoWhiteW: 384,
+      logoWhiteH: 141,
     },
   ];
   return data.find((item) => item.name === name);
 };
 
 const ProductSection = ({ data, index, setService, handleClick }) => {
-  const [sliceItem, setSliceItem] = useState(0);
   const product = getDataFromName(data.title);
   const viewportWidth = useViewport();
   const isPair = (index + 1) % 2 === 0;
+  const sliceItem = viewportWidth >= 768 ? 3 : 4;
 
   const handleClickButton = (currentService) => {
     setService(currentService);
     handleClick();
   };
-
-  useEffect(() => {
-    const items = viewportWidth >= 768 ? 3 : 4;
-    setSliceItem(items);
-  }, [viewportWidth]);
   return (
     <section
       className={`py-6 ${isPair ? 'md:py-20' : ''}`}
@@ -66,15 +73,18 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
           '--product-background': `linear-gradient(90deg, ${isPair ? `white 40%, ${product.background}` : `${product.background} 0%, white 40%`})`,
         }}
       >
-        <div className="container mx-auto px-4 md:flex items-center justify-between gap-20">
+        <FadeInSection
+          as="div"
+          className="container mx-auto px-4 md:flex items-center justify-between gap-20"
+        >
           <div className={`md:w-1/2 ${isPair ? 'order-last' : 'order-first'} `}>
             <ul>
               <li className="mb-10 text-center md:text-left">
                 <Image
                   src={`/${data.title}-logo.svg`}
                   alt={data.title}
-                  width={300}
-                  height={200}
+                  width={product.logoW}
+                  height={product.logoH}
                   className="object-contain"
                 />
               </li>
@@ -91,9 +101,7 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
               </li>
             </ul>
 
-            {/* Wrapper: relative context for arrow + logo outside blob */}
             <div className="relative mt-2 md:pr-10">
-              {/* Blob */}
               <div className="py-4 md:pt-8 md:pb-14">
                 <ul className="space-y-3 md:max-w-80 flex flex-wrap md:flex-col">
                   {data.services.map((item) => (
@@ -137,7 +145,7 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
             </div>
           </div>
           <div className={`${isPair ? 'order-2' : 'order-1'} md:w-1/2`}>
-            <div>
+            <FadeInSection as="div">
               <AdvancedVideo
                 cldVid={product.video}
                 controls
@@ -148,32 +156,34 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
                 poster="/hero-servicios.jpg"
                 className="aspect-square object-contain w-full h-full shadow-xl rounded-xl"
               />
-            </div>
+            </FadeInSection>
           </div>
-        </div>
+        </FadeInSection>
       </article>
 
       <Card
         containerClassName="container mx-auto px-4 lg:px-20 py-10"
-        cardClassName={`relative md:flex gap-10 items-center py-4 px-4 md:px-10 lg:px-20 shadow-xl ${product.gradientClass} bg-gradient-to-tr`}
+        cardClassName={`relative md:flex gap-10 items-center py-4 px-4 md:px-10 lg:px-20 shadow-xl ${product.gradientClass} bg-linear-to-tr`}
       >
-        {/* CFC Capital logo - top right */}
-        <div className="hidden md:block absolute top-6 right-8">
+        <FadeInSection
+          as="div"
+          className="hidden md:block absolute top-6 right-8"
+        >
           <Image
             src="/cfc-footer-logo.svg"
             alt="CFC Capital"
             width={90}
-            height={40}
+            height={60}
             className="object-contain"
           />
-        </div>
+        </FadeInSection>
 
-        <div className="md:w-1/2 text-white py-6">
+        <FadeInSection className="md:w-1/2 text-white py-6">
           <Image
             src={`/${data.title}-logo-white.svg`}
             alt={data.title}
-            width={300}
-            height={200}
+            width={product.logoWhiteW}
+            height={product.logoWhiteH}
             className="object-contain"
           />
           <h3 className="my-6 font-bold display-font text-2xl">
@@ -211,9 +221,9 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
           >
             Hablar con un asesor
           </Button>
-        </div>
+        </FadeInSection>
 
-        <div className="hidden md:block md:w-1/2">
+        <FadeInSection className="hidden md:block md:w-1/2">
           <div className="rounded-2xl overflow-hidden">
             <Image
               src={`/${data.title}-bg.jpg`}
@@ -250,9 +260,8 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
               </div>
             </div>
           ))}
-        </div>
+        </FadeInSection>
       </Card>
-      <hr className="hidden md:mt-10 container mx-auto px-4" />
     </section>
   );
 };

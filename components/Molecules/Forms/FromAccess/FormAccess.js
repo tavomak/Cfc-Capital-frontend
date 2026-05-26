@@ -1,5 +1,5 @@
 import Input from '@/components/Atoms/Input';
-/* eslint-disable jsx-a11y/tabindex-no-positive */
+
 const FormAccess = () => (
   <div className="container md:px-4">
     <div className="">

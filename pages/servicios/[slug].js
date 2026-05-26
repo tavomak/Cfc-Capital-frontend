@@ -12,6 +12,7 @@ import Spinner from '@/components/Atoms/Spinner';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
 import StepCard from '@/components/Molecules/StepCard';
 import CardContentTitle from '@/components/Molecules/CardContentTitle';
+import FadeInSection from '@/components/Templates/FadeInSection';
 
 const Service = ({ data }) => {
   const [modal, setModal] = useState(false);
@@ -79,15 +80,15 @@ const Service = ({ data }) => {
             buttonText="Saber más"
           />
 
-          <section className="lg:bg-gradient-to-r from-white to-light-grey">
+          <FadeInSection className="lg:bg-linear-to-r from-white to-light-grey">
             <article className="container max-w-5xl py-20 mx-auto md:px-4">
               <h2 className="mb-8 text-4xl font-bold text-center display-font text-dark-blue">
                 Proceso de {data.title}
               </h2>
               <div className="gap-4 md:flex">
-                {data.serviceProcess.map((item, key) => (
+                {data.serviceProcess.map((item, index) => (
                   <Card
-                    key={item.title}
+                    key={item.subtitle || index}
                     containerClassName="mb-4 md:mb-0 w-3/4 md:w-full mx-auto"
                     cardClassName="p-4 py-12 shadow-lg"
                   >
@@ -95,7 +96,7 @@ const Service = ({ data }) => {
                       name={item.subtitle}
                       icon={
                         <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold rounded-full display-font text-medium-blue border-medium-blue circle-width">
-                          {key + 1}
+                          {index + 1}
                         </div>
                       }
                       description={item.description}
@@ -104,7 +105,7 @@ const Service = ({ data }) => {
                 ))}
               </div>
             </article>
-          </section>
+          </FadeInSection>
 
           <SubscribeSection />
 

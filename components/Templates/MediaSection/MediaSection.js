@@ -57,7 +57,7 @@ const MediaSection = ({ mediaSet = [] }) => (
         </h2>
         <Slider {...sliderSettings} slidesToShow={3}>
           {mediaSet.map((item) => (
-            <div className="lg:p-4 !flex justify-center" key={item}>
+            <div className="lg:p-4 flex! justify-center" key={item}>
               <Image src={`/${item}.png`} alt={item} width={272} height={160} />
             </div>
           ))}

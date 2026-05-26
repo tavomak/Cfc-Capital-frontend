@@ -1,6 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import fetch from 'node-fetch';
-
 export default async function handler(req, res) {
   const { body, method } = req;
   const { captcha } = body;

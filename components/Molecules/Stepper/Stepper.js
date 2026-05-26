@@ -28,7 +28,7 @@ const Stepper = () => {
     setActive({ karin: false, ley: false });
   };
   return (
-    <section className="flex flex-col justify-center px-5 shadow">
+    <section className="flex flex-col justify-center px-5 shadow-sm">
       {!step && (
         <aside className="flex flex-col items-center gap-4 py-5 my-5">
           <p className="text-xl text-center display-font">

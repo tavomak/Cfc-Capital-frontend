@@ -80,7 +80,7 @@ const Footer = () => {
     }
   };
   return (
-    <footer className="text-white bg-gradient-to-r from-dark-blue to-medium-purple">
+    <footer className="text-white bg-linear-to-r from-dark-blue to-medium-purple">
       <div className="container px-4 py-16 mx-auto sm:px-6">
         <div className="gap-8 md:flex">
           <div className="flex flex-wrap items-center justify-center gap-8 md:flex-col lg:gap-2 md:items-start md:justify-start md:w-1/4 xl:w-2/4">
@@ -110,7 +110,7 @@ const Footer = () => {
                     src="/20-años.svg"
                     alt="Logo edición 20 aniversario"
                     width={50}
-                    height={60}
+                    height={40}
                     priority
                   />
                 </Link>

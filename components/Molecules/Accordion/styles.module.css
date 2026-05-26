@@ -1,3 +1,5 @@
+@reference "../../../styles/main.css";
+
 .listContainer {
   @apply flex-col px-4 lg:flex;
 }
