@@ -24,6 +24,7 @@ import ClientsIcon from '@/components/Atoms/ClientsIcon';
 import DolarIcon from '@/components/Atoms/DolarIcon';
 import Content from '@/components/Molecules/CardContentTitle';
 import Card from '@/components/Atoms/Card';
+import FadeInSection from '@/components/Templates/FadeInSection';
 
 const iconsMapping = {
   star: <StarIcon />,
@@ -101,7 +102,10 @@ const Home = ({ data }) => {
 
       <section className="mt-20 lg:bg-linear-to-r from-white to-light-grey">
         <article className="container items-center justify-between mx-auto lg:flex lg:py-20">
-          <div className="relative mx-auto mb-6 lg:w-1/2 lg:mb-0">
+          <FadeInSection
+            as="div"
+            className="relative mx-auto mb-6 lg:w-1/2 lg:mb-0"
+          >
             <figure className="relative">
               <Image
                 src="/edificio-cfc.png"
@@ -119,25 +123,34 @@ const Home = ({ data }) => {
                 </p>
               </figcaption>
             </figure>
-          </div>
+          </FadeInSection>
           <div className="px-4 lg:w-1/2 md:px-10">
-            <h1 className="text-base font-bold md:text-3xl display-font text-blue">
+            <FadeInSection
+              as="h1"
+              className="text-base font-bold md:text-3xl display-font text-blue"
+            >
               En CFC Capital, desde el 2003, nos hemos dedicado a ser más que un
               proveedor de servicios financieros.
-            </h1>
-            <p className="my-5 text-xs font-semibold display-font md:text-2xl">
+            </FadeInSection>
+            <FadeInSection
+              as="p"
+              className="my-5 text-xs font-semibold display-font md:text-2xl"
+            >
               Somos parte de tu equipo. Trabajamos junto a empresas y PYMES,
               ofreciendo soluciones personalizadas. Entendemos tus desafíos y
               metas, y estamos aquí para acompañarte en cada paso.
-            </p>
+            </FadeInSection>
           </div>
         </article>
       </section>
 
       <section className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
-        <h2 className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl">
+        <FadeInSection
+          as="h2"
+          className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl"
+        >
           Servicios
-        </h2>
+        </FadeInSection>
         <ZigZagSection
           itemList={formatServices(data.services, {
             imageKey: 'cardImage',
@@ -150,20 +163,27 @@ const Home = ({ data }) => {
       </section>
 
       <section className="pt-8 bg-linear-to-r from-medium-blue to-soft-blue">
-        <h2 className="mb-8 text-2xl font-bold text-center text-white display-font md:text-4xl">
+        <FadeInSection
+          as="h2"
+          className="mb-8 text-2xl font-bold text-center text-white display-font md:text-4xl"
+        >
           Educación Financiera
-        </h2>
-        <p className="w-3/4 mx-auto font-bold text-center text-white lg:w-2/5 display-font text-md md:text-lg">
+        </FadeInSection>
+        <FadeInSection
+          as="p"
+          className="w-3/4 mx-auto font-bold text-center text-white lg:w-2/5 display-font text-md md:text-lg"
+        >
           Te presentamos nuestra plataforma de recursos y artículos de interés
           en el desarrollo y crecimiento financiero.
-        </p>
-        {data.pages.posts?.map((post) => (
+        </FadeInSection>
+        {data.pages.posts?.map((post, index) => (
           <BlogCard
             key={post.title}
             imageUrl={post.coverImage.url}
             title={post.title}
             description={post.excerpt}
             slug={post.slug}
+            index={index}
           />
         ))}
       </section>
@@ -171,26 +191,31 @@ const Home = ({ data }) => {
       <section className="py-20">
         <div className="container max-w-5xl py-10 mx-auto md:px-4">
           <div className="w-full mx-auto text-center md:w-1/2 text-balance text-dark-blue">
-            <h2 className="mb-8 text-3xl font-bold display-font md:text-4xl">
+            <FadeInSection
+              as="h2"
+              className="mb-8 text-3xl font-bold display-font md:text-4xl"
+            >
               Tenemos la experiencia para enfrentar el futuro
-            </h2>
+            </FadeInSection>
           </div>
           <article className="gap-4 md:flex">
-            {data.pages.highlights.map((item) => (
+            {data.pages.highlights.map((item, index) => (
               <Card
                 containerClassName="mb-4 md:mb-0 w-3/4 md:w-full mx-auto"
                 cardClassName="p-4 py-12 shadow-lg"
                 key={item.title}
               >
-                <StepCard
-                  name={item.title}
-                  icon={
-                    <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold rounded-full text-blue display-font">
-                      {iconsMapping[item.icon]}
-                    </div>
-                  }
-                  description={item.description}
-                />
+                <FadeInSection as="div" delay={index / 10}>
+                  <StepCard
+                    name={item.title}
+                    icon={
+                      <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold rounded-full text-blue display-font">
+                        {iconsMapping[item.icon]}
+                      </div>
+                    }
+                    description={item.description}
+                  />
+                </FadeInSection>
               </Card>
             ))}
           </article>
@@ -201,18 +226,24 @@ const Home = ({ data }) => {
         <article className="container mx-auto">
           <div className="md:flex">
             <div className="flex flex-col justify-center gap-6 px-4 md:w-3/6 xl:w-1/3">
-              <h2 className="w-full text-2xl font-bold display-font lg:text-4xl">
+              <FadeInSection
+                as="h2"
+                className="w-full text-2xl font-bold display-font lg:text-4xl"
+              >
                 Creando capacidad de crecer.
-              </h2>
-              <p className="w-5/6 text-sm lg:font-semibold md:w-full display-font md:text-lg">
+              </FadeInSection>
+              <FadeInSection
+                as="p"
+                className="w-5/6 text-sm lg:font-semibold md:w-full display-font md:text-lg"
+              >
                 Fomentamos tu capacidad de desarrollar negocios que crezcan, se
                 proyecten en el tiempo y aporten al país.
-              </p>
+              </FadeInSection>
               <Link href="/contacto" rel="noopener noreferrer">
                 <Button className="mb-6 btn">Escríbenos</Button>
               </Link>
             </div>
-            <div className="mt-auto md:w-4/6 xl:w-2/3">
+            <FadeInSection as="div" className="mt-auto md:w-4/6 xl:w-2/3">
               <Image
                 src="/empresarios-ameba.png"
                 alt="empresarios"
@@ -220,7 +251,7 @@ const Home = ({ data }) => {
                 height={606}
                 className="object-cover h-full aspect-square md:aspect-auto"
               />
-            </div>
+            </FadeInSection>
           </div>
         </article>
       </section>

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
+import FadeInSection from '@/components/Templates/FadeInSection';
+
 import Layout from '@/components/Templates/Layout';
 import LayerHero from '@/components/Molecules/LayerHero';
 import Card from '@/components/Atoms/Card';
@@ -64,13 +66,18 @@ const ProductosFactoring = () => {
 
       <section className="md:py-20 container mx-auto px-4">
         <article className="gap-4 md:flex">
-          {products.map((item) => (
-            <a
+          {products.map((item, index) => (
+            <FadeInSection
+              as="a"
+              delay={index / 10}
               href={`#${item.title.toLowerCase()}`}
               key={item.title}
-              className="mb-4 md:mb-0 w-full mx-auto"
+              className="w-full"
             >
-              <Card cardClassName="p-4 py-10 mx-2 shadow-lg">
+              <Card
+                containerClassName="mb-4 md:mb-0 w-full mx-auto h-full"
+                cardClassName="p-4 py-10 mx-2 shadow-lg"
+              >
                 <StepCard
                   icon={
                     <div className="flex items-end min-h-[150px]">
@@ -86,35 +93,41 @@ const ProductosFactoring = () => {
                   description={item.description}
                 />
               </Card>
-            </a>
+            </FadeInSection>
           ))}
         </article>
       </section>
 
       <section className="container mx-auto px-4 pb-6 md:pb-20">
         <article className="gap-4 md:flex">
-          {attributes.map((item) => (
-            <Card
-              containerClassName="mb-4 md:mb-0 w-full mx-auto"
-              cardClassName="p-4 py-10 mx-2 shadow-lg"
+          {attributes.map((item, index) => (
+            <FadeInSection
+              as="div"
               key={item.title}
+              delay={index / 10}
+              className="w-full"
             >
-              <StepCard
-                icon={
-                  <div className="flex">
-                    <Image
-                      src={`/${item.icon}.svg`}
-                      alt={item.title}
-                      width={item.width || 60}
-                      height={item.height || 60}
-                      className="object-contain"
-                    />
-                  </div>
-                }
-                name={item.title}
-                description={item.description}
-              />
-            </Card>
+              <Card
+                containerClassName="mb-4 md:mb-0 w-full mx-auto"
+                cardClassName="p-4 py-10 mx-2 shadow-lg"
+              >
+                <StepCard
+                  icon={
+                    <div className="flex">
+                      <Image
+                        src={`/${item.icon}.svg`}
+                        alt={item.title}
+                        width={item.width || 60}
+                        height={item.height || 60}
+                        className="object-contain"
+                      />
+                    </div>
+                  }
+                  name={item.title}
+                  description={item.description}
+                />
+              </Card>
+            </FadeInSection>
           ))}
         </article>
       </section>

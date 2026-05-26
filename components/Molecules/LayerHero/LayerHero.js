@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { motion } from 'motion/react';
 import DOMPurify from 'isomorphic-dompurify';
 import styles from './styles.module.css';
 
@@ -14,7 +15,10 @@ const LayerHero = ({
   backgroundImage,
   backgroundColor,
 }) => (
-  <section
+  <motion.section
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.55, ease: 'easeOut' }}
     className={`relative pt-4 lg:pt-12 ${type === 'circle' ? 'bg-gradient-circle' : ''} ${styles.layerHero}`}
     style={{
       '--rtl': `${rtl ? 'right' : 'left'}`,
@@ -73,7 +77,7 @@ const LayerHero = ({
         </div>
       </div>
     </div>
-  </section>
+  </motion.section>
 );
 
 export default LayerHero;

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
@@ -6,6 +5,7 @@ import useViewport from '@/hooks/useViewport';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedVideo } from '@cloudinary/react';
 import { MdCheck } from 'react-icons/md';
+import FadeInSection from '../FadeInSection';
 
 const cld = new Cloudinary({
   cloud: {
@@ -73,7 +73,10 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
           '--product-background': `linear-gradient(90deg, ${isPair ? `white 40%, ${product.background}` : `${product.background} 0%, white 40%`})`,
         }}
       >
-        <div className="container mx-auto px-4 md:flex items-center justify-between gap-20">
+        <FadeInSection
+          as="div"
+          className="container mx-auto px-4 md:flex items-center justify-between gap-20"
+        >
           <div className={`md:w-1/2 ${isPair ? 'order-last' : 'order-first'} `}>
             <ul>
               <li className="mb-10 text-center md:text-left">
@@ -98,9 +101,7 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
               </li>
             </ul>
 
-            {/* Wrapper: relative context for arrow + logo outside blob */}
             <div className="relative mt-2 md:pr-10">
-              {/* Blob */}
               <div className="py-4 md:pt-8 md:pb-14">
                 <ul className="space-y-3 md:max-w-80 flex flex-wrap md:flex-col">
                   {data.services.map((item) => (
@@ -144,7 +145,7 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
             </div>
           </div>
           <div className={`${isPair ? 'order-2' : 'order-1'} md:w-1/2`}>
-            <div>
+            <FadeInSection as="div">
               <AdvancedVideo
                 cldVid={product.video}
                 controls
@@ -155,17 +156,19 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
                 poster="/hero-servicios.jpg"
                 className="aspect-square object-contain w-full h-full shadow-xl rounded-xl"
               />
-            </div>
+            </FadeInSection>
           </div>
-        </div>
+        </FadeInSection>
       </article>
 
       <Card
         containerClassName="container mx-auto px-4 lg:px-20 py-10"
         cardClassName={`relative md:flex gap-10 items-center py-4 px-4 md:px-10 lg:px-20 shadow-xl ${product.gradientClass} bg-linear-to-tr`}
       >
-        {/* CFC Capital logo - top right */}
-        <div className="hidden md:block absolute top-6 right-8">
+        <FadeInSection
+          as="div"
+          className="hidden md:block absolute top-6 right-8"
+        >
           <Image
             src="/cfc-footer-logo.svg"
             alt="CFC Capital"
@@ -173,9 +176,9 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
             height={60}
             className="object-contain"
           />
-        </div>
+        </FadeInSection>
 
-        <div className="md:w-1/2 text-white py-6">
+        <FadeInSection className="md:w-1/2 text-white py-6">
           <Image
             src={`/${data.title}-logo-white.svg`}
             alt={data.title}
@@ -218,9 +221,9 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
           >
             Hablar con un asesor
           </Button>
-        </div>
+        </FadeInSection>
 
-        <div className="hidden md:block md:w-1/2">
+        <FadeInSection className="hidden md:block md:w-1/2">
           <div className="rounded-2xl overflow-hidden">
             <Image
               src={`/${data.title}-bg.jpg`}
@@ -257,9 +260,8 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
               </div>
             </div>
           ))}
-        </div>
+        </FadeInSection>
       </Card>
-      <hr className="hidden md:mt-10 container mx-auto px-4" />
     </section>
   );
 };

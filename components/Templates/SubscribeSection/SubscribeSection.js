@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import FormSubscribe from '@/components/Molecules/Forms/FormSubscribe';
+import FadeInSection from '../FadeInSection';
 
 const SubscribeSection = () => (
   <section className="text-white bg-linear-to-l from-medium-blue to-soft-blue">
     <div className="container items-center justify-around px-4 py-12 mx-auto sm:py-36 lg:flex">
       <div className="lg:w-1/2">
         <div className="gap-4 md:flex">
-          <div className="w-1/3">
+          <FadeInSection as="div" className="w-1/3">
             <Image
               src="/newsletter-icon.svg"
               alt="newsletter"
@@ -18,8 +19,8 @@ const SubscribeSection = () => (
                 height: 'auto',
               }}
             />
-          </div>
-          <div className="lg:w-2/3 ">
+          </FadeInSection>
+          <FadeInSection as="div" className="lg:w-2/3 ">
             <p className="text-base md:text-3xl font-regular">
               Suscríbete a nuestro
             </p>
@@ -30,12 +31,12 @@ const SubscribeSection = () => (
               Te presentamos nuestra plataforma de recursos y artículos de
               interés en el desarrollo y crecimiento financiero.
             </p>
-          </div>
+          </FadeInSection>
         </div>
       </div>
-      <div className="mx-auto lg:mx-0 md:w-1/2 xl:w-1/3">
+      <FadeInSection as="div" className="mx-auto lg:mx-0 md:w-1/2 xl:w-1/3">
         <FormSubscribe />
-      </div>
+      </FadeInSection>
     </div>
   </section>
 );
