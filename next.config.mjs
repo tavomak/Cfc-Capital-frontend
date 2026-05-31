@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  staticPageGenerationTimeout: 120,
   images: {
     deviceSizes: [768, 1440],
     imageSizes: [32, 128],

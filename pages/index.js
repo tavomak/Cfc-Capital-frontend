@@ -1,36 +1,26 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Link from 'next/link';
-import Slider from 'react-slick';
 import {
   formatServices,
-  sliderSettings,
-  bannersToShow,
   getPageBySlugAndServices,
-  mediaLogos,
+  getServiceBySlug,
+  products,
 } from '@/utils';
 
 import Layout from '@/components/Templates/Layout';
+import Modal from '@/components/Templates/Modal';
 import ZigZagSection from '@/components/Templates/ZigZagSection';
-import StaticHero from '@/components/Molecules/StaticHero';
 import LayerHero from '@/components/Molecules/LayerHero';
-import MediaSection from '@/components/Templates/MediaSection';
-import SubscribeSection from '@/components/Templates/SubscribeSection';
-import BlogCard from '@/components/Templates/BlogCard';
-import Button from '@/components/Atoms/Button';
 import StepCard from '@/components/Molecules/StepCard';
-import StarIcon from '@/components/Atoms/StarIcon';
-import ClientsIcon from '@/components/Atoms/ClientsIcon';
-import DolarIcon from '@/components/Atoms/DolarIcon';
-import Content from '@/components/Molecules/CardContentTitle';
+import CardContentTitle from '@/components/Molecules/CardContentTitle';
 import Card from '@/components/Atoms/Card';
 import FadeInSection from '@/components/Templates/FadeInSection';
+import FormGetInfo from '@/components/Molecules/Forms/FormContact';
+import Button from '@/components/Atoms/Button';
 
-const iconsMapping = {
-  star: <StarIcon />,
-  people: <ClientsIcon />,
-  money: <DolarIcon />,
-};
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedVideo } from '@cloudinary/react';
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -43,234 +33,25 @@ const structuredData = {
   sameAs: ['https://cl.linkedin.com/company/cfc-capital-s-a'],
 };
 
-const Home = ({ data }) => {
-  const router = useRouter();
-  const handleSectionClick = (e, item) => {
-    e.preventDefault();
-    if (item.slug === 'factoring-web') {
-      window.open('/cfc_paso_a_paso.pdf', '_ blank');
-    } else {
-      router.push(`/servicios/${item.slug}`);
-    }
-  };
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'deevr9k54',
+  },
+});
 
-  return (
-    <Layout
-      title="Financiamos al motor de la economía"
-      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
-      schema={structuredData}
-    >
-      <Slider {...sliderSettings}>
-        {bannersToShow(data.pages.hero).map((item) =>
-          item.subtitle ? (
-            <LayerHero
-              key={item.id}
-              title={item.title}
-              columnContent={<Content content={item} />}
-              subtitle={item.subtitle}
-              backgroundImage={item?.backgroundImage?.url}
-              backgroundColor={item?.backgroundColor[0]?.hex}
-              rtl={item.rtl}
-            >
-              <div className="w-full h-5/6">
-                <Image
-                  src={item.frontImage.url}
-                  width={750}
-                  height={580}
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    objectFit: 'contain',
-                    objectPosition: 'bottom',
-                  }}
-                  alt={item.title || item.subtitle}
-                  priority
-                />
-              </div>
-            </LayerHero>
-          ) : (
-            <StaticHero
-              key={item.id}
-              heroImages={{
-                desktop: item.desktop.url,
-                mobile: item.mobile.url,
-              }}
-            />
-          )
-        )}
-      </Slider>
-
-      <section className="mt-20 lg:bg-linear-to-r from-white to-light-grey">
-        <article className="container items-center justify-between mx-auto lg:flex lg:py-20">
-          <FadeInSection
-            as="div"
-            className="relative mx-auto mb-6 lg:w-1/2 lg:mb-0"
-          >
-            <figure className="relative">
-              <Image
-                src="/edificio-cfc.png"
-                alt="edificio cfc"
-                width={1080}
-                height={1658}
-                priority
-                className="w-2/3 mr-auto sm:mx-auto lg:w-5/6"
-              />
-              <figcaption className="absolute right-0 w-1/3 bottom-1/2 sm:bottom-14 sm:right-8">
-                <p className="text-xs font-bold text-balance display-font text-dark-grey">
-                  Estamos ubicados en
-                  <br />
-                  Av. El Bosque 92, Las Condes.
-                </p>
-              </figcaption>
-            </figure>
-          </FadeInSection>
-          <div className="px-4 lg:w-1/2 md:px-10">
-            <FadeInSection
-              as="h1"
-              className="text-base font-bold md:text-3xl display-font text-blue"
-            >
-              En CFC Capital, desde el 2003, nos hemos dedicado a ser más que un
-              proveedor de servicios financieros.
-            </FadeInSection>
-            <FadeInSection
-              as="p"
-              className="my-5 text-xs font-semibold display-font md:text-2xl"
-            >
-              Somos parte de tu equipo. Trabajamos junto a empresas y PYMES,
-              ofreciendo soluciones personalizadas. Entendemos tus desafíos y
-              metas, y estamos aquí para acompañarte en cada paso.
-            </FadeInSection>
-          </div>
-        </article>
-      </section>
-
-      <section className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
-        <FadeInSection
-          as="h2"
-          className="mb-8 text-2xl font-bold text-center text-dark-blue display-font md:text-4xl"
-        >
-          Servicios
-        </FadeInSection>
-        <ZigZagSection
-          itemList={formatServices(data.services, {
-            imageKey: 'cardImage',
-            colorPrefix: 'bg-',
-          })}
-          sectionClassName="container md:px-4 mx-auto"
-          itemClassName="my-20 md:rounded-3xl shadow-lg hover:shadow-xl overflow-hidden"
-          onClick={handleSectionClick}
-        />
-      </section>
-
-      <section className="pt-8 bg-linear-to-r from-medium-blue to-soft-blue">
-        <FadeInSection
-          as="h2"
-          className="mb-8 text-2xl font-bold text-center text-white display-font md:text-4xl"
-        >
-          Educación Financiera
-        </FadeInSection>
-        <FadeInSection
-          as="p"
-          className="w-3/4 mx-auto font-bold text-center text-white lg:w-2/5 display-font text-md md:text-lg"
-        >
-          Te presentamos nuestra plataforma de recursos y artículos de interés
-          en el desarrollo y crecimiento financiero.
-        </FadeInSection>
-        {data.pages.posts?.map((post, index) => (
-          <BlogCard
-            key={post.title}
-            imageUrl={post.coverImage.url}
-            title={post.title}
-            description={post.excerpt}
-            slug={post.slug}
-            index={index}
-          />
-        ))}
-      </section>
-
-      <section className="py-20">
-        <div className="container max-w-5xl py-10 mx-auto md:px-4">
-          <div className="w-full mx-auto text-center md:w-1/2 text-balance text-dark-blue">
-            <FadeInSection
-              as="h2"
-              className="mb-8 text-3xl font-bold display-font md:text-4xl"
-            >
-              Tenemos la experiencia para enfrentar el futuro
-            </FadeInSection>
-          </div>
-          <article className="gap-4 md:flex">
-            {data.pages.highlights.map((item, index) => (
-              <Card
-                containerClassName="mb-4 md:mb-0 w-3/4 md:w-full mx-auto"
-                cardClassName="p-4 py-12 shadow-lg"
-                key={item.title}
-              >
-                <FadeInSection as="div" delay={index / 10}>
-                  <StepCard
-                    name={item.title}
-                    icon={
-                      <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold rounded-full text-blue display-font">
-                        {iconsMapping[item.icon]}
-                      </div>
-                    }
-                    description={item.description}
-                  />
-                </FadeInSection>
-              </Card>
-            ))}
-          </article>
-        </div>
-      </section>
-
-      <section className="pt-12 text-white bg-linear-to-r from-dark-blue to-purple">
-        <article className="container mx-auto">
-          <div className="md:flex">
-            <div className="flex flex-col justify-center gap-6 px-4 md:w-3/6 xl:w-1/3">
-              <FadeInSection
-                as="h2"
-                className="w-full text-2xl font-bold display-font lg:text-4xl"
-              >
-                Creando capacidad de crecer.
-              </FadeInSection>
-              <FadeInSection
-                as="p"
-                className="w-5/6 text-sm lg:font-semibold md:w-full display-font md:text-lg"
-              >
-                Fomentamos tu capacidad de desarrollar negocios que crezcan, se
-                proyecten en el tiempo y aporten al país.
-              </FadeInSection>
-              <Link href="/contacto" rel="noopener noreferrer">
-                <Button className="mb-6 btn">Escríbenos</Button>
-              </Link>
-            </div>
-            <FadeInSection as="div" className="mt-auto md:w-4/6 xl:w-2/3">
-              <Image
-                src="/empresarios-ameba.png"
-                alt="empresarios"
-                width={968}
-                height={606}
-                className="object-cover h-full aspect-square md:aspect-auto"
-              />
-            </FadeInSection>
-          </div>
-        </article>
-      </section>
-
-      <SubscribeSection />
-
-      <MediaSection mediaSet={mediaLogos} />
-    </Layout>
-  );
-};
-
-export default Home;
+const primaryVideo = cld.video('Reels-Nvos-Productos-cudrado_cyvykb');
+const promoVideo = cld.video('CFC_-_Video_de_presentación_-_web_lbrkbq');
 
 export async function getStaticProps() {
   try {
     const { data } = await getPageBySlugAndServices('home');
+    const {
+      data: { service },
+    } = await getServiceBySlug('factoring');
     return {
       props: {
         data,
+        service,
       },
       revalidate: 100,
     };
@@ -281,3 +62,225 @@ export async function getStaticProps() {
     };
   }
 }
+
+const Home = ({ data, service }) => {
+  const router = useRouter();
+  const [modal, setModal] = useState(false);
+  const handleClick = () => {
+    setModal(!modal);
+  };
+  return (
+    <Layout
+      title="Financiamos al motor de la economía"
+      description="Fomentamos tu capacidad de desarrollar negocios que crezcan, se proyecten en el tiempo y aporten al país"
+      schema={structuredData}
+    >
+      <section className="md:py-20">
+        <LayerHero
+          columnContent={
+            <div className="mr-8">
+              <CardContentTitle
+                content={{
+                  subtitle: `Factoring a tu medida, 
+respaldo a largo plazo`,
+                  description:
+                    'Entregamos soluciones financieras ágiles y relaciones de largo plazo para ayudarte a operar con mayor tranquilidad y seguir creciendo.',
+                }}
+              />
+              <div className="md:mx-0 mx-4">
+                <Button
+                  className="btn btn-primary mt-8 py-2"
+                  onClick={() => handleClick()}
+                >
+                  Hablar con un asesor
+                </Button>
+              </div>
+            </div>
+          }
+          ltr
+        >
+          <AdvancedVideo
+            cldVid={promoVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/hero-servicios.jpg"
+            controls
+            className="aspect-video object-contain w-full h-full shadow-xl rounded-xl"
+          />
+        </LayerHero>
+      </section>
+
+      <section className="md:mb-20 md:pb-10 lg:bg-linear-to-r from-white to-light-grey">
+        <article className="md:pt-14 product-article">
+          <FadeInSection
+            as="div"
+            className="container mx-auto md:flex items-center justify-between gap-20"
+          >
+            <div className="md:w-1/2 order-1 md:order-2">
+              <CardContentTitle
+                content={{
+                  title: 'Factoring CFC Capital',
+                  subtitle: '¡Soluciones a tu medida!',
+                  description: 'Liquidez para cada industria, sin esperar.',
+                  postDescription:
+                    'Soluciones de factoring diseñadas para proveedores mineros, emprendedores y empresas del Mercado Público. Aprobación ágil, tasas garantizadas y acompañamiento experto.',
+                }}
+              />
+
+              <div className="md:mx-0 mx-4">
+                <Button
+                  className="btn btn-primary my-8 py-2"
+                  onClick={() => handleClick()}
+                >
+                  Hablar con un asesor
+                </Button>
+              </div>
+            </div>
+            <div className={`md:w-1/2 order-2 md:order-1`}>
+              <FadeInSection as="div" className="lg:pe-20">
+                <AdvancedVideo
+                  cldVid={primaryVideo}
+                  controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster="/hero-servicios.jpg"
+                  className="aspect-square object-contain w-full h-full shadow-xl rounded-xl"
+                />
+              </FadeInSection>
+            </div>
+          </FadeInSection>
+        </article>
+      </section>
+
+      <section className="container mx-auto px-4 my-10 md:my-20">
+        <ul className="flex items-center gap-8 mb-10">
+          <li>
+            <h2 className="text-2xl font-bold text-medium-purple display-font">
+              ¡Factoring a tu medida!
+            </h2>
+            <p>Liquidez para cada industria, sin esperar</p>
+          </li>
+          <li>
+            <Button
+              className="btn btn-primary py-2"
+              onClick={() => router.push('/servicios/factoring')}
+            >
+              Saber más
+            </Button>
+          </li>
+        </ul>
+        <article className="gap-4 md:flex">
+          {products.map((item, index) => (
+            <FadeInSection
+              as="a"
+              delay={index / 10}
+              href={`/servicios/factoring/#${item.title.toLowerCase()}`}
+              key={item.title}
+              className="w-full"
+            >
+              <Card
+                containerClassName="mb-4 md:mb-0 w-full mx-auto h-full"
+                cardClassName="p-4 py-10 mx-2 shadow-lg"
+              >
+                <StepCard
+                  icon={
+                    <div className="flex items-end min-h-[150px]">
+                      <Image
+                        src={`/${item.title}-logo.svg`}
+                        alt={item.title}
+                        width={item.width || 160}
+                        height={item.height || 100}
+                        className="object-contain"
+                      />
+                    </div>
+                  }
+                  description={item.description}
+                />
+              </Card>
+            </FadeInSection>
+          ))}
+        </article>
+      </section>
+
+      <section className="pt-12 bg-no-repeat bg-cover bg-ameba-pattern-light">
+        <ZigZagSection
+          itemList={formatServices(service.serviceContent, {
+            colorKey: 'color',
+            descriptionKey: 'content',
+          })}
+          sectionClassName="container md:px-4 mx-auto"
+          itemClassName="my-20 md:rounded-3xl shadow-lg hover:shadow-xl overflow-hidden"
+          onClick={() => router.push('/servicios/factoring')}
+        />
+      </section>
+
+      <FadeInSection className="lg:bg-linear-to-r from-white to-light-grey">
+        <article className="container max-w-5xl py-20 mx-auto md:px-4">
+          <h2 className="mb-8 text-4xl font-bold text-center display-font text-dark-blue">
+            Proceso de {service.title}
+          </h2>
+          <div className="gap-4 md:flex">
+            {service.serviceProcess.map((item, index) => (
+              <Card
+                key={item.subtitle || index}
+                containerClassName="mb-4 md:mb-0 w-3/4 md:w-full mx-auto"
+                cardClassName="p-4 py-12 shadow-lg"
+              >
+                <StepCard
+                  name={item.subtitle}
+                  icon={
+                    <div className="flex items-center justify-center w-20 h-20 text-3xl font-bold rounded-full display-font text-medium-blue border-medium-blue circle-width">
+                      {index + 1}
+                    </div>
+                  }
+                  description={item.description}
+                />
+              </Card>
+            ))}
+          </div>
+        </article>
+      </FadeInSection>
+
+      <section className="md:py-20">
+        <LayerHero
+          title="Con CFC Capital"
+          columnContent={
+            <CardContentTitle
+              content={{
+                title: 'Con CFC Capital',
+                subtitle: `¡Que el crecimiento, 
+no tarde en llegar`,
+                description: 'Liquidez para cada industria, sin esperar.',
+              }}
+            />
+          }
+          subtitle="Liquidez para cada industria, sin esperar."
+          backgroundImage="/ameba-factoring.png"
+          ltr
+        >
+          <Card
+            containerClassName="px-4"
+            cardClassName="p-4 lg:p-10 lg:mx-10 bg-white"
+          >
+            <FormGetInfo service="factoring" title="factoring" />
+          </Card>
+        </LayerHero>
+      </section>
+
+      <Modal
+        bgColor="bg-white"
+        onClick={handleClick}
+        showModal={modal}
+        size="lg"
+      >
+        <FormGetInfo service="Factoring" title="Factoring" />
+      </Modal>
+    </Layout>
+  );
+};
+
+export default Home;
