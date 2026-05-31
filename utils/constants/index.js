@@ -129,12 +129,7 @@ export const memorial = [
 
 export const navItems = [
   {
-    label: 'Inicio',
-    path: '/',
-    children: false,
-  },
-  {
-    label: 'CFC',
+    label: 'Nosotros',
     path: '/cfc',
     children: false,
   },

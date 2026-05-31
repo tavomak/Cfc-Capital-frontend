@@ -163,6 +163,7 @@ export async function getStaticPaths() {
     const response = await getServices();
     const services = response?.data?.services;
     const path = '/servicios/';
+    console.log({ services });
 
     if (!services) {
       console.warn(
@@ -176,7 +177,9 @@ export async function getStaticPaths() {
 
     return {
       paths: services
-        ?.filter((item) => item.slug !== 'factoring-web')
+        ?.filter(
+          (item) => item.slug !== 'factoring-web' && item.slug !== 'factoring'
+        )
         .map((item) => path + item.slug),
       fallback: true,
     };
