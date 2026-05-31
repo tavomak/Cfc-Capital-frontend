@@ -1,3 +1,17 @@
+# [1.6.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.5.0...v1.6.0) (2026-05-31)
+
+### Bug Fixes
+
+- spread attr ([5d2c0e1](https://github.com/tavomak/Cfc-Capital-frontend/commit/5d2c0e14cb504687b88dab8fe90551b61685a52d))
+
+### Features
+
+- cursor pointer on buttons ([75ec548](https://github.com/tavomak/Cfc-Capital-frontend/commit/75ec54850a7a56b65a93454894e4bcacb734d311))
+- motion ([e3f0978](https://github.com/tavomak/Cfc-Capital-frontend/commit/e3f097870679653a0136f187f3f3f75f8e54b7ec))
+- new factoring services ([7fa5faa](https://github.com/tavomak/Cfc-Capital-frontend/commit/7fa5faa4f595c7c5904cb51949a2c8195f6ab7df))
+- new services ([2b86eaa](https://github.com/tavomak/Cfc-Capital-frontend/commit/2b86eaaa5cc1beb6318529e7aea2e4b533a06d14))
+- new servicesi round 2 ([02b51ce](https://github.com/tavomak/Cfc-Capital-frontend/commit/02b51ce2cda286181e38a908bfbb045aa325d834))
+
 # [1.5.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.4.1...v1.5.0) (2026-02-06)
 
 ### Features
