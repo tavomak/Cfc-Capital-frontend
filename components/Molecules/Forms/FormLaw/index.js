@@ -149,7 +149,7 @@ const FormContact = () => {
             <Input
               className={`${styles.formInput} ${errors.username ? styles.formInputError : ''} form-control mt-2`}
               name="username"
-              placeholder="Introduce nombre completo"
+              placeholder="Nombre completo"
               rules={{
                 required: 'Nombre Requerido',
               }}
@@ -162,7 +162,7 @@ const FormContact = () => {
               type="email"
               className={`${styles.formInput} ${errors.email ? styles.formInputError : ''} form-control mt-2`}
               name="email"
-              placeholder="Introduce tu email"
+              placeholder="Email"
               rules={{
                 required: 'Email Requerido',
               }}
@@ -176,7 +176,7 @@ const FormContact = () => {
               type="text"
               className={`${styles.formInput} ${errors.phone ? styles.formInputError : ''} form-control`}
               name="phone"
-              placeholder="Introduce tu teléfono"
+              placeholder="Teléfono"
               rules={{
                 required: 'Teléfono Requerido',
               }}

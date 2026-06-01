@@ -56,7 +56,7 @@ const FormSubscribe = () => {
         <Input
           type="email"
           name="subscribeEmail"
-          placeholder="Introduce tu email"
+          placeholder="Email"
           rules={{
             required: 'Email Requerido',
           }}

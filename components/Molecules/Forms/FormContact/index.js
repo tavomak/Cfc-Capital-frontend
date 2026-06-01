@@ -153,7 +153,7 @@ const FormContact = ({ service, title, image, content }) => {
       <div className="form-group">
         <Input
           name="name"
-          placeholder="Introduce un nombre"
+          placeholder="Nombre"
           rules={{
             required: 'Nombre requerido',
           }}
@@ -164,7 +164,7 @@ const FormContact = ({ service, title, image, content }) => {
       <div className="form-group">
         <Input
           name="lastName"
-          placeholder="Introduce un Apellido"
+          placeholder="Apellido"
           rules={{
             required: 'Apellido requerido',
           }}
@@ -176,7 +176,7 @@ const FormContact = ({ service, title, image, content }) => {
         <Input
           type="email"
           name="email"
-          placeholder="Introduce tu email"
+          placeholder="Email"
           rules={{
             required: 'Email Requerido',
           }}
@@ -188,7 +188,7 @@ const FormContact = ({ service, title, image, content }) => {
         <Input
           phone
           name="telefono"
-          placeholder="Introduce tu teléfono"
+          placeholder="Teléfono"
           rules={{
             required: 'Teléfono Requerido',
             maxLength: {
