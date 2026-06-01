@@ -165,7 +165,7 @@ const FormComplaint = ({ target }) => {
           type="text"
           className={`${styles.formInput} ${errors.username ? styles.formInputError : ''} form-control mt-2`}
           name="username"
-          placeholder="Introduce el Nombre de la persona que quieres denunciar"
+          placeholder="Nombre de la persona que quieres denunciar"
           errors={errors.username}
           register={register}
         />
@@ -175,7 +175,7 @@ const FormComplaint = ({ target }) => {
           type="text"
           className={`${styles.formInput} ${errors.lastName ? styles.formInputError : ''} form-control mt-2`}
           name="lastName"
-          placeholder="Introduce tu nombre y apellido"
+          placeholder="Nombre y apellido"
           errors={errors.lastName}
           register={register}
         />
@@ -185,7 +185,7 @@ const FormComplaint = ({ target }) => {
           type="email"
           className={`${styles.formInput} ${errors.email ? styles.formInputError : ''} form-control mt-2`}
           name="email"
-          placeholder="Introduce tu email"
+          placeholder="Email"
           errors={errors.email}
           register={register}
         />
@@ -197,7 +197,7 @@ const FormComplaint = ({ target }) => {
           phone
           className={`${styles.formInput} ${errors.telefono ? styles.formInputError : ''} form-control`}
           name="telefono"
-          placeholder="Introduce tu teléfono"
+          placeholder="Teléfono"
           errors={errors.telefono}
           register={register}
           rules={{
