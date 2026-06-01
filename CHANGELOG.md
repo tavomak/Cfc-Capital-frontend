@@ -1,3 +1,9 @@
+# [1.7.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.6.0...v1.7.0) (2026-06-01)
+
+### Features
+
+- placeholder text change ([ff6d48f](https://github.com/tavomak/Cfc-Capital-frontend/commit/ff6d48f73891f4dfb9104f074a8074551280740d))
+
 # [1.6.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.5.0...v1.6.0) (2026-05-31)
 
 ### Bug Fixes
