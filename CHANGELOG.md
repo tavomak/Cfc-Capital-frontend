@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.7.0...v1.7.1) (2026-06-03)
+
+### Bug Fixes
+
+- Header image responsive behavior ([091b620](https://github.com/tavomak/Cfc-Capital-frontend/commit/091b620b9f9c234f4674df493e37bc0ff2593f93))
+
 # [1.7.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.6.0...v1.7.0) (2026-06-01)
 
 ### Features
