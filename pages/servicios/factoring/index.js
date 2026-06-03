@@ -47,7 +47,7 @@ const ProductosFactoring = () => {
               width={1080}
               height={1658}
               priority
-              className="w-2/3 mr-auto sm:mx-auto lg:w-5/6"
+              className="w-full md:w-2/3 mr-auto sm:mx-auto lg:w-5/6"
             />
           </div>
         </LayerHero>
