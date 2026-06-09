@@ -537,44 +537,58 @@ const SignatureCard = ({
                 </td>
               </tr>
               <tr>
-                <td style={{ display: 'flex', width: '100%' }}>
-                  {data.phone && (
-                    <p
-                      style={{
-                        margin: 0,
-                        color: '#7f7f7f',
-                        fontSize: '13px',
-                        textDecoration: 'none',
-                        paddingRight: '4px',
-                        borderRight: '1px solid #b1a3c6',
-                      }}
-                    >
-                      <span
-                        style={{ color: '#7f7f7f', textDecoration: 'none' }}
-                      >
-                        +56{' '}
-                      </span>
-                      {data.phone && formatPhoneNumberString(data.phone)}
-                    </p>
-                  )}
-                  {data.mobile && (
-                    <p
-                      style={{
-                        margin: 0,
-                        color: '#7f7f7f',
-                        fontSize: '13px',
-                        paddingLeft: '4px',
-                        textDecoration: 'none',
-                      }}
-                    >
-                      <span
-                        style={{ color: '#7f7f7f', textDecoration: 'none' }}
-                      >
-                        +56{' '}
-                      </span>
-                      {formatPhoneNumberString(data.mobile)}
-                    </p>
-                  )}
+                <td>
+                  <table cellPadding="0" cellSpacing="0" border="0">
+                    <tbody>
+                      <tr>
+                        {data.phone && (
+                          <td
+                            style={{
+                              margin: 0,
+                              color: '#7f7f7f',
+                              fontSize: '13px',
+                              textDecoration: 'none',
+                              paddingRight: '8px',
+                              borderRight: '1px solid #b1a3c6',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            <span
+                              style={{
+                                color: '#7f7f7f',
+                                textDecoration: 'none',
+                              }}
+                            >
+                              +56{' '}
+                            </span>
+                            {formatPhoneNumberString(data.phone)}
+                          </td>
+                        )}
+                        {data.mobile && (
+                          <td
+                            style={{
+                              margin: 0,
+                              color: '#7f7f7f',
+                              fontSize: '13px',
+                              paddingLeft: '8px',
+                              textDecoration: 'none',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            <span
+                              style={{
+                                color: '#7f7f7f',
+                                textDecoration: 'none',
+                              }}
+                            >
+                              +56{' '}
+                            </span>
+                            {formatPhoneNumberString(data.mobile)}
+                          </td>
+                        )}
+                      </tr>
+                    </tbody>
+                  </table>
                 </td>
               </tr>
               <tr>
