@@ -641,7 +641,7 @@ const SignatureCard = ({
                         <td>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img
-                            src="/cfc-Efa.png"
+                            src="/afys-purple.png"
                             alt="EFA logo"
                             width="50"
                             height="33"
