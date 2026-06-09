@@ -137,9 +137,9 @@ const Footer = () => {
               </li>
 
               <li className="w-1/3">
-                <a href="https://efa.cl/" target="_blank">
+                <a href="https://afys.cl/" target="_blank">
                   <Image
-                    src="/logo-efa.svg"
+                    src="/afys-white.png"
                     alt="Efa Logo"
                     width={100}
                     height={100}
