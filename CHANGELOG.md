@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.7.1...v1.8.0) (2026-06-09)
+
+### Features
+
+- afis firma ([a36e719](https://github.com/tavomak/Cfc-Capital-frontend/commit/a36e719097fbdc534ec7404e5d611cdbdf83231a))
+- afis footer ([6df7bef](https://github.com/tavomak/Cfc-Capital-frontend/commit/6df7bef4d4bde9d77ad5263a2e19b06dc51dd73f))
+
 ## [1.7.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.7.0...v1.7.1) (2026-06-03)
 
 ### Bug Fixes
