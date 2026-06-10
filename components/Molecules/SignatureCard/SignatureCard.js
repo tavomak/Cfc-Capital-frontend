@@ -657,7 +657,7 @@ const SignatureCard = ({
                           <img
                             src="/afys-purple.png"
                             alt="EFA logo"
-                            width="50"
+                            width="40"
                             height="33"
                             style={{ maxWidth: '50px' }}
                           />
