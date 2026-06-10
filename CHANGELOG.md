@@ -1,3 +1,9 @@
+# [1.9.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.8.0...v1.9.0) (2026-06-10)
+
+### Features
+
+- signature outlook ([a4069d5](https://github.com/tavomak/Cfc-Capital-frontend/commit/a4069d579f4e55f68a7958d85e4603f1c723ac65))
+
 # [1.8.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.7.1...v1.8.0) (2026-06-09)
 
 ### Features
