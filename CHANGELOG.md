@@ -1,3 +1,9 @@
+# [1.10.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.9.0...v1.10.0) (2026-06-10)
+
+### Features
+
+- afis firma ([839d36f](https://github.com/tavomak/Cfc-Capital-frontend/commit/839d36f1f3c34ae1cafca27ed9fdd5214c92387b))
+
 # [1.9.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.8.0...v1.9.0) (2026-06-10)
 
 ### Features
