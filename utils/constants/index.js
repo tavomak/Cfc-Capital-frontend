@@ -291,12 +291,6 @@ export const products = [
           'Te guiamos en el cumplimiento de todos los requisitos necesarios para operar exitosamente en este mercado.',
       },
       {
-        title: 'Tasa Garantizada',
-        icon: 'guard',
-        description:
-          'Producto único el cual te permite mantener la tasa de negocio en caso de mora, hasta por 15, 30 ó 45 días.',
-      },
-      {
         title: 'Herramientas digitales',
         icon: 'digital',
         description:
