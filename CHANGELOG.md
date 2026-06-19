@@ -1,3 +1,9 @@
+## [1.10.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.10.0...v1.10.1) (2026-06-19)
+
+### Bug Fixes
+
+- item removed ([d555b00](https://github.com/tavomak/Cfc-Capital-frontend/commit/d555b0080886ae14ad7670b1d33c15210b49ac44))
+
 # [1.10.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.9.0...v1.10.0) (2026-06-10)
 
 ### Features
