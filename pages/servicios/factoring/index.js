@@ -21,7 +21,10 @@ const ProductosFactoring = () => {
   };
 
   return (
-    <Layout>
+    <Layout
+      title="Servicios Factoring"
+      description="Soluciones de factoring diseñadas para proveedores mineros, emprendedores y empresas del Mercado Público. Aprobación ágil, tasas garantizadas y acompañamiento experto."
+    >
       <section className="md:py-20">
         <LayerHero
           columnContent={
