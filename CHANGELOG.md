@@ -1,3 +1,9 @@
+# [1.11.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.10.1...v1.11.0) (2026-06-20)
+
+### Features
+
+- factoring service title and description ([42a9b3d](https://github.com/tavomak/Cfc-Capital-frontend/commit/42a9b3d8c98073453ba06493276963bce7499162))
+
 ## [1.10.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.10.0...v1.10.1) (2026-06-19)
 
 ### Bug Fixes
