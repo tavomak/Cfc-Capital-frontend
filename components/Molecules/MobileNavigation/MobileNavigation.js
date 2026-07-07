@@ -170,7 +170,7 @@ const MobileNavigation = ({
                   <a
                     href="!#"
                     className="inline-block py-3 btn btn-primary"
-                    onClick={(e) => handleClickModal(e, true)}
+                    onClick={(e) => handleClickModal(e, false)}
                   >
                     Acceso Clientes
                   </a>
