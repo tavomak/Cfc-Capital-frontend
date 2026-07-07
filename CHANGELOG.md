@@ -1,3 +1,9 @@
+## [1.11.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.11.0...v1.11.1) (2026-07-07)
+
+### Bug Fixes
+
+- access modal message ([abf213d](https://github.com/tavomak/Cfc-Capital-frontend/commit/abf213d031579e884dd21037715d8acbb4d6d3d4))
+
 # [1.11.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.10.1...v1.11.0) (2026-06-20)
 
 ### Features
