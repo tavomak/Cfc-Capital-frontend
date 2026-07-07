@@ -41,7 +41,6 @@ const Navbar = () => {
   };
   const handleClickModal = (e, type) => {
     e.preventDefault();
-    console.log('Funca', type);
     setIsContact(type);
     setModal(true);
     setMenuOpen(false);
