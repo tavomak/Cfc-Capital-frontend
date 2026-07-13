@@ -5,7 +5,15 @@ export default async function handler(req, res) {
 
   try {
     const {
-      contact: { email, firstName, lastName, phone, tag, contactMessage },
+      contact: {
+        email,
+        firstName,
+        lastName,
+        phone,
+        tag,
+        contactMessage,
+        attribution,
+      },
     } = data;
 
     const contactData = {
@@ -15,6 +23,14 @@ export default async function handler(req, res) {
       Phone: phone,
       Mensaje: contactMessage,
       Servicios: tag,
+      ...(attribution && {
+        Fuente: attribution.currentSource,
+        Medio: attribution.currentMedium,
+        Campaign: attribution.currentCampaign,
+        'Primera+Fuente': attribution.firstSource,
+        'Primer+Medio': attribution.firstMedium,
+        'Primera+Campaign': attribution.firstCampaign,
+      }),
     };
 
     const authorization = await fetch(
