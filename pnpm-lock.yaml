@@ -83,6 +83,9 @@ importers:
       slick-carousel:
         specifier: ^1.8.1
         version: 1.8.1(jquery@3.7.1)
+      sourcebuster:
+        specifier: ^1.1.0
+        version: 1.1.0
       styled-jsx:
         specifier: 5.1.6
         version: 5.1.6(@babel/core@7.29.7)(react@19.2.6)
@@ -4103,6 +4106,9 @@ packages:
   source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
     engines: {node: '>=0.10.0'}
+
+  sourcebuster@1.1.0:
+    resolution: {integrity: sha512-+A8MHjtnARAYsqd0OI+aXbgUa/p6mhmXHwGUu3TxdujqfVqS1mjSq+2fkctGDozoxrRSBb55WScJJtJ5YILxSQ==}
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
@@ -9024,6 +9030,8 @@ snapshots:
   source-map@0.5.7: {}
 
   source-map@0.6.1: {}
+
+  sourcebuster@1.1.0: {}
 
   space-separated-tokens@2.0.2: {}
 

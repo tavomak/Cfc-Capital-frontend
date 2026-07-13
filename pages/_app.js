@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import TagManager from 'react-gtm-module';
+import sbjs from 'sourcebuster';
 import { poppins, openSans } from '@/utils/fonts';
 import { environments } from '@/utils/constants';
 import 'slick-carousel/slick/slick.css';
@@ -12,6 +13,7 @@ const tagManagerArgs = {
 
 function App({ Component, pageProps }) {
   useEffect(() => {
+    sbjs.init();
     if (process.env.NODE_ENV === environments.production) {
       TagManager.initialize(tagManagerArgs);
     }
