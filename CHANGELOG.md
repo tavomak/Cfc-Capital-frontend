@@ -1,3 +1,9 @@
+# [1.12.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.11.1...v1.12.0) (2026-07-13)
+
+### Features
+
+- source buster on forms ([19199af](https://github.com/tavomak/Cfc-Capital-frontend/commit/19199afb0dd991c82f62c88d3c9898cf4185753e))
+
 ## [1.11.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.11.0...v1.11.1) (2026-07-07)
 
 ### Bug Fixes
