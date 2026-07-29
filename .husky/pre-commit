@@ -1,1 +1,2 @@
 npx lint-staged
+npx fallow audit --base HEAD --gate new-only
