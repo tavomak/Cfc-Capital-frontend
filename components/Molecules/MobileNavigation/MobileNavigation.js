@@ -167,13 +167,14 @@ const MobileNavigation = ({
 
               <ul className="flex justify-between gap-2 xl:gap-4">
                 <li>
-                  <button
-                    type="button"
-                    className="inline-block py-3 btn btn-primary"
-                    onClick={(e) => handleClickModal(e, false)}
+                  <a
+                    href="https://cfccapital.enrolador.cl/"
+                    className="inline-block py-3 btn btn-secondary"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    Acceso Clientes
-                  </button>
+                    Enrólate aquí
+                  </a>
                 </li>
               </ul>
 
