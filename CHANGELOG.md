@@ -1,3 +1,9 @@
+# [1.13.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.12.0...v1.13.0) (2026-07-29)
+
+### Features
+
+- replace anchors with buttons, enrolate aqui button removed ([eb13ebd](https://github.com/tavomak/Cfc-Capital-frontend/commit/eb13ebd11624787acef7e2b21d24f7a429d27e04))
+
 # [1.12.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.11.1...v1.12.0) (2026-07-13)
 
 ### Features
