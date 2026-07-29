@@ -111,8 +111,8 @@ const MobileNavigation = ({
                   cardClassName="rounded-xl shadow-lg py-2 px-8"
                   containerClassName="w-full mb-4"
                 >
-                  <a
-                    href="!#"
+                  <button
+                    type="button"
                     className="text-medium-blue"
                     onClick={(e) => {
                       handleClose();
@@ -123,15 +123,15 @@ const MobileNavigation = ({
                       <FactoringIcon />
                     </div>
                     <h1 className="font-semibold display-font">Factoring</h1>
-                  </a>
+                  </button>
                 </Card>
                 <div className="flex gap-12">
                   <Card
                     cardClassName="rounded-xl shadow-lg p-6"
                     containerClassName="w-full"
                   >
-                    <a
-                      href="!#"
+                    <button
+                      type="button"
                       className="text-soft-blue"
                       onClick={(e) => {
                         handleClose();
@@ -142,14 +142,14 @@ const MobileNavigation = ({
                         <LeasingIcon />
                       </div>
                       <h1 className="font-semibold display-font">Leasing</h1>
-                    </a>
+                    </button>
                   </Card>
                   <Card
                     cardClassName="rounded-xl shadow-lg p-6"
                     containerClassName="w-full"
                   >
-                    <a
-                      href="!#"
+                    <button
+                      type="button"
                       className="text-medium-purple"
                       onClick={(e) => {
                         handleClose();
@@ -160,30 +160,20 @@ const MobileNavigation = ({
                         <LeasebackIcon />
                       </div>
                       <h1 className="font-semibold display-font">Leaseback</h1>
-                    </a>
+                    </button>
                   </Card>
                 </div>
               </div>
 
               <ul className="flex justify-between gap-2 xl:gap-4">
                 <li>
-                  <a
-                    href="!#"
+                  <button
+                    type="button"
                     className="inline-block py-3 btn btn-primary"
                     onClick={(e) => handleClickModal(e, false)}
                   >
                     Acceso Clientes
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://cfccapital.enrolador.cl/"
-                    className="inline-block py-3 btn btn-secondary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Enrólate aquí
-                  </a>
+                  </button>
                 </li>
               </ul>
 
