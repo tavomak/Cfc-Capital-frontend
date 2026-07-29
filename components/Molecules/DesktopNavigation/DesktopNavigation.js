@@ -165,23 +165,13 @@ const DesktopNavigation = ({
       </ul>
       <ul className="flex gap-2 xl:gap-4">
         <li>
-          <a
-            href="!#"
+          <button
+            type="button"
             className="inline-block btn btn-primary"
             onClick={(e) => handleClickModal(e, false)}
           >
             Acceso Clientes
-          </a>
-        </li>
-        <li>
-          <a
-            className="inline-block btn btn-secondary"
-            href="https://cfccapital.enrolador.cl/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Enrólate aquí
-          </a>
+          </button>
         </li>
       </ul>
     </nav>
