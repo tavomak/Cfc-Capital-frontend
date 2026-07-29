@@ -51,7 +51,11 @@ const Stepper = () => {
             />
           </div>
           {Object.values(active).some((value) => value) && (
-            <a className="mt-4 mb-0" href="!#" onClick={(e) => handleStep(e)}>
+            <button
+              type="button"
+              className="mt-4 mb-0"
+              onClick={(e) => handleStep(e)}
+            >
               <div className="mb-0 text-xl text-center">
                 <div className="flex items-center justify-center">
                   <FaArrowAltCircleRight />
@@ -65,19 +69,19 @@ const Stepper = () => {
                   Debes seleccionar el tipo de denuncia para poder continuar.
                 </small>
               </p>
-            </a>
+            </button>
           )}
         </aside>
       )}
       {step && (
-        <a className="py-4" href="!#" onClick={(e) => handleBack(e)}>
+        <button type="button" className="py-4" onClick={(e) => handleBack(e)}>
           <span className="flex items-center">
             <FaArrowAltCircleLeft />
             <span className="text-sm ps-2">
               <u>Volver</u>
             </span>
           </span>
-        </a>
+        </button>
       )}
       {step === 'ley' && !error && (
         <FormLaw target={process.env.NEXT_PUBLIC_CONTACT_EMAIL} />
