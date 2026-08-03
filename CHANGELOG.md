@@ -1,3 +1,9 @@
+# [1.15.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.14.0...v1.15.0) (2026-08-03)
+
+### Features
+
+- footer links ([765bb68](https://github.com/tavomak/Cfc-Capital-frontend/commit/765bb6867f10607b42ef648a0ca561bd7631fae5))
+
 # [1.14.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.13.0...v1.14.0) (2026-07-29)
 
 ### Features

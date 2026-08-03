@@ -34,16 +34,16 @@ const Footer = () => {
       path: '/servicios/factoring',
       children: [
         {
-          label: '¿Qué es?',
-          path: '/servicios/factoring#que-es-factoring',
+          label: 'Minefact',
+          path: '/servicios/factoring#minefact',
         },
         {
-          label: '¿Cómo funciona?',
-          path: '/servicios/factoring#como-funciona-factoring',
+          label: 'Emprendefact',
+          path: '/servicios/factoring#emprendefact',
         },
         {
-          label: 'Saber más',
-          path: '/servicios/factoring#saber-mas-factoring',
+          label: 'Publifact',
+          path: '/servicios/factoring#publifact',
         },
       ],
     },
