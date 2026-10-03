@@ -19,9 +19,6 @@ import FadeInSection from '@/components/Templates/FadeInSection';
 import FormGetInfo from '@/components/Molecules/Forms/FormContact';
 import Button from '@/components/Atoms/Button';
 
-import { Cloudinary } from '@cloudinary/url-gen';
-import { AdvancedVideo } from '@cloudinary/react';
-
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -32,15 +29,6 @@ const structuredData = {
   telephone: '+562281818181',
   sameAs: ['https://cl.linkedin.com/company/cfc-capital-s-a'],
 };
-
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: 'deevr9k54',
-  },
-});
-
-const primaryVideo = cld.video('Reels-Nvos-Productos-cudrado_cyvykb');
-const promoVideo = cld.video('CFC_-_Video_de_presentación_-_web_lbrkbq');
 
 export async function getStaticProps() {
   try {
@@ -99,13 +87,13 @@ respaldo a largo plazo`,
           }
           ltr
         >
-          <AdvancedVideo
-            cldVid={promoVideo}
+          <video
+            src="/videos/cfc-presentacion-v1.mp4"
             autoPlay
             loop
             muted
             playsInline
-            poster="/hero-servicios.jpg"
+            poster="/videos/cfc-presentacion-v1.webp"
             controls
             className="aspect-video object-contain w-full h-full shadow-xl rounded-xl"
           />
@@ -140,14 +128,14 @@ respaldo a largo plazo`,
             </div>
             <div className={`md:w-1/2 order-2 md:order-1`}>
               <FadeInSection as="div" className="lg:pe-20">
-                <AdvancedVideo
-                  cldVid={primaryVideo}
+                <video
+                  src="/videos/productos-v1.mp4"
                   controls
                   autoPlay
                   loop
                   muted
                   playsInline
-                  poster="/hero-servicios.jpg"
+                  poster="/videos/productos-v1.webp"
                   className="aspect-square object-contain w-full h-full shadow-xl rounded-xl"
                 />
               </FadeInSection>

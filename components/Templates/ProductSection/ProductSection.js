@@ -2,16 +2,8 @@ import Image from 'next/image';
 import Card from '@/components/Atoms/Card';
 import Button from '@/components/Atoms/Button';
 import useViewport from '@/hooks/useViewport';
-import { Cloudinary } from '@cloudinary/url-gen';
-import { AdvancedVideo } from '@cloudinary/react';
 import { MdCheck } from 'react-icons/md';
 import FadeInSection from '../FadeInSection';
-
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: 'deevr9k54',
-  },
-});
 
 const getDataFromName = (name) => {
   const data = [
@@ -20,7 +12,7 @@ const getDataFromName = (name) => {
       gradientClass: 'from-[#432694] to-[#9777EE]',
       color: '#432694',
       background: '#D4BFFE',
-      video: cld.video('Minefact-cuadrado_rionti'),
+      video: '/videos/minefact-v1',
       logoW: 226,
       logoH: 176,
       logoWhiteW: 313,
@@ -31,7 +23,7 @@ const getDataFromName = (name) => {
       gradientClass: 'from-[#004559] to-[#1D89A8]',
       color: '#004559',
       background: '#C6FFFF',
-      video: cld.video('EmprendeFact-cuadrado_fdbcuz'),
+      video: '/videos/emprendefact-v1',
       logoW: 310,
       logoH: 188,
       logoWhiteW: 444,
@@ -42,7 +34,7 @@ const getDataFromName = (name) => {
       gradientClass: 'from-[#013DA6] to-[#2A83E5]',
       color: '#013DA6',
       background: '#83BEFF',
-      video: cld.video('PubliFact-SIN-Sub_d0p9lw'),
+      video: '/videos/publifact-v1',
       logoW: 228,
       logoH: 176,
       logoWhiteW: 384,
@@ -146,14 +138,14 @@ const ProductSection = ({ data, index, setService, handleClick }) => {
           </div>
           <div className={`${isPair ? 'order-2' : 'order-1'} md:w-1/2`}>
             <FadeInSection as="div">
-              <AdvancedVideo
-                cldVid={product.video}
+              <video
+                src={`${product.video}.mp4`}
                 controls
                 autoPlay
                 loop
                 muted
                 playsInline
-                poster="/hero-servicios.jpg"
+                poster={`${product.video}.webp`}
                 className="aspect-square object-contain w-full h-full shadow-xl rounded-xl"
               />
             </FadeInSection>
