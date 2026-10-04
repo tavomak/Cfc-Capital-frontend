@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.15.0...v1.16.0) (2026-10-04)
+
+### Features
+
+- package-lock removed ([3a15f18](https://github.com/tavomak/Cfc-Capital-frontend/commit/3a15f18ab0ca50a2ae53b699b3a45cd631f008fb))
+- video migration from cloudinary to vercel public folder ([747284f](https://github.com/tavomak/Cfc-Capital-frontend/commit/747284fc2cff2b8b677cf03312b61e3aafbe644e))
+
 # [1.15.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.14.0...v1.15.0) (2026-08-03)
 
 ### Features

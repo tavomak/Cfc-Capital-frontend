@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import { AdvancedVideo } from '@cloudinary/react';
-import { Cloudinary } from '@cloudinary/url-gen';
 import ClientsIcon from '@/components/Atoms/ClientsIcon';
 import StarIcon from '@/components/Atoms/StarIcon';
 import DolarIcon from '@/components/Atoms/DolarIcon';
@@ -18,15 +16,6 @@ const iconsMapping = {
   money: <DolarIcon />,
 };
 
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: 'deevr9k54',
-  },
-});
-
-// Use the video with public ID, 'docs/walking_talking'.
-const myVideo = cld.video('video-nosotros-CFC-hd_quu4iy_qdqwzy');
-
 const cfc = ({ data }) => {
   const { directors, managers, team, subManager, highlights } = data;
   return (
@@ -35,13 +24,13 @@ const cfc = ({ data }) => {
       description="Somos una empresa de servicios financieros, presente en el mercado desde el año 2003"
     >
       <section className="container flex flex-wrap mx-auto md:px-4">
-        <AdvancedVideo
-          cldVid={myVideo}
+        <video
+          src="/videos/nosotros-v1.mp4"
           autoPlay
           loop
           muted
           playsInline
-          poster="/hero-servicios.jpg"
+          poster="/videos/nosotros-v1.webp"
         />
       </section>
 
