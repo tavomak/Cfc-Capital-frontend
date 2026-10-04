@@ -1,3 +1,45 @@
+# [1.15.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.14.0...v1.15.0) (2026-08-03)
+
+### Features
+
+- footer links ([765bb68](https://github.com/tavomak/Cfc-Capital-frontend/commit/765bb6867f10607b42ef648a0ca561bd7631fae5))
+
+# [1.14.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.13.0...v1.14.0) (2026-07-29)
+
+### Features
+
+- correct menu button ([d445134](https://github.com/tavomak/Cfc-Capital-frontend/commit/d445134844d2653c5bf49a8355db73edaa6e664d))
+
+# [1.13.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.12.0...v1.13.0) (2026-07-29)
+
+### Features
+
+- replace anchors with buttons, enrolate aqui button removed ([eb13ebd](https://github.com/tavomak/Cfc-Capital-frontend/commit/eb13ebd11624787acef7e2b21d24f7a429d27e04))
+
+# [1.12.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.11.1...v1.12.0) (2026-07-13)
+
+### Features
+
+- source buster on forms ([19199af](https://github.com/tavomak/Cfc-Capital-frontend/commit/19199afb0dd991c82f62c88d3c9898cf4185753e))
+
+## [1.11.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.11.0...v1.11.1) (2026-07-07)
+
+### Bug Fixes
+
+- access modal message ([abf213d](https://github.com/tavomak/Cfc-Capital-frontend/commit/abf213d031579e884dd21037715d8acbb4d6d3d4))
+
+# [1.11.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.10.1...v1.11.0) (2026-06-20)
+
+### Features
+
+- factoring service title and description ([42a9b3d](https://github.com/tavomak/Cfc-Capital-frontend/commit/42a9b3d8c98073453ba06493276963bce7499162))
+
+## [1.10.1](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.10.0...v1.10.1) (2026-06-19)
+
+### Bug Fixes
+
+- item removed ([d555b00](https://github.com/tavomak/Cfc-Capital-frontend/commit/d555b0080886ae14ad7670b1d33c15210b49ac44))
+
 # [1.10.0](https://github.com/tavomak/Cfc-Capital-frontend/compare/v1.9.0...v1.10.0) (2026-06-10)
 
 ### Features
